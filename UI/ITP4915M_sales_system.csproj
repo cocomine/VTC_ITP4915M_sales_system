@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B5B235F-231B-476D-93BA-DDF917460299}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ITP4915M</RootNamespace>
+    <AssemblyName>ITP4915M_sales_system</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accounting page\Accounting page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting page\Accounting page.Designer.cs">
+      <DependentUpon>Accounting page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery Page\Delivery Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery Page\Delivery Page.Designer.cs">
+      <DependentUpon>Delivery Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory page\Purchase item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory page\Purchase item.Designer.cs">
+      <DependentUpon>Purchase item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory page\Item requested.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory page\Item requested.Designer.cs">
+      <DependentUpon>Item requested.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory page\Inventory quantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory page\Inventory quantity.Designer.cs">
+      <DependentUpon>Inventory quantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory page\Inventory page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory page\Inventory page.Designer.cs">
+      <DependentUpon>Inventory page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="My Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Profile.Designer.cs">
+      <DependentUpon>My Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Installer Page\Installer Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Installer Page\Installer Page.Designer.cs">
+      <DependentUpon>Installer Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales page\Customer info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\Customer info.Designer.cs">
+      <DependentUpon>Customer info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales page\Sales Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\Sales Management.Designer.cs">
+      <DependentUpon>Sales Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales page\Sales page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\Sales page.Designer.cs">
+      <DependentUpon>Sales page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Technical Support page\Account Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Technical Support page\Account Management.Designer.cs">
+      <DependentUpon>Account Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Technical Support page\Arrange installation workers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Technical Support page\Arrange installation workers.Designer.cs">
+      <DependentUpon>Arrange installation workers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Technical Support page\Technical Support page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Technical Support page\Technical Support page.Designer.cs">
+      <DependentUpon>Technical Support page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Accounting page\Accounting page.resx">
+      <DependentUpon>Accounting page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Delivery Page.resx">
+      <DependentUpon>Delivery Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory quantity.resx">
+      <DependentUpon>Inventory quantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory page.resx">
+      <DependentUpon>Inventory page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Item requested.resx">
+      <DependentUpon>Item requested.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Purchase item.resx">
+      <DependentUpon>Purchase item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Installer Page\Installer Page.resx">
+      <DependentUpon>Installer Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Profile.resx">
+      <DependentUpon>My Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Customer info.resx">
+      <DependentUpon>Customer info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Sales Management.resx">
+      <DependentUpon>Sales Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Sales page.resx">
+      <DependentUpon>Sales page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Technical Support page\Account Management.resx">
+      <DependentUpon>Account Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Technical Support page\Arrange installation workers.resx">
+      <DependentUpon>Arrange installation workers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Technical Support page\Technical Support page.resx">
+      <DependentUpon>Technical Support page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
