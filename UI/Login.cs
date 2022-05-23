@@ -38,6 +38,7 @@ namespace UI
                         //check account Enable
                         if (!accountData.GetBoolean("Enable")) {
                             MessageBox.Show("User does not enable.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            accountData.Close();
                             return;
                         }
 
@@ -53,8 +54,9 @@ namespace UI
                             //password pass
                             MessageBox.Show("Welcome back "+ accountData.GetString("FullRealName") + ".", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Account_Details acc = new Account_Details(accountData.GetString("AcoountID"), accountData.GetString("Username"), accountData.GetString("FullRealName"), accountData.GetInt32("DepartmentID"), accountData.GetBoolean("isManager"));
+                            accountData.Close(); //need close Reader fist
                             Program.JumpPage(acc); //go to other pages
-                            this.Close();
+                            this.Close(); //close this Form
                         } else {
                             //password faild
                             MessageBox.Show("Incorrect password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);

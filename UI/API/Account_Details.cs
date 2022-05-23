@@ -8,7 +8,7 @@ namespace ITP4915M.API {
     /**
      * <summary>Account details</summary>
      */
-    internal class Account_Details {
+    public class Account_Details {
         private string acoountID;
         private string username;
         private string fullRealName;

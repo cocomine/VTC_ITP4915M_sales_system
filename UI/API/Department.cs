@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ITP4915M.API {
-    internal class Department {
+    public class Department {
         public const int Sales = 1;
         public const int Inventory = 2;
         public const int Accounting = 3;

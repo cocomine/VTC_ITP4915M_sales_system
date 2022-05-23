@@ -34,8 +34,8 @@ namespace UI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new Login(conn).Show();
-            Application.Run(); //show login page
+            new Login(conn).Show(); //show login page
+            Application.Run(); 
         }
 
         /// <summary>
@@ -57,20 +57,20 @@ namespace UI
             Console.WriteLine(acc);
             switch (acc.Get_departmentID()) {
                 case Department.Sales:
-                    Application.Run(new Sales_page.Sales_Page());
+                    new Sales_page.Sales_Page().Show();
                     break;
                 case Department.Inventory:
-                    Application.Run(new Inventory_page.Inventory_page());
+                    new Inventory_page.Inventory_page().Show();
                     break;
                 case Department.Accounting:
-                    Application.Run(new Accounting_page.Accounting_page());
+                    new Accounting_page.Accounting_page().Show();
                     break;
                 case Department.Technical_Support:
-                    Application.Run(new Technical_Support_Page.Technical_Support_Page());
+                    new Technical_Support_Page.Technical_Support_Page().Show();
                     break;
                 case Department.IT:
                 case Department.CEO:
-                    new IT.Account_Management().Show();
+                    new IT.Account_Management(conn, acc).Show();
                     break;
                 default:
                     MessageBox.Show("You are not in the right department.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
