@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ITP4915M.API;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,15 +10,73 @@ namespace UI
 {
     internal static class Program
     {
+        private static MySqlConnection conn; //sql Connection
+        private static int pageNum = 0;
+
         /// <summary>
-        /// 應用程式的主要進入點。
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            //sql server ConnectionString
+            string myConnectionString = "server=127.0.0.1;uid=root;" +
+                "database=itp4915m_sales_system";
+
+            //Connect sql
+            try {
+                conn = new MySqlConnection(myConnectionString);
+                conn.Open();
+                MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (MySqlException ex) {
+                Console.WriteLine(ex.Message);
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Accounting_page.Accounting_page());
+            new Login(conn).Show();
+            Application.Run(); //show login page
+        }
+
+        /// <summary>
+        /// Increase the number of windows
+        /// </summary>
+        public static void addPage() { pageNum += 1; }
+        /// <summary>
+        /// Reduce the number of windows<br></br>
+        /// if 0, exit application
+        /// </summary>
+        public static void removePage() { 
+            pageNum -= 1; 
+            if (pageNum <= 0) Application.Exit(); 
+        }
+
+        /// <summary>After logging in, go to different pages according to the department</summary>
+        /// <param name="acc">ITP4915M.API.Account_Details</param>
+        public static void JumpPage(Account_Details acc) {
+            Console.WriteLine(acc);
+            switch (acc.Get_departmentID()) {
+                case Department.Sales:
+                    Application.Run(new Sales_page.Sales_Page());
+                    break;
+                case Department.Inventory:
+                    Application.Run(new Inventory_page.Inventory_page());
+                    break;
+                case Department.Accounting:
+                    Application.Run(new Accounting_page.Accounting_page());
+                    break;
+                case Department.Technical_Support:
+                    Application.Run(new Technical_Support_Page.Technical_Support_Page());
+                    break;
+                case Department.IT:
+                case Department.CEO:
+                    new IT.Account_Management().Show();
+                    break;
+                default:
+                    MessageBox.Show("You are not in the right department.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Application.Exit();
+                    break;
+            }
         }
     }
 }

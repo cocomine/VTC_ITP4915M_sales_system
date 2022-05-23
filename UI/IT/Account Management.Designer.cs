@@ -1,4 +1,4 @@
-﻿namespace UI.Technical_Support_page
+﻿namespace UI.IT
 {
     partial class Account_Management
     {
@@ -52,10 +52,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -64,10 +68,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 27);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(785, 174);
+            this.dataGridView1.Size = new System.Drawing.Size(785, 218);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
@@ -208,7 +212,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(295, 148);
+            this.button2.Location = new System.Drawing.Point(295, 154);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 20;
@@ -220,7 +224,7 @@
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(94, 48);
+            this.comboBox2.Location = new System.Drawing.Point(94, 54);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(276, 20);
             this.comboBox2.TabIndex = 18;
@@ -228,7 +232,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(94, 152);
+            this.checkBox2.Location = new System.Drawing.Point(94, 158);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(56, 16);
             this.checkBox2.TabIndex = 19;
@@ -238,7 +242,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 22);
+            this.label8.Location = new System.Drawing.Point(11, 28);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 12);
             this.label8.TabIndex = 11;
@@ -248,7 +252,7 @@
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(94, 15);
+            this.textBox6.Location = new System.Drawing.Point(94, 21);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(276, 22);
             this.textBox6.TabIndex = 12;
@@ -256,7 +260,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 114);
+            this.label5.Location = new System.Drawing.Point(11, 120);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 12);
             this.label5.TabIndex = 17;
@@ -265,7 +269,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 53);
+            this.label7.Location = new System.Drawing.Point(11, 59);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 13;
@@ -275,7 +279,7 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(94, 111);
+            this.textBox2.Location = new System.Drawing.Point(94, 117);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(276, 22);
             this.textBox2.TabIndex = 16;
@@ -283,7 +287,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 84);
+            this.label6.Location = new System.Drawing.Point(11, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 12);
             this.label6.TabIndex = 14;
@@ -293,7 +297,7 @@
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(94, 78);
+            this.textBox5.Location = new System.Drawing.Point(94, 84);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(276, 22);
             this.textBox5.TabIndex = 15;
@@ -307,30 +311,60 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 192);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 251);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(785, 187);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem,
+            this.myProfileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(809, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            // 
+            // myProfileToolStripMenuItem
+            // 
+            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
+            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.myProfileToolStripMenuItem.Text = "My Profile";
+            // 
             // Account_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 391);
+            this.ClientSize = new System.Drawing.Size(809, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.dataGridView1);
-            this.MinimumSize = new System.Drawing.Size(800, 426);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Account_Management";
             this.Text = "Account Management";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Account_Management_FormClosed);
+            this.Load += new System.EventHandler(this.Account_Management_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -360,5 +394,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
     }
 }
