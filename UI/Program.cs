@@ -28,14 +28,16 @@ namespace UI
                 conn = new MySqlConnection(myConnectionString);
                 conn.Open();
                 MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } catch (MySqlException ex) {
-                Console.WriteLine(ex.Message);
-            }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            new Login(conn).Show(); //show login page
-            Application.Run(); 
+                //startup
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                new Login(conn).Show(); //show login page
+                Application.Run();
+
+            } catch (MySqlException ex) {
+                MessageBox.Show(myConnectionString+"\n"+ex.Message, "SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
