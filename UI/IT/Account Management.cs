@@ -18,6 +18,7 @@ namespace UI.IT
         private Account_Details acc;
         public Account_Management(MySqlConnection conn, Account_Details acc)
         {
+            //ac
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
