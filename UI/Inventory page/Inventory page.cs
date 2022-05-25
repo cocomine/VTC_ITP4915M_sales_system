@@ -10,10 +10,18 @@ using System.Windows.Forms;
 
 namespace UI.Inventory_page
 {
+
+        private MySqlConnection conn;
+        private Account_Details acc;
+
+
     public partial class Inventory_page : Form
     {
+        private MySqlConnection conn;
+        private Account_Details acc;
         public Inventory_page()
         {
+
             InitializeComponent();
         }
 
