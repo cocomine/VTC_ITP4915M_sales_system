@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ITP4915M.API;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,23 @@ namespace UI
 {
     public partial class My_Profile : Form
     {
-        public My_Profile()
+        private MySqlConnection conn;
+        private Account_Details acc;
+        public My_Profile(MySqlConnection conn, Account_Details acc)
         {
+            this.conn = conn;
+            this.acc = acc;
             InitializeComponent();
+        }
+
+        private void My_Profile_Load(object sender, EventArgs e) {
+            Program.addPage();
+
+
+        }
+
+        private void My_Profile_Closing(object sender, FormClosingEventArgs e) {
+            Program.removePage();
         }
     }
 }

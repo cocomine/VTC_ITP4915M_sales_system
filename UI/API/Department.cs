@@ -12,5 +12,7 @@ namespace ITP4915M.API {
         public const int Technical_Support = 4;
         public const int IT = 5;
         public const int CEO = 6;
+        public const int Delivery = 7;
+        public const int Installer = 8;
     }
 }

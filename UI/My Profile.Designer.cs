@@ -153,6 +153,8 @@
             this.MinimumSize = new System.Drawing.Size(385, 250);
             this.Name = "My_Profile";
             this.Text = "My Profile";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.My_Profile_Closing);
+            this.Load += new System.EventHandler(this.My_Profile_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
