@@ -74,6 +74,12 @@ namespace UI
                 case Department.CEO:
                     new IT.Account_Management(conn, acc).Show();
                     break;
+                case Department.Delivery:
+                    new Delivery_Page.Delivery_Page(conn, acc).Show();
+                    break;
+                case Department.Installer:
+                    new Installer_Page.Installer_Page().Show();
+                    break;
                 default:
                     MessageBox.Show("You are not in the right department.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Application.Exit();
