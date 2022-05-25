@@ -36,6 +36,7 @@ namespace ITP4915M.API {
         public string Get_fullRealName() { return fullRealName; }
         public int Get_departmentID() { return departmentID; }
         public bool Get_isManager() { return isManager; }
+        public void Set_username(String username) { this.username = username; }
         override public String ToString() {
             return String.Format("Account_Details(acoountID: {0}, username: {1}, fullRealName: {2}, departmentID: {3}, isManager: {4})", acoountID, username, fullRealName, departmentID.ToString(), isManager.ToString());
         }

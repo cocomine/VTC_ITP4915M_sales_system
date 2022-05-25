@@ -228,6 +228,8 @@
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Delivery_Page";
             this.Text = "Delivery Page";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Delivery_Page_Closing);
+            this.Load += new System.EventHandler(this.Delivery_Page_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
