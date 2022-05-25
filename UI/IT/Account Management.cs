@@ -47,5 +47,9 @@ namespace UI.IT
         private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
             new My_Profile(conn, acc).Show();
         }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
     }
 }

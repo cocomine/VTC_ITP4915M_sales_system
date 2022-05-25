@@ -62,8 +62,8 @@ namespace UI
                             MessageBox.Show("Incorrect password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    accountData.Close();
                 }
+                accountData.Close();
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
@@ -75,6 +75,12 @@ namespace UI
 
         private void Login_Load(object sender, EventArgs e) {
             Program.addPage();
+        }
+
+        private void Login_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == 13) { //Enter key hit
+                btn_login_Click(sender, e);
+            }
         }
     }
 }
