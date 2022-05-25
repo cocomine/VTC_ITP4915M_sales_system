@@ -31,5 +31,10 @@ namespace UI.Technical_Support_page
         {
 
         }
+
+        private void Arrange_installation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

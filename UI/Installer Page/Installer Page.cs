@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ITP4915M.API;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +12,14 @@ using System.Windows.Forms;
 
 namespace UI.Installer_Page
 {
-        private MySqlConnection conn;
-        private Account_Details acc;
+
 
     public partial class Installer_Page : Form
     {
+
         private MySqlConnection conn;
         private Account_Details acc;
+
         public Installer_Page()
         {
             InitializeComponent();
@@ -33,6 +36,11 @@ namespace UI.Installer_Page
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

@@ -13,9 +13,6 @@ using System.Windows.Forms;
 namespace UI.Delivery_Page
 {
 
-        private MySqlConnection conn;
-        private Account_Details acc;
-
 
     public partial class Delivery_Page : Form
     {
