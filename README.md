@@ -1,8 +1,10 @@
 ITP4915M_sales_system
 ===
-## 管理員登入
+管理員登入
+---
 Username: `root` Password: `root`
-## 注意事項
+注意事項
+---
 ### 在每一個新的From中必須先添加以下代碼
 #### 添加 `MySqlConnection` and `Account_Details` class variable
 ```c#
@@ -40,8 +42,8 @@ private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
     Application.Exit(); //添加在Click事件內
 }
 ```
+如何使用 `MySqlConnection`
 ---
-### 如何使用 `MySqlConnection`
 #### `SELECT` 查詢
 > 為防止sql injection攻擊<br>
 > 所有擺放數據嘅位置, 需要用變量方式代替<br>
