@@ -15,7 +15,7 @@ namespace UI.Delivery_Page
     public partial class Delivery_Page : Form
     {
         private MySqlConnection conn;
-        private Account_Details acc;
+        private Account_Details acc; //comment
         public Delivery_Page(MySqlConnection conn, Account_Details acc)
         {
             this.conn = conn;
