@@ -10,8 +10,13 @@ using System.Windows.Forms;
 
 namespace UI.Installer_Page
 {
+        private MySqlConnection conn;
+        private Account_Details acc;
+
     public partial class Installer_Page : Form
     {
+        private MySqlConnection conn;
+        private Account_Details acc;
         public Installer_Page()
         {
             InitializeComponent();
