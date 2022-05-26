@@ -48,7 +48,7 @@ namespace UI
                         byte[] data = Encoding.UTF8.GetBytes(pws[0]+tb_password.Text.Trim());
                         byte[] hash = sha512.ComputeHash(data); //hash
                         String password = BitConverter.ToString(hash).Replace("-", "").ToLower();
-                        //Console.WriteLine(password);
+                        Console.WriteLine(password);
 
                         //check password
                         if (password.Equals(pws[1])) {
