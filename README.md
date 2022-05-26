@@ -4,6 +4,10 @@ ITP4915M_sales_system
 ---
 Username: `root` Password: `root`
 
+How to use git
+---
+[教學連結](How-To-Use-Git.md)
+
 注意事項
 ---
 ### 在每一個新的From中必須先添加以下代碼
