@@ -59,11 +59,18 @@ namespace UI
             }
             if (!tb_Password.Text.Equals("")) {
                 //if password is change
+                //generation salt
+                var rng = new RNGCryptoServiceProvider();
+                byte[] random = new byte[16];
+                rng.GetNonZeroBytes(random);
+                String salt = BitConverter.ToString(random).Replace("-", "").ToLower();
+                //Console.WriteLine(salt);
+
                 //hash password
                 SHA512 sha512 = new SHA512Managed();
-                byte[] data = Encoding.UTF8.GetBytes(tb_Password.Text);
-                byte[] hash = sha512.ComputeHash(data);
-                String password = BitConverter.ToString(hash).Replace("-", "").ToLower();
+                byte[] data = Encoding.UTF8.GetBytes(salt+tb_Password.Text.Trim());
+                byte[] hash = sha512.ComputeHash(data); //hash
+                String password = salt+"."+BitConverter.ToString(hash).Replace("-", "").ToLower();
 
                 //update database
                 try {

@@ -44,13 +44,14 @@ namespace UI
 
                         //hash password
                         SHA512 sha512 = new SHA512Managed();
-                        byte[] data = Encoding.UTF8.GetBytes(tb_password.Text);
-                        byte[] hash = sha512.ComputeHash(data);
+                        String[] pws = accountData.GetString("Password").Split('.'); //Split salt & password
+                        byte[] data = Encoding.UTF8.GetBytes(pws[0]+tb_password.Text.Trim());
+                        byte[] hash = sha512.ComputeHash(data); //hash
                         String password = BitConverter.ToString(hash).Replace("-", "").ToLower();
                         //Console.WriteLine(password);
 
                         //check password
-                        if (password.Equals(accountData.GetString("Password"))) {
+                        if (password.Equals(pws[1])) {
                             //password pass
                             MessageBox.Show("Welcome back "+ accountData.GetString("FullRealName") + ".", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Account_Details acc = new Account_Details(accountData.GetString("AcoountID"), accountData.GetString("Username"), accountData.GetString("FullRealName"), accountData.GetInt32("DepartmentID"), accountData.GetBoolean("isManager"));
