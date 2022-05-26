@@ -149,6 +149,12 @@
     <Compile Include="Inventory page\Inventory page.Designer.cs">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </Compile>
+    <Compile Include="IT\Create Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IT\Create Account.Designer.cs">
+      <DependentUpon>Create Account.cs</DependentUpon>
+    </Compile>
     <Compile Include="My Profile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT\Create Account.resx">
+      <DependentUpon>Create Account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

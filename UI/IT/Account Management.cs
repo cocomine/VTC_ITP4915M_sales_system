@@ -1,4 +1,5 @@
 ﻿using ITP4915M.API;
+using ITP4915M.IT;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace UI.IT
             Program.addPage();
 
             try {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT s.AccountID, s.FullRealName, a.Username, s.DepartmentID, s.isManager From staff AS s, account AS a WHERE s.AccountID = a.AcoountID", conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT s.AccountID, s.FullRealName, a.Username, s.DepartmentID, s.isManager, a.Enable From staff AS s, account AS a WHERE s.AccountID = a.AcoountID", conn);
                 MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
 
                 DataSet ds_staff = new DataSet();
@@ -43,8 +44,15 @@ namespace UI.IT
                 }
                 ds_staff.Tables[0].Columns.Remove("DepartmentID");
 
-                dataGrid_staffList.DataSource = ds_staff;
-                dataGrid_staffList.DataMember = "Staff List";
+                bindingSource1.DataSource = ds_staff;
+                bindingSource1.DataMember = "Staff List";
+                dataGrid_staffList.DataSource = bindingSource1;
+
+                tb_full_name.DataBindings.Add(new Binding("Text", bindingSource1, "FullRealName", true));
+                tb_username.DataBindings.Add(new Binding("Text", bindingSource1, "Username", true));
+                tb_department.DataBindings.Add(new Binding("SelectedItem", bindingSource1, "Department", true));
+                cb_is_manager.DataBindings.Add(new Binding("Checked", bindingSource1, "isManager", true));
+                cb_enable.DataBindings.Add(new Binding("Checked", bindingSource1, "Enable", true));
 
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
@@ -57,6 +65,32 @@ namespace UI.IT
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        private void Create_account_Click(object sender, EventArgs e) {
+            new Create_Account().Show();
+        }
+
+        private void bt_del_account_Click(object sender, EventArgs e) {
+            //MessageBox.Show("test");
+            if(dataGrid_staffList.SelectedRows.Count > 0) {
+                List<string> list = new List<string>();
+                for (int i = 0;i< dataGrid_staffList.SelectedRows.Count; i++) {
+                    list.Add(dataGrid_staffList.SelectedRows[i].Cells["AccountID"].Value.ToString());
+                }
+                MessageBox.Show(list.Count.ToString());
+            } else if(dataGrid_staffList.SelectedCells.Count > 0) {
+                List<string> list = new List<string>();
+                for (int i = 0; i < dataGrid_staffList.SelectedCells.Count; i++) {
+                    String id = dataGrid_staffList.Rows[dataGrid_staffList.SelectedCells[i].RowIndex].Cells["AccountID"].Value.ToString();
+                    if(!list.Contains(id)) list.Add(id);
+                }
+                MessageBox.Show(list.Count.ToString());
+            }
+        }
+
+        private void Search_change(object sender, EventArgs e) {
+            bindingSource1.Filter = String.Format("AccountID LIKE '%{0}%' OR FullRealName LIKE '%{0}%' OR Username LIKE '%{0}%'", tb_serach.Text);
         }
     }
 }
