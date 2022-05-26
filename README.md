@@ -49,6 +49,7 @@ private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
 ```
 如何使用 `MySqlConnection`
 ---
+[官方文檔](https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials.html)
 #### `SELECT` 查詢
 > 為防止sql injection攻擊<br>
 > 所有擺放數據嘅位置, 需要用變量方式代替<br>
