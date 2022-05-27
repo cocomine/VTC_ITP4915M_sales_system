@@ -34,6 +34,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_reset_pass = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cb_department = new System.Windows.Forms.ComboBox();
             this.cb_is_manager = new System.Windows.Forms.CheckBox();
@@ -70,7 +71,7 @@
             this.cb_Filter_isManager = new System.Windows.Forms.ToolStripComboBox();
             this.cb_Filter_Enable = new System.Windows.Forms.ToolStripComboBox();
             this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
-            this.bt_reset_pass = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_staffList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -81,6 +82,7 @@
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_staff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGrid_staffList
@@ -143,6 +145,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(379, 87);
             this.panel2.TabIndex = 23;
+            // 
+            // bt_reset_pass
+            // 
+            this.bt_reset_pass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_reset_pass.Location = new System.Drawing.Point(77, 31);
+            this.bt_reset_pass.Name = "bt_reset_pass";
+            this.bt_reset_pass.Size = new System.Drawing.Size(227, 23);
+            this.bt_reset_pass.TabIndex = 18;
+            this.bt_reset_pass.Text = "Reset password";
+            this.bt_reset_pass.UseVisualStyleBackColor = true;
+            this.bt_reset_pass.Click += new System.EventHandler(this.bt_reset_pass_Click);
             // 
             // label7
             // 
@@ -236,7 +250,7 @@
             this.tb_id.Location = new System.Drawing.Point(86, 61);
             this.tb_id.Name = "tb_id";
             this.tb_id.ReadOnly = true;
-            this.tb_id.Size = new System.Drawing.Size(293, 22);
+            this.tb_id.Size = new System.Drawing.Size(274, 22);
             this.tb_id.TabIndex = 16;
             // 
             // label1
@@ -262,18 +276,26 @@
             this.tb_full_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_full_name.Location = new System.Drawing.Point(86, 3);
+            this.tb_full_name.MaxLength = 20;
             this.tb_full_name.Name = "tb_full_name";
-            this.tb_full_name.Size = new System.Drawing.Size(293, 22);
+            this.tb_full_name.Size = new System.Drawing.Size(274, 22);
             this.tb_full_name.TabIndex = 10;
+            this.tb_full_name.TextChanged += new System.EventHandler(this.Change_back_normal);
+            this.tb_full_name.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Validating);
+            this.tb_full_name.Validated += new System.EventHandler(this.tb_Validated);
             // 
             // tb_username
             // 
             this.tb_username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_username.Location = new System.Drawing.Point(86, 33);
+            this.tb_username.MaxLength = 10;
             this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(293, 22);
+            this.tb_username.Size = new System.Drawing.Size(274, 22);
             this.tb_username.TabIndex = 11;
+            this.tb_username.TextChanged += new System.EventHandler(this.Change_back_normal);
+            this.tb_username.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Validating);
+            this.tb_username.Validated += new System.EventHandler(this.tb_Validated);
             // 
             // label6
             // 
@@ -463,7 +485,6 @@
             "Installer"});
             this.cb_filter_department.Name = "cb_filter_department";
             this.cb_filter_department.Size = new System.Drawing.Size(121, 25);
-            this.cb_filter_department.Text = "(All  department)";
             this.cb_filter_department.SelectedIndexChanged += new System.EventHandler(this.Search_change);
             // 
             // cb_Filter_isManager
@@ -475,7 +496,6 @@
             "Is not manager"});
             this.cb_Filter_isManager.Name = "cb_Filter_isManager";
             this.cb_Filter_isManager.Size = new System.Drawing.Size(121, 25);
-            this.cb_Filter_isManager.Text = "(All staff)";
             this.cb_Filter_isManager.SelectedIndexChanged += new System.EventHandler(this.Search_change);
             // 
             // cb_Filter_Enable
@@ -487,7 +507,6 @@
             "Is not enable account"});
             this.cb_Filter_Enable.Name = "cb_Filter_Enable";
             this.cb_Filter_Enable.Size = new System.Drawing.Size(121, 25);
-            this.cb_Filter_Enable.Text = "(All account)";
             this.cb_Filter_Enable.SelectedIndexChanged += new System.EventHandler(this.Search_change);
             // 
             // adapter
@@ -497,17 +516,10 @@
             this.adapter.SelectCommand = null;
             this.adapter.UpdateCommand = null;
             // 
-            // bt_reset_pass
+            // errorProvider1
             // 
-            this.bt_reset_pass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_reset_pass.Location = new System.Drawing.Point(77, 31);
-            this.bt_reset_pass.Name = "bt_reset_pass";
-            this.bt_reset_pass.Size = new System.Drawing.Size(227, 23);
-            this.bt_reset_pass.TabIndex = 18;
-            this.bt_reset_pass.Text = "Reset password";
-            this.bt_reset_pass.UseVisualStyleBackColor = true;
-            this.bt_reset_pass.Click += new System.EventHandler(this.bt_reset_pass_Click);
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
             // 
             // Account_Management
             // 
@@ -538,6 +550,7 @@
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds_staff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,5 +599,6 @@
         private System.Windows.Forms.ToolStripComboBox cb_Filter_Enable;
         private System.Windows.Forms.ToolStripComboBox cb_filter_department;
         private System.Windows.Forms.Button bt_reset_pass;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

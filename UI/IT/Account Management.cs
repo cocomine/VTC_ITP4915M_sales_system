@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,6 +20,7 @@ namespace UI.IT
     {
         private MySqlConnection conn;
         private Account_Details acc;
+        private Dictionary<string, Binding> binding = new Dictionary<string, Binding>();
         public Account_Management(MySqlConnection conn, Account_Details acc)
         {
             this.conn = conn;
@@ -32,6 +34,9 @@ namespace UI.IT
 
         private void Account_Management_Load(object sender, EventArgs e) {
             Program.addPage();
+            cb_filter_department.SelectedIndex = 0;
+            cb_Filter_Enable.SelectedIndex = 0;
+            cb_Filter_isManager.SelectedIndex = 0;
 
             try {
                 //SelectCommand
@@ -68,13 +73,13 @@ namespace UI.IT
                 dataGrid_staffList.DataSource = bindingSource1;
 
                 //Binding textbox
-                tb_id.DataBindings.Add(new Binding("Text", bindingSource1, "AccountID", true));
-                tb_full_name.DataBindings.Add(new Binding("Text", bindingSource1, "FullRealName", true));
-                tb_username.DataBindings.Add(new Binding("Text", bindingSource1, "Username", true));
-                cb_department.DataBindings.Add(new Binding("SelectedItem", bindingSource1, "Department", true));
-                cb_department.DataBindings.Add(new Binding("Tag", bindingSource1, "DepartmentID", true));
-                cb_is_manager.DataBindings.Add(new Binding("Checked", bindingSource1, "isManager", true));
-                cb_enable.DataBindings.Add(new Binding("Checked", bindingSource1, "Enable", true));
+                tb_id.DataBindings.Add("Text", bindingSource1, "AccountID", true);
+                binding.Add(tb_full_name.Name, tb_full_name.DataBindings.Add("Text", bindingSource1, "FullRealName", true, DataSourceUpdateMode.Never));
+                binding.Add(tb_username.Name, tb_username.DataBindings.Add("Text", bindingSource1, "Username", true, DataSourceUpdateMode.Never));
+                cb_department.DataBindings.Add("SelectedItem", bindingSource1, "Department", true);
+                cb_department.DataBindings.Add("Tag", bindingSource1, "DepartmentID", true);
+                cb_is_manager.DataBindings.Add("Checked", bindingSource1, "isManager", true);
+                cb_enable.DataBindings.Add("Checked", bindingSource1, "Enable", true);
 
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
@@ -91,7 +96,13 @@ namespace UI.IT
 
         private void Create_account_Click(object sender, EventArgs e) {
             //create account
-            new Create_Account().Show();
+            DialogResult dialogResult = new Create_Account(conn).ShowDialog();
+            Console.WriteLine(dialogResult);
+            if (dialogResult == DialogResult.OK) {
+                //Console.WriteLine("ok");
+                ds_staff.Tables[0].Clear();
+                adapter.Fill(ds_staff, "Staff_List"); //fill dataset
+            }
         }
 
         private void bt_del_account_Click(object sender, EventArgs e) {
@@ -176,6 +187,52 @@ namespace UI.IT
         private void dataGrid_staffList_DataError(object sender, DataGridViewDataErrorEventArgs e) {
             //Handler DataError
             MessageBox.Show(e.Exception.Message, "發生錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void Change_back_normal(object sender, EventArgs e) {
+            //clear error
+            TextBox tb = (TextBox)sender;
+            tb.BackColor = SystemColors.Window;
+            errorProvider1.SetError(tb, "");
+        }
+
+        private void tb_Validating(object sender, CancelEventArgs e) {
+            //Validating
+            TextBox tb = (TextBox)sender;
+
+            //if Empty
+            if (String.IsNullOrEmpty(tb.Text)) {
+                e.Cancel = true;
+                tb.Focus();
+                errorProvider1.SetError(tb, "Please fill information");
+                tb.BackColor = Color.LightCoral;
+            }
+
+            //if format does not match
+            if (tb.Equals(tb_username)) {
+                Regex rex = new Regex("^[A-za-z]+$");
+                if (!rex.IsMatch(tb.Text)) {
+                    e.Cancel = true;
+                    tb.Focus();
+                    errorProvider1.SetError(tb, "Only letters are accepted");
+                    tb.BackColor = Color.LightCoral;
+                }
+            }
+            if (tb.Equals(tb_full_name)) {
+                Regex rex = new Regex("^[A-za-z\\s]+$");
+                if (!rex.IsMatch(tb.Text)) {
+                    e.Cancel = true;
+                    tb.Focus();
+                    errorProvider1.SetError(tb, "Only letters are accepted");
+                    tb.BackColor = Color.LightCoral;
+                }
+            }
+        }
+
+        private void tb_Validated(object sender, EventArgs e) {
+            //if Validated will update
+            TextBox tb = (TextBox)sender;
+            binding[tb.Name].WriteValue();
         }
     }
 }
