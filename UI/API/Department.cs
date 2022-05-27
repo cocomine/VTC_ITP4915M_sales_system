@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ITP4915M.API {
     public class Department {
+        public const int NoDepartment = 0;
         public const int Sales = 1;
         public const int Inventory = 2;
         public const int Accounting = 3;
@@ -26,6 +27,20 @@ namespace ITP4915M.API {
                 case Delivery: return "Delivery Team";
                 case Installer: return "Installer";
                 default: return "(No department)";
+            }
+        }
+
+        public static int Get_DepartmentIDWithName(String departmentName) {
+            switch (departmentName) {
+                case "Sales": return Sales;
+                case "Inventory": return Inventory;
+                case "Accounting": return Accounting;
+                case "Technical Support": return Technical_Support;
+                case "IT": return IT;
+                case "CEO": return CEO;
+                case "Delivery Team": return Delivery;
+                case "Installer": return Installer;
+                default: return NoDepartment;
             }
         }
     }

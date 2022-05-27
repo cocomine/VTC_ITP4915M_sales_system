@@ -35,22 +35,24 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.tb_department = new System.Windows.Forms.ComboBox();
+            this.cb_department = new System.Windows.Forms.ComboBox();
             this.cb_is_manager = new System.Windows.Forms.CheckBox();
+            this.cb_enable = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bt_save = new System.Windows.Forms.Button();
-            this.tb_password = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_id = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_full_name = new System.Windows.Forms.TextBox();
             this.tb_username = new System.Windows.Forms.TextBox();
-            this.cb_enable = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.ds_staff = new System.Data.DataSet();
             this.MoveFirst = new System.Windows.Forms.ToolStripButton();
             this.MovePrevious = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -62,6 +64,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tb_serach = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.cb_filter_department = new System.Windows.Forms.ToolStripComboBox();
+            this.cb_Filter_isManager = new System.Windows.Forms.ToolStripComboBox();
+            this.cb_Filter_Enable = new System.Windows.Forms.ToolStripComboBox();
+            this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.bt_reset_pass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_staffList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -71,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ds_staff)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGrid_staffList
@@ -120,12 +130,13 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.bt_reset_pass);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.tb_department);
+            this.panel2.Controls.Add(this.cb_department);
             this.panel2.Controls.Add(this.cb_is_manager);
+            this.panel2.Controls.Add(this.cb_enable);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.bt_save);
-            this.panel2.Controls.Add(this.tb_password);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(388, 3);
             this.panel2.Name = "panel2";
@@ -141,13 +152,13 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Department";
             // 
-            // tb_department
+            // cb_department
             // 
-            this.tb_department.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cb_department.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_department.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tb_department.FormattingEnabled = true;
-            this.tb_department.Items.AddRange(new object[] {
+            this.cb_department.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_department.FormattingEnabled = true;
+            this.cb_department.Items.AddRange(new object[] {
             "Sales",
             "Inventory",
             "Accounting",
@@ -156,10 +167,11 @@
             "CEO",
             "Delivery Team",
             "Installer"});
-            this.tb_department.Location = new System.Drawing.Point(78, 5);
-            this.tb_department.Name = "tb_department";
-            this.tb_department.Size = new System.Drawing.Size(298, 20);
-            this.tb_department.TabIndex = 13;
+            this.cb_department.Location = new System.Drawing.Point(78, 5);
+            this.cb_department.Name = "cb_department";
+            this.cb_department.Size = new System.Drawing.Size(298, 20);
+            this.cb_department.TabIndex = 13;
+            this.cb_department.SelectedIndexChanged += new System.EventHandler(this.tb_department_SelectedIndexChanged);
             // 
             // cb_is_manager
             // 
@@ -170,6 +182,16 @@
             this.cb_is_manager.TabIndex = 15;
             this.cb_is_manager.Text = "Is department manager";
             this.cb_is_manager.UseVisualStyleBackColor = true;
+            // 
+            // cb_enable
+            // 
+            this.cb_enable.AutoSize = true;
+            this.cb_enable.Location = new System.Drawing.Point(214, 65);
+            this.cb_enable.Name = "cb_enable";
+            this.cb_enable.Size = new System.Drawing.Size(56, 16);
+            this.cb_enable.TabIndex = 12;
+            this.cb_enable.Text = "Enable";
+            this.cb_enable.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -189,28 +211,41 @@
             this.bt_save.TabIndex = 16;
             this.bt_save.Text = "Save";
             this.bt_save.UseVisualStyleBackColor = true;
-            // 
-            // tb_password
-            // 
-            this.tb_password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_password.Location = new System.Drawing.Point(78, 35);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(298, 22);
-            this.tb_password.TabIndex = 14;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tb_id);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.tb_full_name);
             this.panel1.Controls.Add(this.tb_username);
-            this.panel1.Controls.Add(this.cb_enable);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(379, 87);
             this.panel1.TabIndex = 22;
+            // 
+            // tb_id
+            // 
+            this.tb_id.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_id.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_id.Location = new System.Drawing.Point(86, 61);
+            this.tb_id.Name = "tb_id";
+            this.tb_id.ReadOnly = true;
+            this.tb_id.Size = new System.Drawing.Size(293, 22);
+            this.tb_id.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "ID";
             // 
             // label8
             // 
@@ -238,16 +273,6 @@
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(293, 22);
             this.tb_username.TabIndex = 11;
-            // 
-            // cb_enable
-            // 
-            this.cb_enable.AutoSize = true;
-            this.cb_enable.Location = new System.Drawing.Point(86, 61);
-            this.cb_enable.Name = "cb_enable";
-            this.cb_enable.Size = new System.Drawing.Size(56, 16);
-            this.cb_enable.TabIndex = 12;
-            this.cb_enable.Text = "Enable";
-            this.cb_enable.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -300,7 +325,12 @@
             this.bt_del_account,
             this.toolStripSeparator1,
             this.toolStripLabel1,
-            this.tb_serach});
+            this.tb_serach,
+            this.toolStripSeparator2,
+            this.toolStripLabel2,
+            this.cb_filter_department,
+            this.cb_Filter_isManager,
+            this.cb_Filter_Enable});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 24);
             this.bindingNavigator1.MoveFirstItem = this.MoveFirst;
             this.bindingNavigator1.MoveLastItem = this.MoveLast;
@@ -311,6 +341,15 @@
             this.bindingNavigator1.Size = new System.Drawing.Size(800, 25);
             this.bindingNavigator1.TabIndex = 5;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.ds_staff;
+            this.bindingSource1.Position = 0;
+            // 
+            // ds_staff
+            // 
+            this.ds_staff.DataSetName = "NewDataSet";
             // 
             // MoveFirst
             // 
@@ -397,6 +436,78 @@
             this.tb_serach.Size = new System.Drawing.Size(100, 25);
             this.tb_serach.TextChanged += new System.EventHandler(this.Search_change);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel2.Text = "Filter:";
+            // 
+            // cb_filter_department
+            // 
+            this.cb_filter_department.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_filter_department.Items.AddRange(new object[] {
+            "(All  department)",
+            "Sales",
+            "Inventory",
+            "Accounting",
+            "Technical Support",
+            "IT",
+            "CEO",
+            "Delivery Team",
+            "Installer"});
+            this.cb_filter_department.Name = "cb_filter_department";
+            this.cb_filter_department.Size = new System.Drawing.Size(121, 25);
+            this.cb_filter_department.Text = "(All  department)";
+            this.cb_filter_department.SelectedIndexChanged += new System.EventHandler(this.Search_change);
+            // 
+            // cb_Filter_isManager
+            // 
+            this.cb_Filter_isManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Filter_isManager.Items.AddRange(new object[] {
+            "(All staff)",
+            "Is manager",
+            "Is not manager"});
+            this.cb_Filter_isManager.Name = "cb_Filter_isManager";
+            this.cb_Filter_isManager.Size = new System.Drawing.Size(121, 25);
+            this.cb_Filter_isManager.Text = "(All staff)";
+            this.cb_Filter_isManager.SelectedIndexChanged += new System.EventHandler(this.Search_change);
+            // 
+            // cb_Filter_Enable
+            // 
+            this.cb_Filter_Enable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Filter_Enable.Items.AddRange(new object[] {
+            "(All account)",
+            "Is enable account",
+            "Is not enable account"});
+            this.cb_Filter_Enable.Name = "cb_Filter_Enable";
+            this.cb_Filter_Enable.Size = new System.Drawing.Size(121, 25);
+            this.cb_Filter_Enable.Text = "(All account)";
+            this.cb_Filter_Enable.SelectedIndexChanged += new System.EventHandler(this.Search_change);
+            // 
+            // adapter
+            // 
+            this.adapter.DeleteCommand = null;
+            this.adapter.InsertCommand = null;
+            this.adapter.SelectCommand = null;
+            this.adapter.UpdateCommand = null;
+            // 
+            // bt_reset_pass
+            // 
+            this.bt_reset_pass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_reset_pass.Location = new System.Drawing.Point(77, 31);
+            this.bt_reset_pass.Name = "bt_reset_pass";
+            this.bt_reset_pass.Size = new System.Drawing.Size(227, 23);
+            this.bt_reset_pass.TabIndex = 18;
+            this.bt_reset_pass.Text = "Reset password";
+            this.bt_reset_pass.UseVisualStyleBackColor = true;
+            this.bt_reset_pass.Click += new System.EventHandler(this.bt_reset_pass_Click);
+            // 
             // Account_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -425,6 +536,7 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ds_staff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,13 +547,12 @@
         private System.Windows.Forms.DataGridView dataGrid_staffList;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button bt_save;
-        private System.Windows.Forms.ComboBox tb_department;
+        private System.Windows.Forms.ComboBox cb_department;
         private System.Windows.Forms.CheckBox cb_enable;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_full_name;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -464,5 +575,15 @@
         private System.Windows.Forms.ToolStripTextBox tb_serach;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.ToolStripButton Create_account;
+        private System.Windows.Forms.TextBox tb_id;
+        private System.Windows.Forms.Label label1;
+        private MySql.Data.MySqlClient.MySqlDataAdapter adapter;
+        private System.Data.DataSet ds_staff;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripComboBox cb_Filter_isManager;
+        private System.Windows.Forms.ToolStripComboBox cb_Filter_Enable;
+        private System.Windows.Forms.ToolStripComboBox cb_filter_department;
+        private System.Windows.Forms.Button bt_reset_pass;
     }
 }
