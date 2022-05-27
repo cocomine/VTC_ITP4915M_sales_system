@@ -100,6 +100,7 @@
             this.dataGrid_staffList.RowTemplate.Height = 24;
             this.dataGrid_staffList.Size = new System.Drawing.Size(776, 262);
             this.dataGrid_staffList.TabIndex = 0;
+            this.dataGrid_staffList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGrid_staffList_DataError);
             // 
             // groupBox2
             // 

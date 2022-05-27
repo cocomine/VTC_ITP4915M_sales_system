@@ -172,5 +172,10 @@ namespace UI.IT
                 }
             }
         }
+
+        private void dataGrid_staffList_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            //Handler DataError
+            MessageBox.Show(e.Exception.Message, "發生錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
