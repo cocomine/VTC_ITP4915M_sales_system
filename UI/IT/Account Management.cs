@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -141,7 +142,35 @@ namespace UI.IT
 
         private void bt_reset_pass_Click(object sender, EventArgs e) {
             //reset password
-            String newPass = tb_id.Text + tb_username;
+            DialogResult result = MessageBox.Show("Are you sure reset this user password?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm reset
+            if (result == DialogResult.Yes) { //confirm
+                String newPass = tb_id.Text + tb_username.Text;
+
+                //generation salt
+                var rng = new RNGCryptoServiceProvider();
+                byte[] random = new byte[16];
+                rng.GetNonZeroBytes(random);
+                String salt = BitConverter.ToString(random).Replace("-", "").ToLower();
+                //Console.WriteLine(salt);
+
+                //hash password
+                SHA512 sha512 = new SHA512Managed();
+                byte[] data = Encoding.UTF8.GetBytes(salt + newPass);
+                byte[] hash = sha512.ComputeHash(data); //hash
+                String password = salt + "." + BitConverter.ToString(hash).Replace("-", "").ToLower();
+
+                //update database
+                try {
+                    MySqlCommand cmd = new MySqlCommand("UPDATE account SET Password = @password WHERE AcoountID = @acoountID", conn);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@acoountID", tb_id.Text);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("User ("+ tb_id.Text + ") Reset successfully!\nNew password is: AcoountID+Username", "Reset password", MessageBoxButtons.OK, MessageBoxIcon.Information); //ok msg
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                }
+            }
         }
     }
 }
