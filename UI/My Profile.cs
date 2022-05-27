@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -92,6 +93,26 @@ namespace UI
         private void Login_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == 13) { //Enter key hit
                 btn_Save_Click(sender, e);
+            }
+        }
+
+        private void tb_Username_Validating(object sender, CancelEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            //if Empty
+            if (String.IsNullOrEmpty(tb.Text)) {
+                e.Cancel = true;
+                tb.Focus();
+                errorProvider1.SetError(tb, "Please fill information");
+                tb.BackColor = Color.LightCoral;
+            }
+
+            //if format does not match
+            Regex rex = new Regex("^[A-za-z]+$");
+            if (!rex.IsMatch(tb.Text)) {
+                e.Cancel = true;
+                tb.Focus();
+                errorProvider1.SetError(tb, "Only letters are accepted");
+                tb.BackColor = Color.LightCoral;
             }
         }
     }

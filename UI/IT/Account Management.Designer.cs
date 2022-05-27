@@ -97,6 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGrid_staffList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid_staffList.Location = new System.Drawing.Point(12, 56);
+            this.dataGrid_staffList.MultiSelect = false;
             this.dataGrid_staffList.Name = "dataGrid_staffList";
             this.dataGrid_staffList.ReadOnly = true;
             this.dataGrid_staffList.RowTemplate.Height = 24;

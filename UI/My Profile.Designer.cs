@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(My_Profile));
             this.label4 = new System.Windows.Forms.Label();
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.tb_Username = new System.Windows.Forms.TextBox();
@@ -39,6 +41,8 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.cb_DepartmentHead = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -67,6 +71,7 @@
             this.tb_Username.Size = new System.Drawing.Size(265, 22);
             this.tb_Username.TabIndex = 12;
             this.tb_Username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Login_KeyPress);
+            this.tb_Username.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Username_Validating);
             // 
             // label3
             // 
@@ -145,6 +150,11 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "(If not change, please leave blank)";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
             // My_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -167,6 +177,7 @@
             this.Text = "My Profile";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.My_Profile_Closing);
             this.Load += new System.EventHandler(this.My_Profile_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,5 +195,6 @@
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.CheckBox cb_DepartmentHead;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
