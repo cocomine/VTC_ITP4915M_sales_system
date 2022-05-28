@@ -135,7 +135,7 @@
             this.textBox2.Location = new System.Drawing.Point(121, 166);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(168, 22);
+            this.textBox2.Size = new System.Drawing.Size(206, 22);
             this.textBox2.TabIndex = 5;
             // 
             // label3
@@ -155,7 +155,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(121, 86);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(327, 69);
+            this.richTextBox1.Size = new System.Drawing.Size(206, 20);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
@@ -176,7 +176,7 @@
             this.textBox1.Location = new System.Drawing.Point(121, 26);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(327, 22);
+            this.textBox1.Size = new System.Drawing.Size(206, 22);
             this.textBox1.TabIndex = 1;
             // 
             // label1
@@ -206,7 +206,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 23);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Order Complete";
+            this.button1.Text = "Add Order";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
