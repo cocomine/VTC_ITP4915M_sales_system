@@ -28,13 +28,18 @@ namespace UI.Delivery_Page
         private void Delivery_Page_Load(object sender, EventArgs e) {
             Program.addPage();
 
+            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * from delivery", conn);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
+
         }
 
         private void Delivery_Page_Closing(object sender, FormClosingEventArgs e) {
             Program.removePage();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+
+        private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

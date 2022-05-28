@@ -73,6 +73,7 @@
             this.dataGrid_staffList.RowTemplate.Height = 24;
             this.dataGrid_staffList.Size = new System.Drawing.Size(785, 218);
             this.dataGrid_staffList.TabIndex = 0;
+            this.dataGrid_staffList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_staffList_CellContentClick);
             // 
             // groupBox1
             // 
@@ -328,6 +329,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(809, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // logoutToolStripMenuItem
             // 

@@ -51,5 +51,15 @@ namespace UI.IT
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
+
+        private void dataGrid_staffList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
