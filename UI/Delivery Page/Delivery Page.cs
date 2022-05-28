@@ -33,5 +33,10 @@ namespace UI.Delivery_Page
         private void Delivery_Page_Closing(object sender, FormClosingEventArgs e) {
             Program.removePage();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
