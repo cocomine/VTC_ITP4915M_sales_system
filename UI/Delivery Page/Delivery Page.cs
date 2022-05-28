@@ -22,6 +22,8 @@ namespace UI.Delivery_Page
         {
             this.conn = conn;
             this.acc = acc;
+            
+
             InitializeComponent();
         }
 
@@ -30,6 +32,11 @@ namespace UI.Delivery_Page
 
             MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * from delivery", conn);
             MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
+
+            DataSet ds_staff = new DataSet();
+            adapter.Fill(ds_staff, "Staff List");
+            DataGridView.DataSource = ds_staff;
+            DataGridView.DataMember = "Staff List";
 
         }
 
