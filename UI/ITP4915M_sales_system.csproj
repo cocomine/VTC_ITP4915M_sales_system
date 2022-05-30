@@ -54,10 +54,10 @@
     <StartupObject>UI.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>63B760D8283999BD6B7A8DE7AD510417C636BA80</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E1F18F8155E208DCCE25E5118DDB42D01A92BE90</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>ITP4915M_sales_system_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>ITP4915M_sales_system_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -257,7 +257,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ITP4915M_sales_system_TemporaryKey.pfx" />
+    <None Include="ITP4915M_sales_system_1_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
