@@ -45,6 +45,17 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore ${{ env.Solution_Name }}
 
-    - run: msbuild ${{ env.Solution_Name }}
+    - run: msbuild ${{ env.Solution_Name }} /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle
+      env:
+        Appx_Bundle: Always
+        Appx_Bundle_Platforms: x86|x64
+        Appx_Package_Build_Mode: StoreUpload
+        Configuration: ${{ matrix.configuration }}
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: MSIX Package
+        path: ${{ env.Wap_Project_Directory }}\AppPackages
 
     #- run: dotnet publish ${{ env.Project_Path }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
