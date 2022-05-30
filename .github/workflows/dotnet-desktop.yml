@@ -57,7 +57,7 @@ jobs:
 
     env:
       Solution_Name: ITP4915M_sales_system.sln                  # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: UI\ITP4915M_sales_system.csproj        # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Project_Path: UI\ITP4915M_sales_system.csproj        # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       #Wap_Project_Directory: ITP4915M_sales_system.Package    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       #Wap_Project_Path: ITP4915M_sales_system.Package\ITP4915M_sales_system.Package.wapproj                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
@@ -71,14 +71,14 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 4.7.2
+        dotnet-version: 4.7.x
 
     - uses: actions/setup-dotnet@v1
       with:
-      dotnet-version: 3.1.x
+        dotnet-version: 3.1.x
 
-    - run: dotnet restore ${{ env.PROJECT_PATH }}
+    - run: dotnet restore ${{ env.Project_Path }}
 
-    - run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore
+    - run: dotnet build ${{ env.Project_Path }} -c Release --no-restore
 
-      - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
+    - run: dotnet publish ${{ env.Project_Path }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
