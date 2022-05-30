@@ -128,11 +128,15 @@
     <Compile Include="Inventory page\Inventory page.Designer.cs">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </Compile>
-    <Compile Include="IT\Create Account.cs" />
+    <Compile Include="IT\Create Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IT\Create Account.Designer.cs">
       <DependentUpon>Create Account.cs</DependentUpon>
     </Compile>
-    <Compile Include="IT\Delivery Team Grouping.cs" />
+    <Compile Include="IT\Delivery Team Grouping.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IT\Delivery Team Grouping.Designer.cs">
       <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
     </Compile>
