@@ -71,14 +71,14 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 4.7.2
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
-      
-    - name: Install dependencies
-      run: dotnet restore
-      
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+    - uses: actions/setup-dotnet@v1
+      with:
+      dotnet-version: 3.1.x
+
+    - run: dotnet restore ${{ env.PROJECT_PATH }}
+
+    - run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore
+
+      - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
