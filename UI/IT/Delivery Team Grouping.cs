@@ -238,5 +238,63 @@ namespace ITP4915M.IT {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
         }
+
+        private void tree_Teams_ItemDrag(object sender, ItemDragEventArgs e) {
+            //Drag in team staff
+            TreeNode node = e.Item as TreeNode;
+            //if is Left MouseButtons AND is staff node
+            if (e.Button == MouseButtons.Left && node.Tag == null) {
+                DoDragDrop(e.Item, DragDropEffects.Move);
+            }
+        }
+        private void tree_Teams_DragEnter(object sender, DragEventArgs e) {
+            //allowed drop
+            e.Effect = e.AllowedEffect;
+        }
+        private void tree_Teams_DragOver(object sender, DragEventArgs e) {
+            //show Drag effect
+            Point point = tree_Teams.PointToClient(new Point(e.X, e.Y)); // gete mouse position. 
+            tree_Teams.SelectedNode = tree_Teams.GetNodeAt(point); // Select node at mouse position.  
+
+            if(tree_Teams.SelectedNode != null) {
+                Point pt = new Point(tree_Teams.Bounds.X + 5, tree_Teams.SelectedNode.Bounds.Bottom + tree_Teams.Top+2);
+                lb_line.Location = pt;
+                lb_line.Visible = true;
+            }
+        }
+        private void tree_Teams_DragDrop(object sender, DragEventArgs e) {
+            lb_line.Visible = false;
+            //node drop
+            Point targetPoint = tree_Teams.PointToClient(new Point(e.X, e.Y)); // get mouse position. 
+            TreeNode targetNode = tree_Teams.GetNodeAt(targetPoint); // Select node at mouse position. 
+            TreeNode draggedNode = (TreeNode)e.Data.GetData(typeof(TreeNode)); // Get dragged Node.
+
+            if (draggedNode != null && !draggedNode.Equals(targetNode) && targetNode != null) { //Not safl node && draggedNode is no null && targetNode is no null
+                String targetTeamID = null;
+                if (targetNode.Parent == null) { //not have Parent node (Team node)
+                    draggedNode.Remove();
+                    targetNode.Nodes.Add(draggedNode);
+                    targetTeamID = targetNode.Name;
+                } else if(targetNode.Parent != null) { //have Parent node (staff node)
+                    draggedNode.Remove();
+                    targetNode.Parent.Nodes.Add(draggedNode);
+                    targetTeamID = targetNode.Parent.Name;
+                }
+
+                //update database
+                if (targetTeamID != null) {
+                    try {
+                        MySqlCommand cmd = new MySqlCommand("UPDATE delivery_team_staff SET Delivery_TeamID = @TeamID WHERE StaffAccountID = @id", conn);
+                        cmd.Parameters.AddWithValue("@id", draggedNode.Name);
+                        cmd.Parameters.AddWithValue("@TeamID", targetTeamID);
+                        cmd.ExecuteNonQuery();
+                    } catch (MySqlException ex) {
+                        Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                        ShowDeliveryTeam();
+                    }
+                }
+            }
+            tree_Teams.ExpandAll();
+        }
     }
 }

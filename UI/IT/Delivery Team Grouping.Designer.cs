@@ -44,6 +44,7 @@
             this.bt_deleteTeam = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lb_line = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,7 +84,11 @@
             this.tree_Teams.ShowRootLines = false;
             this.tree_Teams.Size = new System.Drawing.Size(295, 393);
             this.tree_Teams.TabIndex = 2;
+            this.tree_Teams.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tree_Teams_ItemDrag);
             this.tree_Teams.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_Teams_AfterSelect);
+            this.tree_Teams.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragDrop);
+            this.tree_Teams.DragEnter += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragEnter);
+            this.tree_Teams.DragOver += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragOver);
             // 
             // groupBox1
             // 
@@ -162,6 +167,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lb_line);
             this.groupBox2.Controls.Add(this.bt_removeFromTeam);
             this.groupBox2.Controls.Add(this.gb_team_status);
             this.groupBox2.Controls.Add(this.bt_createTeam);
@@ -294,6 +300,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 426);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // lb_line
+            // 
+            this.lb_line.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lb_line.Location = new System.Drawing.Point(337, 317);
+            this.lb_line.Margin = new System.Windows.Forms.Padding(0);
+            this.lb_line.Name = "lb_line";
+            this.lb_line.Size = new System.Drawing.Size(150, 2);
+            this.lb_line.TabIndex = 8;
+            this.lb_line.Visible = false;
+            // 
             // Delivery_Team_Grouping
             // 
             this.AcceptButton = this.bt_status_save;
@@ -345,5 +361,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button bt_removeFromTeam;
+        private System.Windows.Forms.Label lb_line;
     }
 }
