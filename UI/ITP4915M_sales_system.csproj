@@ -156,6 +156,12 @@
     <Compile Include="IT\Create Account.Designer.cs">
       <DependentUpon>Create Account.cs</DependentUpon>
     </Compile>
+    <Compile Include="IT\Delivery Team Grouping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IT\Delivery Team Grouping.Designer.cs">
+      <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
+    </Compile>
     <Compile Include="My Profile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Create Account.resx">
       <DependentUpon>Create Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT\Delivery Team Grouping.resx">
+      <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

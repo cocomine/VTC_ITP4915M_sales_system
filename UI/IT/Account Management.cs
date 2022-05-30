@@ -21,6 +21,7 @@ namespace UI.IT
         private MySqlConnection conn;
         private Account_Details acc;
         private Dictionary<string, Binding> binding = new Dictionary<string, Binding>();
+
         public Account_Management(MySqlConnection conn, Account_Details acc)
         {
             this.conn = conn;
@@ -236,7 +237,7 @@ namespace UI.IT
         }
 
         private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            new Delivery_Team_Grouping().Show();
         }
     }
 }
