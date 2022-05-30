@@ -35,8 +35,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
         
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+    #- name: Setup NuGet
+      #uses: NuGet/setup-nuget@v1.0.2
       
     #- name: Restore NuGet Packages
       #run: nuget restore ${{ env.Solution_Name }}
