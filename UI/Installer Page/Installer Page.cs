@@ -31,5 +31,10 @@ namespace UI.Installer_Page
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
