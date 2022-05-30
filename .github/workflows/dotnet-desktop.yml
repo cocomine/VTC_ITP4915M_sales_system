@@ -45,8 +45,6 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore ${{ env.Solution_Name }}
 
-    - run: dotnet restore ${{ env.Solution_Name }}
-
-    - run: dotnet build ${{ env.Solution_Name }} -c Release --no-restore
+    - run: msbuild ${{ env.Solution_Name }}
 
     #- run: dotnet publish ${{ env.Project_Path }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
