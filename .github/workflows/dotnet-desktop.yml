@@ -20,6 +20,7 @@ jobs:
     env:
       Solution_Name: ITP4915M_sales_system.sln                  # Replace with your solution name, i.e. MyWpfApp.sln.
       Project_Path: UI\ITP4915M_sales_system.csproj        # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       #Wap_Project_Directory: ITP4915M_sales_system.Package    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       #Wap_Project_Path: ITP4915M_sales_system.Package\ITP4915M_sales_system.Package.wapproj                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
@@ -35,11 +36,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
         
-    #- name: Setup NuGet
-      #uses: NuGet/setup-nuget@v1.0.2
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
       
-    #- name: Restore NuGet Packages
-      #run: nuget restore ${{ env.Solution_Name }}
+    - name: Restore NuGet Packages
+      run: nuget restore ${{ env.Solution_Name }}
 
     - run: dotnet restore ${{ env.Solution_Name }}
 
