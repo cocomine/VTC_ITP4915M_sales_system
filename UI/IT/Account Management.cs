@@ -234,5 +234,9 @@ namespace UI.IT
             TextBox tb = (TextBox)sender;
             binding[tb.Name].WriteValue();
         }
+
+        private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
     }
 }
