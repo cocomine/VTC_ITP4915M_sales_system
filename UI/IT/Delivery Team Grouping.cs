@@ -263,38 +263,104 @@ namespace ITP4915M.IT {
             }
         }
         private void tree_Teams_DragDrop(object sender, DragEventArgs e) {
-            lb_line.Visible = false;
-            //node drop
+            lb_line.Visible = false; //hide line
+
             Point targetPoint = tree_Teams.PointToClient(new Point(e.X, e.Y)); // get mouse position. 
             TreeNode targetNode = tree_Teams.GetNodeAt(targetPoint); // Select node at mouse position. 
             TreeNode draggedNode = (TreeNode)e.Data.GetData(typeof(TreeNode)); // Get dragged Node.
+            ListViewItem draggedItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem)); // Get dragged item.
 
+            //change team
             if (draggedNode != null && !draggedNode.Equals(targetNode) && targetNode != null) { //Not safl node && draggedNode is no null && targetNode is no null
                 String targetTeamID = null;
-                if (targetNode.Parent == null) { //not have Parent node (Team node)
+                if (targetNode.Parent == null) { 
+                    //not have Parent node (Team node)
                     draggedNode.Remove();
                     targetNode.Nodes.Add(draggedNode);
-                    targetTeamID = targetNode.Name;
-                } else if(targetNode.Parent != null) { //have Parent node (staff node)
+                    targetTeamID = targetNode.Name; //get team id
+                } else { 
+                    //have Parent node (staff node)
                     draggedNode.Remove();
                     targetNode.Parent.Nodes.Add(draggedNode);
-                    targetTeamID = targetNode.Parent.Name;
+                    targetTeamID = targetNode.Parent.Name; //get team id
                 }
 
                 //update database
-                if (targetTeamID != null) {
-                    try {
-                        MySqlCommand cmd = new MySqlCommand("UPDATE delivery_team_staff SET Delivery_TeamID = @TeamID WHERE StaffAccountID = @id", conn);
-                        cmd.Parameters.AddWithValue("@id", draggedNode.Name);
-                        cmd.Parameters.AddWithValue("@TeamID", targetTeamID);
+                try {
+                    MySqlCommand cmd = new MySqlCommand("UPDATE delivery_team_staff SET Delivery_TeamID = @TeamID WHERE StaffAccountID = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", draggedNode.Name);
+                    cmd.Parameters.AddWithValue("@TeamID", targetTeamID);
+                    cmd.ExecuteNonQuery();
+                 } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                    ShowDeliveryTeam();
+                }
+            }else 
+            
+            //add staff
+            if(draggedItem != null) {
+                String targetTeamID = null;
+                if (targetNode.Parent == null) { 
+                    //not have Parent node (Team node)
+                    targetTeamID = targetNode.Name;//get team id
+                } else { 
+                    //have Parent node (staff node)
+                    targetTeamID = targetNode.Parent.Name;//get team id
+                }
+
+                //update database
+                try {
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO delivery_team_staff (Delivery_TeamID, StaffAccountID) VALUES (@TeamID, @AccountID)", conn);
+                    cmd.Parameters.AddWithValue("@TeamID", targetTeamID);
+                    cmd.Parameters.AddWithValue("@AccountID", "");
+
+                    //loop all selects item
+                    foreach (ListViewItem item in list_unteam.SelectedItems) {
+                        cmd.Parameters["@AccountID"].Value = item.SubItems[0].Text; //set value
                         cmd.ExecuteNonQuery();
-                    } catch (MySqlException ex) {
-                        Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
-                        ShowDeliveryTeam();
+
+                        //setup treenode
+                        TreeNode treenode = new TreeNode(item.SubItems[1].Text + " (" + item.SubItems[0].Text + ")") {
+                            Name = item.SubItems[0].Text
+                        };
+                        list_unteam.Items.Remove(item); //remove from 'list_unteam'
+                        tree_Teams.Nodes[targetTeamID].Nodes.Add(treenode); //Add in
                     }
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
                 }
             }
+
             tree_Teams.ExpandAll();
+        }
+        private void tree_Teams_DragLeave(object sender, EventArgs e) {
+            lb_line.Visible = false; //leave the area hide line
+        }
+
+        private void list_unteam_ItemDrag(object sender, ItemDragEventArgs e) {
+            //start Drag
+            if (e.Button == MouseButtons.Left) {
+                DoDragDrop(e.Item, DragDropEffects.Move);
+            }
+        }
+        private void list_unteam_DragDrop(object sender, DragEventArgs e) {
+            //remove in team staff
+            TreeNode draggedNode = (TreeNode) e.Data.GetData(typeof(TreeNode));
+            if (draggedNode != null) { //if draggedNode is not null
+
+                //update databass
+                try {
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM delivery_team_staff WHERE StaffAccountID = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", draggedNode.Name);
+                    cmd.ExecuteNonQuery();
+
+                    //update UI
+                    ShowUnTeamStaff();
+                    draggedNode.Remove();
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                }
+            }
         }
     }
 }

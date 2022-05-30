@@ -51,6 +51,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deliveryTeamGroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ds_staff = new System.Data.DataSet();
@@ -72,7 +73,6 @@
             this.cb_Filter_Enable = new System.Windows.Forms.ToolStripComboBox();
             this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.deliveryTeamGroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_staffList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -103,7 +103,7 @@
             this.dataGrid_staffList.ReadOnly = true;
             this.dataGrid_staffList.RowTemplate.Height = 24;
             this.dataGrid_staffList.Size = new System.Drawing.Size(776, 262);
-            this.dataGrid_staffList.TabIndex = 0;
+            this.dataGrid_staffList.TabIndex = 2;
             this.dataGrid_staffList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGrid_staffList_DataError);
             // 
             // groupBox2
@@ -317,7 +317,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // logoutToolStripMenuItem
@@ -333,6 +333,13 @@
             this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.myProfileToolStripMenuItem.Text = "My Profile";
             this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
+            // 
+            // deliveryTeamGroupingToolStripMenuItem
+            // 
+            this.deliveryTeamGroupingToolStripMenuItem.Name = "deliveryTeamGroupingToolStripMenuItem";
+            this.deliveryTeamGroupingToolStripMenuItem.Size = new System.Drawing.Size(152, 20);
+            this.deliveryTeamGroupingToolStripMenuItem.Text = "Delivery team grouping";
+            this.deliveryTeamGroupingToolStripMenuItem.Click += new System.EventHandler(this.deliveryTeamGroupingToolStripMenuItem_Click);
             // 
             // bindingNavigator1
             // 
@@ -365,7 +372,7 @@
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = null;
             this.bindingNavigator1.Size = new System.Drawing.Size(800, 25);
-            this.bindingNavigator1.TabIndex = 5;
+            this.bindingNavigator1.TabIndex = 1;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingSource1
@@ -523,13 +530,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
-            // 
-            // deliveryTeamGroupingToolStripMenuItem
-            // 
-            this.deliveryTeamGroupingToolStripMenuItem.Name = "deliveryTeamGroupingToolStripMenuItem";
-            this.deliveryTeamGroupingToolStripMenuItem.Size = new System.Drawing.Size(152, 20);
-            this.deliveryTeamGroupingToolStripMenuItem.Text = "Delivery team grouping";
-            this.deliveryTeamGroupingToolStripMenuItem.Click += new System.EventHandler(this.deliveryTeamGroupingToolStripMenuItem_Click);
             // 
             // Account_Management
             // 

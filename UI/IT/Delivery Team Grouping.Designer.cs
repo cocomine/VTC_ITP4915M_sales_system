@@ -34,6 +34,7 @@
             this.cb_sel_team = new System.Windows.Forms.ComboBox();
             this.bt_addToTeam = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lb_line = new System.Windows.Forms.Label();
             this.bt_removeFromTeam = new System.Windows.Forms.Button();
             this.gb_team_status = new System.Windows.Forms.GroupBox();
             this.bt_status_save = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.bt_deleteTeam = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lb_line = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,12 +83,13 @@
             this.tree_Teams.ShowPlusMinus = false;
             this.tree_Teams.ShowRootLines = false;
             this.tree_Teams.Size = new System.Drawing.Size(295, 393);
-            this.tree_Teams.TabIndex = 2;
+            this.tree_Teams.TabIndex = 1;
             this.tree_Teams.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tree_Teams_ItemDrag);
             this.tree_Teams.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_Teams_AfterSelect);
             this.tree_Teams.DragDrop += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragDrop);
             this.tree_Teams.DragEnter += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragEnter);
             this.tree_Teams.DragOver += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragOver);
+            this.tree_Teams.DragLeave += new System.EventHandler(this.tree_Teams_DragLeave);
             // 
             // groupBox1
             // 
@@ -118,9 +119,12 @@
             this.list_unteam.Name = "list_unteam";
             this.list_unteam.Size = new System.Drawing.Size(241, 310);
             this.list_unteam.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.list_unteam.TabIndex = 7;
+            this.list_unteam.TabIndex = 9;
             this.list_unteam.UseCompatibleStateImageBehavior = false;
             this.list_unteam.View = System.Windows.Forms.View.Details;
+            this.list_unteam.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.list_unteam_ItemDrag);
+            this.list_unteam.DragDrop += new System.Windows.Forms.DragEventHandler(this.list_unteam_DragDrop);
+            this.list_unteam.DragEnter += new System.Windows.Forms.DragEventHandler(this.tree_Teams_DragEnter);
             // 
             // columnHeader1
             // 
@@ -151,7 +155,7 @@
             this.cb_sel_team.Location = new System.Drawing.Point(9, 365);
             this.cb_sel_team.Name = "cb_sel_team";
             this.cb_sel_team.Size = new System.Drawing.Size(241, 20);
-            this.cb_sel_team.TabIndex = 5;
+            this.cb_sel_team.TabIndex = 10;
             // 
             // bt_addToTeam
             // 
@@ -160,7 +164,7 @@
             this.bt_addToTeam.Location = new System.Drawing.Point(9, 391);
             this.bt_addToTeam.Name = "bt_addToTeam";
             this.bt_addToTeam.Size = new System.Drawing.Size(241, 23);
-            this.bt_addToTeam.TabIndex = 4;
+            this.bt_addToTeam.TabIndex = 11;
             this.bt_addToTeam.Text = "Add to select team";
             this.bt_addToTeam.UseVisualStyleBackColor = true;
             this.bt_addToTeam.Click += new System.EventHandler(this.bt_addToTeam_Click);
@@ -182,13 +186,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Teams";
             // 
+            // lb_line
+            // 
+            this.lb_line.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lb_line.Location = new System.Drawing.Point(337, 317);
+            this.lb_line.Margin = new System.Windows.Forms.Padding(0);
+            this.lb_line.Name = "lb_line";
+            this.lb_line.Size = new System.Drawing.Size(150, 2);
+            this.lb_line.TabIndex = 8;
+            this.lb_line.Visible = false;
+            // 
             // bt_removeFromTeam
             // 
             this.bt_removeFromTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bt_removeFromTeam.Location = new System.Drawing.Point(308, 236);
+            this.bt_removeFromTeam.Location = new System.Drawing.Point(306, 333);
             this.bt_removeFromTeam.Name = "bt_removeFromTeam";
             this.bt_removeFromTeam.Size = new System.Drawing.Size(218, 23);
-            this.bt_removeFromTeam.TabIndex = 7;
+            this.bt_removeFromTeam.TabIndex = 6;
             this.bt_removeFromTeam.Text = "Remove selected staff";
             this.bt_removeFromTeam.UseVisualStyleBackColor = true;
             this.bt_removeFromTeam.Click += new System.EventHandler(this.bt_removeFromTeam_Click);
@@ -212,7 +226,7 @@
             this.bt_status_save.Location = new System.Drawing.Point(6, 88);
             this.bt_status_save.Name = "bt_status_save";
             this.bt_status_save.Size = new System.Drawing.Size(201, 23);
-            this.bt_status_save.TabIndex = 3;
+            this.bt_status_save.TabIndex = 5;
             this.bt_status_save.Text = "Save status";
             this.bt_status_save.UseVisualStyleBackColor = true;
             this.bt_status_save.Click += new System.EventHandler(this.bt_status_save_Click);
@@ -223,7 +237,7 @@
             this.rb_status_2.Location = new System.Drawing.Point(6, 67);
             this.rb_status_2.Name = "rb_status_2";
             this.rb_status_2.Size = new System.Drawing.Size(74, 16);
-            this.rb_status_2.TabIndex = 2;
+            this.rb_status_2.TabIndex = 4;
             this.rb_status_2.TabStop = true;
             this.rb_status_2.Tag = "2";
             this.rb_status_2.Text = "In delivery";
@@ -235,7 +249,7 @@
             this.rb_status_1.Location = new System.Drawing.Point(6, 44);
             this.rb_status_1.Name = "rb_status_1";
             this.rb_status_1.Size = new System.Drawing.Size(56, 16);
-            this.rb_status_1.TabIndex = 1;
+            this.rb_status_1.TabIndex = 3;
             this.rb_status_1.TabStop = true;
             this.rb_status_1.Tag = "1";
             this.rb_status_1.Text = "Unable";
@@ -247,7 +261,7 @@
             this.rb_status_0.Location = new System.Drawing.Point(6, 21);
             this.rb_status_0.Name = "rb_status_0";
             this.rb_status_0.Size = new System.Drawing.Size(70, 16);
-            this.rb_status_0.TabIndex = 0;
+            this.rb_status_0.TabIndex = 2;
             this.rb_status_0.TabStop = true;
             this.rb_status_0.Tag = "0";
             this.rb_status_0.Text = "Standy by";
@@ -259,7 +273,7 @@
             this.bt_createTeam.Location = new System.Drawing.Point(307, 362);
             this.bt_createTeam.Name = "bt_createTeam";
             this.bt_createTeam.Size = new System.Drawing.Size(219, 23);
-            this.bt_createTeam.TabIndex = 5;
+            this.bt_createTeam.TabIndex = 7;
             this.bt_createTeam.Text = "Create new team";
             this.bt_createTeam.UseVisualStyleBackColor = true;
             this.bt_createTeam.Click += new System.EventHandler(this.bt_createTeam_Click);
@@ -270,7 +284,7 @@
             this.bt_deleteTeam.Location = new System.Drawing.Point(307, 391);
             this.bt_deleteTeam.Name = "bt_deleteTeam";
             this.bt_deleteTeam.Size = new System.Drawing.Size(219, 23);
-            this.bt_deleteTeam.TabIndex = 4;
+            this.bt_deleteTeam.TabIndex = 8;
             this.bt_deleteTeam.Text = "Disband selection team";
             this.bt_deleteTeam.UseVisualStyleBackColor = true;
             this.bt_deleteTeam.Click += new System.EventHandler(this.bt_deleteTeam_Click);
@@ -278,11 +292,11 @@
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(307, 206);
+            this.label2.Location = new System.Drawing.Point(307, 202);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 27);
+            this.label2.Size = new System.Drawing.Size(219, 28);
             this.label2.TabIndex = 3;
-            this.label2.Text = "(You can drag team members move to other teams)";
+            this.label2.Text = "You can drag team members move to other teams or add or remove members.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel1
@@ -300,16 +314,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 426);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // lb_line
-            // 
-            this.lb_line.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lb_line.Location = new System.Drawing.Point(337, 317);
-            this.lb_line.Margin = new System.Windows.Forms.Padding(0);
-            this.lb_line.Name = "lb_line";
-            this.lb_line.Size = new System.Drawing.Size(150, 2);
-            this.lb_line.TabIndex = 8;
-            this.lb_line.Visible = false;
-            // 
             // Delivery_Team_Grouping
             // 
             this.AcceptButton = this.bt_status_save;
@@ -318,7 +322,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
-            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Delivery_Team_Grouping";
