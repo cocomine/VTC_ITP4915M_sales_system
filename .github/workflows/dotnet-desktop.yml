@@ -33,7 +33,7 @@ jobs:
     - name: Install .NET Core
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 5.0.x | 3.1.x
+        dotnet-version: 5.0.x
         
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
@@ -41,8 +41,8 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore ${{ env.Solution_Name }}
 
-    - run: dotnet restore ${{ env.Project_Path }}
+    - run: dotnet restore ${{ env.Solution_Name }}
 
-    - run: dotnet build ${{ env.Project_Path }} -c Release --no-restore
+    - run: dotnet build${{ env.Solution_Name }} -c Release --no-restore
 
     #- run: dotnet publish ${{ env.Project_Path }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
