@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -59,11 +60,18 @@ namespace UI
             }
             if (!tb_Password.Text.Equals("")) {
                 //if password is change
+                //generation salt
+                var rng = new RNGCryptoServiceProvider();
+                byte[] random = new byte[16];
+                rng.GetNonZeroBytes(random);
+                String salt = BitConverter.ToString(random).Replace("-", "").ToLower();
+                //Console.WriteLine(salt);
+
                 //hash password
                 SHA512 sha512 = new SHA512Managed();
-                byte[] data = Encoding.UTF8.GetBytes(tb_Password.Text);
-                byte[] hash = sha512.ComputeHash(data);
-                String password = BitConverter.ToString(hash).Replace("-", "").ToLower();
+                byte[] data = Encoding.UTF8.GetBytes(salt+tb_Password.Text.Trim());
+                byte[] hash = sha512.ComputeHash(data); //hash
+                String password = salt+"."+BitConverter.ToString(hash).Replace("-", "").ToLower();
 
                 //update database
                 try {
@@ -85,6 +93,26 @@ namespace UI
         private void Login_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == 13) { //Enter key hit
                 btn_Save_Click(sender, e);
+            }
+        }
+
+        private void tb_Username_Validating(object sender, CancelEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            //if Empty
+            if (String.IsNullOrEmpty(tb.Text)) {
+                e.Cancel = true;
+                tb.Focus();
+                errorProvider1.SetError(tb, "Please fill information");
+                tb.BackColor = Color.LightCoral;
+            }
+
+            //if format does not match
+            Regex rex = new Regex("^[A-za-z]+$");
+            if (!rex.IsMatch(tb.Text)) {
+                e.Cancel = true;
+                tb.Focus();
+                errorProvider1.SetError(tb, "Only letters are accepted");
+                tb.BackColor = Color.LightCoral;
             }
         }
     }
