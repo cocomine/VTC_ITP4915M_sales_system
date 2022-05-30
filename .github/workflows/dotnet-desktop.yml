@@ -58,8 +58,8 @@ jobs:
     env:
       Solution_Name: ITP4915M_sales_system.sln                  # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: UI\ITP4915M_sales_system.csproj        # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: ITP4915M_sales_system.Package    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: ITP4915M_sales_system.Package\ITP4915M_sales_system.Package.wapproj                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      #Wap_Project_Directory: ITP4915M_sales_system.Package    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
+      #Wap_Project_Path: ITP4915M_sales_system.Package\ITP4915M_sales_system.Package.wapproj                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
     - name: Checkout
@@ -76,14 +76,16 @@ jobs:
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.6
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test
+      run: dotnet test $env:Solution_Name
 
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+    - name: Restore NuGet
+      run: nuget restore 
       env:
         Configuration: ${{ matrix.configuration }}
 
