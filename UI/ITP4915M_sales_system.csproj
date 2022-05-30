@@ -119,6 +119,7 @@
       <DependentUpon>Accounting page.cs</DependentUpon>
     </Compile>
     <Compile Include="API\Account_Details.cs" />
+    <Compile Include="API\Delivery team.cs" />
     <Compile Include="API\Department.cs" />
     <Compile Include="Delivery Page\Delivery Page.cs">
       <SubType>Form</SubType>

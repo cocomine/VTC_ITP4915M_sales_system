@@ -30,6 +30,7 @@ namespace UI.IT
         }
 
         private void Account_Management_FormClosed(object sender, FormClosedEventArgs e) {
+            ds_staff.Clear();
             Program.removePage();
         }
 
@@ -237,7 +238,7 @@ namespace UI.IT
         }
 
         private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Delivery_Team_Grouping().Show();
+            new Delivery_Team_Grouping(conn).Show();
         }
     }
 }
