@@ -44,9 +44,17 @@ namespace UI.Delivery_Page
             Program.removePage();
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
 
+        }
 
-        private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Delivery_List_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

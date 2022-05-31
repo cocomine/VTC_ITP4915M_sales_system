@@ -110,11 +110,13 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.btn_login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Login";
             this.Text = "Login";

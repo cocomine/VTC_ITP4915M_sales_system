@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Delivery_List = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,13 +43,25 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Delivery_List
+            // 
+            this.Delivery_List.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.Delivery_List.FormattingEnabled = true;
+            this.Delivery_List.ItemHeight = 12;
+            this.Delivery_List.Location = new System.Drawing.Point(12, 57);
+            this.Delivery_List.Name = "Delivery_List";
+            this.Delivery_List.Size = new System.Drawing.Size(320, 400);
+            this.Delivery_List.TabIndex = 5;
+            this.Delivery_List.SelectedIndexChanged += new System.EventHandler(this.Delivery_List_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -115,22 +126,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 320);
             this.panel1.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(205, 235);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 60);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "(0- 9:00-12:00)\r\n\r\n(1- 13:00-17:00)\r\n\r\n(2- 18:00-22:00)\r\n";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(121, 235);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(53, 22);
-            this.numericUpDown1.TabIndex = 7;
             // 
             // label4
             // 
@@ -201,6 +196,17 @@
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Order ID";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Schedule your order";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // button1
             // 
@@ -208,26 +214,33 @@
             this.button1.Location = new System.Drawing.Point(702, 432);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 23);
-            this.button1.TabIndex = 11;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Add Order";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // DataGridView
+            // numericUpDown1
             // 
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(12, 57);
-            this.DataGridView.Name = "DataGridView";
-            this.DataGridView.RowTemplate.Height = 24;
-            this.DataGridView.Size = new System.Drawing.Size(348, 399);
-            this.DataGridView.TabIndex = 12;
-            this.DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentClick);
+            this.numericUpDown1.Location = new System.Drawing.Point(121, 235);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(53, 22);
+            this.numericUpDown1.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(205, 235);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 60);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "(0- 9:00-12:00)\r\n\r\n(1- 13:00-17:00)\r\n\r\n(2- 18:00-22:00)\r\n";
             // 
             // Delivery_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 468);
-            this.Controls.Add(this.DataGridView);
+            this.Controls.Add(this.Delivery_List);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
@@ -243,21 +256,19 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+        private System.Windows.Forms.ListBox Delivery_List;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myProfiToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
@@ -266,6 +277,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView DataGridView;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
