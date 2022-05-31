@@ -86,8 +86,12 @@ try {
 用法都是一樣, 但不需要任何操作
 即是中間部分的code不需要寫
 ```C#
-if (!data.HasRows) { // 檢查是否存在數據
-    // Do something 
-} else {
+try {
+    MySqlCommand cmd = new MySqlCommand(/*sql語句*/, conn); // 建立查詢 
+    cmd.Parameters.AddWithValue("@accountID", tb_username.Text); // 將數據放入變量
+    MySqlDataReader data = cmd.ExecuteNonQuery(); // 運行查詢
+} catch (MySqlException ex) { // 如果sql出現錯誤, 則執行這裏
+     // Do something 
+}
 ...
 ```
