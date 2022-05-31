@@ -30,13 +30,7 @@ namespace UI.Delivery_Page
         private void Delivery_Page_Load(object sender, EventArgs e) {
             Program.addPage();
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * from delivery", conn);
-            MySqlCommandBuilder builder = new MySqlCommandBuilder(adapter);
 
-            DataSet ds_staff = new DataSet();
-            adapter.Fill(ds_staff, "Staff List");
-            DataGridView.DataSource = ds_staff;
-            DataGridView.DataMember = "Staff List";
 
         }
 
@@ -44,18 +38,21 @@ namespace UI.Delivery_Page
             Program.removePage();
         }
 
-        private void label5_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Delivery_List_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
+            //Insertion
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO delivery Values (@OrderID, @Delivery_TeamID, @CustomerID, @Session,@Status);", conn);
+            cmd.Parameters.AddWithValue("@id", int.Parse(tx_ID.Text));
+            cmd.Parameters.AddWithValue("@OrderID", int.Parse(tx_TeamID.Text));
+            cmd.Parameters.AddWithValue("@Delivery_TeamID", int.Parse(tx_CustomerID.Text));
+            cmd.Parameters.AddWithValue("@CustomerID", tx_CustomerID.Text);
+            cmd.Parameters.AddWithValue("@Session", numericUpDown1.Text);
+            cmd.Parameters.AddWithValue("@Status", checkBox1.Checked);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("Insert success");
 
         }
     }
