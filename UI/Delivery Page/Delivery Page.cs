@@ -1,4 +1,5 @@
-﻿using ITP4915M.API;
+﻿using GSF.Adapters;
+using ITP4915M.API;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace UI.Delivery_Page
         private void button1_Click(object sender, EventArgs e)
         {
             //Insertion
-            conn.Open();
+            
             MySqlCommand cmd = new MySqlCommand("INSERT INTO delivery Values (@OrderID, @Delivery_TeamID, @CustomerID, @Session,@Status);", conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(tx_ID.Text));
             cmd.Parameters.AddWithValue("@OrderID", int.Parse(tx_TeamID.Text));
@@ -58,11 +59,17 @@ namespace UI.Delivery_Page
 
         private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            conn.Open();
+           
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
             MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
             DataTable dtbl = new DataTable();
             sqlda.Fill(dtbl);
-
+            DataGridView.DataSource = dtbl;
         }
     }
 }
