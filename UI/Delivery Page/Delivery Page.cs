@@ -35,8 +35,8 @@ namespace UI.Delivery_Page
 
             DataSet ds_staff = new DataSet();
             adapter.Fill(ds_staff, "Staff List");
-            DataGridView.DataSource = ds_staff;
-            DataGridView.DataMember = "Staff List";
+            //DataGridView.DataSource = ds_staff;
+            //DataGridView.DataMember = "Staff List";
 
         }
 
