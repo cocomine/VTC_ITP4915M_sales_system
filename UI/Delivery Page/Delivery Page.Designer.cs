@@ -60,6 +60,7 @@
             this.DataGridView.RowTemplate.Height = 24;
             this.DataGridView.Size = new System.Drawing.Size(348, 399);
             this.DataGridView.TabIndex = 22;
+            this.DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentClick);
             // 
             // groupBox1
             // 

@@ -55,5 +55,14 @@ namespace UI.Delivery_Page
             MessageBox.Show("Insert success");
 
         }
+
+        private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            conn.Open();
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+
+        }
     }
 }
