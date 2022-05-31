@@ -125,6 +125,7 @@
             this.MinimumSize = new System.Drawing.Size(421, 256);
             this.Name = "Customer_info";
             this.Text = "Customer info";
+            this.Load += new System.EventHandler(this.Customer_info_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

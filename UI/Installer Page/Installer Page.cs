@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ITP4915M.API;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +12,14 @@ using System.Windows.Forms;
 
 namespace UI.Installer_Page
 {
+
+
     public partial class Installer_Page : Form
     {
+
+        private MySqlConnection conn;
+        private Account_Details acc;
+
         public Installer_Page()
         {
             InitializeComponent();

@@ -334,6 +334,7 @@
             this.Name = "Arrange_installation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Arrange installation workers";
+            this.Load += new System.EventHandler(this.Arrange_installation_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

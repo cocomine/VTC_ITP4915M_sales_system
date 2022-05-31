@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ITP4915M.API;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,10 +12,14 @@ using System.Windows.Forms;
 
 namespace UI.Inventory_page
 {
+
     public partial class Inventory_page : Form
     {
+        private MySqlConnection conn;
+        private Account_Details acc;
         public Inventory_page()
         {
+
             InitializeComponent();
         }
 
@@ -23,6 +29,11 @@ namespace UI.Inventory_page
         }
 
         private void purchaseItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
