@@ -31,7 +31,10 @@ namespace UI.Delivery_Page
         private void Delivery_Page_Load(object sender, EventArgs e) {
             Program.addPage();
 
-
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            DataGridView.DataSource = dtbl;
 
         }
 
@@ -45,8 +48,8 @@ namespace UI.Delivery_Page
             //Insertion
             
             MySqlCommand cmd = new MySqlCommand("INSERT INTO delivery Values (@OrderID, @Delivery_TeamID, @CustomerID, @Session,@Status);", conn);
-            cmd.Parameters.AddWithValue("@OrderID", int.Parse(tx_TeamID.Text));
-            cmd.Parameters.AddWithValue("@Delivery_TeamID",tx_CustomerID.Text);
+            cmd.Parameters.AddWithValue("@OrderID", int.Parse(tx_ID.Text));
+            cmd.Parameters.AddWithValue("@Delivery_TeamID", tx_TeamID.Text);
             cmd.Parameters.AddWithValue("@CustomerID", tx_CustomerID.Text);
             cmd.Parameters.AddWithValue("@Session", numericUpDown1.Text);
             cmd.Parameters.AddWithValue("@Status", checkBox1.Checked);
@@ -58,17 +61,27 @@ namespace UI.Delivery_Page
 
         private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            if (e.RowIndex>=0)
+            {
+                tx_ID.Text = DataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                tx_TeamID.Text = DataGridView.SelectedRows[0].Cells[1].Value.ToString();
+                tx_CustomerID.Text = DataGridView.SelectedRows[0].Cells[2].Value.ToString();
+            }
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
-            DataTable dtbl = new DataTable();
-            sqlda.Fill(dtbl);
-            DataGridView.DataSource = dtbl;
+            //Update
+            MySqlCommand cmd = new MySqlCommand("Update delivery SET Session=@Session,	Status=@Status", conn);
+            cmd.Parameters.Add("@Session", MySqlDbType.VarChar, 10, "Session");
+            cmd.Parameters.Add("@Status", MySqlDbType.Int32, 10, "Status");
+            adapter.SelectCommand = new MySqlCommand("select * from delivery", conn);
+            adapter.UpdateCommand = cmd;
+
+
+
         }
     }
 }

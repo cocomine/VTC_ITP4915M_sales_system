@@ -46,6 +46,7 @@
             this.myProfiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -59,9 +60,10 @@
             this.DataGridView.Location = new System.Drawing.Point(12, 37);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 24;
+            this.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridView.Size = new System.Drawing.Size(348, 399);
             this.DataGridView.TabIndex = 22;
-            this.DataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentClick);
+            this.DataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentClick);
             // 
             // groupBox1
             // 
@@ -234,9 +236,16 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 23);
             this.button2.TabIndex = 23;
-            this.button2.Text = "Generate Delivery List";
+            this.button2.Text = "Update Order";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // adapter
+            // 
+            this.adapter.DeleteCommand = null;
+            this.adapter.InsertCommand = null;
+            this.adapter.SelectCommand = null;
+            this.adapter.UpdateCommand = null;
             // 
             // Delivery_Page
             // 
@@ -286,5 +295,6 @@
         private System.Windows.Forms.ToolStripMenuItem myProfiToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
+        private MySql.Data.MySqlClient.MySqlDataAdapter adapter;
     }
 }
