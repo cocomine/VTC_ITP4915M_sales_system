@@ -78,7 +78,7 @@ namespace UI
                     new Delivery_Page.Delivery_Page(conn, acc).Show();
                     break;
                 case Department.Installer:
-                    new Installer_Page.Installer_Page().Show();
+                    new Installer_Page.Installer_Page(conn, acc).Show();
                     break;
                 default:
                     MessageBox.Show("You are not in the right department.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);

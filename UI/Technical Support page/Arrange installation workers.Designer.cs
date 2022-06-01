@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lb_order = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lb_unscheduled_worker = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_scheduled = new System.Windows.Forms.Button();
+            this.btn_unscheduled = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.lb_scheduled_worker = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_customer_name = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.lb_installation_item = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_customer_phone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -62,23 +62,26 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lb_order
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_order.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(5, 24);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(254, 448);
-            this.listBox1.TabIndex = 0;
+            this.lb_order.FormattingEnabled = true;
+            this.lb_order.ItemHeight = 15;
+            this.lb_order.Location = new System.Drawing.Point(7, 30);
+            this.lb_order.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_order.Name = "lb_order";
+            this.lb_order.Size = new System.Drawing.Size(337, 559);
+            this.lb_order.TabIndex = 0;
+            this.lb_order.SelectedIndexChanged += new System.EventHandler(this.lb_order_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Location = new System.Drawing.Point(4, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 12);
+            this.label1.Size = new System.Drawing.Size(261, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Orders that need to be scheduled for workers";
             // 
@@ -86,9 +89,10 @@
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(674, 0);
+            this.panel1.Location = new System.Drawing.Point(899, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 483);
+            this.panel1.Size = new System.Drawing.Size(320, 604);
             this.panel1.TabIndex = 4;
             // 
             // tableLayoutPanel1
@@ -100,122 +104,134 @@
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(240, 483);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 604);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.listBox2);
+            this.panel3.Controls.Add(this.lb_unscheduled_worker);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Location = new System.Drawing.Point(4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(234, 215);
+            this.panel3.Size = new System.Drawing.Size(312, 269);
             this.panel3.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 6);
+            this.label2.Location = new System.Drawing.Point(4, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 12);
+            this.label2.Size = new System.Drawing.Size(123, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Unscheduled worker";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // listBox2
+            // lb_unscheduled_worker
             // 
-            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_unscheduled_worker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 12;
-            this.listBox2.Location = new System.Drawing.Point(5, 21);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(226, 196);
-            this.listBox2.TabIndex = 6;
+            this.lb_unscheduled_worker.FormattingEnabled = true;
+            this.lb_unscheduled_worker.ItemHeight = 15;
+            this.lb_unscheduled_worker.Location = new System.Drawing.Point(7, 26);
+            this.lb_unscheduled_worker.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_unscheduled_worker.Name = "lb_unscheduled_worker";
+            this.lb_unscheduled_worker.Size = new System.Drawing.Size(300, 244);
+            this.lb_unscheduled_worker.TabIndex = 6;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.btn_scheduled);
+            this.panel4.Controls.Add(this.btn_unscheduled);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 224);
+            this.panel4.Location = new System.Drawing.Point(4, 281);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(234, 34);
+            this.panel4.Size = new System.Drawing.Size(312, 42);
             this.panel4.TabIndex = 1;
             // 
-            // button2
+            // btn_scheduled
             // 
-            this.button2.Location = new System.Drawing.Point(121, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Schedule";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_scheduled.Location = new System.Drawing.Point(161, 8);
+            this.btn_scheduled.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_scheduled.Name = "btn_scheduled";
+            this.btn_scheduled.Size = new System.Drawing.Size(139, 29);
+            this.btn_scheduled.TabIndex = 1;
+            this.btn_scheduled.Text = "Schedule";
+            this.btn_scheduled.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_unscheduled
             // 
-            this.button1.Location = new System.Drawing.Point(5, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Unschedule";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_unscheduled.Location = new System.Drawing.Point(7, 8);
+            this.btn_unscheduled.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_unscheduled.Name = "btn_unscheduled";
+            this.btn_unscheduled.Size = new System.Drawing.Size(147, 29);
+            this.btn_unscheduled.TabIndex = 0;
+            this.btn_unscheduled.Text = "Unschedule";
+            this.btn_unscheduled.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.listBox3);
+            this.panel5.Controls.Add(this.lb_scheduled_worker);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 264);
+            this.panel5.Location = new System.Drawing.Point(4, 331);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(234, 216);
+            this.panel5.Size = new System.Drawing.Size(312, 269);
             this.panel5.TabIndex = 2;
             // 
-            // listBox3
+            // lb_scheduled_worker
             // 
-            this.listBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_scheduled_worker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 12;
-            this.listBox3.Location = new System.Drawing.Point(5, 15);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(226, 196);
-            this.listBox3.TabIndex = 1;
+            this.lb_scheduled_worker.FormattingEnabled = true;
+            this.lb_scheduled_worker.ItemHeight = 15;
+            this.lb_scheduled_worker.Location = new System.Drawing.Point(7, 19);
+            this.lb_scheduled_worker.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_scheduled_worker.Name = "lb_scheduled_worker";
+            this.lb_scheduled_worker.Size = new System.Drawing.Size(300, 229);
+            this.lb_scheduled_worker.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 12);
+            this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Scheduled Features";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.lb_order);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(272, 483);
+            this.panel2.Size = new System.Drawing.Size(363, 604);
             this.panel2.TabIndex = 5;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.groupBox1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(272, 0);
+            this.panel6.Location = new System.Drawing.Point(363, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(402, 483);
+            this.panel6.Size = new System.Drawing.Size(536, 604);
             this.panel6.TabIndex = 6;
             // 
             // groupBox1
@@ -223,117 +239,129 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.richTextBox1);
+            this.groupBox1.Controls.Add(this.tb_customer_address);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tb_customer_name);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.listBox4);
+            this.groupBox1.Controls.Add(this.lb_installation_item);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tb_customer_phone);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(8, 8);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 469);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(520, 586);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail";
             // 
-            // richTextBox1
+            // tb_customer_address
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.richTextBox1.Location = new System.Drawing.Point(9, 133);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(371, 69);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
+            this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_customer_address.Location = new System.Drawing.Point(12, 166);
+            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_customer_address.Name = "tb_customer_address";
+            this.tb_customer_address.ReadOnly = true;
+            this.tb_customer_address.Size = new System.Drawing.Size(493, 85);
+            this.tb_customer_address.TabIndex = 15;
+            this.tb_customer_address.Text = "";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 114);
+            this.label7.Location = new System.Drawing.Point(11, 142);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 12);
+            this.label7.Size = new System.Drawing.Size(110, 15);
             this.label7.TabIndex = 14;
             this.label7.Text = "Customer Address";
             // 
-            // textBox1
+            // tb_customer_name
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_customer_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(9, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(371, 22);
-            this.textBox1.TabIndex = 13;
+            this.tb_customer_name.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_customer_name.Location = new System.Drawing.Point(12, 45);
+            this.tb_customer_name.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_customer_name.Name = "tb_customer_name";
+            this.tb_customer_name.ReadOnly = true;
+            this.tb_customer_name.Size = new System.Drawing.Size(493, 25);
+            this.tb_customer_name.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 21);
+            this.label6.Location = new System.Drawing.Point(9, 26);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 12);
+            this.label6.Size = new System.Drawing.Size(98, 15);
             this.label6.TabIndex = 12;
             this.label6.Text = "Customer Name";
             // 
-            // listBox4
+            // lb_installation_item
             // 
-            this.listBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_installation_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 12;
-            this.listBox4.Location = new System.Drawing.Point(9, 230);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(371, 232);
-            this.listBox4.TabIndex = 11;
-            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+            this.lb_installation_item.FormattingEnabled = true;
+            this.lb_installation_item.ItemHeight = 15;
+            this.lb_installation_item.Location = new System.Drawing.Point(12, 288);
+            this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_installation_item.Name = "lb_installation_item";
+            this.lb_installation_item.Size = new System.Drawing.Size(493, 289);
+            this.lb_installation_item.TabIndex = 11;
+            this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 215);
+            this.label4.Location = new System.Drawing.Point(11, 269);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 12);
+            this.label4.Size = new System.Drawing.Size(100, 15);
             this.label4.TabIndex = 10;
             this.label4.Text = "Installation Item";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox2
+            // tb_customer_phone
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_customer_phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Location = new System.Drawing.Point(9, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(256, 22);
-            this.textBox2.TabIndex = 9;
+            this.tb_customer_phone.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_customer_phone.Location = new System.Drawing.Point(12, 101);
+            this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_customer_phone.Name = "tb_customer_phone";
+            this.tb_customer_phone.ReadOnly = true;
+            this.tb_customer_phone.Size = new System.Drawing.Size(340, 25);
+            this.tb_customer_phone.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 66);
+            this.label5.Location = new System.Drawing.Point(9, 82);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 12);
+            this.label5.Size = new System.Drawing.Size(100, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "Customer Phone";
             // 
             // Arrange_installation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 483);
+            this.ClientSize = new System.Drawing.Size(1219, 604);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(800, 426);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1061, 521);
             this.Name = "Arrange_installation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Arrange installation workers";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Arrange_installation_FormClosed);
             this.Load += new System.EventHandler(this.Arrange_installation_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -353,29 +381,29 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lb_order;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lb_unscheduled_worker;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_scheduled;
+        private System.Windows.Forms.Button btn_unscheduled;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox lb_scheduled_worker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox lb_installation_item;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_customer_phone;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_customer_name;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tb_customer_address;
         private System.Windows.Forms.Label label7;
     }
 }
