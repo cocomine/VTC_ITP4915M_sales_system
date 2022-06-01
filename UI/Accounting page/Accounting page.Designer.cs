@@ -33,9 +33,9 @@
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.allReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +53,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // logoutToolStripMenuItem
             // 
@@ -79,6 +80,12 @@
             this.purchaseOrderToolStripMenuItem.Text = "Purchase order report";
             this.purchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.purchaseOrderToolStripMenuItem_Click);
             // 
+            // allReportToolStripMenuItem
+            // 
+            this.allReportToolStripMenuItem.Name = "allReportToolStripMenuItem";
+            this.allReportToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.allReportToolStripMenuItem.Text = "All report";
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -100,12 +107,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(776, 382);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // allReportToolStripMenuItem
-            // 
-            this.allReportToolStripMenuItem.Name = "allReportToolStripMenuItem";
-            this.allReportToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.allReportToolStripMenuItem.Text = "All report";
             // 
             // Accounting_page
             // 
