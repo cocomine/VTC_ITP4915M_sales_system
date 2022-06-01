@@ -47,7 +47,7 @@ namespace UI.Delivery_Page
             MySqlCommand cmd = new MySqlCommand("INSERT INTO delivery Values (@OrderID, @Delivery_TeamID, @CustomerID, @Session,@Status);", conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(tx_ID.Text));
             cmd.Parameters.AddWithValue("@OrderID", int.Parse(tx_TeamID.Text));
-            cmd.Parameters.AddWithValue("@Delivery_TeamID", int.Parse(tx_CustomerID.Text));
+            cmd.Parameters.AddWithValue("@Delivery_TeamID",tx_CustomerID.Text);
             cmd.Parameters.AddWithValue("@CustomerID", tx_CustomerID.Text);
             cmd.Parameters.AddWithValue("@Session", numericUpDown1.Text);
             cmd.Parameters.AddWithValue("@Status", checkBox1.Checked);
