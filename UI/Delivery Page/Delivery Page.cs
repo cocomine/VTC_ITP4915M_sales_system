@@ -80,18 +80,25 @@ namespace UI.Delivery_Page
         private void button2_Click(object sender, EventArgs e)
         {
             //Update
-            MySqlCommand cmd = new MySqlCommand("Update delivery set OrderID=@OrderID, Delivery_TeamID=@Delivery_TeamID, CustomerID=@CustomerID Session=@Session, Status=@Status", conn);
+            MySqlCommand cmd = new MySqlCommand("update delivery set Session = @Session, Status = @Status where OrderID  = @OrderID;", conn);
             cmd.Parameters.AddWithValue("@OrderID", int.Parse(tx_ID.Text));
-            cmd.Parameters.AddWithValue("@Delivery_TeamID", tx_TeamID.Text);
-            cmd.Parameters.AddWithValue("@CustomerID", tx_CustomerID.Text);
             cmd.Parameters.AddWithValue("@Session", numericUpDown1.Text);
             cmd.Parameters.AddWithValue("@Status", numericUpDown2.Text);
             cmd.ExecuteNonQuery();
             conn.Close();
-            MessageBox.Show("Update success");
+            MessageBox.Show("Insert success");
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            DataGridView.DataSource = dtbl;
 
 
 
+
+        }
+
+        private void tx_TeamID_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

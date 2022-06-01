@@ -49,7 +49,6 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -63,7 +62,7 @@
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.RowTemplate.Height = 24;
             this.DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridView.Size = new System.Drawing.Size(348, 399);
+            this.DataGridView.Size = new System.Drawing.Size(237, 399);
             this.DataGridView.TabIndex = 22;
             this.DataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellContentClick);
             // 
@@ -72,10 +71,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Location = new System.Drawing.Point(354, 37);
+            this.groupBox1.Location = new System.Drawing.Point(255, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 381);
+            this.groupBox1.Size = new System.Drawing.Size(390, 381);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order detail";
@@ -95,9 +93,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.tx_ID);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 21);
+            this.panel1.Location = new System.Drawing.Point(255, 58);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 354);
+            this.panel1.Size = new System.Drawing.Size(384, 354);
             this.panel1.TabIndex = 0;
             // 
             // tx_TeamID
@@ -107,8 +105,9 @@
             this.tx_TeamID.BackColor = System.Drawing.SystemColors.Info;
             this.tx_TeamID.Location = new System.Drawing.Point(121, 86);
             this.tx_TeamID.Name = "tx_TeamID";
-            this.tx_TeamID.Size = new System.Drawing.Size(193, 22);
+            this.tx_TeamID.Size = new System.Drawing.Size(225, 22);
             this.tx_TeamID.TabIndex = 12;
+            this.tx_TeamID.TextChanged += new System.EventHandler(this.tx_TeamID_TextChanged);
             // 
             // numericUpDown1
             // 
@@ -139,7 +138,7 @@
             this.tx_CustomerID.Location = new System.Drawing.Point(121, 166);
             this.tx_CustomerID.Name = "tx_CustomerID";
             this.tx_CustomerID.ReadOnly = true;
-            this.tx_CustomerID.Size = new System.Drawing.Size(193, 22);
+            this.tx_CustomerID.Size = new System.Drawing.Size(225, 22);
             this.tx_CustomerID.TabIndex = 5;
             // 
             // label3
@@ -167,7 +166,7 @@
             this.tx_ID.BackColor = System.Drawing.SystemColors.Info;
             this.tx_ID.Location = new System.Drawing.Point(121, 26);
             this.tx_ID.Name = "tx_ID";
-            this.tx_ID.Size = new System.Drawing.Size(193, 22);
+            this.tx_ID.Size = new System.Drawing.Size(225, 22);
             this.tx_ID.TabIndex = 1;
             // 
             // label1
@@ -266,6 +265,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 468);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.groupBox1);
@@ -278,7 +278,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Delivery_Page_Closing);
             this.Load += new System.EventHandler(this.Delivery_Page_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
