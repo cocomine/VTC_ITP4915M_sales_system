@@ -32,7 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tx_TeamID = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.tx_CustomerID = new System.Windows.Forms.TextBox();
@@ -47,11 +46,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // DataGridView
@@ -83,8 +85,9 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.numericUpDown2);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tx_TeamID);
-            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.numericUpDown1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.tx_CustomerID);
@@ -106,16 +109,6 @@
             this.tx_TeamID.Name = "tx_TeamID";
             this.tx_TeamID.Size = new System.Drawing.Size(193, 22);
             this.tx_TeamID.TabIndex = 12;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(275, 250);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(52, 16);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Statue";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
@@ -247,6 +240,27 @@
             this.adapter.SelectCommand = null;
             this.adapter.UpdateCommand = null;
             // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(121, 311);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(53, 22);
+            this.numericUpDown2.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 313);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 12);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "State";
+            // 
             // Delivery_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -270,6 +284,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +296,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox tx_TeamID;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tx_CustomerID;
@@ -296,5 +310,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private MySql.Data.MySqlClient.MySqlDataAdapter adapter;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label6;
     }
 }
