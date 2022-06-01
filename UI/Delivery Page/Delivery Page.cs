@@ -36,6 +36,22 @@ namespace UI.Delivery_Page
             sqlda.Fill(dtbl);
             DataGridView.DataSource = dtbl;
 
+
+            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("SELECT * FROM `delivery_team` Where Status = 0", conn);
+            DataTable dtbl1 = new DataTable();
+            sqlda1.Fill(dtbl1);
+            dataGridView1.DataSource = dtbl1;
+
+            MySqlDataAdapter sqlda2 = new MySqlDataAdapter("SELECT OrderId, Charged FROM `order`", conn);
+            DataTable dtbl2 = new DataTable();
+            sqlda2.Fill(dtbl2);
+            dataGridView2.DataSource = dtbl2;
+
+
+            MySqlDataAdapter sqlda3 = new MySqlDataAdapter("SELECT CustomerID, Customer_name FROM `customer`", conn);
+            DataTable dtbl3 = new DataTable();
+            sqlda3.Fill(dtbl3);
+            dataGridView3.DataSource = dtbl3;
         }
 
         private void Delivery_Page_Closing(object sender, FormClosingEventArgs e) {
@@ -100,6 +116,40 @@ namespace UI.Delivery_Page
         private void tx_TeamID_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                tx_TeamID.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                tx_ID.Text = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+            }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                tx_CustomerID.Text = dataGridView3.SelectedRows[0].Cells[0].Value.ToString();
+            }
         }
     }
 }
