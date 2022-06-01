@@ -143,6 +143,7 @@
             this.tx_CustomerID.BackColor = System.Drawing.SystemColors.Info;
             this.tx_CustomerID.Location = new System.Drawing.Point(121, 166);
             this.tx_CustomerID.Name = "tx_CustomerID";
+            this.tx_CustomerID.ReadOnly = true;
             this.tx_CustomerID.Size = new System.Drawing.Size(193, 22);
             this.tx_CustomerID.TabIndex = 5;
             // 
