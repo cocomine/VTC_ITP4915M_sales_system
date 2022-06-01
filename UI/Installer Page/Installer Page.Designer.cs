@@ -42,7 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_customer_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_complete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -135,6 +135,7 @@
             this.lb_installation_item.Name = "lb_installation_item";
             this.lb_installation_item.Size = new System.Drawing.Size(372, 109);
             this.lb_installation_item.TabIndex = 7;
+            this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.lb_installation_item_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -216,16 +217,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Name";
             // 
-            // button1
+            // btn_complete
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(856, 498);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Order Complete";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_complete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_complete.Location = new System.Drawing.Point(856, 498);
+            this.btn_complete.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_complete.Name = "btn_complete";
+            this.btn_complete.Size = new System.Drawing.Size(177, 29);
+            this.btn_complete.TabIndex = 3;
+            this.btn_complete.Text = "Order Complete";
+            this.btn_complete.UseVisualStyleBackColor = true;
+            this.btn_complete.Click += new System.EventHandler(this.btn_complete_Click);
             // 
             // label5
             // 
@@ -243,7 +245,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 562);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_complete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lb_order);
             this.Controls.Add(this.menuStrip1);
@@ -279,7 +281,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_customer_name;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_complete;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem myProfiToolStripMenuItem;
     }
