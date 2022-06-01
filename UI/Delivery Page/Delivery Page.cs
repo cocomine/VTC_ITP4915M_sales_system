@@ -75,8 +75,8 @@ namespace UI.Delivery_Page
         {
             //Update
             MySqlCommand cmd = new MySqlCommand("Update delivery SET Session=@Session,	Status=@Status", conn);
-            cmd.Parameters.Add("@Session", MySqlDbType.VarChar, 10, "Session");
-            cmd.Parameters.Add("@Status", MySqlDbType.Int32, 10, "Status");
+            cmd.Parameters.Add("@Session", MySqlDbType.Int32, 1, "Session");
+            cmd.Parameters.Add("@Status", MySqlDbType.Int32, 11, "Status");
             adapter.SelectCommand = new MySqlCommand("select * from delivery", conn);
             adapter.UpdateCommand = cmd;
 
