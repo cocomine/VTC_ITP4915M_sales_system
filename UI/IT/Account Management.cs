@@ -102,8 +102,16 @@ namespace UI.IT
             Console.WriteLine(dialogResult);
             if (dialogResult == DialogResult.OK) {
                 //Console.WriteLine("ok");
-                ds_staff.Tables[0].Clear();
+                ds_staff.Clear();
                 adapter.Fill(ds_staff, "Staff_List"); //fill dataset
+
+                //get Department Name
+                //ds_staff.Tables[0].Columns.Add("Department");
+                for (int i = 0; i < ds_staff.Tables[0].Rows.Count; i++) {
+                    ds_staff.Tables[0].Rows[i]["Department"] = Department.Get_DepartmentName((int)ds_staff.Tables[0].Rows[i]["DepartmentID"]);
+                }
+                ds_staff.Tables[0].Columns["DepartmentID"].ColumnMapping = MappingType.Hidden; //hide DepartmentID Column
+                ds_staff.Tables[0].Columns["Username"].Unique = true; //set Unique
             }
         }
 
@@ -239,6 +247,15 @@ namespace UI.IT
 
         private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
             new Delivery_Team_Grouping(conn).Show();
+        }
+
+        private void Account_Management_FormClosing(object sender, FormClosingEventArgs e) {
+            if (ds_staff.HasChanges()) {
+               DialogResult result =  MessageBox.Show("You have unsaved changes, are you sure you want to leave?", "Save change", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.Cancel) {
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }
