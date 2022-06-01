@@ -35,17 +35,17 @@ namespace UI.Installer_Page
             MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `order` AS o, `customer` AS c, " +
                 "`customer_detail` AS cd, `delivery` AS d WHERE c.CustomerID = d.CustomerID AND " +
                 "c.CustomerID = cd.CustomerID AND o.OrderID = d.OrderID;", conn);
-            MySqlCommand cmd_item = new MySqlCommand("SELECT * FROM `order` AS o, `order_item` AS oi, " +
-                "`item` AS i WHERE o.OrderID = oi.OrderID AND oi.ItemID = i.ItemID", conn);
+            //MySqlCommand cmd_item = new MySqlCommand("SELECT * FROM `order` AS o, `order_item` AS oi, " +
+               // "`item` AS i WHERE o.OrderID = oi.OrderID AND oi.ItemID = i.ItemID", conn);
             
             MySqlDataReader data_order;
-            MySqlDataReader data_item;
+            //MySqlDataReader data_item;
 
             try
             {
                 
                 data_order = cmd_order.ExecuteReader();
-                data_item = cmd_item.ExecuteReader();
+                //data_item = cmd_item.ExecuteReader();
 
 
                 while (data_order.Read())
@@ -54,11 +54,11 @@ namespace UI.Installer_Page
                     lb_order.Items.Add(order);
                 }
 
-                while (data_item.Read())
-                {
-                    string item = data_item.GetString("ItemID");
-                    lb_installation_item.Items.Add(item);
-                }
+                //while (data_item.Read())
+               // {
+                 //   string item = data_item.GetString("ItemID");
+                //    lb_installation_item.Items.Add(item);
+               // }
 
             }
             catch (MySqlException ex) {
