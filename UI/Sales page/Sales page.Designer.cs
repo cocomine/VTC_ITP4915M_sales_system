@@ -28,13 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Combe 2 (-$50)", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Item 1",
+            "1",
+            "204.55"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Item 2",
+            "2",
+            "$ 5"}, -1);
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Item 3",
+            "3",
+            "$ 15"}, -1);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -104,19 +121,20 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // myProfileToolStripMenuItem
             // 
             this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
             this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.myProfileToolStripMenuItem.Text = "My Profile";
+            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
             // 
             // salesManagementToolStripMenuItem
             // 
@@ -132,24 +150,58 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.listView1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 426);
+            this.panel1.Size = new System.Drawing.Size(264, 426);
             this.panel1.TabIndex = 1;
             // 
-            // listBox1
+            // listView1
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(9, 25);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(213, 388);
-            this.listBox1.TabIndex = 1;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader3,
+            this.columnHeader2});
+            this.listView1.FullRowSelect = true;
+            listViewGroup5.Header = "";
+            listViewGroup5.Name = "Combo 1";
+            listViewGroup6.Header = "Combe 2 (-$50)";
+            listViewGroup6.Name = "Combe 2";
+            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup5,
+            listViewGroup6});
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView1.HideSelection = false;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem7,
+            listViewItem8,
+            listViewItem9});
+            this.listView1.Location = new System.Drawing.Point(3, 22);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(261, 398);
+            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Item Name";
+            this.columnHeader1.Width = 180;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Qty";
+            this.columnHeader3.Width = 30;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Price";
+            this.columnHeader2.Width = 48;
             // 
             // label1
             // 
@@ -163,8 +215,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.80597F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.19403F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.08511F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.91489F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox4, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -172,7 +224,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(564, 234);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 234);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox3
@@ -189,11 +241,10 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(212, 228);
+            this.groupBox3.Size = new System.Drawing.Size(222, 228);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manual entry";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // textBox12
             // 
@@ -201,13 +252,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox12.Location = new System.Drawing.Point(9, 173);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(197, 22);
+            this.textBox12.Size = new System.Drawing.Size(207, 22);
             this.textBox12.TabIndex = 9;
             // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(114, 200);
+            this.button5.Location = new System.Drawing.Point(124, 200);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(92, 23);
             this.button5.TabIndex = 8;
@@ -226,17 +277,18 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(114, 133);
+            this.button2.Location = new System.Drawing.Point(124, 133);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Add by Name";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(114, 66);
+            this.button1.Location = new System.Drawing.Point(124, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 23);
             this.button1.TabIndex = 4;
@@ -258,7 +310,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(9, 38);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 22);
+            this.textBox1.Size = new System.Drawing.Size(207, 22);
             this.textBox1.TabIndex = 2;
             // 
             // label2
@@ -274,10 +326,13 @@
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(7, 107);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(199, 20);
+            this.comboBox1.Size = new System.Drawing.Size(209, 20);
+            this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 0;
             // 
             // groupBox4
@@ -291,9 +346,9 @@
             this.groupBox4.Controls.Add(this.checkBox2);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(221, 3);
+            this.groupBox4.Location = new System.Drawing.Point(231, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(340, 228);
+            this.groupBox4.Size = new System.Drawing.Size(296, 228);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Info";
@@ -307,7 +362,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(12, 114);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(322, 103);
+            this.richTextBox1.Size = new System.Drawing.Size(278, 103);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
@@ -337,7 +392,7 @@
             this.textBox3.Location = new System.Drawing.Point(76, 44);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(258, 22);
+            this.textBox3.Size = new System.Drawing.Size(214, 22);
             this.textBox3.TabIndex = 4;
             // 
             // checkBox1
@@ -359,7 +414,7 @@
             this.textBox2.Location = new System.Drawing.Point(76, 16);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(258, 22);
+            this.textBox2.Size = new System.Drawing.Size(214, 22);
             this.textBox2.TabIndex = 1;
             // 
             // checkBox2
@@ -367,7 +422,7 @@
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox2.AutoCheck = false;
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(233, 77);
+            this.checkBox2.Location = new System.Drawing.Point(189, 77);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(101, 16);
             this.checkBox2.TabIndex = 6;
@@ -398,7 +453,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(212, 174);
+            this.groupBox2.Size = new System.Drawing.Size(164, 174);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Order info";
@@ -420,7 +475,7 @@
             this.textBox7.Location = new System.Drawing.Point(61, 146);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(145, 22);
+            this.textBox7.Size = new System.Drawing.Size(97, 22);
             this.textBox7.TabIndex = 9;
             // 
             // textBox10
@@ -431,7 +486,7 @@
             this.textBox10.Location = new System.Drawing.Point(61, 115);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(145, 22);
+            this.textBox10.Size = new System.Drawing.Size(97, 22);
             this.textBox10.TabIndex = 8;
             // 
             // label14
@@ -451,7 +506,7 @@
             this.textBox6.Location = new System.Drawing.Point(61, 19);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(145, 22);
+            this.textBox6.Size = new System.Drawing.Size(97, 22);
             this.textBox6.TabIndex = 5;
             // 
             // label9
@@ -471,7 +526,7 @@
             this.textBox5.Location = new System.Drawing.Point(61, 84);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(145, 22);
+            this.textBox5.Size = new System.Drawing.Size(97, 22);
             this.textBox5.TabIndex = 3;
             // 
             // label8
@@ -491,7 +546,7 @@
             this.textBox4.Location = new System.Drawing.Point(61, 51);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(145, 22);
+            this.textBox4.Size = new System.Drawing.Size(97, 22);
             this.textBox4.TabIndex = 1;
             // 
             // label7
@@ -510,20 +565,19 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(230, 24);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(264, 24);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 426);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(536, 426);
             this.tableLayoutPanel2.TabIndex = 4;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.65248F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.34752F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.26415F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.73585F));
             this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -531,7 +585,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(564, 180);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(530, 180);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // groupBox1
@@ -548,9 +602,9 @@
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(221, 3);
+            this.groupBox1.Location = new System.Drawing.Point(173, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(340, 174);
+            this.groupBox1.Size = new System.Drawing.Size(354, 174);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Collection";
@@ -583,7 +637,7 @@
             this.textBox11.Location = new System.Drawing.Point(129, 51);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(160, 22);
+            this.textBox11.Size = new System.Drawing.Size(174, 22);
             this.textBox11.TabIndex = 8;
             // 
             // label16
@@ -614,7 +668,7 @@
             this.textBox9.Location = new System.Drawing.Point(129, 81);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(160, 22);
+            this.textBox9.Size = new System.Drawing.Size(174, 22);
             this.textBox9.TabIndex = 5;
             // 
             // label12
@@ -629,7 +683,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(241, 144);
+            this.button4.Location = new System.Drawing.Point(255, 144);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(93, 23);
             this.button4.TabIndex = 3;
@@ -639,7 +693,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(144, 144);
+            this.button3.Location = new System.Drawing.Point(158, 144);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 23);
             this.button3.TabIndex = 2;
@@ -652,7 +706,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox8.Location = new System.Drawing.Point(129, 19);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(160, 22);
+            this.textBox8.Size = new System.Drawing.Size(174, 22);
             this.textBox8.TabIndex = 1;
             // 
             // label11
@@ -676,6 +730,8 @@
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Sales_Page";
             this.Text = "Sales Page";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Sales_Page_FormClosed);
+            this.Load += new System.EventHandler(this.Sales_Page_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -703,7 +759,6 @@
         private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -736,9 +791,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox10;
@@ -751,5 +803,12 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ITP4915M.API;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,29 +14,40 @@ namespace UI.Sales_page
 {
     public partial class Sales_Page : Form
     {
-        public Sales_Page()
+        private MySqlConnection conn;
+        private Account_Details acc;
+        public Sales_Page(MySqlConnection conn, Account_Details acc)
         {
+            this.conn = conn;
+            this.acc = acc;
             InitializeComponent();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
+        private void Sales_Page_Load(object sender, EventArgs e) {
+            Program.addPage();
+            Item item = new Item("abc", 11.1, ItemType.Common);
+            Item item2 = new Item("def", 15.1, ItemType.Large_and_install, "553341", "rfhrdsfhdr", 5);
+            Console.WriteLine(item);
+            Console.WriteLine(item2);
+            Combo combo = new Combo("fff-Combo", 44.0, "dgsdg");
+            combo.AddItem(item);
+            combo.AddItem(item2);
+            Console.WriteLine(combo);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+        private void button2_Click(object sender, EventArgs e) {
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
+        private void Sales_Page_FormClosed(object sender, FormClosedEventArgs e) {
+            Program.removePage();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
+        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
+            new My_Profile(conn, acc).Show();
+        }
 
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
     }
 }
