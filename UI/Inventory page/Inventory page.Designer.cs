@@ -31,23 +31,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.warehouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemRequestedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.purchaseItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem,
-            this.myProfileToolStripMenuItem,
-            this.warehouseToolStripMenuItem,
-            this.itemRequestedToolStripMenuItem,
-            this.purchaseItemToolStripMenuItem});
+            this.myProfileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -67,64 +60,31 @@
             this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.myProfileToolStripMenuItem.Text = "My Profile";
             // 
-            // warehouseToolStripMenuItem
+            // dataGridView1
             // 
-            this.warehouseToolStripMenuItem.Name = "warehouseToolStripMenuItem";
-            this.warehouseToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
-            this.warehouseToolStripMenuItem.Text = "Inventory quantity";
-            this.warehouseToolStripMenuItem.Click += new System.EventHandler(this.warehouseToolStripMenuItem_Click);
-            // 
-            // itemRequestedToolStripMenuItem
-            // 
-            this.itemRequestedToolStripMenuItem.Name = "itemRequestedToolStripMenuItem";
-            this.itemRequestedToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
-            this.itemRequestedToolStripMenuItem.Text = "Item requested";
-            // 
-            // purchaseItemToolStripMenuItem
-            // 
-            this.purchaseItemToolStripMenuItem.Name = "purchaseItemToolStripMenuItem";
-            this.purchaseItemToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.purchaseItemToolStripMenuItem.Text = "Purchase item";
-            this.purchaseItemToolStripMenuItem.Click += new System.EventHandler(this.purchaseItemToolStripMenuItem_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 426);
-            this.panel1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(274, 194);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Please select a feature above";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 27);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 370);
+            this.dataGridView1.TabIndex = 1;
             // 
             // Inventory_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Inventory_page";
             this.Text = "Inventory page";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_page_Closing);
+            this.Load += new System.EventHandler(this.Inventory_page_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,10 +95,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemRequestedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem purchaseItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem warehouseToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

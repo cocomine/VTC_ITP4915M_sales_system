@@ -23,8 +23,6 @@ namespace UI.Delivery_Page
         {
             this.conn = conn;
             this.acc = acc;
-            
-
             InitializeComponent();
         }
 

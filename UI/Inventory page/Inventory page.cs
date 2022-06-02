@@ -16,10 +16,10 @@ namespace UI.Inventory_page
     public partial class Inventory_page : Form
     {
         private MySqlConnection conn;
-        private Account_Details acc;
-        public Inventory_page()
-        {
 
+        public Inventory_page(MySqlConnection conn)
+        {
+            this.conn = conn;
             InitializeComponent();
         }
 
@@ -37,5 +37,21 @@ namespace UI.Inventory_page
         {
 
         }
+
+        private void Inventory_page_Closing(object sender, FormClosingEventArgs e)
+        {
+            Program.removePage();
+        }
+
+        private void Inventory_page_Load(object sender, EventArgs e)
+        {
+            Program.addPage();
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory`", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+
     }
 }
