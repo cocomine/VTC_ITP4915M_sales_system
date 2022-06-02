@@ -68,7 +68,7 @@ namespace ITP4915M.API {
         /// <param name="supplierID">物品供應商id(可選)</param>
         /// <param name="description">物品簡述(可選)</param>
         /// <param name="qty">物品數量(可選)</param>
-        public Item(string id, string name, double price, int type, string supplierID = null, string description = null, int qty = 0) {
+        public Item(string id, string name, double price, int type, string supplierID = null, string description = null, int qty = 1) {
             this.Id = Guid.Parse(id).ToString();
             this.Name = name;
             this.Description = description;
@@ -87,7 +87,7 @@ namespace ITP4915M.API {
         /// <param name="supplierID">物品供應商id(可選)</param>
         /// <param name="description">物品簡述(可選)</param>
         /// <param name="qty">物品數量(可選)</param>
-        public Item(string name, double price, int type, string supplierID = null, string description = null, int qty = 0) {
+        public Item(string name, double price, int type, string supplierID = null, string description = null, int qty = 1) {
             this.Id = Guid.NewGuid().ToString();
             this.Name = name;
             this.Description = description;
@@ -117,6 +117,10 @@ namespace ITP4915M.API {
         /// <returns>總價錢</returns>
         public double GetTotalPrice() {
             return Price * Qty;
+        }
+
+        public Item Clone() {
+            return new Item(Id, Name, Price, Type, SupplierID, Description, Qty);
         }
 
         /*internal void setInCombo(bool inCombo) {
@@ -188,33 +192,43 @@ namespace ITP4915M.API {
         }
 
         /// <summary>
-        /// 加入物品
+        /// 加入物品, 如果物品數量大於1將會 -1數量, 物品數量必須大於 0<br></br>
+        /// 物件會被複製一份, 更改套裝內的物件不會影響到原本的物件
         /// </summary>
         /// <param name="item">物品</param>
         public void AddItem(Item item) {
-            _items.Add(item);
-            /*if (item.Qty == 1) {
-                item.setInCombo(true);
-                _items.Add(item);
-            } else {
+            if (item.Qty == 1) {
+                _items.Add(item.Clone());
+                if (item.Qty > 1) {
+                    item.ReduceQty();
+                }
+            } else { 
                 throw new ComboAddItemQtyIllegalException();
-            }*/
+            }
         }
 
         /// <summary>
         /// 取得所有物品
         /// </summary>
         /// <returns>物品列表</returns>
-        public List<Item> GetItems() {
+        public List<Item> GetItemsList() {
             return _items;
         }
 
         /// <summary>
-        /// 取得物品數量
+        /// 取得套裝物品數量
         /// </summary>
         /// <returns>物品數量</returns>
         public int Size() {
             return _items.Count;
+        }
+
+        /// <summary>
+        /// 刪除物品
+        /// </summary>
+        /// <param name="item">物品</param>
+        public void Clear() {
+            _items.Clear();
         }
 
         /// <summary>
@@ -303,9 +317,9 @@ namespace ITP4915M.API {
 
     public class ComboAddItemQtyIllegalException : Exception {
         /// <summary>
-        /// 非法物品數量
+        /// 套裝接受, 非法物品數量
         /// </summary>
         public ComboAddItemQtyIllegalException()
-            : base("More than 1 qty has been added. Only 1 qty can be added to an combo") { }
+            : base("Item quantity must be greater than 0") { }
     }
 }

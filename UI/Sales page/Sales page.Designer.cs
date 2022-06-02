@@ -28,20 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Combe 2 (-$50)", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Item 1",
-            "1",
-            "204.55"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Item 2",
-            "2",
-            "$ 5"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Item 3",
-            "3",
-            "$ 15"}, -1);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup(" ", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,15 +42,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tb_add_name = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_add_name = new System.Windows.Forms.Button();
+            this.bt_add_id = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_add_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -167,19 +154,12 @@
             this.columnHeader3,
             this.columnHeader2});
             this.listView1.FullRowSelect = true;
-            listViewGroup5.Header = "";
-            listViewGroup5.Name = "Combo 1";
-            listViewGroup6.Header = "Combe 2 (-$50)";
-            listViewGroup6.Name = "Combe 2";
+            listViewGroup2.Header = " ";
+            listViewGroup2.Name = "lv_gp_Default";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup2});
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8,
-            listViewItem9});
             this.listView1.Location = new System.Drawing.Point(3, 22);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(261, 398);
@@ -196,7 +176,7 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Qty";
-            this.columnHeader3.Width = 30;
+            this.columnHeader3.Width = 29;
             // 
             // columnHeader2
             // 
@@ -229,15 +209,15 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.tb_add_name);
             this.groupBox3.Controls.Add(this.textBox12);
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.bt_add_name);
+            this.groupBox3.Controls.Add(this.bt_add_id);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.tb_add_id);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
@@ -245,6 +225,17 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manual entry";
+            // 
+            // tb_add_name
+            // 
+            this.tb_add_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_add_name.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tb_add_name.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tb_add_name.Location = new System.Drawing.Point(9, 107);
+            this.tb_add_name.Name = "tb_add_name";
+            this.tb_add_name.Size = new System.Drawing.Size(207, 22);
+            this.tb_add_name.TabIndex = 10;
             // 
             // textBox12
             // 
@@ -274,26 +265,26 @@
             this.label15.TabIndex = 7;
             this.label15.Text = "Order ID";
             // 
-            // button2
+            // bt_add_name
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(124, 133);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Add by Name";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bt_add_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_add_name.Location = new System.Drawing.Point(124, 133);
+            this.bt_add_name.Name = "bt_add_name";
+            this.bt_add_name.Size = new System.Drawing.Size(92, 23);
+            this.bt_add_name.TabIndex = 5;
+            this.bt_add_name.Text = "Add by Name";
+            this.bt_add_name.UseVisualStyleBackColor = true;
+            this.bt_add_name.Click += new System.EventHandler(this.bt_add_name_Click);
             // 
-            // button1
+            // bt_add_id
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(124, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Add by Code";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bt_add_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_add_id.Location = new System.Drawing.Point(124, 66);
+            this.bt_add_id.Name = "bt_add_id";
+            this.bt_add_id.Size = new System.Drawing.Size(92, 23);
+            this.bt_add_id.TabIndex = 4;
+            this.bt_add_id.Text = "Add by Code";
+            this.bt_add_id.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -304,14 +295,16 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Item Name";
             // 
-            // textBox1
+            // tb_add_id
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_add_id.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(9, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(207, 22);
-            this.textBox1.TabIndex = 2;
+            this.tb_add_id.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tb_add_id.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tb_add_id.Location = new System.Drawing.Point(9, 38);
+            this.tb_add_id.Name = "tb_add_id";
+            this.tb_add_id.Size = new System.Drawing.Size(207, 22);
+            this.tb_add_id.TabIndex = 2;
             // 
             // label2
             // 
@@ -321,19 +314,6 @@
             this.label2.Size = new System.Drawing.Size(54, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "Item Code";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(7, 107);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(209, 20);
-            this.comboBox1.Sorted = true;
-            this.comboBox1.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -770,12 +750,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_add_name;
+        private System.Windows.Forms.Button bt_add_id;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_add_id;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -810,5 +789,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.TextBox tb_add_name;
     }
 }
