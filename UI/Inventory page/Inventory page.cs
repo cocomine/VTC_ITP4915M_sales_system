@@ -52,6 +52,29 @@ namespace UI.Inventory_page
             dataGridView1.DataSource = dtbl;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` Order by Qty ASC", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` Order By Qty DESC", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void Level_Click(object sender, EventArgs e)
+        {
+            int nub = Int32.Parse(numericUpDown1.Text);
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where Qty <= "+nub, conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
     }
 }
