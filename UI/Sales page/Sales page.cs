@@ -174,60 +174,63 @@ namespace UI.Sales_page {
             }
 
             ShowList();
+            CountPrice();
         }
 
-        private void ShowList() {
-            lv_item_list.Items.Clear();
-            lv_item_list.Groups.Clear();
+        private async void ShowList() {
+            await Task.Run(() => {
+                lv_item_list.Items.Clear();
+                lv_item_list.Groups.Clear();
 
-            //Show combo list
-            foreach (Combo combo in shoppingCart_Combo.Values) {
-
-                //item row
-                ListViewGroup listViewGroup = new ListViewGroup() {
-                    Tag = combo,
-                    Header = combo.Name + " @ $" + combo.GetFinalPrice() + " (-$" + combo.DiscountPrice() + ")",
-                    Name = combo.Id,
-                };
-                lv_item_list.Groups.Add(listViewGroup);
-
-                //Show in combo item list
-                foreach (Item item in combo.GetItemsList()) {
+                //Show combo list
+                foreach (Combo combo in shoppingCart_Combo.Values) {
 
                     //item row
-                    ListViewItem listViewItem = new ListViewItem(
-                        new string[] {
+                    ListViewGroup listViewGroup = new ListViewGroup() {
+                        Tag = combo,
+                        Header = combo.Name + " @ $" + combo.GetFinalPrice() + " (-$" + combo.DiscountPrice() + ")",
+                        Name = combo.Id,
+                    };
+                    lv_item_list.Groups.Add(listViewGroup);
+
+                    //Show in combo item list
+                    foreach (Item item in combo.GetItemsList()) {
+
+                        //item row
+                        ListViewItem listViewItem = new ListViewItem(
+                            new string[] {
                             "",
                             item.Qty.ToString(), //item qty
                             item.GetTotalPrice().ToString() //item price
+                            }) {
+                            Tag = item,
+                            Text = item.Name,
+                            Name = item.Id,
+                            Group = listViewGroup
+                        };
+
+                        lv_item_list.Items.Add(listViewItem);
+                    }
+                }
+
+                //show Item list
+                ListViewGroup defaultGroup = new ListViewGroup() { Header = "Other items" };
+                lv_item_list.Groups.Add(defaultGroup);
+                foreach (Item item in shoppingCart_Item.Values) {
+                    ListViewItem listViewItem = new ListViewItem(
+                        new string[] {
+                        "",
+                        item.Qty.ToString(), //item qty
+                        item.GetTotalPrice().ToString() //item price
                         }) {
                         Tag = item,
                         Text = item.Name,
                         Name = item.Id,
-                        Group = listViewGroup
+                        Group = defaultGroup,
                     };
-
                     lv_item_list.Items.Add(listViewItem);
                 }
-            }
-
-            //show Item list
-            ListViewGroup defaultGroup = new ListViewGroup() { Header = "Other items" };
-            lv_item_list.Groups.Add(defaultGroup);
-            foreach (Item item in shoppingCart_Item.Values) {
-                ListViewItem listViewItem = new ListViewItem(
-                    new string[] {
-                        "",
-                        item.Qty.ToString(), //item qty
-                        item.GetTotalPrice().ToString() //item price
-                    }) {
-                    Tag = item,
-                    Text = item.Name,
-                    Name = item.Id,
-                    Group = defaultGroup,
-                };
-                lv_item_list.Items.Add(listViewItem);
-            }
+            });
         }
 
         private void bt_add_id_Click(object sender, EventArgs e) {
@@ -254,6 +257,27 @@ namespace UI.Sales_page {
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
+        }
+
+        private void CountPrice() {
+            //計算總價格
+
+        }
+
+        private void tb_add_id_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) bt_add_id.PerformClick(); //Enter key
+        }
+
+        private void tb_add_name_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) bt_add_name.PerformClick(); //Enter key
+        }
+
+        private void tb_reshow_order_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) bt_reshow_order.PerformClick(); //Enter key
+        }
+
+        private void lv_item_list_SelectedIndexChanged(object sender, EventArgs e) {
+
         }
     }
 }

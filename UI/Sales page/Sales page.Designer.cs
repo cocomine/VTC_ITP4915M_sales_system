@@ -42,8 +42,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tb_add_name = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.tb_reshow_order = new System.Windows.Forms.TextBox();
+            this.bt_reshow_order = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.bt_add_name = new System.Windows.Forms.Button();
             this.bt_add_id = new System.Windows.Forms.Button();
@@ -51,38 +51,38 @@
             this.tb_add_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tb_item_description = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.tb_item_price = new System.Windows.Forms.TextBox();
+            this.chb_item_large = new System.Windows.Forms.CheckBox();
+            this.tb_item_name = new System.Windows.Forms.TextBox();
+            this.chb_item_install = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tb_total = new System.Windows.Forms.TextBox();
+            this.tb_reveived = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_discount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tb_tax = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.bt_save = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.tb_deposit = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tb_change = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.bt_epay = new System.Windows.Forms.Button();
+            this.bt_cash = new System.Windows.Forms.Button();
+            this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -162,6 +162,7 @@
             this.lv_item_list.TabIndex = 1;
             this.lv_item_list.UseCompatibleStateImageBehavior = false;
             this.lv_item_list.View = System.Windows.Forms.View.Details;
+            this.lv_item_list.SelectedIndexChanged += new System.EventHandler(this.lv_item_list_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -205,8 +206,8 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tb_add_name);
-            this.groupBox3.Controls.Add(this.textBox12);
-            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.tb_reshow_order);
+            this.groupBox3.Controls.Add(this.bt_reshow_order);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.bt_add_name);
             this.groupBox3.Controls.Add(this.bt_add_id);
@@ -231,25 +232,27 @@
             this.tb_add_name.Name = "tb_add_name";
             this.tb_add_name.Size = new System.Drawing.Size(207, 22);
             this.tb_add_name.TabIndex = 10;
+            this.tb_add_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_add_name_KeyUp);
             // 
-            // textBox12
+            // tb_reshow_order
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_reshow_order.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(9, 173);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(207, 22);
-            this.textBox12.TabIndex = 9;
+            this.tb_reshow_order.Location = new System.Drawing.Point(9, 173);
+            this.tb_reshow_order.Name = "tb_reshow_order";
+            this.tb_reshow_order.Size = new System.Drawing.Size(207, 22);
+            this.tb_reshow_order.TabIndex = 9;
+            this.tb_reshow_order.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_reshow_order_KeyUp);
             // 
-            // button5
+            // bt_reshow_order
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(124, 200);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 23);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Re-show order";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bt_reshow_order.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_reshow_order.Location = new System.Drawing.Point(124, 200);
+            this.bt_reshow_order.Name = "bt_reshow_order";
+            this.bt_reshow_order.Size = new System.Drawing.Size(92, 23);
+            this.bt_reshow_order.TabIndex = 8;
+            this.bt_reshow_order.Text = "Re-show order";
+            this.bt_reshow_order.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -301,6 +304,7 @@
             this.tb_add_id.Name = "tb_add_id";
             this.tb_add_id.Size = new System.Drawing.Size(207, 22);
             this.tb_add_id.TabIndex = 2;
+            this.tb_add_id.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_add_id_KeyUp);
             // 
             // label2
             // 
@@ -313,13 +317,13 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.richTextBox1);
+            this.groupBox4.Controls.Add(this.tb_item_description);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.checkBox1);
-            this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Controls.Add(this.checkBox2);
+            this.groupBox4.Controls.Add(this.tb_item_price);
+            this.groupBox4.Controls.Add(this.chb_item_large);
+            this.groupBox4.Controls.Add(this.tb_item_name);
+            this.groupBox4.Controls.Add(this.chb_item_install);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(231, 3);
@@ -329,18 +333,18 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Info";
             // 
-            // richTextBox1
+            // tb_item_description
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tb_item_description.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 114);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(278, 103);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.tb_item_description.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_item_description.Location = new System.Drawing.Point(12, 114);
+            this.tb_item_description.Name = "tb_item_description";
+            this.tb_item_description.ReadOnly = true;
+            this.tb_item_description.Size = new System.Drawing.Size(278, 103);
+            this.tb_item_description.TabIndex = 8;
+            this.tb_item_description.Text = "";
             // 
             // label6
             // 
@@ -360,50 +364,50 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Item Name";
             // 
-            // textBox3
+            // tb_item_price
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_item_price.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox3.Location = new System.Drawing.Point(76, 44);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(214, 22);
-            this.textBox3.TabIndex = 4;
+            this.tb_item_price.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_item_price.Location = new System.Drawing.Point(76, 44);
+            this.tb_item_price.Name = "tb_item_price";
+            this.tb_item_price.ReadOnly = true;
+            this.tb_item_price.Size = new System.Drawing.Size(214, 22);
+            this.tb_item_price.TabIndex = 4;
             // 
-            // checkBox1
+            // chb_item_large
             // 
-            this.checkBox1.AutoCheck = false;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(76, 77);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(74, 16);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Large item";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chb_item_large.AutoCheck = false;
+            this.chb_item_large.AutoSize = true;
+            this.chb_item_large.Location = new System.Drawing.Point(76, 77);
+            this.chb_item_large.Name = "chb_item_large";
+            this.chb_item_large.Size = new System.Drawing.Size(74, 16);
+            this.chb_item_large.TabIndex = 5;
+            this.chb_item_large.Text = "Large item";
+            this.chb_item_large.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tb_item_name
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_item_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Location = new System.Drawing.Point(76, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(214, 22);
-            this.textBox2.TabIndex = 1;
+            this.tb_item_name.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_item_name.Location = new System.Drawing.Point(76, 16);
+            this.tb_item_name.Name = "tb_item_name";
+            this.tb_item_name.ReadOnly = true;
+            this.tb_item_name.Size = new System.Drawing.Size(214, 22);
+            this.tb_item_name.TabIndex = 1;
             // 
-            // checkBox2
+            // chb_item_install
             // 
-            this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox2.AutoCheck = false;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(189, 77);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(101, 16);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Need install item";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chb_item_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chb_item_install.AutoCheck = false;
+            this.chb_item_install.AutoSize = true;
+            this.chb_item_install.Location = new System.Drawing.Point(189, 77);
+            this.chb_item_install.Name = "chb_item_install";
+            this.chb_item_install.Size = new System.Drawing.Size(101, 16);
+            this.chb_item_install.TabIndex = 6;
+            this.chb_item_install.Text = "Need install item";
+            this.chb_item_install.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -417,14 +421,14 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox10);
+            this.groupBox2.Controls.Add(this.tb_total);
+            this.groupBox2.Controls.Add(this.tb_reveived);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.tb_subtotal);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.tb_discount);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.tb_tax);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
@@ -443,27 +447,27 @@
             this.label10.TabIndex = 10;
             this.label10.Text = "Total";
             // 
-            // textBox7
+            // tb_total
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_total.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox7.Location = new System.Drawing.Point(61, 146);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(97, 22);
-            this.textBox7.TabIndex = 9;
+            this.tb_total.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_total.Location = new System.Drawing.Point(61, 146);
+            this.tb_total.Name = "tb_total";
+            this.tb_total.ReadOnly = true;
+            this.tb_total.Size = new System.Drawing.Size(97, 22);
+            this.tb_total.TabIndex = 9;
             // 
-            // textBox10
+            // tb_reveived
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_reveived.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox10.Location = new System.Drawing.Point(61, 115);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(97, 22);
-            this.textBox10.TabIndex = 8;
+            this.tb_reveived.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_reveived.Location = new System.Drawing.Point(61, 115);
+            this.tb_reveived.Name = "tb_reveived";
+            this.tb_reveived.ReadOnly = true;
+            this.tb_reveived.Size = new System.Drawing.Size(97, 22);
+            this.tb_reveived.TabIndex = 8;
             // 
             // label14
             // 
@@ -474,16 +478,16 @@
             this.label14.TabIndex = 7;
             this.label14.Text = "Received";
             // 
-            // textBox6
+            // tb_subtotal
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_subtotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox6.Location = new System.Drawing.Point(61, 19);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(97, 22);
-            this.textBox6.TabIndex = 5;
+            this.tb_subtotal.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_subtotal.Location = new System.Drawing.Point(61, 19);
+            this.tb_subtotal.Name = "tb_subtotal";
+            this.tb_subtotal.ReadOnly = true;
+            this.tb_subtotal.Size = new System.Drawing.Size(97, 22);
+            this.tb_subtotal.TabIndex = 5;
             // 
             // label9
             // 
@@ -494,16 +498,16 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Subtotal";
             // 
-            // textBox5
+            // tb_discount
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_discount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox5.Location = new System.Drawing.Point(61, 84);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(97, 22);
-            this.textBox5.TabIndex = 3;
+            this.tb_discount.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_discount.Location = new System.Drawing.Point(61, 84);
+            this.tb_discount.Name = "tb_discount";
+            this.tb_discount.ReadOnly = true;
+            this.tb_discount.Size = new System.Drawing.Size(97, 22);
+            this.tb_discount.TabIndex = 3;
             // 
             // label8
             // 
@@ -514,16 +518,16 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "Discount";
             // 
-            // textBox4
+            // tb_tax
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_tax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox4.Location = new System.Drawing.Point(61, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(97, 22);
-            this.textBox4.TabIndex = 1;
+            this.tb_tax.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_tax.Location = new System.Drawing.Point(61, 51);
+            this.tb_tax.Name = "tb_tax";
+            this.tb_tax.ReadOnly = true;
+            this.tb_tax.Size = new System.Drawing.Size(97, 22);
+            this.tb_tax.TabIndex = 1;
             // 
             // label7
             // 
@@ -566,16 +570,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.bt_save);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.textBox11);
+            this.groupBox1.Controls.Add(this.tb_deposit);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.tb_change);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.bt_epay);
+            this.groupBox1.Controls.Add(this.bt_cash);
+            this.groupBox1.Controls.Add(this.tb_charge);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(173, 3);
@@ -585,14 +589,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Collection";
             // 
-            // button6
+            // bt_save
             // 
-            this.button6.Location = new System.Drawing.Point(12, 144);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(91, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Save Order";
-            this.button6.UseVisualStyleBackColor = true;
+            this.bt_save.Location = new System.Drawing.Point(12, 144);
+            this.bt_save.Name = "bt_save";
+            this.bt_save.Size = new System.Drawing.Size(91, 23);
+            this.bt_save.TabIndex = 10;
+            this.bt_save.Text = "Save Order";
+            this.bt_save.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -605,25 +609,25 @@
             this.label17.TabIndex = 9;
             this.label17.Text = "Order Save";
             // 
-            // textBox11
+            // tb_deposit
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_deposit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox11.Location = new System.Drawing.Point(129, 51);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(174, 22);
-            this.textBox11.TabIndex = 8;
+            this.tb_deposit.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_deposit.Location = new System.Drawing.Point(150, 51);
+            this.tb_deposit.Name = "tb_deposit";
+            this.tb_deposit.ReadOnly = true;
+            this.tb_deposit.Size = new System.Drawing.Size(174, 22);
+            this.tb_deposit.TabIndex = 8;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(10, 54);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 12);
+            this.label16.Size = new System.Drawing.Size(134, 12);
             this.label16.TabIndex = 7;
-            this.label16.Text = "If Only deposit amount";
+            this.label16.Text = "If only  pay deposit amount";
             // 
             // label13
             // 
@@ -636,16 +640,16 @@
             this.label13.TabIndex = 6;
             this.label13.Text = "Paid";
             // 
-            // textBox9
+            // tb_change
             // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_change.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox9.Location = new System.Drawing.Point(129, 81);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(174, 22);
-            this.textBox9.TabIndex = 5;
+            this.tb_change.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_change.Location = new System.Drawing.Point(150, 81);
+            this.tb_change.Name = "tb_change";
+            this.tb_change.ReadOnly = true;
+            this.tb_change.Size = new System.Drawing.Size(174, 22);
+            this.tb_change.TabIndex = 5;
             // 
             // label12
             // 
@@ -656,43 +660,43 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Change amount";
             // 
-            // button4
+            // bt_epay
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(255, 144);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Use e-payment";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bt_epay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_epay.Location = new System.Drawing.Point(255, 144);
+            this.bt_epay.Name = "bt_epay";
+            this.bt_epay.Size = new System.Drawing.Size(93, 23);
+            this.bt_epay.TabIndex = 3;
+            this.bt_epay.Text = "Use e-payment";
+            this.bt_epay.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // bt_cash
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(158, 144);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Use Cash";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bt_cash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_cash.Location = new System.Drawing.Point(158, 144);
+            this.bt_cash.Name = "bt_cash";
+            this.bt_cash.Size = new System.Drawing.Size(91, 23);
+            this.bt_cash.TabIndex = 2;
+            this.bt_cash.Text = "Use Cash";
+            this.bt_cash.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // tb_charge
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_charge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(129, 19);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(174, 22);
-            this.textBox8.TabIndex = 1;
+            this.tb_charge.Location = new System.Drawing.Point(150, 19);
+            this.tb_charge.Name = "tb_charge";
+            this.tb_charge.Size = new System.Drawing.Size(174, 22);
+            this.tb_charge.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(10, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 12);
+            this.label11.Size = new System.Drawing.Size(77, 12);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Charge cash amount";
+            this.label11.Text = "Charge amount";
             // 
             // Sales_Page
             // 
@@ -737,14 +741,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tb_item_description;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox tb_item_name;
+        private System.Windows.Forms.CheckBox chb_item_install;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chb_item_large;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_item_price;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button bt_add_name;
         private System.Windows.Forms.Button bt_add_id;
@@ -754,35 +758,35 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tb_subtotal;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tb_discount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_tax;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button bt_epay;
+        private System.Windows.Forms.Button bt_cash;
+        private System.Windows.Forms.TextBox tb_charge;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox tb_total;
+        private System.Windows.Forms.TextBox tb_reveived;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button bt_save;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tb_deposit;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tb_change;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
         private System.Windows.Forms.ListView lv_item_list;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox tb_reshow_order;
+        private System.Windows.Forms.Button bt_reshow_order;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox tb_add_name;
