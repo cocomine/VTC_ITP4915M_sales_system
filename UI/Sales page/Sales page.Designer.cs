@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup(" ", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lv_item_list = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -137,7 +136,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listView1);
+            this.panel1.Controls.Add(this.lv_item_list);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
@@ -145,28 +144,24 @@
             this.panel1.Size = new System.Drawing.Size(264, 426);
             this.panel1.TabIndex = 1;
             // 
-            // listView1
+            // lv_item_list
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lv_item_list.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lv_item_list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader3,
             this.columnHeader2});
-            this.listView1.FullRowSelect = true;
-            listViewGroup2.Header = " ";
-            listViewGroup2.Name = "lv_gp_Default";
-            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup2});
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(261, 398);
-            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lv_item_list.FullRowSelect = true;
+            this.lv_item_list.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lv_item_list.HideSelection = false;
+            this.lv_item_list.Location = new System.Drawing.Point(3, 22);
+            this.lv_item_list.Name = "lv_item_list";
+            this.lv_item_list.Size = new System.Drawing.Size(261, 398);
+            this.lv_item_list.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lv_item_list.TabIndex = 1;
+            this.lv_item_list.UseCompatibleStateImageBehavior = false;
+            this.lv_item_list.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -285,6 +280,7 @@
             this.bt_add_id.TabIndex = 4;
             this.bt_add_id.Text = "Add by Code";
             this.bt_add_id.UseVisualStyleBackColor = true;
+            this.bt_add_id.Click += new System.EventHandler(this.bt_add_id_Click);
             // 
             // label3
             // 
@@ -782,7 +778,7 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lv_item_list;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TextBox textBox12;

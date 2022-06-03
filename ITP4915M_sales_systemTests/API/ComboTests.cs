@@ -27,8 +27,8 @@ namespace ITP4915M.API.Tests {
             Combo combo = new Combo("combo", 10);
             combo.AddItem(item1);
             combo.AddItem(item2);
-            Assert.AreEqual(combo.GetItems()[0], item1);
-            Assert.AreEqual(combo.GetItems()[1], item2);
+            Assert.AreEqual(combo.GetItemsList()[0], item1);
+            Assert.AreEqual(combo.GetItemsList()[1], item2);
         }
 
         [TestMethod()]

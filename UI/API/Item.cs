@@ -108,7 +108,7 @@ namespace ITP4915M.API {
         /// 減少物品數量
         /// </summary>
         public void ReduceQty() {
-            Qty -= 1;
+            Qty--;
         }
 
         /// <summary>
@@ -119,6 +119,10 @@ namespace ITP4915M.API {
             return Price * Qty;
         }
 
+        /// <summary>
+        /// 將現有物件內的所有數據複製一份
+        /// </summary>
+        /// <returns>物品</returns>
         public Item Clone() {
             return new Item(Id, Name, Price, Type, SupplierID, Description, Qty);
         }
@@ -173,7 +177,7 @@ namespace ITP4915M.API {
         public Combo(string id, string name, double price, string description = null) {
             this.Price = price;
             this.Name = name;
-            this.Id = Guid.Parse(id).ToString();
+            this.Id = id;
             this.Description = description;
         }
 
@@ -187,21 +191,27 @@ namespace ITP4915M.API {
         public Combo(string name, double price, string description = null) {
             this.Price = price;
             this.Name = name;
-            this.Id = Guid.NewGuid().ToString();
+            this.Id = null;
             this.Description = description;
         }
 
         /// <summary>
-        /// 加入物品, 如果物品數量大於1將會 -1數量, 物品數量必須大於 0<br></br>
+        /// 加入物品, 將原本的物品物件數量減1, 物品數量必須大於 0<br></br>
         /// 物件會被複製一份, 更改套裝內的物件不會影響到原本的物件
         /// </summary>
         /// <param name="item">物品</param>
         public void AddItem(Item item) {
-            if (item.Qty == 1) {
-                _items.Add(item.Clone());
-                if (item.Qty > 1) {
-                    item.ReduceQty();
+            if (item.Qty >= 1) {
+                Item a = _items.Find(x => x.Id == item.Id); //檢查是否有存在的相同物品
+                if (a != null) {
+                    a.AddQty(); //已有存在的相同物品, 直接增加數量
+                } else {
+                    //如沒有, 增加物品
+                    Item cloneItem = item.Clone();
+                    cloneItem.Qty = 1;
+                    _items.Add(cloneItem);
                 }
+                item.ReduceQty(); //將原本的物品數量減1
             } else { 
                 throw new ComboAddItemQtyIllegalException();
             }
@@ -237,11 +247,33 @@ namespace ITP4915M.API {
         /// </summary>
         /// <returns>折扣價錢</returns>
         public double DiscountPrice() {
+            return GetTotalPrice() - GetFinalPrice();
+        }
+
+        /// <summary>
+        /// 取得未折扣價錢
+        /// </summary>
+        /// <returns>價錢</returns>
+        public double GetTotalPrice() {
             double total = 0.0;
             foreach (Item item in _items) {
-                total += item.Price;
+                total += item.GetTotalPrice();
             }
-            return total - Price;
+            return total;
+        }
+
+        /// <summary>
+        /// 取得折扣後的實質價錢
+        /// </summary>
+        /// <returns>價錢</returns>
+        public double GetFinalPrice() {
+            double total = 0.0;
+            int comboQty = _items.FirstOrDefault().Qty;
+            foreach (Item item in _items) {
+                total += item.GetTotalPrice();
+                if (comboQty < item.Qty) comboQty = item.Qty; //攞最少數量
+            }
+            return Price * comboQty;
         }
 
         override public string ToString() {
@@ -250,7 +282,7 @@ namespace ITP4915M.API {
                 items += "    "+item.ToString()+"\n";
             }
             items += "\n";
-            return String.Format("Combo:{0}(Name: {1}, Description, {2}, Price: {3}, Discount Price: -{4}, Items: [{5}])", Id, Name, Description, Price, DiscountPrice(), items);
+            return String.Format("Combo:{0}(Name: {1}, Description, {2}, Price: {3}, Discount Price: -{4}, TotalPrice: {5}, FinalPrice: {6}, Items: [{7}])", Id, Name, Description, Price, DiscountPrice(), GetTotalPrice(), GetFinalPrice(), items);
         }
     }
 
