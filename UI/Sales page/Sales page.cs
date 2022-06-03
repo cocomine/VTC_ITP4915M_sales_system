@@ -60,7 +60,6 @@ namespace UI.Sales_page {
         }
 
         private void bt_add_name_Click(object sender, EventArgs e) {
-            Console.WriteLine("work");
             //add by name
             try {
                 MySqlCommand cmd = new MySqlCommand("SELECT ItemID, Name, Price, Type, Description FROM item WHERE Name = @name", conn);
@@ -76,7 +75,13 @@ namespace UI.Sales_page {
                         //不存在, 則加入購物車
                         shoppingCart_Item.Add(data.GetString("ItemID"), item); //add in shopping cart
                     }
-                    Console.WriteLine(data.GetString("ItemID"));
+
+                    //展示物品詳細
+                    tb_item_name.Text = item.Name;
+                    tb_item_price.Text = "$ " + item.Price;
+                    tb_item_description.Text = item.Description;
+                    chb_item_install.Checked = (item.Type == ItemType.Install || item.Type == ItemType.Large_and_install);
+                    chb_item_large.Checked = (item.Type == ItemType.Large || item.Type == ItemType.Large_and_install);
                 }
                 data.Close();
 
@@ -177,60 +182,58 @@ namespace UI.Sales_page {
             CountPrice();
         }
 
-        private async void ShowList() {
-            await Task.Run(() => {
-                lv_item_list.Items.Clear();
-                lv_item_list.Groups.Clear();
+        private void ShowList() {
+            lv_item_list.Items.Clear();
+            lv_item_list.Groups.Clear();
 
-                //Show combo list
-                foreach (Combo combo in shoppingCart_Combo.Values) {
+            //Show combo list
+            foreach (Combo combo in shoppingCart_Combo.Values) {
+
+                //item row
+                ListViewGroup listViewGroup = new ListViewGroup() {
+                    Tag = combo,
+                    Header = combo.Name + " @ $" + combo.GetFinalPrice() + " (-$" + combo.DiscountPrice() + ")",
+                    Name = combo.Id,
+                };
+                lv_item_list.Groups.Add(listViewGroup);
+
+                //Show in combo item list
+                foreach (Item item in combo.GetItemsList()) {
 
                     //item row
-                    ListViewGroup listViewGroup = new ListViewGroup() {
-                        Tag = combo,
-                        Header = combo.Name + " @ $" + combo.GetFinalPrice() + " (-$" + combo.DiscountPrice() + ")",
-                        Name = combo.Id,
-                    };
-                    lv_item_list.Groups.Add(listViewGroup);
-
-                    //Show in combo item list
-                    foreach (Item item in combo.GetItemsList()) {
-
-                        //item row
-                        ListViewItem listViewItem = new ListViewItem(
-                            new string[] {
+                    ListViewItem listViewItem = new ListViewItem(
+                        new string[] {
                             "",
                             item.Qty.ToString(), //item qty
                             item.GetTotalPrice().ToString() //item price
-                            }) {
-                            Tag = item,
-                            Text = item.Name,
-                            Name = item.Id,
-                            Group = listViewGroup
-                        };
-
-                        lv_item_list.Items.Add(listViewItem);
-                    }
-                }
-
-                //show Item list
-                ListViewGroup defaultGroup = new ListViewGroup() { Header = "Other items" };
-                lv_item_list.Groups.Add(defaultGroup);
-                foreach (Item item in shoppingCart_Item.Values) {
-                    ListViewItem listViewItem = new ListViewItem(
-                        new string[] {
-                        "",
-                        item.Qty.ToString(), //item qty
-                        item.GetTotalPrice().ToString() //item price
                         }) {
                         Tag = item,
                         Text = item.Name,
                         Name = item.Id,
-                        Group = defaultGroup,
+                        Group = listViewGroup
                     };
+
                     lv_item_list.Items.Add(listViewItem);
                 }
-            });
+            }
+
+            //show Item list
+            ListViewGroup defaultGroup = new ListViewGroup() { Header = "Other items" };
+            lv_item_list.Groups.Add(defaultGroup);
+            foreach (Item item in shoppingCart_Item.Values) {
+                ListViewItem listViewItem = new ListViewItem(
+                    new string[] {
+                        "",
+                        item.Qty.ToString(), //item qty
+                        item.GetTotalPrice().ToString() //item price
+                    }) {
+                    Tag = item,
+                    Text = item.Name,
+                    Name = item.Id,
+                    Group = defaultGroup,
+                };
+                lv_item_list.Items.Add(listViewItem);
+            }
         }
 
         private void bt_add_id_Click(object sender, EventArgs e) {
@@ -249,6 +252,13 @@ namespace UI.Sales_page {
                         //不存在, 則加入購物車
                         shoppingCart_Item.Add(data.GetString("ItemID"), item); //add in shopping cart
                     }
+
+                    //展示物品詳細
+                    tb_item_name.Text = item.Name;
+                    tb_item_price.Text = "$ " + item.Price;
+                    tb_item_description.Text = item.Description;
+                    chb_item_install.Checked = (item.Type == ItemType.Install || item.Type == ItemType.Large_and_install);
+                    chb_item_large.Checked = (item.Type == ItemType.Large || item.Type == ItemType.Large_and_install);
                 }
                 data.Close();
 
@@ -277,7 +287,14 @@ namespace UI.Sales_page {
         }
 
         private void lv_item_list_SelectedIndexChanged(object sender, EventArgs e) {
-
+            if(lv_item_list.SelectedItems.Count > 0) {
+                Item item = (Item)lv_item_list.SelectedItems[0].Tag;
+                tb_item_name.Text = item.Name;
+                tb_item_price.Text = "$ " + item.Price;
+                tb_item_description.Text = item.Description;
+                chb_item_install.Checked = (item.Type == ItemType.Install || item.Type == ItemType.Large_and_install);
+                chb_item_large.Checked = (item.Type == ItemType.Large || item.Type == ItemType.Large_and_install);
+            }
         }
     }
 }
