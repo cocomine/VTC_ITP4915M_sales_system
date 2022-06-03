@@ -287,7 +287,8 @@ namespace UI.Sales_page {
         }
 
         private void lv_item_list_SelectedIndexChanged(object sender, EventArgs e) {
-            if(lv_item_list.SelectedItems.Count > 0) {
+            //選擇該物件, 顯示該物件詳情
+            if (lv_item_list.SelectedItems.Count > 0) {
                 Item item = (Item)lv_item_list.SelectedItems[0].Tag;
                 tb_item_name.Text = item.Name;
                 tb_item_price.Text = "$ " + item.Price;

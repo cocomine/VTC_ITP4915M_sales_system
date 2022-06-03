@@ -10,7 +10,7 @@ namespace ITP4915M.API {
         /// <summary>
         /// 物品UUID/GUID
         /// </summary>
-        public string Id { get; } //uuid
+        public string Id { get; }
         /// <summary>
         /// 物品名稱
         /// </summary>
@@ -23,10 +23,10 @@ namespace ITP4915M.API {
         /// 物品供應商id
         /// </summary>
         public string SupplierID { get; set; }
-        //private bool inCombo = false;
         /// <summary>
         /// 物品價格, 只接受大於或等於 0
         /// </summary>
+        /// <exception cref="ItemPriceIllegalException">物品價錢不符合要求</exception>
         public double Price {
             get { return _price; }
             set {
@@ -38,6 +38,7 @@ namespace ITP4915M.API {
         /// <summary>
         /// 物品數量, 只接受大於或等於 0
         /// </summary>
+        /// <exception cref="ItemQtyIllegalException">物品數量不符合要求</exception>
         public int Qty { 
             get { return _qty; } 
             set {
@@ -49,6 +50,7 @@ namespace ITP4915M.API {
         /// <summary>
         /// 物品價格, 只接受 0至3範圍內的數字
         /// </summary>
+        /// <exception cref="ItemTypeIllegalException">物品類型不符合要求</exception>
         public int Type {
             get { return _type; }
             set {
@@ -150,12 +152,13 @@ namespace ITP4915M.API {
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// 套裝UUID/GUID
+        /// 套裝ID
         /// </summary>
         public string Id { get; }
         /// <summary>
-        /// 套裝價格, 只接受 0至3範圍內的數字
+        /// 套裝價格
         /// </summary>
+        /// <exception cref="ItemPriceIllegalException">套裝價格不符合要求</exception>
         public double Price {
             get {
                 return _price;
@@ -170,7 +173,7 @@ namespace ITP4915M.API {
         /// <summary>
         /// 建立現有套裝
         /// </summary>
-        /// <param name="id">套裝UUID/GUID</param>
+        /// <param name="id">套裝ID</param>
         /// <param name="name">套裝名稱</param>
         /// <param name="price">套裝價格, 只接受 0至3範圍內的數字</param>
         /// <param name="description">套裝簡述(可選)</param>
@@ -187,7 +190,6 @@ namespace ITP4915M.API {
         /// <param name="name">套裝名稱</param>
         /// <param name="price">套裝價格, 只接受 0至3範圍內的數字</param>
         /// <param name="description">套裝簡述(可選)</param>
-        /// <param name="qty">套裝數量, 只接受 0至3範圍內的數字(可選)</param>
         public Combo(string name, double price, string description = null) {
             this.Price = price;
             this.Name = name;
@@ -197,9 +199,10 @@ namespace ITP4915M.API {
 
         /// <summary>
         /// 加入物品, 將原本的物品物件數量減1, 物品數量必須大於 0<br></br>
-        /// 物件會被複製一份, 更改套裝內的物件不會影響到原本的物件
+        /// obj會被複製一份, 更改套裝內的物件不會影響到原本的obj
         /// </summary>
         /// <param name="item">物品</param>
+        /// <exception cref="ComboAddItemQtyIllegalException">物品數量不符合要求</exception>
         public void AddItem(Item item) {
             if (item.Qty >= 1) {
                 Item a = _items.Find(x => x.Id == item.Id); //檢查是否有存在的相同物品
@@ -218,7 +221,8 @@ namespace ITP4915M.API {
         }
 
         /// <summary>
-        /// 取得所有物品
+        /// 取得所有物品<br></br>
+        /// 請小心使用, 列表obj不會複製一份
         /// </summary>
         /// <returns>物品列表</returns>
         public List<Item> GetItemsList() {
@@ -226,15 +230,19 @@ namespace ITP4915M.API {
         }
 
         /// <summary>
-        /// 取得套裝物品數量
+        /// 取得物品總共數量
         /// </summary>
-        /// <returns>物品數量</returns>
+        /// <returns>物品總共數量</returns>
         public int Size() {
-            return _items.Count;
+            int total = 0;
+            foreach (Item item in _items) {
+                total += item.Qty;
+            }
+            return total;
         }
 
         /// <summary>
-        /// 刪除物品
+        /// 刪除全部物品
         /// </summary>
         /// <param name="item">物品</param>
         public void Clear() {
@@ -242,8 +250,7 @@ namespace ITP4915M.API {
         }
 
         /// <summary>
-        /// 查看原價與套裝價格的折扣價錢<br></br>
-        /// 如果物品擁有的數量多於一個只當一個計算
+        /// 查看原價與套裝價格的折扣價錢 * 套裝份量
         /// </summary>
         /// <returns>折扣價錢</returns>
         public double DiscountPrice() {
@@ -263,8 +270,23 @@ namespace ITP4915M.API {
         }
 
         /// <summary>
-        /// 取得折扣後的實質價錢
+        /// 取得折扣後的實質價錢 * 套裝份量<br></br>
+        /// 取當中物品數量最小的進行套裝數量計算
         /// </summary>
+        /// <example>
+        /// 如果: 
+        ///     Item1.Qty = 1;
+        ///     Item2.Qty = 1;
+        ///     套裝會當作1份計算
+        /// 如果:
+        ///     Item1.Qty = 1;
+        ///     Item2.Qty = 2;
+        ///     套裝亦是當作1份計算
+        /// 如果:
+        ///     Item1.Qty = 2;
+        ///     Item2.Qty = 2;
+        ///     套裝就會當作2份計算
+        /// </example>
         /// <returns>價錢</returns>
         public double GetFinalPrice() {
             double total = 0.0;
