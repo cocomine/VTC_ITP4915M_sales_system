@@ -76,5 +76,15 @@ namespace UI.Inventory_page
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
         }
+
+        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Item_requested(conn).Show();
+        }
     }
 }
