@@ -71,10 +71,12 @@ namespace UI.Inventory_page
         private void Level_Click(object sender, EventArgs e)
         {
             int nub = Int32.Parse(numericUpDown1.Text);
+            if (nub >=0) { 
             MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where Qty <= "+nub, conn);
             DataTable dtbl = new DataTable();
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
+            }
         }
 
         private void myProfileToolStripMenuItem_Click(object sender, EventArgs e)

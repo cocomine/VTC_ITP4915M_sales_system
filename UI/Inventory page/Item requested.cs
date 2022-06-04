@@ -37,10 +37,13 @@ namespace UI.Inventory_page
         private void serach1_Click(object sender, EventArgs e)
         {
             int rqID = Int32.Parse(search1.Text.ToString());
-            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` where RequestID = " + rqID, conn);
-            DataTable dtbl = new DataTable();
-            sqlda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
+            if (rqID >= 0)
+            {
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` where RequestID = " + rqID, conn);
+                DataTable dtbl = new DataTable();
+                sqlda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+            }
         }
 
         private void normal_Click(object sender, EventArgs e)
@@ -70,10 +73,12 @@ namespace UI.Inventory_page
         private void search2_Click(object sender, EventArgs e)
         {
             int WhID = Int32.Parse(rc2.Text);
+            if (WhID >=0) { 
             MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` where fromWarehouseID  = " + WhID, conn);
             DataTable dtbl = new DataTable();
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
+            }
         }
     }
 }
