@@ -68,7 +68,7 @@ namespace UI
                     new Accounting_page.Accounting_page().Show();
                     break;
                 case Department.Technical_Support:
-                    new Technical_Support_Page.Technical_Support_Page().Show();
+                    new Technical_Support_Page.Technical_Support_Page(conn, acc).Show();
                     break;
                 case Department.IT:
                 case Department.CEO:

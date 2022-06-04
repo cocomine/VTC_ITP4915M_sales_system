@@ -41,6 +41,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem,
             this.myProfileToolStripMenuItem,
@@ -48,42 +49,44 @@
             this.arrangeInstallationWorkersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // myProfileToolStripMenuItem
             // 
             this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.myProfileToolStripMenuItem.Text = "My Profile";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.createAccountToolStripMenuItem.Text = "Account Management";
             // 
             // arrangeInstallationWorkersToolStripMenuItem
             // 
             this.arrangeInstallationWorkersToolStripMenuItem.Name = "arrangeInstallationWorkersToolStripMenuItem";
-            this.arrangeInstallationWorkersToolStripMenuItem.Size = new System.Drawing.Size(174, 20);
+            this.arrangeInstallationWorkersToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
             this.arrangeInstallationWorkersToolStripMenuItem.Text = "Arrange installation workers";
+            this.arrangeInstallationWorkersToolStripMenuItem.Click += new System.EventHandler(this.arrangeInstallationWorkersToolStripMenuItem_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 426);
+            this.panel1.Size = new System.Drawing.Size(1067, 534);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -92,25 +95,28 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(274, 194);
+            this.label1.Location = new System.Drawing.Point(365, 243);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 20);
+            this.label1.Size = new System.Drawing.Size(279, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Please select a feature above";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Technical_Support_Page
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 562);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(816, 489);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1082, 599);
             this.Name = "Technical_Support_Page";
             this.Text = "Technical Support Page";
+            this.Load += new System.EventHandler(this.Technical_support_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
