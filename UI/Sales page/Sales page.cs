@@ -357,5 +357,15 @@ namespace UI.Sales_page {
                 }
             }
         }
+
+        //save order
+        private void bt_save_Click(object sender, EventArgs e) {
+
+        }
+
+        //e-payment pay
+        private void bt_epay_Click(object sender, EventArgs e) {
+
+        }
     }
 }

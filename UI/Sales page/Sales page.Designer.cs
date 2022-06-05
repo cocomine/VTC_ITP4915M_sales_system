@@ -595,6 +595,7 @@
             this.bt_save.TabIndex = 10;
             this.bt_save.Text = "Save Order";
             this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
             // tb_deposit
             // 
@@ -645,6 +646,7 @@
             this.bt_epay.TabIndex = 3;
             this.bt_epay.Text = "Use e-payment";
             this.bt_epay.UseVisualStyleBackColor = true;
+            this.bt_epay.Click += new System.EventHandler(this.bt_epay_Click);
             // 
             // bt_cash
             // 
