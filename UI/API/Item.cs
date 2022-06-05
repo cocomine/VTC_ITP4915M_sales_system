@@ -20,6 +20,10 @@ namespace ITP4915M.API {
         /// </summary>
         public string Description { get; set; }
         /// <summary>
+        ///  
+        /// </summary>
+        public bool IsAvailable { get; set; }
+        /// <summary>
         /// 物品供應商id
         /// </summary>
         public string SupplierID { get; set; }
@@ -39,12 +43,12 @@ namespace ITP4915M.API {
         /// 物品數量, 只接受大於或等於 0
         /// </summary>
         /// <exception cref="ItemQtyIllegalException">物品數量不符合要求</exception>
-        public int Qty { 
-            get { return _qty; } 
+        public int Qty {
+            get { return _qty; }
             set {
                 if (value >= 0) _qty = value;
                 else throw new ItemQtyIllegalException();
-            } 
+            }
         }
         private int _qty;
         /// <summary>
@@ -198,26 +202,11 @@ namespace ITP4915M.API {
         }
 
         /// <summary>
-        /// 加入物品, 將原本的物品物件數量減1, 物品數量必須大於 0<br></br>
-        /// obj會被複製一份, 更改套裝內的物件不會影響到原本的obj
+        /// 加入物品
         /// </summary>
         /// <param name="item">物品</param>
-        /// <exception cref="ComboAddItemQtyIllegalException">物品數量不符合要求</exception>
         public void AddItem(Item item) {
-            if (item.Qty >= 1) {
-                Item a = _items.Find(x => x.Id == item.Id); //檢查是否有存在的相同物品
-                if (a != null) {
-                    a.AddQty(); //已有存在的相同物品, 直接增加數量
-                } else {
-                    //如沒有, 增加物品
-                    Item cloneItem = item.Clone();
-                    cloneItem.Qty = 1;
-                    _items.Add(cloneItem);
-                }
-                item.ReduceQty(); //將原本的物品數量減1
-            } else { 
-                throw new ComboAddItemQtyIllegalException();
-            }
+            _items.Add(item);
         }
 
         /// <summary>
@@ -264,13 +253,21 @@ namespace ITP4915M.API {
         public double GetTotalPrice() {
             double total = 0.0;
             foreach (Item item in _items) {
-                total += item.GetTotalPrice();
+                total += item.Price;
             }
-            return total;
+            return total * GetQty(); ;
         }
 
         /// <summary>
-        /// 取得折扣後的實質價錢 * 套裝份量<br></br>
+        /// 取得折扣後的實質價錢<br></br>
+        /// </summary>
+        /// <returns>價錢</returns>
+        public double GetFinalPrice() {
+            return Price * GetQty();
+        }
+
+        /// <summary>
+        /// 套裝份量
         /// 取當中物品數量最小的進行套裝數量計算
         /// </summary>
         /// <example>
@@ -287,21 +284,19 @@ namespace ITP4915M.API {
         ///     Item2.Qty = 2;
         ///     套裝就會當作2份計算
         /// </example>
-        /// <returns>價錢</returns>
-        public double GetFinalPrice() {
-            double total = 0.0;
+        /// <returns>份量</returns>
+        public int GetQty() {
             int comboQty = _items.FirstOrDefault().Qty;
             foreach (Item item in _items) {
-                total += item.GetTotalPrice();
-                if (comboQty < item.Qty) comboQty = item.Qty; //攞最少數量
+                if (comboQty > item.Qty) comboQty = item.Qty; //攞最少數量
             }
-            return Price * comboQty;
+            return comboQty;
         }
 
         override public string ToString() {
             String items = "\n";
-            foreach(Item item in _items) {
-                items += "    "+item.ToString()+"\n";
+            foreach (Item item in _items) {
+                items += "    " + item.ToString() + "\n";
             }
             items += "\n";
             return String.Format("Combo:{0}(Name: {1}, Description, {2}, Price: {3}, Discount Price: -{4}, TotalPrice: {5}, FinalPrice: {6}, Items: [{7}])", Id, Name, Description, Price, DiscountPrice(), GetTotalPrice(), GetFinalPrice(), items);
@@ -349,16 +344,16 @@ namespace ITP4915M.API {
         /// <summary>
         /// 非法物品類型
         /// </summary>
-        public ItemTypeIllegalException() 
-            : base("Item Type illega. Only accept '1','2','3'") {}
+        public ItemTypeIllegalException()
+            : base("Item Type illega. Only accept '1','2','3'") { }
     }
-    
+
     public class ItemPriceIllegalException : Exception {
         /// <summary>
         /// 非法物品價錢
         /// </summary>
-        public ItemPriceIllegalException() 
-            : base("Item Price illega. Only accept greater than or equal to 0") {}
+        public ItemPriceIllegalException()
+            : base("Item Price illega. Only accept greater than or equal to 0") { }
     }
 
     public class ItemQtyIllegalException : Exception {

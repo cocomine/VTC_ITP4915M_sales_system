@@ -61,23 +61,21 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.tb_total = new System.Windows.Forms.TextBox();
             this.tb_reveived = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_discount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tb_tax = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bt_save = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
             this.tb_deposit = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.tb_change = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.bt_epay = new System.Windows.Forms.Button();
@@ -157,8 +155,8 @@
             this.lv_item_list.HideSelection = false;
             this.lv_item_list.Location = new System.Drawing.Point(3, 22);
             this.lv_item_list.Name = "lv_item_list";
+            this.lv_item_list.ShowGroups = false;
             this.lv_item_list.Size = new System.Drawing.Size(261, 398);
-            this.lv_item_list.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lv_item_list.TabIndex = 1;
             this.lv_item_list.UseCompatibleStateImageBehavior = false;
             this.lv_item_list.View = System.Windows.Forms.View.Details;
@@ -421,15 +419,15 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.tb_total);
             this.groupBox2.Controls.Add(this.tb_reveived);
             this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.tb_subtotal);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.tb_discount);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.tb_tax);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
@@ -441,18 +439,29 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 149);
+            this.label10.Location = new System.Drawing.Point(5, 115);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 12);
             this.label10.TabIndex = 10;
             this.label10.Text = "Total";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label17.Location = new System.Drawing.Point(64, 143);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(94, 21);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Order Save";
             // 
             // tb_total
             // 
             this.tb_total.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_total.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_total.Location = new System.Drawing.Point(61, 146);
+            this.tb_total.Location = new System.Drawing.Point(61, 112);
             this.tb_total.Name = "tb_total";
             this.tb_total.ReadOnly = true;
             this.tb_total.Size = new System.Drawing.Size(97, 22);
@@ -463,7 +472,7 @@
             this.tb_reveived.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_reveived.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_reveived.Location = new System.Drawing.Point(61, 115);
+            this.tb_reveived.Location = new System.Drawing.Point(61, 81);
             this.tb_reveived.Name = "tb_reveived";
             this.tb_reveived.ReadOnly = true;
             this.tb_reveived.Size = new System.Drawing.Size(97, 22);
@@ -472,11 +481,22 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(5, 118);
+            this.label14.Location = new System.Drawing.Point(5, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 12);
             this.label14.TabIndex = 7;
             this.label14.Text = "Received";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label13.Location = new System.Drawing.Point(10, 144);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 21);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Paid";
             // 
             // tb_subtotal
             // 
@@ -503,7 +523,7 @@
             this.tb_discount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_discount.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_discount.Location = new System.Drawing.Point(61, 84);
+            this.tb_discount.Location = new System.Drawing.Point(61, 50);
             this.tb_discount.Name = "tb_discount";
             this.tb_discount.ReadOnly = true;
             this.tb_discount.Size = new System.Drawing.Size(97, 22);
@@ -512,31 +532,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 87);
+            this.label8.Location = new System.Drawing.Point(5, 53);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 12);
             this.label8.TabIndex = 2;
             this.label8.Text = "Discount";
-            // 
-            // tb_tax
-            // 
-            this.tb_tax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_tax.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_tax.Location = new System.Drawing.Point(61, 51);
-            this.tb_tax.Name = "tb_tax";
-            this.tb_tax.ReadOnly = true;
-            this.tb_tax.Size = new System.Drawing.Size(97, 22);
-            this.tb_tax.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 12);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Tax";
             // 
             // tableLayoutPanel2
             // 
@@ -571,10 +571,8 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.bt_save);
-            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.tb_deposit);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.tb_change);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.bt_epay);
@@ -598,17 +596,6 @@
             this.bt_save.Text = "Save Order";
             this.bt_save.UseVisualStyleBackColor = true;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label17.Location = new System.Drawing.Point(57, 120);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(94, 21);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Order Save";
-            // 
             // tb_deposit
             // 
             this.tb_deposit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -628,17 +615,6 @@
             this.label16.Size = new System.Drawing.Size(134, 12);
             this.label16.TabIndex = 7;
             this.label16.Text = "If only  pay deposit amount";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label13.Location = new System.Drawing.Point(8, 120);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 21);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Paid";
             // 
             // tb_change
             // 
@@ -762,8 +738,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tb_discount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tb_tax;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button bt_epay;
