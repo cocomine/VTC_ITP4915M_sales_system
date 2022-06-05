@@ -289,6 +289,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="GSF.Core">
+      <Version>2.4.28</Version>
+    </PackageReference>
     <PackageReference Include="MySql.Data">
       <Version>8.0.29</Version>
     </PackageReference>
