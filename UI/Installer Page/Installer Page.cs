@@ -16,14 +16,12 @@ namespace UI.Installer_Page
 
         private MySqlConnection conn;
         private Account_Details acc;
-        private string customerID; //Defind variable of customer ID
 
         public Installer_Page(MySqlConnection conn, Account_Details acc) 
         {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
-            
         }
 
         private void Installer_Page_FormClosed(object sender, FormClosedEventArgs e) {
@@ -34,9 +32,9 @@ namespace UI.Installer_Page
             Program.addPage();
 
             //Get the data needed by the Installer Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `order` AS o, `customer` AS c, " +
-                "`customer_detail` AS cd, `installation` AS ins WHERE c.CustomerID = ins.CustomerID AND " +
-                "c.CustomerID = cd.CustomerID AND o.OrderID = ins.OrderID AND ins.Status = '0';", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `installation` AS ins, `customer` AS c, " +
+                "`customer_detail` AS cd WHERE c.CustomerID = ins.CustomerID AND " +
+                "c.CustomerID = cd.CustomerID AND ins.Status = '0';", conn);
              MySqlDataReader data_order;
 
             try
@@ -90,7 +88,6 @@ namespace UI.Installer_Page
                     string cAddress = data_cus.GetString("Address");
                     string cPhone = data_cus.GetInt32("Phone").ToString();
                     string iName = data_cus.GetString("Name");
-                    customerID = data_cus.GetString("CustomerID"); //Store data of customer ID
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
@@ -130,7 +127,7 @@ namespace UI.Installer_Page
         {
             //Use "Order Complete" Button to update the new Installation state
             MySqlCommand cmd_comp = new MySqlCommand("UPDATE `installation` AS ins SET ins.Status = '1' " +
-                "WHERE ins.OrderID = '" + lb_order.Text + "' AND ins.CustomerID = '" + customerID + "'", conn);
+                "WHERE ins.OrderID = '" + lb_order.Text + "';", conn);
             MySqlDataReader data;
             string sOrder = lb_order.Text;
 
@@ -151,6 +148,9 @@ namespace UI.Installer_Page
             conn.Close();
 
             lb_order.Items.Remove(sOrder);
+            tb_customer_name.Clear();
+            tb_customer_phone.Clear();
+            tb_customer_address.Clear();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
