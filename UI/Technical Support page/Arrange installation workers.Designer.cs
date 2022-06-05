@@ -36,10 +36,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lb_unscheduled_worker = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btn_scheduled = new System.Windows.Forms.Button();
-            this.btn_unscheduled = new System.Windows.Forms.Button();
+            this.btn_schedule = new System.Windows.Forms.Button();
+            this.btn_unschedule = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lb_scheduled_worker = new System.Windows.Forms.ListBox();
+            this.lb_scheduled_features = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -147,11 +147,12 @@
             this.lb_unscheduled_worker.Name = "lb_unscheduled_worker";
             this.lb_unscheduled_worker.Size = new System.Drawing.Size(300, 244);
             this.lb_unscheduled_worker.TabIndex = 6;
+            this.lb_unscheduled_worker.SelectedIndexChanged += new System.EventHandler(this.lb_unscheduled_worker_SelectedIndexChanged);
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btn_scheduled);
-            this.panel4.Controls.Add(this.btn_unscheduled);
+            this.panel4.Controls.Add(this.btn_schedule);
+            this.panel4.Controls.Add(this.btn_unschedule);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(4, 281);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
@@ -159,29 +160,31 @@
             this.panel4.Size = new System.Drawing.Size(312, 42);
             this.panel4.TabIndex = 1;
             // 
-            // btn_scheduled
+            // btn_schedule
             // 
-            this.btn_scheduled.Location = new System.Drawing.Point(161, 8);
-            this.btn_scheduled.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_scheduled.Name = "btn_scheduled";
-            this.btn_scheduled.Size = new System.Drawing.Size(139, 29);
-            this.btn_scheduled.TabIndex = 1;
-            this.btn_scheduled.Text = "Schedule";
-            this.btn_scheduled.UseVisualStyleBackColor = true;
+            this.btn_schedule.Location = new System.Drawing.Point(161, 8);
+            this.btn_schedule.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_schedule.Name = "btn_schedule";
+            this.btn_schedule.Size = new System.Drawing.Size(139, 29);
+            this.btn_schedule.TabIndex = 1;
+            this.btn_schedule.Text = "Schedule";
+            this.btn_schedule.UseVisualStyleBackColor = true;
+            this.btn_schedule.Click += new System.EventHandler(this.btn_schedule_Click);
             // 
-            // btn_unscheduled
+            // btn_unschedule
             // 
-            this.btn_unscheduled.Location = new System.Drawing.Point(7, 8);
-            this.btn_unscheduled.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_unscheduled.Name = "btn_unscheduled";
-            this.btn_unscheduled.Size = new System.Drawing.Size(147, 29);
-            this.btn_unscheduled.TabIndex = 0;
-            this.btn_unscheduled.Text = "Unschedule";
-            this.btn_unscheduled.UseVisualStyleBackColor = true;
+            this.btn_unschedule.Location = new System.Drawing.Point(7, 8);
+            this.btn_unschedule.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_unschedule.Name = "btn_unschedule";
+            this.btn_unschedule.Size = new System.Drawing.Size(147, 29);
+            this.btn_unschedule.TabIndex = 0;
+            this.btn_unschedule.Text = "Unschedule";
+            this.btn_unschedule.UseVisualStyleBackColor = true;
+            this.btn_unschedule.Click += new System.EventHandler(this.btn_unschedule_Click);
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.lb_scheduled_worker);
+            this.panel5.Controls.Add(this.lb_scheduled_features);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(4, 331);
@@ -190,18 +193,19 @@
             this.panel5.Size = new System.Drawing.Size(312, 269);
             this.panel5.TabIndex = 2;
             // 
-            // lb_scheduled_worker
+            // lb_scheduled_features
             // 
-            this.lb_scheduled_worker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_scheduled_features.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_scheduled_worker.FormattingEnabled = true;
-            this.lb_scheduled_worker.ItemHeight = 15;
-            this.lb_scheduled_worker.Location = new System.Drawing.Point(7, 19);
-            this.lb_scheduled_worker.Margin = new System.Windows.Forms.Padding(4);
-            this.lb_scheduled_worker.Name = "lb_scheduled_worker";
-            this.lb_scheduled_worker.Size = new System.Drawing.Size(300, 229);
-            this.lb_scheduled_worker.TabIndex = 1;
+            this.lb_scheduled_features.FormattingEnabled = true;
+            this.lb_scheduled_features.ItemHeight = 15;
+            this.lb_scheduled_features.Location = new System.Drawing.Point(7, 19);
+            this.lb_scheduled_features.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_scheduled_features.Name = "lb_scheduled_features";
+            this.lb_scheduled_features.Size = new System.Drawing.Size(300, 229);
+            this.lb_scheduled_features.TabIndex = 1;
+            this.lb_scheduled_features.SelectedIndexChanged += new System.EventHandler(this.lb_scheduled_features_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -268,6 +272,7 @@
             this.tb_customer_address.Size = new System.Drawing.Size(493, 85);
             this.tb_customer_address.TabIndex = 15;
             this.tb_customer_address.Text = "";
+            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
             // 
             // label7
             // 
@@ -290,6 +295,7 @@
             this.tb_customer_name.ReadOnly = true;
             this.tb_customer_name.Size = new System.Drawing.Size(493, 25);
             this.tb_customer_name.TabIndex = 13;
+            this.tb_customer_name.TextChanged += new System.EventHandler(this.tb_customer_name_TextChanged);
             // 
             // label6
             // 
@@ -337,6 +343,7 @@
             this.tb_customer_phone.ReadOnly = true;
             this.tb_customer_phone.Size = new System.Drawing.Size(340, 25);
             this.tb_customer_phone.TabIndex = 9;
+            this.tb_customer_phone.TextChanged += new System.EventHandler(this.tb_customer_phone_TextChanged);
             // 
             // label5
             // 
@@ -390,10 +397,10 @@
         private System.Windows.Forms.ListBox lb_unscheduled_worker;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btn_scheduled;
-        private System.Windows.Forms.Button btn_unscheduled;
+        private System.Windows.Forms.Button btn_schedule;
+        private System.Windows.Forms.Button btn_unschedule;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ListBox lb_scheduled_worker;
+        private System.Windows.Forms.ListBox lb_scheduled_features;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.GroupBox groupBox1;

@@ -38,12 +38,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tb_customer_phone = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_customer_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_complete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -171,20 +171,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Customer Phone";
             // 
-            // tb_customer_address
-            // 
-            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_customer_address.Location = new System.Drawing.Point(161, 79);
-            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_customer_address.Name = "tb_customer_address";
-            this.tb_customer_address.ReadOnly = true;
-            this.tb_customer_address.Size = new System.Drawing.Size(372, 85);
-            this.tb_customer_address.TabIndex = 3;
-            this.tb_customer_address.Text = "";
-            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -240,6 +226,20 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Schedule your order";
             // 
+            // tb_customer_address
+            // 
+            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_customer_address.Location = new System.Drawing.Point(161, 79);
+            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_customer_address.Name = "tb_customer_address";
+            this.tb_customer_address.ReadOnly = true;
+            this.tb_customer_address.Size = new System.Drawing.Size(372, 85);
+            this.tb_customer_address.TabIndex = 3;
+            this.tb_customer_address.Text = "";
+            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
+            // 
             // Installer_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -278,12 +278,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_customer_phone;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox tb_customer_address;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_customer_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_complete;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem myProfiToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox tb_customer_address;
     }
 }
