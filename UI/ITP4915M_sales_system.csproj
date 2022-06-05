@@ -107,23 +107,17 @@
     <Compile Include="Delivery Page\Delivery Page.Designer.cs">
       <DependentUpon>Delivery Page.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory page\Purchase item.cs">
+    <Compile Include="Inventory page\item.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory page\Purchase item.Designer.cs">
-      <DependentUpon>Purchase item.cs</DependentUpon>
+    <Compile Include="Inventory page\item.Designer.cs">
+      <DependentUpon>item.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory page\Item requested.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory page\Item requested.Designer.cs">
       <DependentUpon>Item requested.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory page\Inventory quantity.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory page\Inventory quantity.Designer.cs">
-      <DependentUpon>Inventory quantity.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory page\Inventory page.cs">
       <SubType>Form</SubType>
@@ -205,17 +199,14 @@
     <EmbeddedResource Include="Delivery Page\Delivery Page.resx">
       <DependentUpon>Delivery Page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\Inventory quantity.resx">
-      <DependentUpon>Inventory quantity.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory page.resx">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Item requested.resx">
       <DependentUpon>Item requested.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\Purchase item.resx">
-      <DependentUpon>Purchase item.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory page\item.resx">
+      <DependentUpon>item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Create Account.resx">
       <DependentUpon>Create Account.cs</DependentUpon>
