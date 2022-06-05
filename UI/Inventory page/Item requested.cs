@@ -80,5 +80,15 @@ namespace UI.Inventory_page
             dataGridView1.DataSource = dtbl;
             }
         }
+
+        private void search1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

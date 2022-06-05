@@ -62,6 +62,7 @@
             this.label1.Size = new System.Drawing.Size(57, 12);
             this.label1.TabIndex = 3;
             this.label1.Text = "Request ID";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // serach1
             // 
@@ -84,6 +85,7 @@
             this.search1.Name = "search1";
             this.search1.Size = new System.Drawing.Size(89, 22);
             this.search1.TabIndex = 8;
+            this.search1.ValueChanged += new System.EventHandler(this.search1_ValueChanged);
             // 
             // search2
             // 

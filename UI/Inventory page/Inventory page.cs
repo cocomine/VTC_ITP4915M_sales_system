@@ -93,5 +93,10 @@ namespace UI.Inventory_page
         {
             new Item(conn).Show();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

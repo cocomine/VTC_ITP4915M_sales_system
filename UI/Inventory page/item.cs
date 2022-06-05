@@ -34,36 +34,70 @@ namespace UI.Inventory_page
             dataGridView1.DataSource = dtbl;
         }
 
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ACS_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item` Order by Price ASC", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void DESC_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item` Order By Price DESC", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void serach1_Click(object sender, EventArgs e)
+        {
+            int spID = Int32.Parse(search1.Text.ToString());
+            if (spID >= 0)
+            {
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item` where 	SupplierID = " + spID, conn);
+                DataTable dtbl = new DataTable();
+                sqlda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            String a = Guid.NewGuid().ToString();
-            MySqlCommand cmd = new MySqlCommand("update `item` set ItemID = @ItemID, SupplierID= @SupplierID Name=@Name, Price=@Price, Type=@Type, Description=@Description);", conn);
-            cmd.Parameters.AddWithValue("@ItemID", IID.Text);
-            cmd.Parameters.AddWithValue("@SupplierID", SID.Text);
-            cmd.Parameters.AddWithValue("@Name", Iname.Text);
-            cmd.Parameters.AddWithValue("@Price", int.Parse(Price.Text));
-            cmd.Parameters.AddWithValue("@Type", int.Parse(numericUpDown1.Text));
-            cmd.Parameters.AddWithValue("@Description", Dec.Text);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Insert success");
             MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item`", conn);
             DataTable dtbl = new DataTable();
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                IID.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                SID.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                Iname.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                Price.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                numericUpDown1.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                Dec.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            }
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item` Order by Name ASC", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item`", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void bt_desc_name_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `item` Order By Name DESC", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
         }
     }
 }
