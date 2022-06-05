@@ -40,6 +40,11 @@ namespace UI
         }
 
         private void btn_Save_Click(object sender, EventArgs e) {
+            //檢查是否符合要求
+            if (!ValidateChildren(ValidationConstraints.Enabled)) {
+                return;
+            }
+
             bool isChange = false;
             if (!tb_Username.Text.Equals(acc.Get_username())) {
                 //if username is change
@@ -107,13 +112,32 @@ namespace UI
             }
 
             //if format does not match
-            Regex rex = new Regex("^[A-za-z]+$");
+            Regex rex = new Regex("^[A-za-z0-9]+$");
             if (!rex.IsMatch(tb.Text)) {
                 e.Cancel = true;
                 tb.Focus();
-                errorProvider1.SetError(tb, "Only letters are accepted");
+                errorProvider1.SetError(tb, "Only letters or number are accepted");
                 tb.BackColor = Color.LightCoral;
             }
+        }
+
+        private void tb_Password_Validating(object sender, CancelEventArgs e) {
+            TextBox tb = (TextBox)sender;
+            if (!String.IsNullOrEmpty(tb.Text)) {
+                Regex rex = new Regex("(?=.*?[A-Z])(?=.*?[a-z])");
+                if (!rex.IsMatch(tb.Text) || !(tb.Text.Trim().Length >= 8)) {
+                    e.Cancel = true;
+                    tb.Focus();
+                    errorProvider1.SetError(tb, "Must be more than eight characters and include upper and lower case");
+                    tb.BackColor = Color.LightCoral;
+                }
+            }
+        }
+
+        private void Change_back_color(object sender, EventArgs e) {
+            TextBox tb = (TextBox)sender;
+            tb.BackColor = SystemColors.Window;
+            errorProvider1.SetError(tb, "");
         }
     }
 }

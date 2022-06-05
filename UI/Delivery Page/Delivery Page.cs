@@ -1,4 +1,3 @@
-﻿using GSF.Adapters;
 using ITP4915M.API;
 using MySql.Data.MySqlClient;
 using System;

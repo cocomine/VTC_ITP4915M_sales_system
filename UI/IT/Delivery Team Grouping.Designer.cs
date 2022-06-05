@@ -114,9 +114,12 @@
             this.list_unteam.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.list_unteam.FullRowSelect = true;
+            this.list_unteam.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.list_unteam.HideSelection = false;
             this.list_unteam.Location = new System.Drawing.Point(9, 21);
             this.list_unteam.Name = "list_unteam";
+            this.list_unteam.ShowGroups = false;
             this.list_unteam.Size = new System.Drawing.Size(241, 310);
             this.list_unteam.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.list_unteam.TabIndex = 9;

@@ -1,4 +1,4 @@
-﻿namespace UI.Delivery_Page
+namespace UI.Delivery_Page
 {
     partial class Delivery_Page
     {

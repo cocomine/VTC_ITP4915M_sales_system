@@ -544,6 +544,7 @@
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Account_Management";
             this.Text = "Account Management";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Account_Management_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Account_Management_FormClosed);
             this.Load += new System.EventHandler(this.Account_Management_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_staffList)).EndInit();

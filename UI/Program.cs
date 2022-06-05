@@ -59,7 +59,7 @@ namespace UI
             Console.WriteLine(acc);
             switch (acc.Get_departmentID()) {
                 case Department.Sales:
-                    new Sales_page.Sales_Page().Show();
+                    new Sales_page.Sales_Page(conn, acc).Show();
                     break;
                 case Department.Inventory:
                     new Inventory_page.Inventory_page().Show();
@@ -68,7 +68,7 @@ namespace UI
                     new Accounting_page.Accounting_page().Show();
                     break;
                 case Department.Technical_Support:
-                    new Technical_Support_Page.Technical_Support_Page().Show();
+                    new Technical_Support_Page.Technical_Support_Page(conn, acc).Show();
                     break;
                 case Department.IT:
                 case Department.CEO:
@@ -78,7 +78,7 @@ namespace UI
                     new Delivery_Page.Delivery_Page(conn, acc).Show();
                     break;
                 case Department.Installer:
-                    new Installer_Page.Installer_Page().Show();
+                    new Installer_Page.Installer_Page(conn, acc).Show();
                     break;
                 default:
                     MessageBox.Show("You are not in the right department.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);

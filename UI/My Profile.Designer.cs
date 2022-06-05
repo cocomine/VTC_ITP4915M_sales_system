@@ -59,17 +59,20 @@
             this.tb_Password.Location = new System.Drawing.Point(92, 137);
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.PasswordChar = '⚫';
-            this.tb_Password.Size = new System.Drawing.Size(265, 22);
+            this.tb_Password.Size = new System.Drawing.Size(253, 22);
             this.tb_Password.TabIndex = 13;
+            this.tb_Password.TextChanged += new System.EventHandler(this.Change_back_color);
             this.tb_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Login_KeyPress);
+            this.tb_Password.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Password_Validating);
             // 
             // tb_Username
             // 
             this.tb_Username.Location = new System.Drawing.Point(92, 104);
             this.tb_Username.MaxLength = 10;
             this.tb_Username.Name = "tb_Username";
-            this.tb_Username.Size = new System.Drawing.Size(265, 22);
+            this.tb_Username.Size = new System.Drawing.Size(253, 22);
             this.tb_Username.TabIndex = 12;
+            this.tb_Username.TextChanged += new System.EventHandler(this.Change_back_color);
             this.tb_Username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Login_KeyPress);
             this.tb_Username.Validating += new System.ComponentModel.CancelEventHandler(this.tb_Username_Validating);
             // 
@@ -97,7 +100,7 @@
             this.tb_FullName.Location = new System.Drawing.Point(92, 9);
             this.tb_FullName.Name = "tb_FullName";
             this.tb_FullName.ReadOnly = true;
-            this.tb_FullName.Size = new System.Drawing.Size(265, 22);
+            this.tb_FullName.Size = new System.Drawing.Size(253, 22);
             this.tb_FullName.TabIndex = 10;
             // 
             // label1
@@ -115,7 +118,7 @@
             this.tb_Department.Location = new System.Drawing.Point(92, 41);
             this.tb_Department.Name = "tb_Department";
             this.tb_Department.ReadOnly = true;
-            this.tb_Department.Size = new System.Drawing.Size(265, 22);
+            this.tb_Department.Size = new System.Drawing.Size(253, 22);
             this.tb_Department.TabIndex = 11;
             // 
             // btn_Save
