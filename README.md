@@ -1,8 +1,15 @@
 ITP4915M_sales_system
 ===
-## 管理員登入
+管理員登入
+---
 Username: `root` Password: `root`
-## 注意事項
+
+How to use git
+---
+[教學連結](How-To-Use-Git.md)
+
+注意事項
+---
 ### 在每一個新的From中必須先添加以下代碼
 #### 添加 `MySqlConnection` and `Account_Details` class variable
 ```c#
@@ -40,8 +47,9 @@ private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
     Application.Exit(); //添加在Click事件內
 }
 ```
+如何使用 `MySqlConnection`
 ---
-### 如何使用 `MySqlConnection`
+[官方文檔](https://dev.mysql.com/doc/connector-net/en/connector-net-tutorials.html)
 #### `SELECT` 查詢
 > 為防止sql injection攻擊<br>
 > 所有擺放數據嘅位置, 需要用變量方式代替<br>
@@ -78,8 +86,12 @@ try {
 用法都是一樣, 但不需要任何操作
 即是中間部分的code不需要寫
 ```C#
-if (!data.HasRows) { // 檢查是否存在數據
-    // Do something 
-} else {
+try {
+    MySqlCommand cmd = new MySqlCommand(/*sql語句*/, conn); // 建立查詢 
+    cmd.Parameters.AddWithValue("@accountID", tb_username.Text); // 將數據放入變量
+    MySqlDataReader data = cmd.ExecuteNonQuery(); // 運行查詢
+} catch (MySqlException ex) { // 如果sql出現錯誤, 則執行這裏
+     // Do something 
+}
 ...
 ```

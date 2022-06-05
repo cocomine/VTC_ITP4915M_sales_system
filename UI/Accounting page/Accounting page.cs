@@ -21,5 +21,10 @@ namespace UI.Accounting_page
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

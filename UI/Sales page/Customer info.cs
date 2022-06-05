@@ -16,5 +16,10 @@ namespace UI.Sales_page
         {
             InitializeComponent();
         }
+
+        private void Customer_info_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
