@@ -88,5 +88,10 @@ namespace UI.Inventory_page
         {
             new Item_requested(conn).Show();
         }
+
+        private void itemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Item(conn).Show();
+        }
     }
 }

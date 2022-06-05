@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.Level = new System.Windows.Forms.Button();
@@ -38,7 +39,7 @@
             this.DESC = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.itemRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -49,7 +50,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem,
             this.myProfileToolStripMenuItem,
-            this.itemRequestToolStripMenuItem});
+            this.itemRequestToolStripMenuItem,
+            this.itemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -69,6 +71,13 @@
             this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.myProfileToolStripMenuItem.Text = "My Profile";
             this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
+            // 
+            // itemRequestToolStripMenuItem
+            // 
+            this.itemRequestToolStripMenuItem.Name = "itemRequestToolStripMenuItem";
+            this.itemRequestToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.itemRequestToolStripMenuItem.Text = "Item Request";
+            this.itemRequestToolStripMenuItem.Click += new System.EventHandler(this.itemRequestToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -136,12 +145,12 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Order By (Qty)";
             // 
-            // itemRequestToolStripMenuItem
+            // itemToolStripMenuItem
             // 
-            this.itemRequestToolStripMenuItem.Name = "itemRequestToolStripMenuItem";
-            this.itemRequestToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.itemRequestToolStripMenuItem.Text = "Item Request";
-            this.itemRequestToolStripMenuItem.Click += new System.EventHandler(this.itemRequestToolStripMenuItem_Click);
+            this.itemToolStripMenuItem.Name = "itemToolStripMenuItem";
+            this.itemToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.itemToolStripMenuItem.Text = "Item";
+            this.itemToolStripMenuItem.Click += new System.EventHandler(this.itemToolStripMenuItem_Click);
             // 
             // Inventory_page
             // 
@@ -184,5 +193,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem itemRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemToolStripMenuItem;
     }
 }

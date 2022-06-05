@@ -85,7 +85,7 @@ namespace UI.Delivery_Page
                 tx_TeamID.Text = DataGridView.SelectedRows[0].Cells[1].Value.ToString();
                 tx_CustomerID.Text = DataGridView.SelectedRows[0].Cells[2].Value.ToString();
                 numericUpDown1.Text = DataGridView.SelectedRows[0].Cells[3].Value.ToString();
-                numericUpDown2.Text = DataGridView.SelectedRows[0].Cells[3].Value.ToString();
+                numericUpDown2.Text = DataGridView.SelectedRows[0].Cells[4].Value.ToString();
             }
 
 
@@ -148,6 +148,11 @@ namespace UI.Delivery_Page
             {
                 tx_CustomerID.Text = dataGridView3.SelectedRows[0].Cells[0].Value.ToString();
             }
+        }
+
+        private void DataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
