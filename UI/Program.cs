@@ -59,7 +59,7 @@ namespace UI
             Console.WriteLine(acc);
             switch (acc.Get_departmentID()) {
                 case Department.Sales:
-                    new Sales_page.Sales_Page().Show();
+                    new Sales_page.Sales_Page(conn, acc).Show();
                     break;
                 case Department.Inventory:
                     new Inventory_page.Inventory_page().Show();

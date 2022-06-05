@@ -34,52 +34,53 @@
             this.salesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lv_item_list = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.tb_add_name = new System.Windows.Forms.TextBox();
+            this.tb_reshow_order = new System.Windows.Forms.TextBox();
+            this.bt_reshow_order = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_add_name = new System.Windows.Forms.Button();
+            this.bt_add_id = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_add_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tb_item_description = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.tb_item_price = new System.Windows.Forms.TextBox();
+            this.chb_item_large = new System.Windows.Forms.CheckBox();
+            this.tb_item_name = new System.Windows.Forms.TextBox();
+            this.chb_item_install = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tb_total = new System.Windows.Forms.TextBox();
+            this.tb_reveived = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_discount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.bt_save = new System.Windows.Forms.Button();
+            this.tb_deposit = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tb_change = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.bt_epay = new System.Windows.Forms.Button();
+            this.bt_cash = new System.Windows.Forms.Button();
+            this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,19 +105,20 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // myProfileToolStripMenuItem
             // 
             this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
             this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.myProfileToolStripMenuItem.Text = "My Profile";
+            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
             // 
             // salesManagementToolStripMenuItem
             // 
@@ -132,24 +134,48 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.lv_item_list);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 426);
+            this.panel1.Size = new System.Drawing.Size(264, 426);
             this.panel1.TabIndex = 1;
             // 
-            // listBox1
+            // lv_item_list
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lv_item_list.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(9, 25);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(213, 388);
-            this.listBox1.TabIndex = 1;
+            this.lv_item_list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader3,
+            this.columnHeader2});
+            this.lv_item_list.FullRowSelect = true;
+            this.lv_item_list.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lv_item_list.HideSelection = false;
+            this.lv_item_list.Location = new System.Drawing.Point(3, 22);
+            this.lv_item_list.Name = "lv_item_list";
+            this.lv_item_list.ShowGroups = false;
+            this.lv_item_list.Size = new System.Drawing.Size(261, 398);
+            this.lv_item_list.TabIndex = 1;
+            this.lv_item_list.UseCompatibleStateImageBehavior = false;
+            this.lv_item_list.View = System.Windows.Forms.View.Details;
+            this.lv_item_list.SelectedIndexChanged += new System.EventHandler(this.lv_item_list_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Item Name";
+            this.columnHeader1.Width = 180;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Qty";
+            this.columnHeader3.Width = 29;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Price";
+            this.columnHeader2.Width = 48;
             // 
             // label1
             // 
@@ -163,8 +189,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.80597F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.19403F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.08511F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.91489F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox4, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -172,47 +198,59 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(564, 234);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 234);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox12);
-            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.tb_add_name);
+            this.groupBox3.Controls.Add(this.tb_reshow_order);
+            this.groupBox3.Controls.Add(this.bt_reshow_order);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.bt_add_name);
+            this.groupBox3.Controls.Add(this.bt_add_id);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.tb_add_id);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(212, 228);
+            this.groupBox3.Size = new System.Drawing.Size(222, 228);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manual entry";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // textBox12
+            // tb_add_name
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_add_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(9, 173);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(197, 22);
-            this.textBox12.TabIndex = 9;
+            this.tb_add_name.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tb_add_name.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tb_add_name.Location = new System.Drawing.Point(9, 107);
+            this.tb_add_name.Name = "tb_add_name";
+            this.tb_add_name.Size = new System.Drawing.Size(207, 22);
+            this.tb_add_name.TabIndex = 10;
+            this.tb_add_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_add_name_KeyUp);
             // 
-            // button5
+            // tb_reshow_order
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(114, 200);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 23);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Re-show order";
-            this.button5.UseVisualStyleBackColor = true;
+            this.tb_reshow_order.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_reshow_order.Location = new System.Drawing.Point(9, 173);
+            this.tb_reshow_order.Name = "tb_reshow_order";
+            this.tb_reshow_order.Size = new System.Drawing.Size(207, 22);
+            this.tb_reshow_order.TabIndex = 9;
+            this.tb_reshow_order.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_reshow_order_KeyUp);
+            // 
+            // bt_reshow_order
+            // 
+            this.bt_reshow_order.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_reshow_order.Location = new System.Drawing.Point(124, 200);
+            this.bt_reshow_order.Name = "bt_reshow_order";
+            this.bt_reshow_order.Size = new System.Drawing.Size(92, 23);
+            this.bt_reshow_order.TabIndex = 8;
+            this.bt_reshow_order.Text = "Re-show order";
+            this.bt_reshow_order.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -223,25 +261,27 @@
             this.label15.TabIndex = 7;
             this.label15.Text = "Order ID";
             // 
-            // button2
+            // bt_add_name
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(114, 133);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Add by Name";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bt_add_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_add_name.Location = new System.Drawing.Point(124, 133);
+            this.bt_add_name.Name = "bt_add_name";
+            this.bt_add_name.Size = new System.Drawing.Size(92, 23);
+            this.bt_add_name.TabIndex = 5;
+            this.bt_add_name.Text = "Add by Name";
+            this.bt_add_name.UseVisualStyleBackColor = true;
+            this.bt_add_name.Click += new System.EventHandler(this.bt_add_name_Click);
             // 
-            // button1
+            // bt_add_id
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(114, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Add by Code";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bt_add_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_add_id.Location = new System.Drawing.Point(124, 66);
+            this.bt_add_id.Name = "bt_add_id";
+            this.bt_add_id.Size = new System.Drawing.Size(92, 23);
+            this.bt_add_id.TabIndex = 4;
+            this.bt_add_id.Text = "Add by Code";
+            this.bt_add_id.UseVisualStyleBackColor = true;
+            this.bt_add_id.Click += new System.EventHandler(this.bt_add_id_Click);
             // 
             // label3
             // 
@@ -252,14 +292,17 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Item Name";
             // 
-            // textBox1
+            // tb_add_id
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_add_id.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(9, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 22);
-            this.textBox1.TabIndex = 2;
+            this.tb_add_id.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tb_add_id.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.tb_add_id.Location = new System.Drawing.Point(9, 38);
+            this.tb_add_id.Name = "tb_add_id";
+            this.tb_add_id.Size = new System.Drawing.Size(207, 22);
+            this.tb_add_id.TabIndex = 2;
+            this.tb_add_id.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_add_id_KeyUp);
             // 
             // label2
             // 
@@ -270,46 +313,36 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Item Code";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(7, 107);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(199, 20);
-            this.comboBox1.TabIndex = 0;
-            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.richTextBox1);
+            this.groupBox4.Controls.Add(this.tb_item_description);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.checkBox1);
-            this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Controls.Add(this.checkBox2);
+            this.groupBox4.Controls.Add(this.tb_item_price);
+            this.groupBox4.Controls.Add(this.chb_item_large);
+            this.groupBox4.Controls.Add(this.tb_item_name);
+            this.groupBox4.Controls.Add(this.chb_item_install);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(221, 3);
+            this.groupBox4.Location = new System.Drawing.Point(231, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(340, 228);
+            this.groupBox4.Size = new System.Drawing.Size(296, 228);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Info";
             // 
-            // richTextBox1
+            // tb_item_description
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tb_item_description.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 114);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(322, 103);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.tb_item_description.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_item_description.Location = new System.Drawing.Point(12, 114);
+            this.tb_item_description.Name = "tb_item_description";
+            this.tb_item_description.ReadOnly = true;
+            this.tb_item_description.Size = new System.Drawing.Size(278, 103);
+            this.tb_item_description.TabIndex = 8;
+            this.tb_item_description.Text = "";
             // 
             // label6
             // 
@@ -329,50 +362,50 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Item Name";
             // 
-            // textBox3
+            // tb_item_price
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_item_price.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox3.Location = new System.Drawing.Point(76, 44);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(258, 22);
-            this.textBox3.TabIndex = 4;
+            this.tb_item_price.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_item_price.Location = new System.Drawing.Point(76, 44);
+            this.tb_item_price.Name = "tb_item_price";
+            this.tb_item_price.ReadOnly = true;
+            this.tb_item_price.Size = new System.Drawing.Size(214, 22);
+            this.tb_item_price.TabIndex = 4;
             // 
-            // checkBox1
+            // chb_item_large
             // 
-            this.checkBox1.AutoCheck = false;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(76, 77);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(74, 16);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Large item";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chb_item_large.AutoCheck = false;
+            this.chb_item_large.AutoSize = true;
+            this.chb_item_large.Location = new System.Drawing.Point(76, 77);
+            this.chb_item_large.Name = "chb_item_large";
+            this.chb_item_large.Size = new System.Drawing.Size(74, 16);
+            this.chb_item_large.TabIndex = 5;
+            this.chb_item_large.Text = "Large item";
+            this.chb_item_large.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tb_item_name
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_item_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Location = new System.Drawing.Point(76, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(258, 22);
-            this.textBox2.TabIndex = 1;
+            this.tb_item_name.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_item_name.Location = new System.Drawing.Point(76, 16);
+            this.tb_item_name.Name = "tb_item_name";
+            this.tb_item_name.ReadOnly = true;
+            this.tb_item_name.Size = new System.Drawing.Size(214, 22);
+            this.tb_item_name.TabIndex = 1;
             // 
-            // checkBox2
+            // chb_item_install
             // 
-            this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox2.AutoCheck = false;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(233, 77);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(101, 16);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Need install item";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chb_item_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chb_item_install.AutoCheck = false;
+            this.chb_item_install.AutoSize = true;
+            this.chb_item_install.Location = new System.Drawing.Point(189, 77);
+            this.chb_item_install.Name = "chb_item_install";
+            this.chb_item_install.Size = new System.Drawing.Size(101, 16);
+            this.chb_item_install.TabIndex = 6;
+            this.chb_item_install.Text = "Need install item";
+            this.chb_item_install.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -386,19 +419,19 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox10);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.tb_total);
+            this.groupBox2.Controls.Add(this.tb_reveived);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.tb_subtotal);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.tb_discount);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(212, 174);
+            this.groupBox2.Size = new System.Drawing.Size(164, 174);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Order info";
@@ -406,53 +439,75 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 149);
+            this.label10.Location = new System.Drawing.Point(5, 115);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 12);
             this.label10.TabIndex = 10;
             this.label10.Text = "Total";
             // 
-            // textBox7
+            // label17
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label17.Location = new System.Drawing.Point(64, 143);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(94, 21);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Order Save";
+            // 
+            // tb_total
+            // 
+            this.tb_total.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox7.Location = new System.Drawing.Point(61, 146);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(145, 22);
-            this.textBox7.TabIndex = 9;
+            this.tb_total.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_total.Location = new System.Drawing.Point(61, 112);
+            this.tb_total.Name = "tb_total";
+            this.tb_total.ReadOnly = true;
+            this.tb_total.Size = new System.Drawing.Size(97, 22);
+            this.tb_total.TabIndex = 9;
             // 
-            // textBox10
+            // tb_reveived
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_reveived.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox10.Location = new System.Drawing.Point(61, 115);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(145, 22);
-            this.textBox10.TabIndex = 8;
+            this.tb_reveived.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_reveived.Location = new System.Drawing.Point(61, 81);
+            this.tb_reveived.Name = "tb_reveived";
+            this.tb_reveived.ReadOnly = true;
+            this.tb_reveived.Size = new System.Drawing.Size(97, 22);
+            this.tb_reveived.TabIndex = 8;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(5, 118);
+            this.label14.Location = new System.Drawing.Point(5, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 12);
             this.label14.TabIndex = 7;
             this.label14.Text = "Received";
             // 
-            // textBox6
+            // label13
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label13.Location = new System.Drawing.Point(10, 144);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 21);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Paid";
+            // 
+            // tb_subtotal
+            // 
+            this.tb_subtotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox6.Location = new System.Drawing.Point(61, 19);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(145, 22);
-            this.textBox6.TabIndex = 5;
+            this.tb_subtotal.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_subtotal.Location = new System.Drawing.Point(61, 19);
+            this.tb_subtotal.Name = "tb_subtotal";
+            this.tb_subtotal.ReadOnly = true;
+            this.tb_subtotal.Size = new System.Drawing.Size(97, 22);
+            this.tb_subtotal.TabIndex = 5;
             // 
             // label9
             // 
@@ -463,45 +518,25 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Subtotal";
             // 
-            // textBox5
+            // tb_discount
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_discount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox5.Location = new System.Drawing.Point(61, 84);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(145, 22);
-            this.textBox5.TabIndex = 3;
+            this.tb_discount.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_discount.Location = new System.Drawing.Point(61, 50);
+            this.tb_discount.Name = "tb_discount";
+            this.tb_discount.ReadOnly = true;
+            this.tb_discount.Size = new System.Drawing.Size(97, 22);
+            this.tb_discount.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 87);
+            this.label8.Location = new System.Drawing.Point(5, 53);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 12);
             this.label8.TabIndex = 2;
             this.label8.Text = "Discount";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox4.Location = new System.Drawing.Point(61, 51);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(145, 22);
-            this.textBox4.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 12);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Tax";
             // 
             // tableLayoutPanel2
             // 
@@ -510,20 +545,19 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(230, 24);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(264, 24);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 426);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(536, 426);
             this.tableLayoutPanel2.TabIndex = 4;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.65248F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.34752F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.26415F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.73585F));
             this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -531,91 +565,68 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(564, 180);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(530, 180);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.textBox11);
+            this.groupBox1.Controls.Add(this.bt_save);
+            this.groupBox1.Controls.Add(this.tb_deposit);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.tb_change);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.bt_epay);
+            this.groupBox1.Controls.Add(this.bt_cash);
+            this.groupBox1.Controls.Add(this.tb_charge);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(221, 3);
+            this.groupBox1.Location = new System.Drawing.Point(173, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(340, 174);
+            this.groupBox1.Size = new System.Drawing.Size(354, 174);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Collection";
             // 
-            // button6
+            // bt_save
             // 
-            this.button6.Location = new System.Drawing.Point(12, 144);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(91, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Save Order";
-            this.button6.UseVisualStyleBackColor = true;
+            this.bt_save.Location = new System.Drawing.Point(12, 144);
+            this.bt_save.Name = "bt_save";
+            this.bt_save.Size = new System.Drawing.Size(91, 23);
+            this.bt_save.TabIndex = 10;
+            this.bt_save.Text = "Save Order";
+            this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
-            // label17
+            // tb_deposit
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label17.Location = new System.Drawing.Point(57, 120);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(94, 21);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Order Save";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_deposit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox11.Location = new System.Drawing.Point(129, 51);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(160, 22);
-            this.textBox11.TabIndex = 8;
+            this.tb_deposit.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_deposit.Location = new System.Drawing.Point(150, 51);
+            this.tb_deposit.Name = "tb_deposit";
+            this.tb_deposit.ReadOnly = true;
+            this.tb_deposit.Size = new System.Drawing.Size(174, 22);
+            this.tb_deposit.TabIndex = 8;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(10, 54);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 12);
+            this.label16.Size = new System.Drawing.Size(134, 12);
             this.label16.TabIndex = 7;
-            this.label16.Text = "If Only deposit amount";
+            this.label16.Text = "If only  pay deposit amount";
             // 
-            // label13
+            // tb_change
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label13.Location = new System.Drawing.Point(8, 120);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 21);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Paid";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_change.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox9.Location = new System.Drawing.Point(129, 81);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(160, 22);
-            this.textBox9.TabIndex = 5;
+            this.tb_change.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_change.Location = new System.Drawing.Point(150, 81);
+            this.tb_change.Name = "tb_change";
+            this.tb_change.ReadOnly = true;
+            this.tb_change.Size = new System.Drawing.Size(174, 22);
+            this.tb_change.TabIndex = 5;
             // 
             // label12
             // 
@@ -626,43 +637,44 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Change amount";
             // 
-            // button4
+            // bt_epay
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(241, 144);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Use e-payment";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bt_epay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_epay.Location = new System.Drawing.Point(255, 144);
+            this.bt_epay.Name = "bt_epay";
+            this.bt_epay.Size = new System.Drawing.Size(93, 23);
+            this.bt_epay.TabIndex = 3;
+            this.bt_epay.Text = "Use e-payment";
+            this.bt_epay.UseVisualStyleBackColor = true;
+            this.bt_epay.Click += new System.EventHandler(this.bt_epay_Click);
             // 
-            // button3
+            // bt_cash
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(144, 144);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Use Cash";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bt_cash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_cash.Location = new System.Drawing.Point(158, 144);
+            this.bt_cash.Name = "bt_cash";
+            this.bt_cash.Size = new System.Drawing.Size(91, 23);
+            this.bt_cash.TabIndex = 2;
+            this.bt_cash.Text = "Use Cash";
+            this.bt_cash.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // tb_charge
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_charge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(129, 19);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(160, 22);
-            this.textBox8.TabIndex = 1;
+            this.tb_charge.Location = new System.Drawing.Point(150, 19);
+            this.tb_charge.Name = "tb_charge";
+            this.tb_charge.Size = new System.Drawing.Size(174, 22);
+            this.tb_charge.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(10, 22);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 12);
+            this.label11.Size = new System.Drawing.Size(77, 12);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Charge cash amount";
+            this.label11.Text = "Charge amount";
             // 
             // Sales_Page
             // 
@@ -676,6 +688,8 @@
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Sales_Page";
             this.Text = "Sales Page";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Sales_Page_FormClosed);
+            this.Load += new System.EventHandler(this.Sales_Page_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -703,53 +717,54 @@
         private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tb_item_description;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox tb_item_name;
+        private System.Windows.Forms.CheckBox chb_item_install;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chb_item_large;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_item_price;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_add_name;
+        private System.Windows.Forms.Button bt_add_id;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_add_id;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tb_subtotal;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tb_discount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button bt_epay;
+        private System.Windows.Forms.Button bt_cash;
+        private System.Windows.Forms.TextBox tb_charge;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox tb_total;
+        private System.Windows.Forms.TextBox tb_reveived;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button bt_save;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tb_deposit;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tb_change;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
+        private System.Windows.Forms.ListView lv_item_list;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.TextBox tb_reshow_order;
+        private System.Windows.Forms.Button bt_reshow_order;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.TextBox tb_add_name;
     }
 }

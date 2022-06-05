@@ -216,16 +216,18 @@ namespace UI.IT
                 tb.Focus();
                 errorProvider1.SetError(tb, "Please fill information");
                 tb.BackColor = Color.LightCoral;
+                MessageBox.Show("Please fill information", "Inaccurate format", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //if format does not match
             if (tb.Equals(tb_username)) {
-                Regex rex = new Regex("^[A-za-z]+$");
+                Regex rex = new Regex("^[A-za-z0-9]+$");
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
                     tb.Focus();
-                    errorProvider1.SetError(tb, "Only letters are accepted");
+                    errorProvider1.SetError(tb, "Only letters or number are accepted");
                     tb.BackColor = Color.LightCoral;
+                    MessageBox.Show("Only letters or number are accepted", "Inaccurate format", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             if (tb.Equals(tb_full_name)) {
@@ -235,6 +237,7 @@ namespace UI.IT
                     tb.Focus();
                     errorProvider1.SetError(tb, "Only letters are accepted");
                     tb.BackColor = Color.LightCoral;
+                    MessageBox.Show("Only letters are accepted", "Inaccurate format", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -53,7 +53,7 @@ namespace ITP4915M.IT {
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@Enable", cb_enable.Checked);
                 cmd.Parameters.AddWithValue("@DepartmentID", cb_department.SelectedIndex+1);
-                cmd.Parameters.AddWithValue("@FullRealName", tb_FullRealName.Text);
+                cmd.Parameters.AddWithValue("@FullRealName", tb_FullRealName.Text.Trim());
                 cmd.Parameters.AddWithValue("@isManager", cb_isManager.Checked);
                 cmd.ExecuteNonQuery();
 
@@ -78,6 +78,7 @@ namespace ITP4915M.IT {
         private void Change_back_color(object sender, EventArgs e) {
             TextBox tb = (TextBox) sender;
             tb.BackColor = SystemColors.Window;
+            errorProvider1.SetError(tb, "");
         }
 
         private void tb_Validating(object sender, CancelEventArgs e) {
@@ -93,10 +94,10 @@ namespace ITP4915M.IT {
 
             //if format does not match
             if (tb.Equals(tb_username)) {
-                Regex rex = new Regex("^[A-za-z]+$");
+                Regex rex = new Regex("^[A-za-z0-9]+$");
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
-                    errorProvider1.SetError(tb, "Only letters are accepted");
+                    errorProvider1.SetError(tb, "Only letters or number are accepted");
                     tb.BackColor = Color.LightCoral;
                 }
             }
