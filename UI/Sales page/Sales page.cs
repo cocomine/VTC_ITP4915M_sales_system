@@ -8,20 +8,25 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.ListViewItem;
 
 namespace UI.Sales_page {
     public partial class Sales_Page : Form {
-        private String StoreID;
+        private String StoreID; //商店id
         private MySqlConnection conn;
         private Account_Details acc;
-        private List<Item> shoppingCart_Item = new List<Item>();
-        private List<Combo> shoppingCart_Combo = new List<Combo>();
-        private Dictionary<Item, int> Unavailable_Item_Qty = new Dictionary<Item, int>();
-        private double received = 0;
-        private double total = 0;
+        private List<Item> shoppingCart_Item = new List<Item>(); //購物車內的物品
+        private List<Combo> shoppingCart_Combo = new List<Combo>(); //符合的套裝折扣
+        private Dictionary<Item, int> Unavailable_Item_Qty = new Dictionary<Item, int>(); //庫存不足物品, 會儲存尚欠多少件
+        private double received = 0; //已收取金額
+        private double total = 0; //需付金額
+        private string orderID; //訂單id
+        private bool need_delivery = false; //是否需要送貨
+        private bool need_install = false; //是否需要安裝
+
         public Sales_Page(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
@@ -31,13 +36,13 @@ namespace UI.Sales_page {
         private void Sales_Page_Load(object sender, EventArgs e) {
             Program.addPage();
 
-            //setup AutoComplete
+            //AutoComplete setup
             try {
-                MySqlCommand cmd = new MySqlCommand("SELECT Name, ItemID FROM item", conn);
-                MySqlDataReader data = cmd.ExecuteReader();
+                MySqlCommand cmd = new MySqlCommand("SELECT Name, ItemID FROM item;", conn);
+                MySqlDataReader data = cmd.ExecuteReader(); //start up async
 
-                AutoCompleteStringCollection nameCol = new AutoCompleteStringCollection(); //name list
-                AutoCompleteStringCollection idCol = new AutoCompleteStringCollection(); //id list
+                AutoCompleteStringCollection nameCol = new AutoCompleteStringCollection(); //name AutoComplete list
+                AutoCompleteStringCollection idCol = new AutoCompleteStringCollection(); //id AutoComplete list
                 while (data.Read()) {
                     nameCol.Add(data.GetString("Name"));
                     idCol.Add(data.GetString("ItemID"));
@@ -47,11 +52,15 @@ namespace UI.Sales_page {
 
                 tb_add_name.AutoCompleteCustomSource = nameCol; //set add by name
                 tb_add_id.AutoCompleteCustomSource = idCol; //set add by code
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
 
-                //Get staff Responsible store
-                cmd = new MySqlCommand("SELECT StoreID FROM sales_staff_store WHERE StaffAccountID = @id", conn);
+            //Get staff Responsible store
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT StoreID FROM sales_staff_store WHERE StaffAccountID = @id", conn);
                 cmd.Parameters.AddWithValue("@id", acc.Get_acoountID());
-                data = cmd.ExecuteReader();
+                MySqlDataReader data = cmd.ExecuteReader();
                 if (data.HasRows) {
                     while (data.Read()) {
                         StoreID = data.GetString("StoreID");
@@ -61,7 +70,6 @@ namespace UI.Sales_page {
                     Application.Exit();
                 }
                 data.Close(); //close up
-
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
@@ -306,6 +314,10 @@ namespace UI.Sales_page {
             //計算單件貨品價格
             foreach (Item item in shoppingCart_Item) {
                 subtotal += item.GetTotalPrice();
+
+                //取得貨件是否需要安裝或運送
+                if (item.Type == ItemType.Install || item.Type == ItemType.Large_and_install) need_install = true;
+                if (item.Type == ItemType.Large || item.Type == ItemType.Large_and_install) need_delivery = true;
             }
 
             //計算折扣價
@@ -332,20 +344,19 @@ namespace UI.Sales_page {
             tb_deposit.Text = String.Format("{0:C}", deposit);
         }
 
+        //Enter key
         private void tb_add_id_KeyUp(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) bt_add_id.PerformClick(); //Enter key
         }
-
         private void tb_add_name_KeyUp(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) bt_add_name.PerformClick(); //Enter key
         }
-
         private void tb_reshow_order_KeyUp(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) bt_reshow_order.PerformClick(); //Enter key
         }
 
+        //選擇該物件, 顯示該物件詳情
         private void lv_item_list_SelectedIndexChanged(object sender, EventArgs e) {
-            //選擇該物件, 顯示該物件詳情
             if (lv_item_list.SelectedItems.Count > 0) {
                 Item item = lv_item_list.SelectedItems[0].Tag as Item;
                 if (item != null) {
@@ -360,7 +371,54 @@ namespace UI.Sales_page {
 
         //save order
         private void bt_save_Click(object sender, EventArgs e) {
+            //建立新的訂單紀錄, 並且取得訂單id
+            try {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO `order` (Payment_Method, Charge, Status, DateTime) VALUES (2, 0, 1, @datetime); SELECT LAST_INSERT_ID() AS OrderID;", conn);
+                cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read()) {
+                    orderID = reader.GetString("OrderID");
+                }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
 
+            //將物品寫入數據庫
+            try {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO order_item (OrderID, ItemID, Qty, Purchase_price) VALUES (@OrderID, @ItemID, @Qty, @Purchase_price)", conn);
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                cmd.Parameters.AddWithValue("@ItemID", "");
+                cmd.Parameters.AddWithValue("@Qty", 0);
+                cmd.Parameters.AddWithValue("@Purchase_price", 0.0);
+
+                //逐件貨品放入
+                foreach (Item item in shoppingCart_Item) {
+                    cmd.Parameters["@ItemID"].Value = item.Id;
+                    cmd.Parameters["@Qty"].Value = item.Qty;
+                    cmd.Parameters["@Purchase_price"].Value = item.Price;
+                    cmd.ExecuteNonQuery();
+                }
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
+            //將套裝折扣寫入數據庫
+            try {
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO order_combo (OrderID, ComboID, Purchase_price) VALUES (@OrderID, @ComboID, @Purchase_price)", conn);
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                cmd.Parameters.AddWithValue("@ComboID", "");
+                cmd.Parameters.AddWithValue("@Purchase_price", 0.0);
+
+                //逐件套裝放入
+                foreach (Combo combo in shoppingCart_Combo) {
+                    cmd.Parameters["@ComboID"].Value = combo.Id;
+                    cmd.Parameters["@Purchase_price"].Value = combo.Price;
+                    cmd.ExecuteNonQuery();
+                }
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
         }
 
         //e-payment pay

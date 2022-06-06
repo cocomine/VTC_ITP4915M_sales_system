@@ -38,8 +38,8 @@ namespace ITP4915M.IT {
             ShowUnTeamStaff();
         }
 
+        //get not in any team staff
         private void ShowUnTeamStaff() {
-            //get unteam staff
             try {
                 MySqlCommand cmd = new MySqlCommand("SELECT staff.AccountID, staff.FullRealName FROM staff WHERE staff.AccountID NOT IN(SELECT delivery_team_staff.StaffAccountID FROM delivery_team_staff) AND staff.DepartmentID = " + Department.Delivery, conn);
                 MySqlDataReader unTeamStaffData = cmd.ExecuteReader();
@@ -61,8 +61,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //get in delivery team staff
         private void ShowDeliveryTeamStaff() {
-            //get delivery team staff
             try {
                 MySqlCommand cmd = new MySqlCommand("SELECT d.Delivery_TeamID, s.AccountID, s.FullRealName FROM delivery_team_staff d, staff s WHERE d.StaffAccountID = s.AccountID ORDER BY Delivery_TeamID ASC;", conn);
                 MySqlDataReader teamStaffData = cmd.ExecuteReader();
@@ -83,8 +83,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //Get all delivery team
         private void ShowDeliveryTeam() {
-            //Get delivery team
             try {
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM delivery_team ORDER BY TeamID ASC;", conn);
                 MySqlDataReader teamData = cmd.ExecuteReader();
@@ -113,8 +113,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //treeNode team node selected
         private void tree_Teams_AfterSelect(object sender, TreeViewEventArgs e) {
-            //treeNode team selected
             TreeNode node = tree_Teams.SelectedNode; //get node
             if (node.Tag != null) { //check is Team node
                 cb_sel_team.SelectedItem = node.Name; //set 'cb_sel_team' select item
@@ -126,8 +126,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //create new team
         private void bt_createTeam_Click(object sender, EventArgs e) {
-            //create new team
             try {
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO `delivery_team` (`TeamID`, `Status`) VALUES (NULL, '0'); SELECT LAST_INSERT_ID() AS TeamID;", conn);
                 MySqlDataReader data = cmd.ExecuteReader();
@@ -148,8 +148,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //delete team
         private void bt_deleteTeam_Click(object sender, EventArgs e) {
-            //delete team
             if(tree_Teams.SelectedNode == null) return; //check is select?
             DialogResult result = MessageBox.Show("Are you sure you want to disband the selected team?", "Disband team", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes) {
@@ -168,8 +168,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //add not in any staff in to team
         private void bt_addToTeam_Click(object sender, EventArgs e) {
-            //add unteam staff in to team
             String teamID = (String) cb_sel_team.SelectedItem;
             ListView.SelectedListViewItemCollection items = list_unteam.SelectedItems;
             if (cb_sel_team.SelectedIndex < 0 || items.Count <= 0) return; //check is select?
@@ -198,8 +198,8 @@ namespace ITP4915M.IT {
             tree_Teams.ExpandAll();
         }
 
+        //save delivery team status
         private void bt_status_save_Click(object sender, EventArgs e) {
-            //save delivery team status
             if (tree_Teams.SelectedNode == null) return; //check is select?
             RadioButton checkedButton = gb_team_status.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked); //get check radio button
             if (checkedButton == null) return; //check radio is check?
@@ -217,8 +217,8 @@ namespace ITP4915M.IT {
             }
         }
 
+        //remove the staff from team
         private void bt_removeFromTeam_Click(object sender, EventArgs e) {
-            //unteam the staff
             if(tree_Teams.SelectedNode == null) return; //check is select
             if(tree_Teams.SelectedNode.Tag != null) return; //check is not select team node
 
@@ -239,6 +239,7 @@ namespace ITP4915M.IT {
             }
         }
 
+        //drag drop
         private void tree_Teams_ItemDrag(object sender, ItemDragEventArgs e) {
             //Drag in team staff
             TreeNode node = e.Item as TreeNode;
