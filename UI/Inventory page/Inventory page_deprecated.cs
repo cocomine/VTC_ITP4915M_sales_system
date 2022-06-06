@@ -13,11 +13,11 @@ using System.Windows.Forms;
 namespace UI.Inventory_page
 {
 
-    public partial class Inventory_page : Form
+    public partial class Inventory_page_deprecated : Form
     {
         private MySqlConnection conn;
 
-        public Inventory_page(MySqlConnection conn)
+        public Inventory_page_deprecated(MySqlConnection conn)
         {
             this.conn = conn;
             InitializeComponent();

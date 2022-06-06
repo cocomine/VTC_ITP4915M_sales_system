@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI.Inventory_page
 {
-    public partial class Item_requested : Form
+    public partial class Inventory_quantity : Form
     {
-        public Item_requested()
+        public Inventory_quantity()
         {
             InitializeComponent();
         }
