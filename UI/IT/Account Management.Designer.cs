@@ -91,8 +91,6 @@
             this.dataGrid_staffList.AllowUserToAddRows = false;
             this.dataGrid_staffList.AllowUserToDeleteRows = false;
             this.dataGrid_staffList.AllowUserToOrderColumns = true;
-            this.dataGrid_staffList.AllowUserToResizeColumns = false;
-            this.dataGrid_staffList.AllowUserToResizeRows = false;
             this.dataGrid_staffList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

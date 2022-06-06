@@ -16,5 +16,6 @@ namespace UI.Inventory_page
         {
             InitializeComponent();
         }
+
     }
 }
