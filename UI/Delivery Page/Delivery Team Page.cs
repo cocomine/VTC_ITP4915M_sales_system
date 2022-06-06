@@ -94,26 +94,6 @@ namespace UI.Delivery_Page
             conn.Close();
         }
 
-        private void tb_customer_name_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb_customer_address_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tb_customer_phone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lb_delivery_item_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_complete_Click(object sender, EventArgs e)
         {
             //Use "Order Complete" Button to update the new Delivery state

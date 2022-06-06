@@ -86,7 +86,7 @@ namespace UI.Inventory_page
 
         private void itemRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Item_requested(conn).Show();
+            new Item_requested_deprecated(conn).Show();
         }
 
         private void itemToolStripMenuItem_Click(object sender, EventArgs e)

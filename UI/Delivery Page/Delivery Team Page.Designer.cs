@@ -136,7 +136,6 @@
             this.tb_customer_address.Size = new System.Drawing.Size(280, 69);
             this.tb_customer_address.TabIndex = 3;
             this.tb_customer_address.Text = "";
-            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
             // 
             // lb_delivery_item
             // 
@@ -149,7 +148,6 @@
             this.lb_delivery_item.Name = "lb_delivery_item";
             this.lb_delivery_item.Size = new System.Drawing.Size(280, 76);
             this.lb_delivery_item.TabIndex = 7;
-            this.lb_delivery_item.SelectedIndexChanged += new System.EventHandler(this.lb_delivery_item_SelectedIndexChanged);
             // 
             // tb_customer_phone
             // 
@@ -161,7 +159,6 @@
             this.tb_customer_phone.ReadOnly = true;
             this.tb_customer_phone.Size = new System.Drawing.Size(121, 22);
             this.tb_customer_phone.TabIndex = 5;
-            this.tb_customer_phone.TextChanged += new System.EventHandler(this.tb_customer_phone_TextChanged);
             // 
             // tb_customer_name
             // 
@@ -173,7 +170,6 @@
             this.tb_customer_name.ReadOnly = true;
             this.tb_customer_name.Size = new System.Drawing.Size(280, 22);
             this.tb_customer_name.TabIndex = 1;
-            this.tb_customer_name.TextChanged += new System.EventHandler(this.tb_customer_name_TextChanged);
             // 
             // label4
             // 

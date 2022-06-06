@@ -57,9 +57,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(227, 287);
+            this.groupBox1.Location = new System.Drawing.Point(227, 326);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(557, 100);
+            this.groupBox1.Size = new System.Drawing.Size(573, 100);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase";
@@ -97,7 +97,7 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(9, 23);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(212, 352);
+            this.listBox1.Size = new System.Drawing.Size(212, 388);
             this.listBox1.TabIndex = 0;
             // 
             // label1
@@ -126,7 +126,7 @@
             this.textBox3.Location = new System.Drawing.Point(76, 44);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(475, 22);
+            this.textBox3.Size = new System.Drawing.Size(491, 22);
             this.textBox3.TabIndex = 4;
             // 
             // textBox2
@@ -137,7 +137,7 @@
             this.textBox2.Location = new System.Drawing.Point(76, 16);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(475, 22);
+            this.textBox2.Size = new System.Drawing.Size(491, 22);
             this.textBox2.TabIndex = 1;
             // 
             // groupBox4
@@ -153,7 +153,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(557, 287);
+            this.groupBox4.Size = new System.Drawing.Size(573, 326);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Info";
@@ -167,7 +167,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(12, 114);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(539, 167);
+            this.richTextBox1.Size = new System.Drawing.Size(555, 206);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
@@ -196,7 +196,7 @@
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox2.AutoCheck = false;
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(450, 77);
+            this.checkBox2.Location = new System.Drawing.Point(466, 77);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(101, 16);
             this.checkBox2.TabIndex = 6;
@@ -219,7 +219,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(227, 387);
+            this.panel1.Size = new System.Drawing.Size(227, 426);
             this.panel1.TabIndex = 9;
             // 
             // panel2
@@ -228,7 +228,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(227, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(557, 287);
+            this.panel2.Size = new System.Drawing.Size(573, 326);
             this.panel2.TabIndex = 11;
             // 
             // Purchase_item
@@ -239,6 +239,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Purchase_item";
             this.Text = "Purchase item";

@@ -62,7 +62,7 @@ namespace UI
                     new Sales_page.Sales_Page(conn, acc).Show();
                     break;
                 case Department.Inventory:
-                    new Inventory_page.Inventory_page(conn).Show();
+                    new Inventory_page.Inventory_page(conn, acc).Show();
                     break;
                 case Department.Accounting:
                     new Accounting_page.Accounting_page().Show();
