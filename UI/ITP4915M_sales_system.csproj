@@ -101,11 +101,17 @@
     <Compile Include="API\Delivery team.cs" />
     <Compile Include="API\Department.cs" />
     <Compile Include="API\Item.cs" />
-    <Compile Include="Delivery Page\Delivery Page.cs">
+    <Compile Include="Delivery Page\Arrange Delivery Page.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Delivery Page\Delivery Page.Designer.cs">
-      <DependentUpon>Delivery Page.cs</DependentUpon>
+    <Compile Include="Delivery Page\Arrange Delivery Page.Designer.cs">
+      <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery Page\Delivery Page_deprecated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery Page\Delivery Page_deprecated.Designer.cs">
+      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
     </Compile>
     <Compile Include="Delivery Page\Delivery Team Page.cs">
       <SubType>Form</SubType>
@@ -220,8 +226,11 @@
     <EmbeddedResource Include="Accounting page\Accounting page.resx">
       <DependentUpon>Accounting page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Delivery Page\Delivery Page.resx">
-      <DependentUpon>Delivery Page.cs</DependentUpon>
+    <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.resx">
+      <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Delivery Page_deprecated.resx">
+      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>

@@ -76,7 +76,7 @@ namespace UI
                     break;
                 case Department.Delivery:
                     if (acc.Get_isManager() == true) {
-                        new Delivery_Page.Delivery_Page(conn, acc).Show(); //部門主管
+                        new Delivery_Page.Arrange_Delivery_Page(conn, acc).Show(); //部門主管
                         break;
                     }
                     new Delivery_Page.Delivery_Team_Page(conn, acc).Show(); //普通員工
