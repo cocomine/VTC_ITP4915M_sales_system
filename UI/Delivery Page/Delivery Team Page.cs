@@ -153,15 +153,5 @@ namespace UI.Delivery_Page
         {
             new My_Profile(conn, acc).Show();
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

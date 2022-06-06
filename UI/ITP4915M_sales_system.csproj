@@ -107,6 +107,12 @@
     <Compile Include="Delivery Page\Delivery Page.Designer.cs">
       <DependentUpon>Delivery Page.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delivery Page\Delivery Team Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery Page\Delivery Team Page.Designer.cs">
+      <DependentUpon>Delivery Team Page.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory page\item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,11 +125,11 @@
     <Compile Include="Inventory page\Item requested.Designer.cs">
       <DependentUpon>Item requested.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory page\Inventory page.cs">
+    <Compile Include="Inventory page\Inventory page_copy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory page\Inventory page.Designer.cs">
-      <DependentUpon>Inventory page.cs</DependentUpon>
+    <Compile Include="Inventory page\Inventory page_copy.Designer.cs">
+      <DependentUpon>Inventory page_copy.cs</DependentUpon>
     </Compile>
     <Compile Include="IT\Create Account.cs">
       <SubType>Form</SubType>
@@ -185,12 +191,6 @@
     <Compile Include="Technical Support page\Arrange installation workers.Designer.cs">
       <DependentUpon>Arrange installation workers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Technical Support page\Technical Support page.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Technical Support page\Technical Support page.Designer.cs">
-      <DependentUpon>Technical Support page.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accounting page\Accounting page.resx">
@@ -199,8 +199,11 @@
     <EmbeddedResource Include="Delivery Page\Delivery Page.resx">
       <DependentUpon>Delivery Page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\Inventory page.resx">
-      <DependentUpon>Inventory page.cs</DependentUpon>
+    <EmbeddedResource Include="Delivery Page\Delivery Team Page.resx">
+      <DependentUpon>Delivery Team Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory page_copy.resx">
+      <DependentUpon>Inventory page_copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Item requested.resx">
       <DependentUpon>Item requested.cs</DependentUpon>
@@ -237,9 +240,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Technical Support page\Arrange installation workers.resx">
       <DependentUpon>Arrange installation workers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Technical Support page\Technical Support page.resx">
-      <DependentUpon>Technical Support page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -331,5 +331,13 @@ namespace UI.Technical_Support_page
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
         }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
+            new My_Profile(conn, acc).Show();
+        }
     }
 }
