@@ -23,7 +23,7 @@ namespace UI.Sales_page {
         private Dictionary<Item, int> Unavailable_Item_Qty = new Dictionary<Item, int>(); //庫存不足物品, 會儲存尚欠多少件
         private double received = 0; //已收取金額
         private double total = 0; //需付金額
-        private string orderID; //訂單id
+        private string orderID = null; //訂單id
         private bool need_delivery = false; //是否需要送貨
         private bool need_install = false; //是否需要安裝
 
@@ -369,30 +369,60 @@ namespace UI.Sales_page {
             }
         }
 
-        //save order
         private void bt_save_Click(object sender, EventArgs e) {
-            //建立新的訂單紀錄, 並且取得訂單id
+            orderID = saveOrder(orderID);
+            if (orderID != null) {
+                tb_reshow_order.Text = orderID;
+                lb_save.Visible = true;
+            }
+        }
+
+        //save order
+        private string saveOrder(string orderID = null) {
+            //檢查有沒有物品
+            if (shoppingCart_Item.Count <= 0) {
+                MessageBox.Show("There are no items in the shopping cart.", "No item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            //訂單資訊
             try {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO `order` (Payment_Method, Charge, Status, DateTime) VALUES (2, 0, 1, @datetime); SELECT LAST_INSERT_ID() AS OrderID;", conn);
-                cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read()) {
-                    orderID = reader.GetString("OrderID");
+                if (orderID == null) { //有沒有訂單id
+                    //建立新的訂單紀錄, 並且取得訂單id
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `order` (Payment_Method, Charge, Status, DateTime) VALUES (2, 0, 1, @datetime); SELECT LAST_INSERT_ID() AS OrderID;", conn);
+                    cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read()) {
+                        orderID = reader.GetString("OrderID");
+                    }
+                    reader.Close();
+                } else {
+                    //更新訂單紀錄
+                    MySqlCommand cmd = new MySqlCommand("UPDATE `order` SET Status = 1, DateTime = @datetime WHERE OrderID = @OrderID", conn);
+                    cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    cmd.Parameters.AddWithValue("@OrderID", orderID);
+
+                    //沒有符合訂單
+                    if (cmd.ExecuteNonQuery() <= 0) {
+                        return saveOrder(); //沒有訂單id形式運行
+                    }
                 }
-                reader.Close();
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
 
             //將物品寫入數據庫
             try {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO order_item (OrderID, ItemID, Qty, Purchase_price) VALUES (@OrderID, @ItemID, @Qty, @Purchase_price)", conn);
+                //寫入前先清除數據
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM order_item WHERE OrderID = @OrderID;" +
+                    " INSERT INTO order_item (OrderID, ItemID, Qty, Purchase_price) VALUES (@OrderID, @ItemID, @Qty, @Purchase_price)", conn);
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
                 cmd.Parameters.AddWithValue("@ItemID", "");
                 cmd.Parameters.AddWithValue("@Qty", 0);
                 cmd.Parameters.AddWithValue("@Purchase_price", 0.0);
 
-                //逐件貨品放入
+                //逐件貨品寫入
                 foreach (Item item in shoppingCart_Item) {
                     cmd.Parameters["@ItemID"].Value = item.Id;
                     cmd.Parameters["@Qty"].Value = item.Qty;
@@ -405,12 +435,14 @@ namespace UI.Sales_page {
 
             //將套裝折扣寫入數據庫
             try {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO order_combo (OrderID, ComboID, Purchase_price) VALUES (@OrderID, @ComboID, @Purchase_price)", conn);
+                //寫入前先清除數據
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM order_combo WHERE OrderID = @OrderID;" +
+                    "INSERT INTO order_combo (OrderID, ComboID, Purchase_price) VALUES (@OrderID, @ComboID, @Purchase_price)", conn);
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
                 cmd.Parameters.AddWithValue("@ComboID", "");
                 cmd.Parameters.AddWithValue("@Purchase_price", 0.0);
 
-                //逐件套裝放入
+                //逐件套裝寫入
                 foreach (Combo combo in shoppingCart_Combo) {
                     cmd.Parameters["@ComboID"].Value = combo.Id;
                     cmd.Parameters["@Purchase_price"].Value = combo.Price;
@@ -419,11 +451,158 @@ namespace UI.Sales_page {
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
+
+            //return order id
+            MessageBox.Show("Order saved!\nOrder ID: " + orderID, "Order saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return orderID;
         }
 
         //e-payment pay
         private void bt_epay_Click(object sender, EventArgs e) {
 
+        }
+
+        //reshow order
+        private void bt_reshow_order_Click(object sender, EventArgs e) {
+            int Status, Payment_Method = 0;
+
+            //get order info
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT OrderID, Charge, Status, Payment_Method FROM `order` WHERE OrderID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", tb_reshow_order.Text);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        received = reader.GetDouble("Charge");
+                        Status = reader.GetInt32("Status");
+                        Payment_Method = reader.GetInt32("Payment_Method");
+                        orderID = reader.GetString("OrderID");
+                    }
+                } else {
+                    //沒有符合訂單
+                    MessageBox.Show("There are no matching order.", "No match order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
+            //get order item
+            shoppingCart_Item.Clear();
+            shoppingCart_Combo.Clear();
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT o.ItemID, o.Qty, o.Purchase_price, i.Name, i.Price, i.Type, i.Description FROM order_item o, item i WHERE o.ItemID = i.ItemID AND o.OrderID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", orderID);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        //create item obj
+                        Item item = new Item(reader.GetString("ItemID"), reader.GetString("Name"),
+                            Payment_Method == 2 ? reader.GetDouble("Price") : reader.GetDouble("Purchase_price"), //如果訂單尚未付款則使用物品價格, 否則使用下單時的價格
+                            reader.GetInt32("Type"), null,
+                            reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString("Description"), //如果description為null則輸入null
+                            reader.GetInt32("Qty"));
+
+                        shoppingCart_Item.Add(item); //add to shopping cart
+                    }
+                }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
+            //get order combo
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT o.ComboID, o.Purchase_price, c.Name, c.Price, c.Description FROM order_combo o, combo c WHERE o.ComboID = c.ComboID AND o.OrderID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", orderID);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        //create item obj
+                        Combo combo = new Combo(reader.GetString("ComboID"), reader.GetString("Name"),
+                            Payment_Method == 2 ? reader.GetDouble("Price") : reader.GetDouble("Purchase_price"), //如果訂單尚未付款則使用物品價格, 否則使用下單時的價格
+                            reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString("Description")); //如果description為null則輸入null
+
+                        shoppingCart_Combo.Add(combo); //add to combo shopping cart
+                    }
+                }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
+            //get combo item
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT ItemID FROM combo_item WHERE ComboID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", "");
+                foreach (Combo combo in shoppingCart_Combo) {
+                    cmd.Parameters["@id"].Value = combo.Id;
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows) {
+                        while (reader.Read()) {
+                            combo.AddItem(shoppingCart_Item.Find(x => x.Id == reader.GetString("ItemID"))); //Add item to combo
+                        }
+                    }
+                    reader.Close();
+                }
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
+            //UI update
+            ShowList();
+            CountPrice();
+
+            //set xxx
+            if (received >= total) {
+                bt_cash.Enabled = false;
+                bt_epay.Enabled = false;
+            } else {
+                bt_cash.Enabled = true;
+                bt_epay.Enabled = true;
+            }
+        }
+
+        private void bt_cash_Click(object sender, EventArgs e) {
+            if (saveOrder(orderID) == null) return; //save order first
+
+            //檢查是否numbers
+            double charge = 0;
+            try {
+                charge = double.Parse(tb_charge.Text);
+            }catch(Exception ex) {
+                MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            double change = charge - total; //找錢
+            if (change >= 0) {
+                //全額付款
+                tb_charge.Text = String.Format("{0:C}", change);
+                lb_paid.Visible = true;
+            } else {
+                //非全額付款
+                tb_charge.Text = String.Format("{0:C}", 0);
+            }
+
+            //更新訂單紀錄
+            try {
+                MySqlCommand cmd = new MySqlCommand("UPDATE `order` SET Status = @Status, Charge = @Charge, DateTime = @datetime WHERE OrderID = @OrderID", conn);
+                cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@Status", change >= 0 ? 2 : 7); //2:completed 7:no completed
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                cmd.Parameters.AddWithValue("@Charge", charge);
+                cmd.ExecuteNonQuery();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
+            //Todo: 更新庫存
+            //todo: 需要送貨及安裝, 要求輸入客戶資訊
+            //todo: 需要送貨及安裝, 添加記錄
+            //todo: 打印收據pdf
         }
     }
 }

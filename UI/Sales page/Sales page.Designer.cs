@@ -61,11 +61,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lb_save = new System.Windows.Forms.Label();
             this.tb_total = new System.Windows.Forms.TextBox();
             this.tb_reveived = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lb_paid = new System.Windows.Forms.Label();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_discount = new System.Windows.Forms.TextBox();
@@ -82,6 +82,7 @@
             this.bt_cash = new System.Windows.Forms.Button();
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.bt_remove_item = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -134,6 +135,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.bt_remove_item);
             this.panel1.Controls.Add(this.lv_item_list);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -156,7 +158,7 @@
             this.lv_item_list.Location = new System.Drawing.Point(3, 22);
             this.lv_item_list.Name = "lv_item_list";
             this.lv_item_list.ShowGroups = false;
-            this.lv_item_list.Size = new System.Drawing.Size(261, 398);
+            this.lv_item_list.Size = new System.Drawing.Size(261, 372);
             this.lv_item_list.TabIndex = 1;
             this.lv_item_list.UseCompatibleStateImageBehavior = false;
             this.lv_item_list.View = System.Windows.Forms.View.Details;
@@ -251,6 +253,7 @@
             this.bt_reshow_order.TabIndex = 8;
             this.bt_reshow_order.Text = "Re-show order";
             this.bt_reshow_order.UseVisualStyleBackColor = true;
+            this.bt_reshow_order.Click += new System.EventHandler(this.bt_reshow_order_Click);
             // 
             // label15
             // 
@@ -419,11 +422,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.lb_save);
             this.groupBox2.Controls.Add(this.tb_total);
             this.groupBox2.Controls.Add(this.tb_reveived);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.lb_paid);
             this.groupBox2.Controls.Add(this.tb_subtotal);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.tb_discount);
@@ -445,16 +448,17 @@
             this.label10.TabIndex = 10;
             this.label10.Text = "Total";
             // 
-            // label17
+            // lb_save
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label17.Location = new System.Drawing.Point(64, 143);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(94, 21);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Order Save";
+            this.lb_save.AutoSize = true;
+            this.lb_save.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lb_save.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lb_save.Location = new System.Drawing.Point(64, 143);
+            this.lb_save.Name = "lb_save";
+            this.lb_save.Size = new System.Drawing.Size(94, 21);
+            this.lb_save.TabIndex = 9;
+            this.lb_save.Text = "Order Save";
+            this.lb_save.Visible = false;
             // 
             // tb_total
             // 
@@ -487,16 +491,17 @@
             this.label14.TabIndex = 7;
             this.label14.Text = "Received";
             // 
-            // label13
+            // lb_paid
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label13.Location = new System.Drawing.Point(10, 144);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 21);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Paid";
+            this.lb_paid.AutoSize = true;
+            this.lb_paid.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lb_paid.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lb_paid.Location = new System.Drawing.Point(10, 144);
+            this.lb_paid.Name = "lb_paid";
+            this.lb_paid.Size = new System.Drawing.Size(43, 21);
+            this.lb_paid.TabIndex = 6;
+            this.lb_paid.Text = "Paid";
+            this.lb_paid.Visible = false;
             // 
             // tb_subtotal
             // 
@@ -657,6 +662,7 @@
             this.bt_cash.TabIndex = 2;
             this.bt_cash.Text = "Use Cash";
             this.bt_cash.UseVisualStyleBackColor = true;
+            this.bt_cash.Click += new System.EventHandler(this.bt_cash_Click);
             // 
             // tb_charge
             // 
@@ -675,6 +681,15 @@
             this.label11.Size = new System.Drawing.Size(77, 12);
             this.label11.TabIndex = 0;
             this.label11.Text = "Charge amount";
+            // 
+            // bt_remove_item
+            // 
+            this.bt_remove_item.Location = new System.Drawing.Point(3, 400);
+            this.bt_remove_item.Name = "bt_remove_item";
+            this.bt_remove_item.Size = new System.Drawing.Size(261, 23);
+            this.bt_remove_item.TabIndex = 2;
+            this.bt_remove_item.Text = "Remove select item";
+            this.bt_remove_item.UseVisualStyleBackColor = true;
             // 
             // Sales_Page
             // 
@@ -751,10 +766,10 @@
         private System.Windows.Forms.TextBox tb_reveived;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button bt_save;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lb_save;
         private System.Windows.Forms.TextBox tb_deposit;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lb_paid;
         private System.Windows.Forms.TextBox tb_change;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
@@ -766,5 +781,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox tb_add_name;
+        private System.Windows.Forms.Button bt_remove_item;
     }
 }
