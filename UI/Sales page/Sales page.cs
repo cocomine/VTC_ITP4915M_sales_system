@@ -479,7 +479,17 @@ namespace UI.Sales_page {
 
         //e-payment pay
         private void bt_epay_Click(object sender, EventArgs e) {
+            //檢查是否numbers
+            double charge = 0;
+            try {
+                charge = double.Parse(tb_charge.Text);
+            } catch (Exception ex) {
+                MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            if (charge > total) charge = total; //如果大於總數, 則直接改為總數
+            checkout(charge, 1); //checkout e-payment pay
         }
 
         //reshow order
@@ -598,17 +608,28 @@ namespace UI.Sales_page {
             }
         }
 
+        //cash pay
         private void bt_cash_Click(object sender, EventArgs e) {
-            if (saveOrder(orderID) == null) return; //save order first
-
             //檢查是否numbers
             double charge = 0;
             try {
                 charge = double.Parse(tb_charge.Text);
-            }catch(Exception ex) {
+            } catch (Exception ex) {
                 MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            checkout(charge, 0); //checkout cash
+        }
+
+        //結帳
+        private void checkout(double charge, int payment_Method) {
+            //金額必須大於零
+            if (charge <= 0) {
+                MessageBox.Show("Please enter the amount", "CheckOut", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (saveOrder(orderID) == null) return; //save order first
 
             double change = charge - total; //找錢
             if (change >= 0) {
@@ -622,17 +643,26 @@ namespace UI.Sales_page {
 
             //更新訂單紀錄
             try {
-                MySqlCommand cmd = new MySqlCommand("UPDATE `order` SET Status = @Status, Charge = @Charge, DateTime = @datetime WHERE OrderID = @OrderID", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE `order` SET Status = @Status, Charge = @Charge, Payment_Method = @Payment_Method, DateTime = @datetime WHERE OrderID = @OrderID", conn);
                 cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                cmd.Parameters.AddWithValue("@Status", change >= 0 ? 2 : 7); //2:completed 7:no completed
+                cmd.Parameters.AddWithValue("@Status", change >= 0 ? 2 : 7); //2:completed 7:款項未完全交付
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
                 cmd.Parameters.AddWithValue("@Charge", charge);
+                cmd.Parameters.AddWithValue("@Payment_Method", payment_Method);
                 cmd.ExecuteNonQuery();
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
 
-            //Todo: 更新庫存
+            //更新庫存
+            try {
+                MySqlCommand cmd = new MySqlCommand("UPDATE  WHERE ", conn);
+                cmd.Parameters.AddWithValue("@", "");
+                cmd.ExecuteNonQuery();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
             //todo: 需要送貨及安裝, 要求輸入客戶資訊
             //todo: 需要送貨及安裝, 添加記錄
             //todo: 打印收據pdf
