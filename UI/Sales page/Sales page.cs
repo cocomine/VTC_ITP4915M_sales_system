@@ -64,6 +64,7 @@ namespace UI.Sales_page {
                 if (data.HasRows) {
                     while (data.Read()) {
                         StoreID = data.GetString("StoreID");
+                        this.Text += " (Store: " + StoreID + ")";
                     }
                 } else {
                     MessageBox.Show("The employee is not assigned to any store", "Not assigned", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,7 +155,8 @@ namespace UI.Sales_page {
                 //檢查庫存是否足夠
                 int Unavailable_qty = data.GetInt32("Qty") - item.Qty;
                 if (Unavailable_qty < 0) {
-                    if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item]++;
+                    Unavailable_qty = Math.Abs(Unavailable_qty);
+                    if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
                     else Unavailable_Item_Qty.Add(item, Unavailable_qty);
                 }
 
@@ -169,6 +171,8 @@ namespace UI.Sales_page {
 
         //檢查套裝
         private void checkCombo() {
+            shoppingCart_Combo.Clear();
+
             //check in shopping cart have item match combo
             List<string> items_id_list = new List<string>();
             Dictionary<string, int> dic = new Dictionary<string, int>();
@@ -327,16 +331,19 @@ namespace UI.Sales_page {
 
             //計算不可用物品所佔金額
             foreach (KeyValuePair<Item, int> Unavailable_item in Unavailable_Item_Qty) {
-                double this_Unavailable = Unavailable_item.Key.Price * Math.Abs(Unavailable_item.Value);
+                double this_Unavailable = Unavailable_item.Key.Price * Unavailable_item.Value;
                 if (Unavailable_item.Key.Price > 5000) {
                     deposit += this_Unavailable * 0.2; //大於5000, 20%訂金
                     Unavailable += this_Unavailable;
                 }
+                Console.WriteLine(deposit);
+                Console.WriteLine(Unavailable);
+                Console.WriteLine(this_Unavailable);
             }
 
             total = subtotal - discount - received; //實付總額
-            deposit = total - Unavailable + deposit; //20%訂金總額
-            deposit = deposit < 0 ? total : deposit;
+            deposit = subtotal - Unavailable + deposit; //20%訂金總額
+            deposit = deposit > total ? total : deposit;
 
             tb_subtotal.Text = String.Format("{0:C}", subtotal);
             tb_discount.Text = String.Format("-{0:C}", discount);
@@ -354,6 +361,9 @@ namespace UI.Sales_page {
         private void tb_reshow_order_KeyUp(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) bt_reshow_order.PerformClick(); //Enter key
         }
+        private void lv_item_list_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Delete) bt_remove_item.PerformClick(); //Del key
+        }
 
         //選擇該物件, 顯示該物件詳情
         private void lv_item_list_SelectedIndexChanged(object sender, EventArgs e) {
@@ -369,11 +379,13 @@ namespace UI.Sales_page {
             }
         }
 
+        //save order btn click
         private void bt_save_Click(object sender, EventArgs e) {
-            orderID = saveOrder(orderID);
-            if (orderID != null) {
-                tb_reshow_order.Text = orderID;
-                lb_save.Visible = true;
+            string orderID = saveOrder(this.orderID);
+            if(orderID != null) {
+                this.orderID = orderID;
+                lb_orderID.Text = "Order ID: "+orderID;
+                lb_orderID.Visible = true;
             }
         }
 
@@ -415,8 +427,11 @@ namespace UI.Sales_page {
             //將物品寫入數據庫
             try {
                 //寫入前先清除數據
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM order_item WHERE OrderID = @OrderID;" +
-                    " INSERT INTO order_item (OrderID, ItemID, Qty, Purchase_price) VALUES (@OrderID, @ItemID, @Qty, @Purchase_price)", conn);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM order_item WHERE OrderID = @OrderID;", conn);
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                cmd.ExecuteNonQuery();
+
+                cmd = new MySqlCommand("INSERT INTO order_item (OrderID, ItemID, Qty, Purchase_price) VALUES (@OrderID, @ItemID, @Qty, @Purchase_price)", conn);
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
                 cmd.Parameters.AddWithValue("@ItemID", "");
                 cmd.Parameters.AddWithValue("@Qty", 0);
@@ -436,8 +451,11 @@ namespace UI.Sales_page {
             //將套裝折扣寫入數據庫
             try {
                 //寫入前先清除數據
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM order_combo WHERE OrderID = @OrderID;" +
-                    "INSERT INTO order_combo (OrderID, ComboID, Purchase_price) VALUES (@OrderID, @ComboID, @Purchase_price)", conn);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM order_combo WHERE OrderID = @OrderID", conn);
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                cmd.ExecuteNonQuery();
+
+                cmd = new MySqlCommand("INSERT INTO order_combo (OrderID, ComboID, Purchase_price) VALUES (@OrderID, @ComboID, @Purchase_price)", conn);
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
                 cmd.Parameters.AddWithValue("@ComboID", "");
                 cmd.Parameters.AddWithValue("@Purchase_price", 0.0);
@@ -454,6 +472,8 @@ namespace UI.Sales_page {
 
             //return order id
             MessageBox.Show("Order saved!\nOrder ID: " + orderID, "Order saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            tb_reshow_order.Text = orderID;
+            lb_save.Visible = true;
             return orderID;
         }
 
@@ -465,11 +485,14 @@ namespace UI.Sales_page {
         //reshow order
         private void bt_reshow_order_Click(object sender, EventArgs e) {
             int Status, Payment_Method = 0;
+            string orderID = tb_reshow_order.Text;
+            reset_All(); //reaet all
 
+            
             //get order info
             try {
                 MySqlCommand cmd = new MySqlCommand("SELECT OrderID, Charge, Status, Payment_Method FROM `order` WHERE OrderID = @id", conn);
-                cmd.Parameters.AddWithValue("@id", tb_reshow_order.Text);
+                cmd.Parameters.AddWithValue("@id", orderID);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows) {
                     while (reader.Read()) {
@@ -481,6 +504,7 @@ namespace UI.Sales_page {
                 } else {
                     //沒有符合訂單
                     MessageBox.Show("There are no matching order.", "No match order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    reader.Close();
                     return;
                 }
                 reader.Close();
@@ -489,11 +513,11 @@ namespace UI.Sales_page {
             }
 
             //get order item
-            shoppingCart_Item.Clear();
-            shoppingCart_Combo.Clear();
             try {
-                MySqlCommand cmd = new MySqlCommand("SELECT o.ItemID, o.Qty, o.Purchase_price, i.Name, i.Price, i.Type, i.Description FROM order_item o, item i WHERE o.ItemID = i.ItemID AND o.OrderID = @id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT o.ItemID, o.Qty, o.Purchase_price, i.Name, i.Price, i.Type, i.Description, t.Qty AS `Stocks` FROM order_item o, item i, inventory t " +
+                    "WHERE o.ItemID = i.ItemID AND i.ItemID = t.ItemID AND o.OrderID = @id AND t.StoreWarehouseID = @StoreID;", conn);
                 cmd.Parameters.AddWithValue("@id", orderID);
+                cmd.Parameters.AddWithValue("@StoreID", StoreID);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows) {
                     while (reader.Read()) {
@@ -505,6 +529,14 @@ namespace UI.Sales_page {
                             reader.GetInt32("Qty"));
 
                         shoppingCart_Item.Add(item); //add to shopping cart
+
+                        //check stocks
+                        int Unavailable_qty = reader.GetInt32("Stocks") - item.Qty;
+                        if (Unavailable_qty < 0) {
+                            Unavailable_qty = Math.Abs(Unavailable_qty);
+                            if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
+                            else Unavailable_Item_Qty.Add(item, Unavailable_qty);
+                        }
                     }
                 }
                 reader.Close();
@@ -554,14 +586,15 @@ namespace UI.Sales_page {
             //UI update
             ShowList();
             CountPrice();
+            lb_orderID.Text = "Order ID: " + orderID;
+            lb_orderID.Visible = true;
+            this.orderID = orderID;
 
             //set xxx
             if (received >= total) {
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
-            } else {
-                bt_cash.Enabled = true;
-                bt_epay.Enabled = true;
+                lb_paid.Visible = true;
             }
         }
 
@@ -603,6 +636,64 @@ namespace UI.Sales_page {
             //todo: 需要送貨及安裝, 要求輸入客戶資訊
             //todo: 需要送貨及安裝, 添加記錄
             //todo: 打印收據pdf
+        }
+
+        //remove item
+        private void bt_remove_item_Click(object sender, EventArgs e) {
+            foreach(ListViewItem x in lv_item_list.SelectedItems) {
+                Item item = x.Tag as Item;
+                if (item != null) {
+                    shoppingCart_Item.Remove(item);
+                }
+            }
+
+            checkCombo();
+            ShowList();
+            CountPrice();
+        }
+
+        //重置
+        private void bt_reset_Click(object sender, EventArgs e) {
+            reset_All();
+        }
+
+        //重置表單
+        private void reset_All() {
+            //clear up shopping list
+            shoppingCart_Combo.Clear();
+            shoppingCart_Item.Clear();
+            Unavailable_Item_Qty.Clear();
+
+            //reset control
+            lv_item_list.Items.Clear();
+            tb_item_description.Clear();
+            chb_item_install.Checked = false;
+            chb_item_large.Checked = false;
+            lb_orderID.Visible = false;
+            lb_paid.Visible = false;
+            lb_save.Visible = false;
+
+            //clear all textbox
+            List<TextBox> AllTextBox = new List<TextBox>();
+            AllTextBox = findAllTextBox(AllTextBox, this);
+            AllTextBox.ForEach(x => x.Text = "");
+
+            //reset variable
+            orderID = null;
+            total = 0;
+            received = 0;
+            need_delivery = false;
+            need_install = false;
+        }
+
+        //在control中尋找所有text box
+        private List<TextBox> findAllTextBox(List<TextBox> list, Control parent) {
+            foreach (Control control in parent.Controls) {
+                if (control is TextBox box) list.Add(box);
+                if (control is Panel) findAllTextBox(list, control);
+                if (control is GroupBox) findAllTextBox(list, control);
+            }
+            return list;
         }
     }
 }

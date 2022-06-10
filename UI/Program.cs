@@ -12,6 +12,7 @@ namespace UI
     {
         private static MySqlConnection conn; //sql Connection
         private static int pageNum = 0;
+        private static Timer timer;
 
         /// <summary>
         /// The main entry point for the application.

@@ -34,6 +34,7 @@
             this.salesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bt_remove_item = new System.Windows.Forms.Button();
             this.lv_item_list = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -82,7 +83,8 @@
             this.bt_cash = new System.Windows.Forms.Button();
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.bt_remove_item = new System.Windows.Forms.Button();
+            this.lb_orderID = new System.Windows.Forms.Label();
+            this.bt_reset = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -135,6 +137,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.bt_reset);
             this.panel1.Controls.Add(this.bt_remove_item);
             this.panel1.Controls.Add(this.lv_item_list);
             this.panel1.Controls.Add(this.label1);
@@ -143,6 +146,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(264, 426);
             this.panel1.TabIndex = 1;
+            // 
+            // bt_remove_item
+            // 
+            this.bt_remove_item.Location = new System.Drawing.Point(133, 400);
+            this.bt_remove_item.Name = "bt_remove_item";
+            this.bt_remove_item.Size = new System.Drawing.Size(131, 23);
+            this.bt_remove_item.TabIndex = 2;
+            this.bt_remove_item.Text = "Remove select item";
+            this.bt_remove_item.UseVisualStyleBackColor = true;
+            this.bt_remove_item.Click += new System.EventHandler(this.bt_remove_item_Click);
             // 
             // lv_item_list
             // 
@@ -163,6 +176,7 @@
             this.lv_item_list.UseCompatibleStateImageBehavior = false;
             this.lv_item_list.View = System.Windows.Forms.View.Details;
             this.lv_item_list.SelectedIndexChanged += new System.EventHandler(this.lv_item_list_SelectedIndexChanged);
+            this.lv_item_list.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lv_item_list_KeyUp);
             // 
             // columnHeader1
             // 
@@ -575,6 +589,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lb_orderID);
             this.groupBox1.Controls.Add(this.bt_save);
             this.groupBox1.Controls.Add(this.tb_deposit);
             this.groupBox1.Controls.Add(this.label16);
@@ -682,14 +697,27 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Charge amount";
             // 
-            // bt_remove_item
+            // lb_orderID
             // 
-            this.bt_remove_item.Location = new System.Drawing.Point(3, 400);
-            this.bt_remove_item.Name = "bt_remove_item";
-            this.bt_remove_item.Size = new System.Drawing.Size(261, 23);
-            this.bt_remove_item.TabIndex = 2;
-            this.bt_remove_item.Text = "Remove select item";
-            this.bt_remove_item.UseVisualStyleBackColor = true;
+            this.lb_orderID.AutoSize = true;
+            this.lb_orderID.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_orderID.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lb_orderID.Location = new System.Drawing.Point(12, 115);
+            this.lb_orderID.Name = "lb_orderID";
+            this.lb_orderID.Size = new System.Drawing.Size(67, 17);
+            this.lb_orderID.TabIndex = 11;
+            this.lb_orderID.Text = "Order ID: ";
+            this.lb_orderID.Visible = false;
+            // 
+            // bt_reset
+            // 
+            this.bt_reset.Location = new System.Drawing.Point(3, 400);
+            this.bt_reset.Name = "bt_reset";
+            this.bt_reset.Size = new System.Drawing.Size(124, 23);
+            this.bt_reset.TabIndex = 3;
+            this.bt_reset.Text = "Clear All";
+            this.bt_reset.UseVisualStyleBackColor = true;
+            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
             // 
             // Sales_Page
             // 
@@ -782,5 +810,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox tb_add_name;
         private System.Windows.Forms.Button bt_remove_item;
+        private System.Windows.Forms.Label lb_orderID;
+        private System.Windows.Forms.Button bt_reset;
     }
 }
