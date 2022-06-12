@@ -60,26 +60,39 @@ namespace UI.Inventory_page
 
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
-        {
-            tblNameBs.MoveNext();
-        }
-
-
 
         private void ItemID_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
+
+        private void Next_Click(object sender, EventArgs e)
+        {
+            tblNameBs.MoveNext();
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+        }
+
+        private void Previous_Click(object sender, EventArgs e)
         {
             tblNameBs.MovePrevious();
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+        }
+
+        private void First_Click(object sender, EventArgs e)
+        {
+            tblNameBs.MoveFirst();
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+        }
+
+        private void Last_Click(object sender, EventArgs e)
+        {
+            tblNameBs.MoveLast();
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[tblNameBs.Position].Selected = true;
         }
     }
 }

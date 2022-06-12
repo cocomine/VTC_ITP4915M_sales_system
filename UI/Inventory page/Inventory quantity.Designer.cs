@@ -89,6 +89,7 @@
             this.First.TabIndex = 8;
             this.First.Text = "First";
             this.First.UseVisualStyleBackColor = true;
+            this.First.Click += new System.EventHandler(this.First_Click);
             // 
             // label2
             // 
@@ -107,6 +108,7 @@
             this.Previous.TabIndex = 13;
             this.Previous.Text = "Previous";
             this.Previous.UseVisualStyleBackColor = true;
+            this.Previous.Click += new System.EventHandler(this.Previous_Click);
             // 
             // Next
             // 
@@ -116,6 +118,7 @@
             this.Next.TabIndex = 14;
             this.Next.Text = "Next";
             this.Next.UseVisualStyleBackColor = true;
+            this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
             // Last
             // 
@@ -125,6 +128,7 @@
             this.Last.TabIndex = 15;
             this.Last.Text = "Last";
             this.Last.UseVisualStyleBackColor = true;
+            this.Last.Click += new System.EventHandler(this.Last_Click);
             // 
             // comboBox1
             // 
