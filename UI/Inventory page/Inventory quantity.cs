@@ -16,6 +16,9 @@ namespace UI.Inventory_page
     public partial class Inventory_quantity : Form
     {
         private MySqlConnection conn;
+        MySqlDataAdapter da = new MySqlDataAdapter();
+        DataSet ds = new DataSet();
+        BindingSource tblNameBs = new BindingSource();
         public Inventory_quantity(MySqlConnection conn)
         {
             this.conn = conn;
@@ -32,11 +35,10 @@ namespace UI.Inventory_page
         private void Inventory_quantity_Load(object sender, EventArgs e)
         {
             Program.addPage();
-
-            MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
-            DataTable dtbl = new DataTable();
-            sqlda.Fill(dtbl);
-            dataGridView1.DataSource = dtbl;
+            da.SelectCommand = new MySqlCommand("SELECT * FROM `inventory`", conn);
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            tblNameBs.DataSource = ds.Tables[0];
 
 
         }
