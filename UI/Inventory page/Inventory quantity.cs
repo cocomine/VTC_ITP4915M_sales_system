@@ -41,7 +41,9 @@ namespace UI.Inventory_page
             tblNameBs.DataSource = ds.Tables[0];
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
 
+            //ComboBox
 
+            comboBox1
 
         }
 
@@ -93,6 +95,11 @@ namespace UI.Inventory_page
             tblNameBs.MoveLast();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

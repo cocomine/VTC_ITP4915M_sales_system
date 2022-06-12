@@ -94,7 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(476, 17);
+            this.label2.Location = new System.Drawing.Point(415, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 12);
             this.label2.TabIndex = 12;
@@ -133,17 +133,18 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(578, 14);
+            this.comboBox1.Location = new System.Drawing.Point(517, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(145, 20);
             this.comboBox1.TabIndex = 16;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btDelete
             // 
             this.btDelete.BackColor = System.Drawing.Color.IndianRed;
             this.btDelete.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btDelete.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.btDelete.Location = new System.Drawing.Point(390, 9);
+            this.btDelete.Location = new System.Drawing.Point(668, 9);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(80, 28);
             this.btDelete.TabIndex = 17;
