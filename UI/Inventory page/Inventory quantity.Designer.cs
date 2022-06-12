@@ -61,7 +61,7 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 28);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(776, 386);
@@ -99,6 +99,7 @@
             this.bindingNavigator1.Size = new System.Drawing.Size(800, 25);
             this.bindingNavigator1.TabIndex = 3;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            this.bindingNavigator1.RefreshItems += new System.EventHandler(this.bindingNavigator1_RefreshItems);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -214,6 +215,8 @@
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Inventory_quantity";
             this.Text = "Inventory quantity";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_quantity_Closing);
+            this.Load += new System.EventHandler(this.Inventory_quantity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();

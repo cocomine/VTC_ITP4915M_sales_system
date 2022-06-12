@@ -24,5 +24,24 @@ namespace UI.Inventory_page
         {
 
         }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Inventory_quantity_Load(object sender, EventArgs e)
+        {
+            Program.addPage();
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory`", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void Inventory_quantity_Closing(object sender, FormClosingEventArgs e)
+        {
+            Program.removePage();
+        }
     }
 }
