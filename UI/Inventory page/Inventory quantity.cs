@@ -19,6 +19,8 @@ namespace UI.Inventory_page
         MySqlDataAdapter da = new MySqlDataAdapter();
         DataSet ds = new DataSet();
         BindingSource tblNameBs = new BindingSource();
+        MySqlCommand SelectCommand;
+
         public Inventory_quantity(MySqlConnection conn)
         {
             this.conn = conn;
@@ -43,7 +45,8 @@ namespace UI.Inventory_page
 
             //ComboBox
 
-            comboBox1
+
+    
 
         }
 
@@ -98,6 +101,11 @@ namespace UI.Inventory_page
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Search_Click(object sender, EventArgs e)
         {
 
         }
