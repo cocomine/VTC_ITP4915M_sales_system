@@ -40,7 +40,7 @@ namespace UI.Inventory_page
             dataGridView1.DataSource = ds.Tables[0];
             tblNameBs.DataSource = ds.Tables[0];
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
-            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "StoreWarehouseID"));
+
 
 
         }
@@ -70,10 +70,7 @@ namespace UI.Inventory_page
             tblNameBs.MoveNext();
         }
 
-        private void cb_warehouse_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void ItemID_Click(object sender, EventArgs e)
         {
