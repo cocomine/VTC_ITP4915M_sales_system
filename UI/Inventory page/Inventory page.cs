@@ -35,7 +35,7 @@ namespace UI.Inventory_page
         }
 
         private void warehouseToolStripMenuItem_Click(object sender, EventArgs e) {
-            openChildForm(new Inventory_quantity());
+            openChildForm(new Inventory_quantity(conn));
         }
 
         private void itemRequestedToolStripMenuItem_Click(object sender, EventArgs e) {
