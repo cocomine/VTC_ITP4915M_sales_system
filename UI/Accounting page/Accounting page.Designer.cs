@@ -120,6 +120,7 @@
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Accounting_page";
             this.Text = "Accounting page";
+            this.Load += new System.EventHandler(this.Accounting_page_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

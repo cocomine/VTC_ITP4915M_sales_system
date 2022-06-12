@@ -1,8 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,6 +33,12 @@ namespace UI.Inventory_page
         {
             Program.addPage();
 
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("select * from delivery", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+
+
         }
 
         private void Inventory_quantity_Closing(object sender, FormClosingEventArgs e)
@@ -39,6 +47,21 @@ namespace UI.Inventory_page
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
         {
 
         }
