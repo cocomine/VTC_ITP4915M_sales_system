@@ -47,6 +47,10 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cb_warehouse = new System.Windows.Forms.ToolStripComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ItemID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
@@ -133,6 +137,7 @@
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMovePreviousItem.Text = "移到上一個";
+            this.bindingNavigatorMovePreviousItem.Click += new System.EventHandler(this.bindingNavigatorMovePreviousItem_Click);
             // 
             // bindingNavigatorSeparator
             // 
@@ -194,6 +199,7 @@
             this.cb_warehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_warehouse.Name = "cb_warehouse";
             this.cb_warehouse.Size = new System.Drawing.Size(121, 25);
+            this.cb_warehouse.Click += new System.EventHandler(this.cb_warehouse_Click);
             // 
             // dataGridView1
             // 
@@ -205,15 +211,52 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 386);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 332);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(68, 378);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 22);
+            this.textBox1.TabIndex = 4;
+            // 
+            // ItemID
+            // 
+            this.ItemID.AutoSize = true;
+            this.ItemID.Location = new System.Drawing.Point(12, 381);
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Size = new System.Drawing.Size(38, 12);
+            this.ItemID.TabIndex = 5;
+            this.ItemID.Text = "ItemID";
+            this.ItemID.Click += new System.EventHandler(this.ItemID_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(486, 384);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "StoreWarehouseID ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(588, 381);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(200, 22);
+            this.textBox2.TabIndex = 6;
             // 
             // Inventory_quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 426);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ItemID);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -250,5 +293,9 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox cb_warehouse;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label ItemID;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
