@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Odbc;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -107,7 +108,30 @@ namespace UI.Inventory_page
 
         private void Search_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (comboBox1.Text != null && comboBox1.Text != "")
+                {
+                    MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + comboBox1.Text, conn);
+                    DataTable dtbl = new DataTable();
+                    sqlda.Fill(dtbl);
+                    dataGridView1.DataSource = dtbl;
+                }
+            }catch(Exception ea)
+            {
+                MessageBox.Show("Please select one StoreWarehouseID", "顯示");
+            }
+
+
+            }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+
+
+
 
         }
     }
-}
+    }
+
