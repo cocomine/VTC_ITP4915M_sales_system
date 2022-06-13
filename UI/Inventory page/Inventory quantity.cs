@@ -112,10 +112,15 @@ namespace UI.Inventory_page
             {
                 if (comboBox1.Text != null && comboBox1.Text != "")
                 {
+                    
                     MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + comboBox1.Text, conn);
                     DataTable dtbl = new DataTable();
+                    dtbl.Clear();
                     sqlda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;
+                    
+
+
                 }
             }catch(Exception ea)
             {
@@ -131,13 +136,11 @@ namespace UI.Inventory_page
 
             MySqlDataAdapter sqlda1 = new MySqlDataAdapter("DELETE FROM `inventory` WHERE `inventory`.`ItemID` = '" + textBox1.Text+"'", conn);
             DataTable dtbl1 = new DataTable();
+            dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
 
-            sqlda1 = new MySqlDataAdapter("SELECT * FROM `inventory`  " + comboBox1.Text, conn);
-            dtbl1 = new DataTable();
-            sqlda1.Fill(dtbl1);
-            dataGridView1.DataSource = dtbl1;
+            reload();
         }
 
         private void dataGridView1_CellCick(object sender, DataGridViewCellEventArgs e)
@@ -149,6 +152,11 @@ namespace UI.Inventory_page
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            reload();
+        }
+
+        public void reload()
         {
             MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` ", conn);
             DataTable dtbl = new DataTable();
