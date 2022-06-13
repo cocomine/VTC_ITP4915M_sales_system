@@ -99,7 +99,7 @@ namespace UI.IT
         private void Create_account_Click(object sender, EventArgs e) {
             //create account
             DialogResult dialogResult = new Create_Account(conn).ShowDialog();
-            Console.WriteLine(dialogResult);
+            //Console.WriteLine(dialogResult);
             if (dialogResult == DialogResult.OK) {
                 //Console.WriteLine("ok");
                 ds_staff.Clear();

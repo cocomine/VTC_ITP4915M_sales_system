@@ -68,7 +68,7 @@ namespace UI.Sales_page {
                     }
                 } else {
                     MessageBox.Show("The employee is not assigned to any store", "Not assigned", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
+                    this.Close();
                 }
                 data.Close(); //close up
             } catch (MySqlException ex) {
@@ -483,7 +483,7 @@ namespace UI.Sales_page {
             double charge = 0;
             try {
                 charge = double.Parse(tb_charge.Text);
-            } catch (Exception ex) {
+            } catch (Exception) {
                 MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -614,7 +614,7 @@ namespace UI.Sales_page {
             double charge = 0;
             try {
                 charge = double.Parse(tb_charge.Text);
-            } catch (Exception ex) {
+            } catch (Exception) {
                 MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -624,6 +624,20 @@ namespace UI.Sales_page {
 
         //結帳
         private void checkout(double charge, int payment_Method) {
+
+            // 需要送貨及安裝, 要求輸入客戶資訊
+            Customer_info Customer_info_form = new Customer_info(conn);
+            if (need_delivery || need_install) {
+                DialogResult result = Customer_info_form.ShowDialog();
+                if (result != DialogResult.OK) {
+                    return; //取消輸入 => 取消付款流程
+                }
+            }
+
+            string CustomerID = Customer_info_form.CustomerID;
+            Console.WriteLine(CustomerID);
+            return;
+
             //金額必須大於零
             if (charge <= 0) {
                 MessageBox.Show("Please enter the amount", "CheckOut", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -656,14 +670,19 @@ namespace UI.Sales_page {
 
             //更新庫存
             try {
-                MySqlCommand cmd = new MySqlCommand("UPDATE  WHERE ", conn);
-                cmd.Parameters.AddWithValue("@", "");
-                cmd.ExecuteNonQuery();
+                MySqlCommand cmd = new MySqlCommand("UPDATE inventory SET Qty = (Qty - @Qty) WHERE ItemID = @ItemID AND StoreWarehouseID = @StoreID", conn);
+                cmd.Parameters.AddWithValue("@StoreID", StoreID);
+                cmd.Parameters.AddWithValue("@ItemID", "");
+                cmd.Parameters.AddWithValue("@Qty", 0);
+                shoppingCart_Item.ForEach(item => {
+                    cmd.Parameters["@ItemID"].Value = item.Id;
+                    cmd.Parameters["@Qty"].Value = item.Qty;
+                    cmd.ExecuteNonQuery();
+                });
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
 
-            //todo: 需要送貨及安裝, 要求輸入客戶資訊
             //todo: 需要送貨及安裝, 添加記錄
             //todo: 打印收據pdf
         }

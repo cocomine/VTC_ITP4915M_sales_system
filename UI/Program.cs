@@ -28,7 +28,7 @@ namespace UI
             try {
                 conn = new MySqlConnection(myConnectionString);
                 conn.Open();
-                MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //startup
                 Application.EnableVisualStyles();
