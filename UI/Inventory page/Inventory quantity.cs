@@ -147,6 +147,14 @@ namespace UI.Inventory_page
                 textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` ", conn);
+            DataTable dtbl = new DataTable();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+        }
     }
     }
 
