@@ -139,6 +139,14 @@ namespace UI.Inventory_page
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
         }
+
+        private void dataGridView1_CellCick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            }
+        }
     }
     }
 
