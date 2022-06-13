@@ -69,7 +69,7 @@
             this.textBox1.Location = new System.Drawing.Point(56, 378);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
+            this.textBox1.Size = new System.Drawing.Size(231, 22);
             this.textBox1.TabIndex = 4;
             // 
             // ItemID
@@ -152,7 +152,7 @@
             this.btDelete.BackColor = System.Drawing.Color.IndianRed;
             this.btDelete.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btDelete.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.btDelete.Location = new System.Drawing.Point(312, 9);
+            this.btDelete.Location = new System.Drawing.Point(329, 9);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(80, 28);
             this.btDelete.TabIndex = 17;

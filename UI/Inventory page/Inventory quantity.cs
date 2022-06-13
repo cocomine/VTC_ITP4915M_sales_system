@@ -129,8 +129,15 @@ namespace UI.Inventory_page
         {
 
 
+            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("DELETE FROM `inventory` WHERE `inventory`.`ItemID` = '" + textBox1.Text+"'", conn);
+            DataTable dtbl1 = new DataTable();
+            sqlda1.Fill(dtbl1);
+            dataGridView1.DataSource = dtbl1;
 
-
+            sqlda1 = new MySqlDataAdapter("SELECT * FROM `inventory`  " + comboBox1.Text, conn);
+            dtbl1 = new DataTable();
+            sqlda1.Fill(dtbl1);
+            dataGridView1.DataSource = dtbl1;
         }
     }
     }
