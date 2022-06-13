@@ -138,10 +138,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(421, 256);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(421, 256);
             this.Name = "Customer_info";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer info";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Customer_info_FormClosed);
             this.Load += new System.EventHandler(this.Customer_info_Load);

@@ -1,17 +1,14 @@
-﻿using ITP4915M.API;
+﻿using iText.Html2pdf;
+using iText.Kernel.Pdf;
+using ITP4915M.API;
+using ITP4915M.Properties;
+using ITP4915M.Sales_page;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
-using static System.Windows.Forms.ListViewItem;
 
 namespace UI.Sales_page {
     public partial class Sales_Page : Form {
@@ -382,9 +379,9 @@ namespace UI.Sales_page {
         //save order btn click
         private void bt_save_Click(object sender, EventArgs e) {
             string orderID = saveOrder(this.orderID);
-            if(orderID != null) {
+            if (orderID != null) {
                 this.orderID = orderID;
-                lb_orderID.Text = "Order ID: "+orderID;
+                lb_orderID.Text = "Order ID: " + orderID;
                 lb_orderID.Visible = true;
             }
         }
@@ -472,7 +469,6 @@ namespace UI.Sales_page {
 
             //return order id
             MessageBox.Show("Order saved!\nOrder ID: " + orderID, "Order saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            tb_reshow_order.Text = orderID;
             lb_save.Visible = true;
             return orderID;
         }
@@ -498,7 +494,7 @@ namespace UI.Sales_page {
             string orderID = tb_reshow_order.Text;
             reset_All(); //reaet all
 
-            
+
             //get order info
             try {
                 MySqlCommand cmd = new MySqlCommand("SELECT OrderID, Charge, Status, Payment_Method FROM `order` WHERE OrderID = @id", conn);
@@ -624,8 +620,11 @@ namespace UI.Sales_page {
 
         //結帳
         private void checkout(double charge, int payment_Method) {
+            //打印收據pdf
+            printPDF();
+            return; //debug
 
-            // 需要送貨及安裝, 要求輸入客戶資訊
+            //需要送貨及安裝, 要求輸入客戶資訊
             Customer_info Customer_info_form = new Customer_info(conn);
             if (need_delivery || need_install) {
                 DialogResult result = Customer_info_form.ShowDialog();
@@ -633,17 +632,72 @@ namespace UI.Sales_page {
                     return; //取消輸入 => 取消付款流程
                 }
             }
-
-            string CustomerID = Customer_info_form.CustomerID;
-            Console.WriteLine(CustomerID);
-            return;
+            string CustomerID = Customer_info_form.CustomerID; //get CustomerID
 
             //金額必須大於零
             if (charge <= 0) {
                 MessageBox.Show("Please enter the amount", "CheckOut", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (saveOrder(orderID) == null) return; //save order first
+
+            //save order first
+            string orderID = saveOrder(this.orderID);
+            if (orderID == null) return; //儲存失敗
+            this.orderID = orderID;
+            lb_orderID.Text = "Order ID: " + orderID;
+            lb_orderID.Visible = true;
+
+            DateTime delivery_DateTime = DateTime.Now; //先定義時間
+            //需要送貨, 添加記錄
+            if (need_delivery) {
+                //open input form
+                Delivery_time_select form = new Delivery_time_select();
+                DialogResult result = form.ShowDialog();
+                if (result != DialogResult.OK) {
+                    return; //取消輸入 => 取消付款流程
+                }
+
+                DateTime date = form.Date; //get 日期
+                delivery_DateTime = date; //set 給安裝時間選擇頁面用
+                int Time = form.Time; //get 時段
+
+                //新增記錄
+                try {
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `delivery` (`OrderID`, `Delivery_TeamID`, `CustomerID`, `Session`, `Status`, `Delivery_date`) " +
+                    "VALUES (@OrderID, NULL, @CustomerID, @Session, 0, @Delivery_date)", conn);
+                    cmd.Parameters.AddWithValue("@OrderID", orderID);
+                    cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
+                    cmd.Parameters.AddWithValue("@Session", Time);
+                    cmd.Parameters.AddWithValue("@Delivery_date", date.ToString("yyyy-MM-dd"));
+                    cmd.ExecuteNonQuery();
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                }
+            }
+
+            //需要安裝, 添加記錄
+            if (need_install) {
+                //open input form
+                Install_time_select form = new Install_time_select(delivery_DateTime); //如果需要送貨, 則在送貨日期後3日才可以選擇
+                DialogResult result = form.ShowDialog();
+                if (result != DialogResult.OK) {
+                    return; //取消輸入 => 取消付款流程
+                }
+
+                DateTime dateTime = form.DateTime; //get 日期
+
+                //新增記錄
+                try {
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `installation` (`OrderID`, `CustomerID`, `Status`, `install_date`) " +
+                        "VALUES (@OrderID, @CustomerID, 0, @install_date)", conn);
+                    cmd.Parameters.AddWithValue("@OrderID", orderID);
+                    cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
+                    cmd.Parameters.AddWithValue("@install_date", dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    cmd.ExecuteNonQuery();
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                }
+            }
 
             double change = charge - total; //找錢
             if (change >= 0) {
@@ -683,13 +737,30 @@ namespace UI.Sales_page {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
 
-            //todo: 需要送貨及安裝, 添加記錄
-            //todo: 打印收據pdf
+            //打印收據pdf
+            //printPDF();
+        }
+
+        //outup pdf
+        private void printPDF() {
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory); //預設路徑為桌面
+            saveFileDialog1.FileName = DateTime.Now.ToString("yyyy-MM-dd HHmmss") + " Receipt"; //預設檔案名稱
+
+            //確認儲存
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
+                string filePath = saveFileDialog1.FileName; //取得用戶指定儲存路徑
+                ConverterProperties properties = new ConverterProperties();
+                PdfWriter writer = new PdfWriter(new FileStream(filePath, FileMode.Create), new WriterProperties().SetFullCompressionMode(true)); //設定壓縮等級
+                HtmlConverter.ConvertToPdf(Resources.Receipt, writer, properties); //輸出
+
+                MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         //remove item
         private void bt_remove_item_Click(object sender, EventArgs e) {
-            foreach(ListViewItem x in lv_item_list.SelectedItems) {
+            foreach (ListViewItem x in lv_item_list.SelectedItems) {
                 Item item = x.Tag as Item;
                 if (item != null) {
                     shoppingCart_Item.Remove(item);
@@ -721,6 +792,8 @@ namespace UI.Sales_page {
             lb_orderID.Visible = false;
             lb_paid.Visible = false;
             lb_save.Visible = false;
+            bt_cash.Enabled = true;
+            bt_epay.Enabled = true;
 
             //clear all textbox
             List<TextBox> AllTextBox = new List<TextBox>();

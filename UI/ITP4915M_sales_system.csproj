@@ -167,6 +167,18 @@
     <Compile Include="IT\Delivery Team Grouping.Designer.cs">
       <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales page\install_time_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\install_time_select.Designer.cs">
+      <DependentUpon>install_time_select.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales page\delivery_time_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\delivery_time_select.Designer.cs">
+      <DependentUpon>delivery_time_select.cs</DependentUpon>
+    </Compile>
     <Compile Include="My Profile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +265,12 @@
     <EmbeddedResource Include="IT\Delivery Team Grouping.resx">
       <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\install_time_select.resx">
+      <DependentUpon>install_time_select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\delivery_time_select.resx">
+      <DependentUpon>delivery_time_select.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,12 +334,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GSF.Core">
-      <Version>2.4.28</Version>
+    <PackageReference Include="itext7.pdfhtml">
+      <Version>4.0.2</Version>
     </PackageReference>
     <PackageReference Include="MySql.Data">
       <Version>8.0.29</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sales page\Receipt.html" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

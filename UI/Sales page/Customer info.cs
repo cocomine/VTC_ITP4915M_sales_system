@@ -10,21 +10,18 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI.Sales_page
-{
+namespace UI.Sales_page {
     public partial class Customer_info : Form {
         private MySqlConnection conn;
-        public string CustomerID {get;set;}
+        public string CustomerID { get; set; }
 
-        public Customer_info(MySqlConnection conn)
-        {
+        public Customer_info(MySqlConnection conn) {
             this.conn = conn;
             CustomerID = null;
             InitializeComponent();
         }
 
-        private void Customer_info_Load(object sender, EventArgs e)
-        {
+        private void Customer_info_Load(object sender, EventArgs e) {
             Program.addPage();
         }
 
@@ -41,38 +38,47 @@ namespace UI.Sales_page
             string Address = tb_address.Text;
 
             //檢查是否存在相同的客戶
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM customer WHERE Phone = @Phone AND Customer_name LIKE @name", conn);
-            cmd.Parameters.AddWithValue("@Phone", Phone);
-            cmd.Parameters.AddWithValue("@name", Name);
-            MySqlDataReader reader = cmd.ExecuteReader();
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM customer WHERE Phone = @Phone AND Customer_name LIKE @name", conn);
+                cmd.Parameters.AddWithValue("@Phone", Phone);
+                cmd.Parameters.AddWithValue("@name", Name);
+                MySqlDataReader reader = cmd.ExecuteReader();
 
-            //有相同的客戶
-            if (reader.HasRows) {
-                while (reader.Read()) {
-                    DialogResult result = MessageBox.Show(String.Format("Find existing matching customer: \n Name: {0} \n Phone: {1} \n Address: {2} \n Do you want to use this information directly?",
-                        reader.GetString("Customer_name"), reader.GetString("Phone"), reader.GetString("Address")), "Match customer", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if(result == DialogResult.Yes) {
-                        //確認使用
-                        CustomerID = reader.GetString("CustomerID");
-                        Name = reader.GetString("Customer_name");
-                        Phone = reader.GetString("Phone");
-                        Address = reader.GetString("Address");
-                        break;
+                //有相同的客戶
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        DialogResult result = MessageBox.Show(String.Format("Find existing matching customer: \n Name: {0} \n Phone: {1} \n Address: {2} \n Do you want to use this information directly?",
+                            reader.GetString("Customer_name"), reader.GetString("Phone"), reader.GetString("Address")), "Match customer", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (result == DialogResult.Yes) {
+                            //確認使用
+                            CustomerID = reader.GetString("CustomerID");
+                            Name = reader.GetString("Customer_name");
+                            Phone = reader.GetString("Phone");
+                            Address = reader.GetString("Address");
+                            break;
+                        }
                     }
                 }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
-            reader.Close();
 
             //update database
             if (CustomerID == null) {
-                //加入記錄
                 CustomerID = Guid.NewGuid().ToString(); //generation id
-                cmd = new MySqlCommand("INSERT INTO `customer` (`CustomerID`, `Phone`, `Customer_name`, `Address`) VALUES (@CustomerID, @Phone, @Customer_name, @Address)", conn);
-                cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
-                cmd.Parameters.AddWithValue("@Phone", Phone);
-                cmd.Parameters.AddWithValue("@Customer_name", Name);
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.ExecuteNonQuery();
+
+                //加入記錄
+                try {
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `customer` (`CustomerID`, `Phone`, `Customer_name`, `Address`) VALUES (@CustomerID, @Phone, @Customer_name, @Address)", conn);
+                    cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
+                    cmd.Parameters.AddWithValue("@Phone", Phone);
+                    cmd.Parameters.AddWithValue("@Customer_name", Name);
+                    cmd.Parameters.AddWithValue("@Address", Address);
+                    cmd.ExecuteNonQuery();
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                }
             }
 
             DialogResult = DialogResult.OK;

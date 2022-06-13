@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Receipt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Sales page\Receipt.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="errorProvider1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAA
+        AAA1NcsALCzSACcn1wAwMM4AKCjWNScn15IoKNfOKCjX8Cgo1/AoKNfOJyfXkSgo1TUpKdUAJibYACsr
+        0wA1NcsANTXLACws0gAmJtgAKirTlygo1/8oKNf/KCjX/ygo1/8oKNf/KCjX/ygo1/8oKNf/KCjWmCYm
+        2AArK9MANTXLADg4yQAtLdEAJibZvScn2P8oKNf/KSnX/yoq1/8PD9X/Dw/V/yoq1/8pKdf/KCjX/ygo
+        1/8lJdm9KyvSADc3ygAvL9AAKirUmCcn2P8oKNf/KCjX/yYm1/8fH9b/hobe/4aG3v8fH9b/JibX/ygo
+        1/8oKNf/JyfY/yoq1JcxMc4AJSXZLycn2P8oKNf/KCjX/ygo1/8kJNf/FxfW/9zc5f/c3OX/FxfW/yQk
+        1/8oKNf/KCjX/ygo1/8oKNf/JyfXLikp1ZsnJ9j/KCjX/ygo1/8oKNf/KCjX/ykp1/8ZGdb/GRnW/ykp
+        1/8oKNf/KCjX/ygo1/8oKNf/JyfY/ygo1psoKNfYKCjX/ygo1/8oKNf/KCjX/yYm1/8hIdb/b2/c/29v
+        3P8hIdb/JibX/ygo1/8oKNf/KCjX/ygo1/8oKNfXKCjX8igo1/8oKNf/KCjX/ygo1/8jI9f/FhbW/+bm
+        5v/m5ub/FhbW/yMj1/8oKNf/KCjX/ygo1/8oKNf/KCjX8Sgo1/IoKNf/KCjX/ygo1/8oKNf/JCTX/xgY
+        1v/NzeT/zc3k/xgY1v8kJNf/KCjX/ygo1/8oKNf/KCjX/ygo1/EoKNfYKCjX/ygo1/8oKNf/KCjX/yQk
+        1/8YGNb/zc3k/83N5P8YGNb/JCTX/ygo1/8oKNf/KCjX/ygo1/8oKNbYKCjWnCgo1/8oKNf/KCjX/ygo
+        1/8kJNf/GBjW/83N5P/NzeT/GBjW/yQk1/8oKNf/KCjX/ygo1/8nJ9j/KSnVmyYm2C8oKNf/KCjX/ygo
+        1/8oKNf/JCTX/xcX1v/Z2eX/2dnl/xcX1v8kJNf/KCjX/ygo1/8oKNf/KCjX/yYm2C4oKNYAKSnWmSgo
+        1/8oKNf/KCjX/yQk1/8ZGdb/xMTj/8TE4/8ZGdb/JCTX/ygo1/8oKNf/JyfY/yoq1ZgwMM8AKyvTACkp
+        1QAnJ9e9KCjX/ygo1/8oKNf/JyfX/zEx2P8xMdj/JyfX/ygo1/8oKNf/KCjX/yYm2L8rK9MANjbJACoq
+        1AApKdUAJibXACkp1pgoKNf/KCjX/ykp1/8dHdb/HR3W/ykp1/8oKNf/KCjX/ycn15gmJtgAKyvTADQ0
+        ywAqKtQAKSnVACcn1wAqKtQAJyfXNigo1pIoKNfPKCjX8Cgo1/AoKNfPKCjWkiYm2DYmJtgAJibYACsr
+        0wA0NMsA8A8AAOAHAADAAwAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAMAD
+        AADgBwAA8A8AAA==
+</value>
   </data>
 </root>

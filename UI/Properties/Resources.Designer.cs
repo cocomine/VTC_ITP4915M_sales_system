@@ -59,5 +59,21 @@ namespace ITP4915M.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 &lt;html&gt;
+        ///&lt;head&gt;
+        ///
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;h1&gt;Hello world!&lt;/h1&gt;
+        ///&lt;/body&gt;
+        ///&lt;/html&gt; 的當地語系化字串。
+        /// </summary>
+        internal static string Receipt {
+            get {
+                return ResourceManager.GetString("Receipt", resourceCulture);
+            }
+        }
     }
 }

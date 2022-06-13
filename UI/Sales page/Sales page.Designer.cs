@@ -85,6 +85,7 @@
             this.bt_cash = new System.Windows.Forms.Button();
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -719,6 +720,11 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Charge amount";
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "pdf";
+            this.saveFileDialog1.RestoreDirectory = true;
+            // 
             // Sales_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -812,5 +818,6 @@
         private System.Windows.Forms.Button bt_remove_item;
         private System.Windows.Forms.Label lb_orderID;
         private System.Windows.Forms.Button bt_reset;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
