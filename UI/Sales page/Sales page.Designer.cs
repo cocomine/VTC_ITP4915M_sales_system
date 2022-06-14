@@ -86,6 +86,7 @@
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.bt_receipt = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -600,6 +601,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bt_receipt);
             this.groupBox1.Controls.Add(this.lb_orderID);
             this.groupBox1.Controls.Add(this.bt_save);
             this.groupBox1.Controls.Add(this.tb_deposit);
@@ -725,6 +727,16 @@
             this.saveFileDialog1.DefaultExt = "pdf";
             this.saveFileDialog1.RestoreDirectory = true;
             // 
+            // bt_receipt
+            // 
+            this.bt_receipt.Location = new System.Drawing.Point(255, 113);
+            this.bt_receipt.Name = "bt_receipt";
+            this.bt_receipt.Size = new System.Drawing.Size(93, 23);
+            this.bt_receipt.TabIndex = 107;
+            this.bt_receipt.Text = "Print Receipt";
+            this.bt_receipt.UseVisualStyleBackColor = true;
+            this.bt_receipt.Click += new System.EventHandler(this.bt_receipt_Click);
+            // 
             // Sales_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -819,5 +831,6 @@
         private System.Windows.Forms.Label lb_orderID;
         private System.Windows.Forms.Button bt_reset;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button bt_receipt;
     }
 }

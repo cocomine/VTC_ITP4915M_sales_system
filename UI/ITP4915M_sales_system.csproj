@@ -101,6 +101,7 @@
     <Compile Include="API\Delivery team.cs" />
     <Compile Include="API\Department.cs" />
     <Compile Include="API\Item.cs" />
+    <Compile Include="API\savePDF.cs" />
     <Compile Include="Delivery Page\Delivery Page.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,9 +343,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sales page\Receipt\Receipt.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Sales page\Receipt\Receipt.html" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

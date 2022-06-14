@@ -603,6 +603,8 @@ namespace UI.Sales_page {
             if (received >= total) {
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
+                bt_add_id.Enabled = false;
+                bt_add_name.Enabled = false;
                 lb_paid.Visible = true;
             }
         }
@@ -623,9 +625,11 @@ namespace UI.Sales_page {
 
         //結帳
         private void checkout(double charge, int payment_Method) {
-            //打印收據pdf
-            printPDF();
-            return; //debug
+            //金額必須大於零
+            if (charge <= 0) {
+                MessageBox.Show("Please enter the amount", "CheckOut", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             //需要送貨及安裝, 要求輸入客戶資訊
             Customer_info Customer_info_form = new Customer_info(conn);
@@ -636,12 +640,6 @@ namespace UI.Sales_page {
                 }
             }
             string CustomerID = Customer_info_form.CustomerID; //get CustomerID
-
-            //金額必須大於零
-            if (charge <= 0) {
-                MessageBox.Show("Please enter the amount", "CheckOut", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             //save order first
             string orderID = saveOrder(this.orderID);
@@ -707,6 +705,8 @@ namespace UI.Sales_page {
                 //全額付款
                 tb_charge.Text = String.Format("{0:C}", change);
                 lb_paid.Visible = true;
+                bt_add_id.Enabled = false;
+                bt_add_name.Enabled = false;
             } else {
                 //非全額付款
                 tb_charge.Text = String.Format("{0:C}", 0);
@@ -739,33 +739,6 @@ namespace UI.Sales_page {
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
-
-            //打印收據pdf
-            //printPDF();
-        }
-
-        //output pdf
-        private void printPDF() {
-            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory); //預設路徑為桌面
-            saveFileDialog1.FileName = DateTime.Now.ToString("yyyy-MM-dd HHmmss") + " Receipt"; //預設檔案名稱
-
-            //確認儲存
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
-                string filePath = saveFileDialog1.FileName; //取得用戶指定儲存路徑
-                if (!filePath.EndsWith(".pdf")) filePath += ".pdf"; //確保檔案副檔名是 .pdf
-
-
-
-                PdfWriter writer = new PdfWriter(new FileStream(filePath, FileMode.Create), new WriterProperties().SetFullCompressionMode(true)); //設定壓縮等級
-                PdfDocument pdfDocument = new PdfDocument(writer);
-                pdfDocument.SetDefaultPageSize(PageSize.A4); //設定紙張大小
-
-                HtmlConverter.ConvertToPdf(new FileStream("./Sales page/Receipt/Receipt.html", FileMode.Open), pdfDocument); //輸出儲存
-
-                MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start(filePath); //打開檔案
-            }
-            
         }
 
         //remove item
@@ -774,6 +747,7 @@ namespace UI.Sales_page {
                 Item item = x.Tag as Item;
                 if (item != null) {
                     shoppingCart_Item.Remove(item);
+                    if(Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty.Remove(item);
                 }
             }
 
@@ -804,6 +778,8 @@ namespace UI.Sales_page {
             lb_save.Visible = false;
             bt_cash.Enabled = true;
             bt_epay.Enabled = true;
+            bt_add_id.Enabled = true;
+            bt_add_name.Enabled = true;
 
             //clear all textbox
             List<TextBox> AllTextBox = new List<TextBox>();
@@ -826,6 +802,58 @@ namespace UI.Sales_page {
                 if (control is GroupBox) findAllTextBox(list, control);
             }
             return list;
+        }
+
+        //打印收據pdf
+        private void bt_receipt_Click(object sender, EventArgs e) {
+            //save order first
+            string orderID = saveOrder(this.orderID);
+            if (orderID == null) return; //儲存失敗
+
+            //取得資料 order info
+            try {
+                MySqlCommand cmd = new MySqlCommand("", conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                //資料不存在
+                if (!reader.HasRows) {
+                    reader.Close();
+                    return; 
+                }
+
+                //資料存在
+                while (reader.Read()) {
+
+                }
+                reader.Close();
+            } catch (Exception ex) {
+
+            }
+
+            //替換字詞
+            string html = Resources.Receipt;
+            html.Replace("%paid_status%", paid_status);
+
+            html.Replace("%receipt_date%", DateTime.Now.ToString("yyyy-MM-dd"));
+            html.Replace("%payment_date%", payment_date);
+            html.Replace("%payment_method%", payment_method);
+
+            html.Replace("%customer_name%", customer_name);
+            html.Replace("%customer_address%", customer_address);
+            html.Replace("%customer_phone%", customer_phone);
+
+            html.Replace("%items%", items);
+
+            html.Replace("%subtotal%", subtotal);
+            html.Replace("%discount%", discount);
+            html.Replace("%received%", received);
+            html.Replace("%total%", total);
+
+            html.Replace("%paid%", paid);
+            html.Replace("%change%", change);
+            html.Replace("%arrears%", arrears);
+
+            //save as pdf
+            savePDF.Save(html);
         }
     }
 }
