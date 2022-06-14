@@ -1,4 +1,5 @@
 ﻿using iText.Html2pdf;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using ITP4915M.API;
 using ITP4915M.Properties;
@@ -6,6 +7,7 @@ using ITP4915M.Sales_page;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -346,6 +348,7 @@ namespace UI.Sales_page {
             tb_discount.Text = String.Format("-{0:C}", discount);
             tb_total.Text = String.Format("{0:C}", total);
             tb_deposit.Text = String.Format("{0:C}", deposit);
+            tb_reveived.Text = String.Format("-{0:C}", received);
         }
 
         //Enter key
@@ -741,7 +744,7 @@ namespace UI.Sales_page {
             //printPDF();
         }
 
-        //outup pdf
+        //output pdf
         private void printPDF() {
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory); //預設路徑為桌面
             saveFileDialog1.FileName = DateTime.Now.ToString("yyyy-MM-dd HHmmss") + " Receipt"; //預設檔案名稱
@@ -749,11 +752,18 @@ namespace UI.Sales_page {
             //確認儲存
             if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
                 string filePath = saveFileDialog1.FileName; //取得用戶指定儲存路徑
-                ConverterProperties properties = new ConverterProperties();
+                if (!filePath.EndsWith(".pdf")) filePath += ".pdf"; //確保檔案副檔名是 .pdf
+
+
+
                 PdfWriter writer = new PdfWriter(new FileStream(filePath, FileMode.Create), new WriterProperties().SetFullCompressionMode(true)); //設定壓縮等級
-                HtmlConverter.ConvertToPdf(Resources.Receipt, writer, properties); //輸出
+                PdfDocument pdfDocument = new PdfDocument(writer);
+                pdfDocument.SetDefaultPageSize(PageSize.A4); //設定紙張大小
+
+                HtmlConverter.ConvertToPdf(new FileStream("./Sales page/Receipt/Receipt.html", FileMode.Open), pdfDocument); //輸出儲存
 
                 MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(filePath); //打開檔案
             }
             
         }
