@@ -166,6 +166,7 @@
             // Search
             // 
             this.Search.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Search.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Search.Location = new System.Drawing.Point(677, 9);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(83, 28);
@@ -176,6 +177,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.Location = new System.Drawing.Point(730, 378);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 29);
