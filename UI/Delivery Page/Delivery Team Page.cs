@@ -34,9 +34,8 @@ namespace UI.Delivery_Page
             Program.addPage();
 
             //Get the data needed by the Delivery Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `delivery` AS d, `customer` AS c, " +
-                "`customer_detail` AS cd WHERE c.CustomerID = d.CustomerID AND " +
-                "c.CustomerID = cd.CustomerID AND d.Status = '1';", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `delivery` AS d, `customer` AS c " +
+                "WHERE c.CustomerID = d.CustomerID AND d.Status = '1';", conn);
             MySqlDataReader data_order;
 
             try
@@ -60,9 +59,9 @@ namespace UI.Delivery_Page
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Select Command
-            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, c.CustomerID, c.Customer_name, c.Phone, cd.Address, oi.OrderID, i.ItemID, i.Name " +
-                "FROM `delivery` AS d, `customer` AS c, `customer_detail` AS cd, `order_item` AS oi, `item` AS i WHERE d.CustomerID = cd.customerID " +
-                "AND c.CustomerID = cd.customerID AND d.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
+            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, d.Session, d.Delivery_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " +
+                "FROM `delivery` AS d, `customer` AS c, `order_item` AS oi, `item` AS i WHERE d.CustomerID = c.customerID " +
+                "AND d.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
             MySqlDataReader data_cus;
 
             try
@@ -79,12 +78,25 @@ namespace UI.Delivery_Page
                     string cAddress = data_cus.GetString("Address");
                     string cPhone = data_cus.GetInt32("Phone").ToString();
                     string iName = data_cus.GetString("Name");
+                    string dSession = data_cus.GetString("Session");
+                    string dDate = data_cus.GetString("Delivery_date");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
                     lb_delivery_item.Items.Add(iName);
+                    if (dSession == "0")
+                    {
+                        tb_session.Text = "09:00 - 12:00";
+                    } else if (dSession == "1")
+                    {
+                        tb_session.Text = "13:00 - 17:00";
+                    } else if (dSession == "2")
+                    {
+                        tb_session.Text = "18:00 - 22:00";
+                    }
+                    tb_delivery_date.Text = dDate;
                 }
             }
             catch (MySqlException ex)
@@ -122,6 +134,8 @@ namespace UI.Delivery_Page
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            tb_session.Clear();
+            tb_delivery_date.Clear();
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
