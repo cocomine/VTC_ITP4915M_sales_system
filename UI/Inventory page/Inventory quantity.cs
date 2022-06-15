@@ -16,6 +16,7 @@ namespace UI.Inventory_page
 {
     public partial class Inventory_quantity : Form
     {
+        //initializing
         private MySqlConnection conn;
         MySqlDataAdapter da = new MySqlDataAdapter();
         DataSet ds = new DataSet();
