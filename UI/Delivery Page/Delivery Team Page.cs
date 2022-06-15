@@ -60,7 +60,7 @@ namespace UI.Delivery_Page
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Select Command
-            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, c.CustomerID, c.Customer_name, c.Phone, cd.Address, oi.OrderID, i.ItemID, i.Name " +
+            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, d.Session, c.CustomerID, c.Customer_name, c.Phone, cd.Address, oi.OrderID, i.ItemID, i.Name " +
                 "FROM `delivery` AS d, `customer` AS c, `customer_detail` AS cd, `order_item` AS oi, `item` AS i WHERE d.CustomerID = cd.customerID " +
                 "AND c.CustomerID = cd.customerID AND d.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
             MySqlDataReader data_cus;
@@ -79,12 +79,23 @@ namespace UI.Delivery_Page
                     string cAddress = data_cus.GetString("Address");
                     string cPhone = data_cus.GetInt32("Phone").ToString();
                     string iName = data_cus.GetString("Name");
+                    string session = data_cus.GetString("Session");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
                     lb_delivery_item.Items.Add(iName);
+                    if (session == "0")
+                    {
+                        tb_customer_session.Text = "0900-1200";
+                    } else if (session == "1")
+                    {
+                        tb_customer_session.Text = "1300-1700";
+                    } else if (session == "2")
+                    {
+                        tb_customer_session.Text = "1800-2200";
+                    }
                 }
             }
             catch (MySqlException ex)
@@ -132,6 +143,11 @@ namespace UI.Delivery_Page
         private void myProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new My_Profile(conn, acc).Show();
+        }
+
+        private void tb_customer_session_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,9 +32,8 @@ namespace UI.Installer_Page
             Program.addPage();
 
             //Get the data needed by the Installer Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `installation` AS ins, `customer` AS c, " +
-                "`customer_detail` AS cd WHERE c.CustomerID = ins.CustomerID AND " +
-                "c.CustomerID = cd.CustomerID AND ins.Status = '0';", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `installation` AS ins, `customer` AS c " +
+                " WHERE c.CustomerID = ins.CustomerID AND ins.Status = '0';", conn);
              MySqlDataReader data_order;
 
             try
@@ -69,9 +68,9 @@ namespace UI.Installer_Page
 
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e) {
             //Select Command
-            MySqlCommand cmd_cus = new MySqlCommand("SELECT ins.OrderID, c.CustomerID, c.Customer_name, c.Phone, cd.Address, oi.OrderID, i.ItemID, i.Name " +
-                "FROM `installation` AS ins, `customer` AS c, `customer_detail` AS cd, `order_item` AS oi, `item` AS i WHERE ins.CustomerID = cd.customerID " +
-                "AND c.CustomerID = cd.customerID AND ins.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
+            MySqlCommand cmd_cus = new MySqlCommand("SELECT ins.OrderID, ins.Install_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " +
+                "FROM `installation` AS ins, `customer` AS c, `order_item` AS oi, `item` AS i WHERE ins.CustomerID = c.customerID " +
+                "AND ins.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
             MySqlDataReader data_cus;
 
             try
@@ -88,12 +87,14 @@ namespace UI.Installer_Page
                     string cAddress = data_cus.GetString("Address");
                     string cPhone = data_cus.GetInt32("Phone").ToString();
                     string iName = data_cus.GetString("Name");
+                    string iDate = data_cus.GetString("Install_date");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
                     lb_installation_item.Items.Add(iName);
+                    tb_installation_date.Text = iDate;
                 }
             }
             catch (MySqlException ex)
@@ -151,9 +152,15 @@ namespace UI.Installer_Page
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            tb_installation_date.Clear();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void tb_installation_date_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -34,8 +34,8 @@ namespace UI.Technical_Support_page
             Program.addPage();
 
             //Get the data needed by the Arrange Installation Workers Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `order` AS o, `customer` AS c, `customer_detail` AS cd, `delivery` AS d " +
-                "WHERE c.CustomerID = d.CustomerID AND c.CustomerID = cd.CustomerID AND o.OrderID = d.OrderID;", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `order` AS o, `customer` AS c, `installation` AS ins " +
+                "WHERE c.CustomerID = ins.CustomerID AND o.OrderID = ins.OrderID AND ins.Status = '0';", conn);
             MySqlCommand cmd_staff = new MySqlCommand("SELECT s.DepartmentID, s.FullRealName FROM `staff` AS s WHERE s.DepartmentID = '8';", conn);
             MySqlCommand cmd_install_staff = new MySqlCommand("SELECT ins.OrderID FROM `install_staff` AS ins, `staff` AS s WHERE ins.StaffAccountID = s.AccountID;", conn);
             
@@ -122,9 +122,9 @@ namespace UI.Technical_Support_page
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Select Command
-            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, c.CustomerID, c.Customer_name, c.Phone, cd.Address, oi.OrderID, i.ItemID, i.Name " +
-                "FROM `delivery` AS d, `customer` AS c, `customer_detail` AS cd, `order_item` AS oi, `item` AS i " +
-                "WHERE d.CustomerID = cd.customerID AND c.CustomerID = cd.customerID AND d.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text +
+            MySqlCommand cmd_cus = new MySqlCommand("SELECT ins.OrderID, ins.Install_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " +
+                "FROM `installation` AS ins, `customer` AS c, `order_item` AS oi, `item` AS i " +
+                "WHERE ins.CustomerID = c.customerID AND ins.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text +
                 "' AND oi.ItemID = i.ItemID;", conn);
             MySqlDataReader data_cus;
 
@@ -143,12 +143,14 @@ namespace UI.Technical_Support_page
                     string cPhone = data_cus.GetInt32("Phone").ToString();
                     string iName = data_cus.GetString("Name");
                     customerID = data_cus.GetString("CustomerID"); //Store data of customer ID
+                    string iDate = data_cus.GetString("Install_date");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
                     lb_installation_item.Items.Add(iName);
+                    tb_installation_date.Text = iDate;
                 }
                 conn.Close();
             }
@@ -200,9 +202,9 @@ namespace UI.Technical_Support_page
         private void lb_scheduled_features_SelectedIndexChanged(object sender, EventArgs e)
         {
             //According to the selection in the list box, get the corresponding record
-            MySqlCommand cmd_schedule = new MySqlCommand("SELECT ins.OrderID, c.CustomerID, c.Customer_name, c.Phone, cd.Address, oi.OrderID, i.ItemID, i.Name" +
-                " FROM `installation` AS ins, `customer` AS c, `customer_detail` AS cd, `order_item` AS oi, `item` AS i " +
-                "WHERE ins.CustomerID = cd.customerID AND c.CustomerID = cd.customerID AND ins.OrderID = '" + lb_scheduled_features.Text + "' AND oi.OrderID = '" + lb_scheduled_features.Text +
+            MySqlCommand cmd_schedule = new MySqlCommand("SELECT ins.OrderID, ins.Install_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name" +
+                " FROM `installation` AS ins, `customer` AS c, `order_item` AS oi, `item` AS i " +
+                "WHERE ins.CustomerID = c.customerID AND ins.OrderID = '" + lb_scheduled_features.Text + "' AND oi.OrderID = '" + lb_scheduled_features.Text +
                 "' AND oi.ItemID = i.ItemID;", conn);
             MySqlDataReader data_schedule;
 
@@ -217,12 +219,14 @@ namespace UI.Technical_Support_page
                     string cAddress = data_schedule.GetString("Address");
                     string cPhone = data_schedule.GetInt32("Phone").ToString();
                     string iName = data_schedule.GetString("Name");
+                    string iDate = data_schedule.GetString("Install_date");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
                     lb_installation_item.Items.Add(iName);
+                    tb_installation_date.Text = iDate;
                 }
             }
             catch (MySqlException ex)
@@ -237,9 +241,7 @@ namespace UI.Technical_Support_page
         {
             //Use "Unschedule" Button to update the new Installation record
             MySqlCommand cmd_to_install_staff = new MySqlCommand("DELETE FROM `install_staff` WHERE OrderID = '" + lb_scheduled_features.Text + "';", conn);
-            MySqlCommand cmd_to_installation = new MySqlCommand("DELETE FROM `installation` WHERE OrderID = '" + lb_scheduled_features.Text + "';", conn);
             MySqlDataReader data_to_install_staff;
-            MySqlDataReader data_to_installation;
             string sOrder = lb_scheduled_features.Text;
 
             try
@@ -258,56 +260,22 @@ namespace UI.Technical_Support_page
             }
             conn.Close();
 
-            try
-            {
-                conn.Open();
-                data_to_installation = cmd_to_installation.ExecuteReader();
-
-                while (data_to_installation.Read())
-                {
-                    cmd_to_installation.ExecuteNonQuery(); //Update the data into the database
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            conn.Close();
-
             lb_order.Items.Add(sOrder);
             lb_scheduled_features.Items.Remove(sOrder);
             lb_installation_item.Items.Clear();
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            tb_installation_date.Clear();
         }
 
         private void btn_schedule_Click(object sender, EventArgs e)
         {
             //Use "Schedule" Button to update the new Installation record
-            MySqlCommand cmd_to_installation = new MySqlCommand("INSERT INTO `installation` (OrderID, CustomerID, Status) VALUES" +
-                " ('" + lb_order.Text + "', '" + customerID + "', '0');", conn);
             MySqlCommand cmd_to_install_staff = new MySqlCommand("INSERT INTO `install_staff` (OrderID, StaffAccountID) VALUES" +
                 " ('" + lb_order.Text + "', '" + staffID + "');", conn);
-            MySqlDataReader data_to_installation;
             MySqlDataReader data_to_install_staff;
             string sOrder = lb_order.Text;
-
-            try
-            {
-                conn.Open();
-                data_to_installation = cmd_to_installation.ExecuteReader();
-
-                while (data_to_installation.Read())
-                {
-                    cmd_to_installation.ExecuteNonQuery(); //Update the data into the database
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            conn.Close();
 
             try
             {
@@ -330,6 +298,7 @@ namespace UI.Technical_Support_page
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            tb_installation_date.Clear();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -338,6 +307,16 @@ namespace UI.Technical_Support_page
 
         private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
             new My_Profile(conn, acc).Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_installation_date_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
