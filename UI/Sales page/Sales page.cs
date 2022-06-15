@@ -152,7 +152,7 @@ namespace UI.Sales_page {
                 }
 
                 //檢查庫存是否足夠
-                int Unavailable_qty = data.GetInt32("Qty") - item.Qty;
+                int Unavailable_qty = data.GetInt32("Qty") < 0 ? -item.Qty : data.GetInt32("Qty") - item.Qty;
                 if (Unavailable_qty < 0) {
                     Unavailable_qty = Math.Abs(Unavailable_qty);
                     if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
@@ -308,7 +308,7 @@ namespace UI.Sales_page {
         }
 
         //計算價格
-        private void CountPrice() {
+        private Dictionary<string, double> CountPrice() {
             double subtotal = 0; //未折扣總額
             double discount = 0; //未折額
             double deposit = 0; //對於超過$5000的不可用商品, 20%訂金
@@ -335,20 +335,24 @@ namespace UI.Sales_page {
                     deposit += this_Unavailable * 0.2; //大於5000, 20%訂金
                     Unavailable += this_Unavailable;
                 }
-                Console.WriteLine(deposit);
-                Console.WriteLine(Unavailable);
-                Console.WriteLine(this_Unavailable);
+                Console.WriteLine(Unavailable_item.Value);
             }
 
             total = subtotal - discount - received; //實付總額
+            Console.WriteLine(deposit);
             deposit = subtotal - Unavailable + deposit; //20%訂金總額
-            deposit = deposit > total ? total : deposit;
+            Console.WriteLine(deposit);
+            Console.WriteLine(subtotal);
+            Console.WriteLine(Unavailable);
+            deposit = deposit >= total ? total : deposit;
 
             tb_subtotal.Text = String.Format("{0:C}", subtotal);
             tb_discount.Text = String.Format("-{0:C}", discount);
             tb_total.Text = String.Format("{0:C}", total);
             tb_deposit.Text = String.Format("{0:C}", deposit);
             tb_reveived.Text = String.Format("-{0:C}", received);
+
+            return new Dictionary<string, double>() { { "subtotal", subtotal }, { "discount", discount }, { "deposit", deposit } }; //return same data
         }
 
         //Enter key
@@ -540,7 +544,7 @@ namespace UI.Sales_page {
                         shoppingCart_Item.Add(item); //add to shopping cart
 
                         //check stocks
-                        int Unavailable_qty = reader.GetInt32("Stocks") - item.Qty;
+                        int Unavailable_qty = reader.GetInt32("Stocks") < 0 ? -item.Qty : reader.GetInt32("Stocks") - item.Qty;
                         if (Unavailable_qty < 0) {
                             Unavailable_qty = Math.Abs(Unavailable_qty);
                             if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
@@ -594,13 +598,13 @@ namespace UI.Sales_page {
 
             //UI update
             ShowList();
-            CountPrice();
+            Dictionary<string, double> totalPriceData = CountPrice();
             lb_orderID.Text = "Order ID: " + orderID;
             lb_orderID.Visible = true;
             this.orderID = orderID;
 
             //set xxx
-            if (received >= total) {
+            if (received >= (totalPriceData["subtotal"] - totalPriceData["discount"])) {
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
                 bt_add_id.Enabled = false;
@@ -631,6 +635,29 @@ namespace UI.Sales_page {
                 return;
             }
 
+            //save order first
+            string orderID = saveOrder(this.orderID);
+            if (orderID == null) return; //儲存失敗
+            this.orderID = orderID;
+            //show orderid
+            lb_orderID.Text = "Order ID: " + orderID;
+            lb_orderID.Visible = true;
+
+            //檢查是否輸入個客戶資訊
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT (SELECT IF(COUNT(*) > 0, true, false) FROM delivery d WHERE d.OrderID = @OrderID) AS delivery," +
+                    "(SELECT IF(COUNT(*) > 0, true, false) FROM installation i WHERE i.OrderID = @OrderID) AS installation;", conn);
+                cmd.Parameters.AddWithValue("@OrderID", orderID);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read()) {
+                    if(reader.GetBoolean("delivery")) need_delivery = false;
+                    if(reader.GetBoolean("installation")) need_install = false;
+                }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+
             //需要送貨及安裝, 要求輸入客戶資訊
             Customer_info Customer_info_form = new Customer_info(conn);
             if (need_delivery || need_install) {
@@ -640,13 +667,6 @@ namespace UI.Sales_page {
                 }
             }
             string CustomerID = Customer_info_form.CustomerID; //get CustomerID
-
-            //save order first
-            string orderID = saveOrder(this.orderID);
-            if (orderID == null) return; //儲存失敗
-            this.orderID = orderID;
-            lb_orderID.Text = "Order ID: " + orderID;
-            lb_orderID.Visible = true;
 
             DateTime delivery_DateTime = DateTime.Now; //先定義時間
             //需要送貨, 添加記錄
@@ -703,7 +723,7 @@ namespace UI.Sales_page {
             double change = charge - total; //找錢
             if (change >= 0) {
                 //全額付款
-                tb_charge.Text = String.Format("{0:C}", change);
+                tb_change.Text = String.Format("{0:C}", change);
                 lb_paid.Visible = true;
                 bt_add_id.Enabled = false;
                 bt_add_name.Enabled = false;
@@ -718,7 +738,7 @@ namespace UI.Sales_page {
                 cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("@Status", change >= 0 ? 2 : 7); //2:completed 7:款項未完全交付
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
-                cmd.Parameters.AddWithValue("@Charge", charge);
+                cmd.Parameters.AddWithValue("@Charge", charge + received);
                 cmd.Parameters.AddWithValue("@Payment_Method", payment_Method);
                 cmd.ExecuteNonQuery();
             } catch (MySqlException ex) {
@@ -726,18 +746,20 @@ namespace UI.Sales_page {
             }
 
             //更新庫存
-            try {
-                MySqlCommand cmd = new MySqlCommand("UPDATE inventory SET Qty = (Qty - @Qty) WHERE ItemID = @ItemID AND StoreWarehouseID = @StoreID", conn);
-                cmd.Parameters.AddWithValue("@StoreID", StoreID);
-                cmd.Parameters.AddWithValue("@ItemID", "");
-                cmd.Parameters.AddWithValue("@Qty", 0);
-                shoppingCart_Item.ForEach(item => {
-                    cmd.Parameters["@ItemID"].Value = item.Id;
-                    cmd.Parameters["@Qty"].Value = item.Qty;
-                    cmd.ExecuteNonQuery();
-                });
-            } catch (MySqlException ex) {
-                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            if (received <= 0) { //沒有收錢才更新庫存
+                try {
+                    MySqlCommand cmd = new MySqlCommand("UPDATE inventory SET Qty = (Qty - @Qty) WHERE ItemID = @ItemID AND StoreWarehouseID = @StoreID", conn);
+                    cmd.Parameters.AddWithValue("@StoreID", StoreID);
+                    cmd.Parameters.AddWithValue("@ItemID", "");
+                    cmd.Parameters.AddWithValue("@Qty", 0);
+                    shoppingCart_Item.ForEach(item => {
+                        cmd.Parameters["@ItemID"].Value = item.Id;
+                        cmd.Parameters["@Qty"].Value = item.Qty;
+                        cmd.ExecuteNonQuery();
+                    });
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+                }
             }
         }
 
@@ -747,7 +769,7 @@ namespace UI.Sales_page {
                 Item item = x.Tag as Item;
                 if (item != null) {
                     shoppingCart_Item.Remove(item);
-                    if(Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty.Remove(item);
+                    if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty.Remove(item);
                 }
             }
 
@@ -810,47 +832,75 @@ namespace UI.Sales_page {
             string orderID = saveOrder(this.orderID);
             if (orderID == null) return; //儲存失敗
 
+            Dictionary<string, double> totalPriceData = CountPrice();
+            string html = Resources.Receipt;
+
             //取得資料 order info
             try {
-                MySqlCommand cmd = new MySqlCommand("", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT Payment_Method, Charge, DateTime FROM `order` WHERE OrderID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", orderID);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                //資料不存在
-                if (!reader.HasRows) {
-                    reader.Close();
-                    return; 
-                }
-
-                //資料存在
                 while (reader.Read()) {
 
+                    //order status
+                    if (reader.GetDouble("Charge") >= (totalPriceData["subtotal"] - totalPriceData["discount"])) {
+                        html = html.Replace("%paid_status%", "<div id=\"paid\" class=\"tag\">PAID</div>");
+                    } else {
+                        html = html.Replace("%paid_status%", "<div id=\"unpaid\" class=\"tag\">UNPAID</div> ");
+                    }
+
+                    //order detail
+                    html = html.Replace("%drder_id%", orderID);
+                    html = html.Replace("%receipt_date%", DateTime.Now.ToString("yyyy-MM-dd"));
+                    html = html.Replace("%payment_date%", reader.GetDateTime("DateTime").ToString("yyyy-MM-dd HH:mm:ss"));
+                    html = html.Replace("%payment_method%", reader.GetInt32("Payment_Method") == 0 ? "Cash" : (reader.GetInt32("Payment_Method") == 1 ? "E-payment" : "N/A"));
+
+                    //取得資料 paid info
+                    double change = reader.GetDouble("Charge") - (totalPriceData["subtotal"] - totalPriceData["discount"]);
+                    html = html.Replace("%change%", change <= 0 ? String.Format("{0:C}", 0) : String.Format("{0:C}", change));
+                    html = html.Replace("%arrears%", change <= 0 ? String.Format("{0:C}", Math.Abs(change)) : String.Format("{0:C}", 0));
+                    html = html.Replace("%paid%", String.Format("{0:C}", reader.GetDouble("Charge")));
                 }
                 reader.Close();
-            } catch (Exception ex) {
-
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
 
-            //替換字詞
-            string html = Resources.Receipt;
-            html.Replace("%paid_status%", paid_status);
+            //取得資料 customer info
+            try {
+                MySqlCommand cmd = new MySqlCommand("SELECT c.Phone, c.Customer_name, c.Address FROM customer c, installation i, delivery d WHERE i.CustomerID = c.CustomerID AND d.CustomerID = c.CustomerID AND (d.OrderID = @id OR i.OrderID = @id)", conn);
+                cmd.Parameters.AddWithValue("@id", orderID);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        html = html.Replace("%customer_name%", reader.GetString("Customer_name"));
+                        html = html.Replace("%customer_address%", reader.GetString("Address"));
+                        html = html.Replace("%customer_phone%", reader.GetString("Phone"));
+                    }
+                } else {
+                    html = html.Replace("%customer_name%", "- No Data -");
+                    html = html.Replace("%customer_address%", "");
+                    html = html.Replace("%customer_phone%", "");
+                }
+                reader.Close();
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
 
-            html.Replace("%receipt_date%", DateTime.Now.ToString("yyyy-MM-dd"));
-            html.Replace("%payment_date%", payment_date);
-            html.Replace("%payment_method%", payment_method);
+            //取得資料 item & combo info
+            string items = "";
+            shoppingCart_Item.ForEach(item => {
+                items += String.Format("<tr><td> {0} </td ><td > {1} </td><td> {2:C} </td ></tr>", item.Name, item.Qty, item.Price);
+            });
+            shoppingCart_Combo.ForEach(combo => {
+                items += String.Format("<tr><td> {0} </td ><td > {1} </td><td> -{2:C} </td ></tr>", combo.Name, combo.GetQty(), combo.DiscountPrice());
+            });
+            html = html.Replace("%items%", items);
 
-            html.Replace("%customer_name%", customer_name);
-            html.Replace("%customer_address%", customer_address);
-            html.Replace("%customer_phone%", customer_phone);
-
-            html.Replace("%items%", items);
-
-            html.Replace("%subtotal%", subtotal);
-            html.Replace("%discount%", discount);
-            html.Replace("%received%", received);
-            html.Replace("%total%", total);
-
-            html.Replace("%paid%", paid);
-            html.Replace("%change%", change);
-            html.Replace("%arrears%", arrears);
+            //取得資料 total price
+            html = html.Replace("%subtotal%", String.Format("{0:C}", totalPriceData["subtotal"]));
+            html = html.Replace("%discount%", String.Format("-{0:C}", totalPriceData["discount"]));
+            html = html.Replace("%total%", String.Format("{0:C}", totalPriceData["subtotal"] - totalPriceData["discount"]));
 
             //save as pdf
             savePDF.Save(html);

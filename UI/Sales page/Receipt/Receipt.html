@@ -91,12 +91,11 @@
 
         .tag {
             position: absolute;
-            top: 0;
             right: 0;
             font-size: 3rem;
             font-weight: bold;
             color: white;
-            width: 100%;
+            width: 500px;
             text-align: center;
             padding: .5rem;
             transform: translateX(40%) translateY(-50px) rotate(35deg);
@@ -105,6 +104,7 @@
             .tag#paid {
                 background-color: yellowgreen;
                 border: solid forestgreen 3px;
+                width: 500px;
             }
 
             .tag#unpaid {
@@ -117,7 +117,7 @@
     <!--<div id="unpaid" class="tag">
         UNPAID
     </div>
-    <div id="paid" class="tag" style="display:none">
+    <div id="paid" class="tag">
         PAID
     </div>-->
     %paid_status%
@@ -172,10 +172,6 @@
                 <tr>
                     <td colspan="2">Discount</td>
                     <td>%discount%</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Received</td>
-                    <td>%received%</td>
                 </tr>
                 <tr>
                     <td colspan="2">Total</td>
