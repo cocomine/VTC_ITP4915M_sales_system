@@ -1,7 +1,5 @@
-﻿namespace UI.Technical_Support_page
-{
-    partial class Arrange_installation
-    {
+﻿namespace UI.Delivery_Page {
+    partial class Arrange_Delivery_Page {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.lb_order = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,6 +50,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cb_session = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -83,9 +80,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 12);
+            this.label1.Size = new System.Drawing.Size(239, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Orders that need to be scheduled for workers";
+            this.label1.Text = "Orders that need to be scheduled for delivery team";
             // 
             // panel1
             // 
@@ -128,9 +125,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 12);
+            this.label2.Size = new System.Drawing.Size(131, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Unscheduled worker";
+            this.label2.Text = "Unscheduled delivery team";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lb_unscheduled_worker
@@ -204,9 +201,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 12);
+            this.label3.Size = new System.Drawing.Size(81, 12);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Scheduled Order";
+            this.label3.Text = "Scheduled order";
             // 
             // panel2
             // 
@@ -229,6 +226,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_session);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.tb_customer_address);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tb_customer_name);
@@ -295,16 +294,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_installation_item.FormattingEnabled = true;
             this.lb_installation_item.ItemHeight = 12;
-            this.lb_installation_item.Location = new System.Drawing.Point(9, 230);
+            this.lb_installation_item.Location = new System.Drawing.Point(9, 278);
             this.lb_installation_item.Name = "lb_installation_item";
-            this.lb_installation_item.Size = new System.Drawing.Size(269, 172);
+            this.lb_installation_item.Size = new System.Drawing.Size(269, 124);
             this.lb_installation_item.TabIndex = 11;
             this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 215);
+            this.label4.Location = new System.Drawing.Point(8, 263);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 12);
             this.label4.TabIndex = 10;
@@ -359,7 +358,29 @@
             this.myProfileToolStripMenuItem.Text = "My Profile";
             this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
             // 
-            // Arrange_installation
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 214);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(82, 12);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Delivery Session";
+            // 
+            // cb_session
+            // 
+            this.cb_session.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_session.FormattingEnabled = true;
+            this.cb_session.Items.AddRange(new object[] {
+            "9:00 - 12:00",
+            "13:00 - 17:00",
+            "18:00 - 22:00"});
+            this.cb_session.Location = new System.Drawing.Point(10, 229);
+            this.cb_session.Name = "cb_session";
+            this.cb_session.Size = new System.Drawing.Size(153, 20);
+            this.cb_session.TabIndex = 18;
+            // 
+            // Arrange_Delivery_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -369,7 +390,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(816, 487);
-            this.Name = "Arrange_installation";
+            this.Name = "Arrange_Delivery_Page";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Arrange installation workers";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Arrange_installation_FormClosed);
@@ -422,5 +443,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cb_session;
     }
 }
