@@ -37,6 +37,7 @@ namespace UI.Inventory_page
 
         private void Inventory_quantity_Load(object sender, EventArgs e)
         {
+            //connect database to dataGridView
             Program.addPage();
             da.SelectCommand = new MySqlCommand("SELECT * FROM `inventory`", conn);
             da.Fill(ds);
@@ -44,7 +45,7 @@ namespace UI.Inventory_page
             tblNameBs.DataSource = ds.Tables[0];
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
 
-            //ComboBox
+
 
 
     
@@ -75,6 +76,7 @@ namespace UI.Inventory_page
 
         private void Next_Click(object sender, EventArgs e)
         {
+            // buuton:Next
             tblNameBs.MoveNext();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
@@ -82,6 +84,7 @@ namespace UI.Inventory_page
 
         private void Previous_Click(object sender, EventArgs e)
         {
+            // buuton:Previous
             tblNameBs.MovePrevious();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
@@ -89,6 +92,7 @@ namespace UI.Inventory_page
 
         private void First_Click(object sender, EventArgs e)
         {
+            // buuton:First
             tblNameBs.MoveFirst();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
@@ -96,6 +100,7 @@ namespace UI.Inventory_page
 
         private void Last_Click(object sender, EventArgs e)
         {
+            // buuton:Last
             tblNameBs.MoveLast();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
@@ -112,7 +117,8 @@ namespace UI.Inventory_page
             {
                 if (comboBox1.Text != null && comboBox1.Text != "")
                 {
-                    
+                    // Search StoreWarehouseID
+
                     MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + comboBox1.Text, conn);
                     DataTable dtbl = new DataTable();
                     dtbl.Clear();
@@ -124,6 +130,7 @@ namespace UI.Inventory_page
                 }
             }catch(Exception ea)
             {
+                //error message
                 MessageBox.Show("Please select one StoreWarehouseID", "顯示");
             }
 
@@ -133,7 +140,7 @@ namespace UI.Inventory_page
         private void btDelete_Click(object sender, EventArgs e)
         {
 
-
+            //delete button
             MySqlDataAdapter sqlda1 = new MySqlDataAdapter("DELETE FROM `inventory` WHERE `inventory`.`ItemID` = '" + textBox1.Text+"'", conn);
             DataTable dtbl1 = new DataTable();
             dtbl1.Clear();
@@ -147,6 +154,7 @@ namespace UI.Inventory_page
         {
             if (e.RowIndex >= 0)
             {
+                //show Id in ItemID textbox
                 textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             }
         }
@@ -158,6 +166,7 @@ namespace UI.Inventory_page
 
         public void reload()
         {
+            //Class for reload pages
             MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` ", conn);
             DataTable dtbl = new DataTable();
             sqlda.Fill(dtbl);
