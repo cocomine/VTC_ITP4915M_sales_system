@@ -75,6 +75,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_receipt = new System.Windows.Forms.Button();
             this.lb_orderID = new System.Windows.Forms.Label();
             this.bt_save = new System.Windows.Forms.Button();
             this.tb_deposit = new System.Windows.Forms.TextBox();
@@ -86,7 +87,6 @@
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.bt_receipt = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -130,6 +130,7 @@
             this.salesManagementToolStripMenuItem.Name = "salesManagementToolStripMenuItem";
             this.salesManagementToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
             this.salesManagementToolStripMenuItem.Text = "Sales Management";
+            this.salesManagementToolStripMenuItem.Click += new System.EventHandler(this.salesManagementToolStripMenuItem_Click);
             // 
             // returnOrderToolStripMenuItem
             // 
@@ -620,6 +621,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Collection";
             // 
+            // bt_receipt
+            // 
+            this.bt_receipt.Location = new System.Drawing.Point(255, 113);
+            this.bt_receipt.Name = "bt_receipt";
+            this.bt_receipt.Size = new System.Drawing.Size(93, 23);
+            this.bt_receipt.TabIndex = 107;
+            this.bt_receipt.Text = "Print Receipt";
+            this.bt_receipt.UseVisualStyleBackColor = true;
+            this.bt_receipt.Click += new System.EventHandler(this.bt_receipt_Click);
+            // 
             // lb_orderID
             // 
             this.lb_orderID.AutoSize = true;
@@ -726,16 +737,6 @@
             // 
             this.saveFileDialog1.DefaultExt = "pdf";
             this.saveFileDialog1.RestoreDirectory = true;
-            // 
-            // bt_receipt
-            // 
-            this.bt_receipt.Location = new System.Drawing.Point(255, 113);
-            this.bt_receipt.Name = "bt_receipt";
-            this.bt_receipt.Size = new System.Drawing.Size(93, 23);
-            this.bt_receipt.TabIndex = 107;
-            this.bt_receipt.Text = "Print Receipt";
-            this.bt_receipt.UseVisualStyleBackColor = true;
-            this.bt_receipt.Click += new System.EventHandler(this.bt_receipt_Click);
             // 
             // Sales_Page
             // 

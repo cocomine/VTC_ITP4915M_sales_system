@@ -115,12 +115,18 @@ namespace UI.IT
             }
         }
 
+        
         private void bt_del_account_Click(object sender, EventArgs e) {
             //delete account
             DialogResult result = MessageBox.Show("Are you sure delete seleect user?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm del                                                                                                                  //if confirm
             if (result == DialogResult.Yes) { //confirm
-                bindingSource1.RemoveCurrent();
-                adapter.Update(ds_staff, "Staff_List");
+                foreach (DataGridViewCell oneCell in dataGrid_staffList.SelectedCells) {
+                    if (oneCell.Selected)
+                        dataGrid_staffList.Rows.RemoveAt(oneCell.RowIndex);
+                }
+                foreach (DataGridViewRow row in dataGrid_staffList.SelectedRows) {
+                    dataGrid_staffList.Rows.Remove(row);
+                }
             }
         }
 

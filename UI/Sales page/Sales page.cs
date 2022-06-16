@@ -603,13 +603,16 @@ namespace UI.Sales_page {
             lb_orderID.Visible = true;
             this.orderID = orderID;
 
-            //set xxx
+            //set Contains Disable
             if (received >= (totalPriceData["subtotal"] - totalPriceData["discount"])) {
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
                 bt_add_id.Enabled = false;
                 bt_add_name.Enabled = false;
                 lb_paid.Visible = true;
+                tb_change.Enabled = false;
+                tb_add_id.Enabled = false;
+                tb_add_name.Enabled = false;
             }
         }
 
@@ -724,12 +727,18 @@ namespace UI.Sales_page {
             if (change >= 0) {
                 //全額付款
                 tb_change.Text = String.Format("{0:C}", change);
-                lb_paid.Visible = true;
+                bt_cash.Enabled = false;
+                bt_epay.Enabled = false;
                 bt_add_id.Enabled = false;
                 bt_add_name.Enabled = false;
+                lb_paid.Visible = true;
+                tb_change.Enabled = false;
+                tb_add_id.Enabled = false;
+                tb_add_name.Enabled = false;
+
             } else {
                 //非全額付款
-                tb_charge.Text = String.Format("{0:C}", 0);
+                tb_change.Text = String.Format("{0:C}", 0);
             }
 
             //更新訂單紀錄
@@ -802,6 +811,9 @@ namespace UI.Sales_page {
             bt_epay.Enabled = true;
             bt_add_id.Enabled = true;
             bt_add_name.Enabled = true;
+            tb_change.Enabled = true;
+            tb_add_id.Enabled = true;
+            tb_add_name.Enabled = true;
 
             //clear all textbox
             List<TextBox> AllTextBox = new List<TextBox>();
@@ -904,6 +916,10 @@ namespace UI.Sales_page {
 
             //save as pdf
             savePDF.Save(html);
+        }
+
+        private void salesManagementToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Sales_Management(conn, acc).Show();
         }
     }
 }

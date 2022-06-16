@@ -55,6 +55,7 @@
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ds_staff = new System.Data.DataSet();
+            this.bt_del_account = new System.Windows.Forms.ToolStripButton();
             this.MoveFirst = new System.Windows.Forms.ToolStripButton();
             this.MovePrevious = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -62,7 +63,6 @@
             this.MoveLast = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Create_account = new System.Windows.Forms.ToolStripButton();
-            this.bt_del_account = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tb_serach = new System.Windows.Forms.ToolStripTextBox();
@@ -95,12 +95,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGrid_staffList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_staffList.Location = new System.Drawing.Point(12, 56);
-            this.dataGrid_staffList.MultiSelect = false;
+            this.dataGrid_staffList.Location = new System.Drawing.Point(12, 52);
             this.dataGrid_staffList.Name = "dataGrid_staffList";
             this.dataGrid_staffList.ReadOnly = true;
             this.dataGrid_staffList.RowTemplate.Height = 24;
-            this.dataGrid_staffList.Size = new System.Drawing.Size(776, 262);
+            this.dataGrid_staffList.Size = new System.Drawing.Size(776, 266);
             this.dataGrid_staffList.TabIndex = 2;
             this.dataGrid_staffList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGrid_staffList_DataError);
             // 
@@ -382,6 +381,16 @@
             // 
             this.ds_staff.DataSetName = "NewDataSet";
             // 
+            // bt_del_account
+            // 
+            this.bt_del_account.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bt_del_account.Image = ((System.Drawing.Image)(resources.GetObject("bt_del_account.Image")));
+            this.bt_del_account.Name = "bt_del_account";
+            this.bt_del_account.RightToLeftAutoMirrorImage = true;
+            this.bt_del_account.Size = new System.Drawing.Size(23, 22);
+            this.bt_del_account.Text = "刪除";
+            this.bt_del_account.Click += new System.EventHandler(this.bt_del_account_Click);
+            // 
             // MoveFirst
             // 
             this.MoveFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -438,16 +447,6 @@
             this.Create_account.Size = new System.Drawing.Size(23, 22);
             this.Create_account.Text = "加入新的";
             this.Create_account.Click += new System.EventHandler(this.Create_account_Click);
-            // 
-            // bt_del_account
-            // 
-            this.bt_del_account.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bt_del_account.Image = ((System.Drawing.Image)(resources.GetObject("bt_del_account.Image")));
-            this.bt_del_account.Name = "bt_del_account";
-            this.bt_del_account.RightToLeftAutoMirrorImage = true;
-            this.bt_del_account.Size = new System.Drawing.Size(23, 22);
-            this.bt_del_account.Text = "刪除";
-            this.bt_del_account.Click += new System.EventHandler(this.bt_del_account_Click);
             // 
             // toolStripSeparator1
             // 

@@ -345,6 +345,8 @@
   <ItemGroup>
     <Content Include="Sales page\Receipt\Receipt.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Sales page\Return Item\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
