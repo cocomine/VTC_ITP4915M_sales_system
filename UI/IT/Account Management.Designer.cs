@@ -55,7 +55,6 @@
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ds_staff = new System.Data.DataSet();
-            this.bt_del_account = new System.Windows.Forms.ToolStripButton();
             this.MoveFirst = new System.Windows.Forms.ToolStripButton();
             this.MovePrevious = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -63,6 +62,7 @@
             this.MoveLast = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Create_account = new System.Windows.Forms.ToolStripButton();
+            this.bt_del_account = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tb_serach = new System.Windows.Forms.ToolStripTextBox();
@@ -73,6 +73,7 @@
             this.cb_Filter_Enable = new System.Windows.Forms.ToolStripComboBox();
             this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.salesStaffArrangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_staffList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -310,7 +311,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem,
             this.myProfileToolStripMenuItem,
-            this.deliveryTeamGroupingToolStripMenuItem});
+            this.deliveryTeamGroupingToolStripMenuItem,
+            this.salesStaffArrangeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -381,16 +383,6 @@
             // 
             this.ds_staff.DataSetName = "NewDataSet";
             // 
-            // bt_del_account
-            // 
-            this.bt_del_account.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bt_del_account.Image = ((System.Drawing.Image)(resources.GetObject("bt_del_account.Image")));
-            this.bt_del_account.Name = "bt_del_account";
-            this.bt_del_account.RightToLeftAutoMirrorImage = true;
-            this.bt_del_account.Size = new System.Drawing.Size(23, 22);
-            this.bt_del_account.Text = "刪除";
-            this.bt_del_account.Click += new System.EventHandler(this.bt_del_account_Click);
-            // 
             // MoveFirst
             // 
             this.MoveFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -447,6 +439,16 @@
             this.Create_account.Size = new System.Drawing.Size(23, 22);
             this.Create_account.Text = "加入新的";
             this.Create_account.Click += new System.EventHandler(this.Create_account_Click);
+            // 
+            // bt_del_account
+            // 
+            this.bt_del_account.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bt_del_account.Image = ((System.Drawing.Image)(resources.GetObject("bt_del_account.Image")));
+            this.bt_del_account.Name = "bt_del_account";
+            this.bt_del_account.RightToLeftAutoMirrorImage = true;
+            this.bt_del_account.Size = new System.Drawing.Size(23, 22);
+            this.bt_del_account.Text = "刪除";
+            this.bt_del_account.Click += new System.EventHandler(this.bt_del_account_Click);
             // 
             // toolStripSeparator1
             // 
@@ -527,6 +529,13 @@
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // salesStaffArrangeToolStripMenuItem
+            // 
+            this.salesStaffArrangeToolStripMenuItem.Name = "salesStaffArrangeToolStripMenuItem";
+            this.salesStaffArrangeToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
+            this.salesStaffArrangeToolStripMenuItem.Text = "Sales Staff arrange";
+            this.salesStaffArrangeToolStripMenuItem.Click += new System.EventHandler(this.salesStaffArrangeToolStripMenuItem_Click);
             // 
             // Account_Management
             // 
@@ -609,5 +618,6 @@
         private System.Windows.Forms.Button bt_reset_pass;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolStripMenuItem deliveryTeamGroupingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salesStaffArrangeToolStripMenuItem;
     }
 }

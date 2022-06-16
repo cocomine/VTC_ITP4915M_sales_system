@@ -266,5 +266,9 @@ namespace UI.IT
                 }
             }
         }
+
+        private void salesStaffArrangeToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Sales_Staff_arrange(acc, conn).Show();
+        }
     }
 }

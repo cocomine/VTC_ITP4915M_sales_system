@@ -257,7 +257,8 @@ namespace ITP4915M.IT {
             Point point = tree_Teams.PointToClient(new Point(e.X, e.Y)); // gete mouse position. 
             tree_Teams.SelectedNode = tree_Teams.GetNodeAt(point); // Select node at mouse position.  
 
-            if(tree_Teams.SelectedNode != null) {
+            //線條效果
+            if (tree_Teams.SelectedNode != null) {
                 Point pt = new Point(tree_Teams.Bounds.X + 5, tree_Teams.SelectedNode.Bounds.Bottom + tree_Teams.Top+2);
                 lb_line.Location = pt;
                 lb_line.Visible = true;
