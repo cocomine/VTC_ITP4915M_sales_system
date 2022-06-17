@@ -49,6 +49,7 @@
             // 
             // list_store
             // 
+            this.list_store.AllowDrop = true;
             this.list_store.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.list_store.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -67,6 +68,9 @@
             this.list_store.UseCompatibleStateImageBehavior = false;
             this.list_store.View = System.Windows.Forms.View.Details;
             this.list_store.SelectedIndexChanged += new System.EventHandler(this.list_store_SelectedIndexChanged);
+            this.list_store.DragDrop += new System.Windows.Forms.DragEventHandler(this.list_store_DragDrop);
+            this.list_store.DragEnter += new System.Windows.Forms.DragEventHandler(this.list_store_DragEnter);
+            this.list_store.DragOver += new System.Windows.Forms.DragEventHandler(this.list_store_DragOver);
             // 
             // colummHeader5
             // 
@@ -200,6 +204,9 @@
             this.list_unInStore.TabIndex = 11;
             this.list_unInStore.UseCompatibleStateImageBehavior = false;
             this.list_unInStore.View = System.Windows.Forms.View.Details;
+            this.list_unInStore.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.list_unInStore_ItemDrag);
+            this.list_unInStore.DragDrop += new System.Windows.Forms.DragEventHandler(this.list_unInStore_DragDrop);
+            this.list_unInStore.DragEnter += new System.Windows.Forms.DragEventHandler(this.list_unInStore_DragEnter);
             // 
             // columnHeader3
             // 
@@ -231,6 +238,9 @@
             this.list_inStore.TabIndex = 10;
             this.list_inStore.UseCompatibleStateImageBehavior = false;
             this.list_inStore.View = System.Windows.Forms.View.Details;
+            this.list_inStore.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.list_unInStore_ItemDrag);
+            this.list_inStore.DragDrop += new System.Windows.Forms.DragEventHandler(this.list_inStore_DragDrop);
+            this.list_inStore.DragEnter += new System.Windows.Forms.DragEventHandler(this.list_unInStore_DragEnter);
             // 
             // columnHeader1
             // 

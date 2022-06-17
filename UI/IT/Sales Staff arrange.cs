@@ -42,13 +42,16 @@ namespace ITP4915M.IT {
             }
 
             //get not arrange staff
+            //item tag = false = not in any store
+            //item tag = true = in store
             try {
-                MySqlCommand cmd = new MySqlCommand("SELECT s.AccountID, s.FullRealName FROM staff s, sales_staff_store f WHERE s.AccountID != f.StaffAccountID AND DepartmentID = 1;", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT s.AccountID, s.FullRealName FROM staff s LEFT JOIN sales_staff_store f ON s.AccountID = f.StaffAccountID WHERE f.StaffAccountID IS NULL AND s.DepartmentID = 1;", conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows) {
                     while (reader.Read()) {
                         ListViewItem item = new ListViewItem(new String[] { reader.GetString("AccountID"), reader.GetString("FullRealName") });
-                        item.Tag = reader.GetString("AccountID");
+                        item.Tag = false;
+                        item.Name = reader.GetString("AccountID");
                         list_unInStore.Items.Add(item);
                     }
                 }
@@ -84,7 +87,8 @@ namespace ITP4915M.IT {
                 if (reader.HasRows) {
                     while (reader.Read()) {
                         ListViewItem item = new ListViewItem(new String[] { reader.GetString("AccountID"), reader.GetString("FullRealName") });
-                        item.Tag = reader.GetString("AccountID");
+                        item.Tag = true;
+                        item.Name = reader.GetString("AccountID");
                         list_inStore.Items.Add(item);
                     }
                 }
@@ -98,18 +102,19 @@ namespace ITP4915M.IT {
         private void bt_add_Click(object sender, EventArgs e) {
             if(list_unInStore.SelectedItems.Count > 0 && list_store.SelectedItems.Count > 0) {
                 try {
-                    MySqlCommand cmd = new MySqlCommand("", conn);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `sales_staff_store` (`StaffAccountID`, `StoreID`) VALUES (@staffId, @storeId)", conn);
                     cmd.Parameters.AddWithValue("@storeId", list_store.SelectedItems[0].Tag.ToString());
                     cmd.Parameters.AddWithValue("@staffId", "");
 
                     foreach (ListViewItem item in list_unInStore.SelectedItems) {
                         //update database
-                        cmd.Parameters["@staffId"].Value = item.Tag.ToString();
+                        cmd.Parameters["@staffId"].Value = item.Name;
                         cmd.ExecuteNonQuery();
 
                         //update ui
-                        list_inStore.Items.Add(item);
                         list_unInStore.Items.Remove(item);
+                        item.Tag = true;
+                        list_inStore.Items.Add(item);
                     }
                 } catch (MySqlException ex) {
                     Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
@@ -121,21 +126,73 @@ namespace ITP4915M.IT {
         private void bt_remove_Click(object sender, EventArgs e) {
             if (list_inStore.SelectedItems.Count > 0 && list_store.SelectedItems.Count > 0) {
                 try {
-                    MySqlCommand cmd = new MySqlCommand("", conn);
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM `sales_staff_store` WHERE `sales_staff_store`.`StaffAccountID` = @staffId;", conn);
                     cmd.Parameters.AddWithValue("@staffId", "");
 
                     foreach (ListViewItem item in list_inStore.SelectedItems) {
                         //update database
-                        cmd.Parameters["@staffId"].Value = item.Tag.ToString();
+                        cmd.Parameters["@staffId"].Value = item.Name;
                         cmd.ExecuteNonQuery();
 
                         //update ui
-                        list_unInStore.Items.Add(item);
                         list_inStore.Items.Remove(item);
+                        item.Tag = false;
+                        list_unInStore.Items.Add(item);
                     }
                 } catch (MySqlException ex) {
                     Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
                 }
+            }
+        }
+
+        //drag drop
+        //Drag item
+        private void list_unInStore_ItemDrag(object sender, ItemDragEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
+                DoDragDrop(e.Item, DragDropEffects.Move);
+            }
+        }
+        //Drop from InStore staff //remove staff
+        private void list_unInStore_DragDrop(object sender, DragEventArgs e) {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            if (item != null && (bool) item.Tag == true) {
+                bt_remove.PerformClick();
+            }
+        }
+        //check allowed drop
+        private void list_unInStore_DragEnter(object sender, DragEventArgs e) {
+            if(list_store.SelectedItems.Count > 0) { //check is select store
+                e.Effect = e.AllowedEffect;
+            }
+        }
+        //Drop from unInStore staff //add staff
+        private void list_inStore_DragDrop(object sender, DragEventArgs e) {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            if (item != null && (bool)item.Tag == false && list_store.SelectedItems.Count > 0) {
+                bt_add.PerformClick();
+            }
+        }
+        //on drag, select store
+        private void list_store_DragOver(object sender, DragEventArgs e) {
+            Point point = list_store.PointToClient(new Point(e.X, e.Y)); // gete mouse position. 
+            ListViewItem item = list_store.GetItemAt(point.X, point.Y); // Select node at mouse position.
+            if (item != null) {
+                item.Selected = true;
+                list_store.Select();
+            }
+        }
+        //Drop from unInStore staff, add staff
+        private void list_store_DragDrop(object sender, DragEventArgs e) {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            if (item != null && list_store.SelectedItems.Count > 0 && (bool)item.Tag == false) {
+                bt_add.PerformClick(); //add staff
+            }
+        }
+        //store list check allowed drop
+        private void list_store_DragEnter(object sender, DragEventArgs e) {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            if (item != null && (bool)item.Tag == false) { //check is unInStore staff
+                e.Effect = e.AllowedEffect;
             }
         }
     }
