@@ -44,6 +44,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +77,7 @@
             // 
             // btDelete
             // 
-            this.btDelete.BackColor = System.Drawing.Color.IndianRed;
+            this.btDelete.BackColor = System.Drawing.Color.SeaGreen;
             this.btDelete.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btDelete.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.btDelete.Location = new System.Drawing.Point(328, 1);
@@ -153,7 +155,7 @@
             // ItemID
             // 
             this.ItemID.AutoSize = true;
-            this.ItemID.Location = new System.Drawing.Point(328, 365);
+            this.ItemID.Location = new System.Drawing.Point(216, 365);
             this.ItemID.Name = "ItemID";
             this.ItemID.Size = new System.Drawing.Size(38, 12);
             this.ItemID.TabIndex = 27;
@@ -163,7 +165,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(370, 362);
+            this.textBox1.Location = new System.Drawing.Point(260, 362);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(250, 22);
@@ -183,26 +185,46 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 365);
+            this.label1.Location = new System.Drawing.Point(16, 365);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 12);
+            this.label1.Size = new System.Drawing.Size(93, 12);
             this.label1.TabIndex = 30;
-            this.label1.Text = "RequestID";
+            this.label1.Text = "StoreWarehouseID";
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Location = new System.Drawing.Point(72, 362);
+            this.textBox2.Location = new System.Drawing.Point(111, 362);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(250, 22);
+            this.textBox2.Size = new System.Drawing.Size(90, 22);
             this.textBox2.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(530, 365);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(22, 12);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Qty";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox3.Location = new System.Drawing.Point(558, 362);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(166, 22);
+            this.textBox3.TabIndex = 33;
             // 
             // Item_requested
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 426);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -247,5 +269,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

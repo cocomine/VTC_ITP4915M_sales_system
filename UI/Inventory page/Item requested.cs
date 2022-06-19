@@ -45,8 +45,9 @@ namespace UI.Inventory_page
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
             tblNameBs.DataSource = ds.Tables[0];
-            textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
-            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "RequestID"));
+            textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "fromWarehouseID "));
+            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
+            textBox3.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
 
         }
 
@@ -104,7 +105,7 @@ namespace UI.Inventory_page
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("DELETE FROM `request_item` WHERE `request_item`.`ItemID` = '" + textBox1.Text + "'", conn);
+            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("UPDATE `inventory` SET `Qty` = '1' WHERE `inventory`.`ItemID` = '3b48102c-e26c-11ec-bf17-2cf05d0481f9' AND `inventory`.`StoreWarehouseID` = 6722;", conn);
             DataTable dtbl1 = new DataTable();
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
