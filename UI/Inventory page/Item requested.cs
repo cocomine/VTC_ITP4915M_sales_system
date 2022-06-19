@@ -17,7 +17,6 @@ namespace UI.Inventory_page
         MySqlDataAdapter da = new MySqlDataAdapter();
         DataSet ds = new DataSet();
         BindingSource tblNameBs = new BindingSource();
-        MySqlCommand SelectCommand;
         public Item_requested(MySqlConnection conn)
         {
             this.conn = conn;
@@ -47,6 +46,7 @@ namespace UI.Inventory_page
             dataGridView1.DataSource = ds.Tables[0];
             tblNameBs.DataSource = ds.Tables[0];
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
+            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "RequestID"));
 
         }
 
@@ -93,13 +93,11 @@ namespace UI.Inventory_page
             {
                 // Search StoreWarehouseID
 
-                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` where 	StoreWarehouseID  = " + comboBox1.Text, conn);
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` where fromWarehouseID  = " + comboBox1.Text, conn);
                 DataTable dtbl = new DataTable();
                 dtbl.Clear();
                 sqlda.Fill(dtbl);
                 dataGridView1.DataSource = dtbl;
-
-
 
             }
         }
@@ -111,14 +109,17 @@ namespace UI.Inventory_page
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
+
+            reload();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                //show Id in ItemID textbox
-                textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                //show Id in ItemID textbox & request textBox
+                textBox1.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                textBox2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             }
         }
 

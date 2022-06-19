@@ -153,7 +153,7 @@
             // ItemID
             // 
             this.ItemID.AutoSize = true;
-            this.ItemID.Location = new System.Drawing.Point(16, 365);
+            this.ItemID.Location = new System.Drawing.Point(328, 365);
             this.ItemID.Name = "ItemID";
             this.ItemID.Size = new System.Drawing.Size(38, 12);
             this.ItemID.TabIndex = 27;
@@ -163,7 +163,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(60, 362);
+            this.textBox1.Location = new System.Drawing.Point(370, 362);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(250, 22);
@@ -183,7 +183,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(333, 365);
+            this.label1.Location = new System.Drawing.Point(12, 365);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 12);
             this.label1.TabIndex = 30;
@@ -192,7 +192,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.Location = new System.Drawing.Point(393, 362);
+            this.textBox2.Location = new System.Drawing.Point(72, 362);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(250, 22);
