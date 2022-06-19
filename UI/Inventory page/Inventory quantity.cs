@@ -147,7 +147,7 @@ namespace UI.Inventory_page
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
-
+            MessageBox.Show("Delete success", "顯示");
             reload();
         }
 

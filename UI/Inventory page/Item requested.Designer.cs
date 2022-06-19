@@ -78,11 +78,11 @@
             this.btDelete.BackColor = System.Drawing.Color.IndianRed;
             this.btDelete.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btDelete.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.btDelete.Location = new System.Drawing.Point(335, 1);
+            this.btDelete.Location = new System.Drawing.Point(328, 1);
             this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(80, 28);
+            this.btDelete.Size = new System.Drawing.Size(110, 28);
             this.btDelete.TabIndex = 25;
-            this.btDelete.Text = "Delete";
+            this.btDelete.Text = "Complete Order";
             this.btDelete.UseVisualStyleBackColor = false;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
@@ -96,7 +96,7 @@
             "5275",
             "6722",
             "7520"});
-            this.comboBox1.Location = new System.Drawing.Point(523, 4);
+            this.comboBox1.Location = new System.Drawing.Point(532, 4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(145, 20);
             this.comboBox1.TabIndex = 24;
@@ -134,7 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(433, 7);
+            this.label2.Location = new System.Drawing.Point(444, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 12);
             this.label2.TabIndex = 20;
