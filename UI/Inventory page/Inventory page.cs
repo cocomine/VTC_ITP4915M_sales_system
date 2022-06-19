@@ -39,7 +39,7 @@ namespace UI.Inventory_page
         }
 
         private void itemRequestedToolStripMenuItem_Click(object sender, EventArgs e) {
-            openChildForm(new Item_requested());
+            openChildForm(new Item_requested(conn));
         }
 
         private void purchaseItemToolStripMenuItem_Click(object sender, EventArgs e) {

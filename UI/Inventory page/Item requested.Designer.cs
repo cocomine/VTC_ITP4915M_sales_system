@@ -59,6 +59,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(776, 321);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellCick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Search
             // 
@@ -70,6 +71,7 @@
             this.Search.TabIndex = 26;
             this.Search.Text = "Search";
             this.Search.UseVisualStyleBackColor = false;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // btDelete
             // 
@@ -82,6 +84,7 @@
             this.btDelete.TabIndex = 25;
             this.btDelete.Text = "Delete";
             this.btDelete.UseVisualStyleBackColor = false;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // comboBox1
             // 
@@ -106,6 +109,7 @@
             this.Last.TabIndex = 23;
             this.Last.Text = "Last";
             this.Last.UseVisualStyleBackColor = true;
+            this.Last.Click += new System.EventHandler(this.Last_Click);
             // 
             // Next
             // 
@@ -115,6 +119,7 @@
             this.Next.TabIndex = 22;
             this.Next.Text = "Next";
             this.Next.UseVisualStyleBackColor = true;
+            this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
             // Previous
             // 
@@ -124,6 +129,7 @@
             this.Previous.TabIndex = 21;
             this.Previous.Text = "Previous";
             this.Previous.UseVisualStyleBackColor = true;
+            this.Previous.Click += new System.EventHandler(this.Previous_Click);
             // 
             // label2
             // 
@@ -142,6 +148,7 @@
             this.First.TabIndex = 19;
             this.First.Text = "First";
             this.First.UseVisualStyleBackColor = true;
+            this.First.Click += new System.EventHandler(this.First_Click);
             // 
             // ItemID
             // 
@@ -171,6 +178,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Reload";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
