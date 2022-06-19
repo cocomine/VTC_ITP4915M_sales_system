@@ -17,5 +17,9 @@ namespace UI.Inventory_page
             InitializeComponent();
         }
 
+        private void ItemID_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
