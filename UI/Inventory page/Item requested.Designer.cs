@@ -58,6 +58,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(776, 321);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellCick);
             // 
             // Search
             // 
@@ -212,6 +213,8 @@
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Item_requested";
             this.Text = "Item requested";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Item_requested_Closing);
+            this.Load += new System.EventHandler(this.Item_requested_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);

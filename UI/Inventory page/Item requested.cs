@@ -21,5 +21,20 @@ namespace UI.Inventory_page
         {
 
         }
+
+        private void dataGridView1_CellCick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Item_requested_Closing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void Item_requested_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
