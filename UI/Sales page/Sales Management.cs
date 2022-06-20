@@ -85,7 +85,7 @@ namespace UI.Sales_page {
 
         //search item
         private void tb_search_TextChanged(object sender, EventArgs e) {
-            bindingSource.Filter = String.Format("Name LIKE '%{0}%'", tb_search.Text);
+            bindingSource.Filter = $"Name LIKE '%{tb_search.Text}%'";
         }
 
         //show low stock item
