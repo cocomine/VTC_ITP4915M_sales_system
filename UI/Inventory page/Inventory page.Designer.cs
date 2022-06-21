@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.logoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.inventoryQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.warehouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,17 +38,38 @@
             this.purchaseItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pl_childForm = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.itemRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaseItemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pl_childForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem1,
+            this.inventoryQuantityToolStripMenuItem,
+            this.itemRequestToolStripMenuItem,
+            this.purchaseItemToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // logoutToolStripMenuItem1
+            // 
+            this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
+            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(60, 20);
+            this.logoutToolStripMenuItem1.Text = "Logout";
+            this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // inventoryQuantityToolStripMenuItem
+            // 
+            this.inventoryQuantityToolStripMenuItem.Name = "inventoryQuantityToolStripMenuItem";
+            this.inventoryQuantityToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
+            this.inventoryQuantityToolStripMenuItem.Text = "Inventory quantity";
+            this.inventoryQuantityToolStripMenuItem.Click += new System.EventHandler(this.warehouseToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -60,7 +83,6 @@
             this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
             this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
             // 
             // warehouseToolStripMenuItem
             // 
@@ -106,6 +128,20 @@
             this.label1.Text = "Please select a feature above";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // itemRequestToolStripMenuItem
+            // 
+            this.itemRequestToolStripMenuItem.Name = "itemRequestToolStripMenuItem";
+            this.itemRequestToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.itemRequestToolStripMenuItem.Text = "Item request";
+            this.itemRequestToolStripMenuItem.Click += new System.EventHandler(this.itemRequestedToolStripMenuItem_Click);
+            // 
+            // purchaseItemToolStripMenuItem1
+            // 
+            this.purchaseItemToolStripMenuItem1.Name = "purchaseItemToolStripMenuItem1";
+            this.purchaseItemToolStripMenuItem1.Size = new System.Drawing.Size(97, 20);
+            this.purchaseItemToolStripMenuItem1.Text = "Purchase item";
+            this.purchaseItemToolStripMenuItem1.Click += new System.EventHandler(this.purchaseItemToolStripMenuItem_Click);
+            // 
             // Inventory_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -138,5 +174,9 @@
         private System.Windows.Forms.ToolStripMenuItem warehouseToolStripMenuItem;
         private System.Windows.Forms.Panel pl_childForm;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem inventoryQuantityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem purchaseItemToolStripMenuItem1;
     }
 }

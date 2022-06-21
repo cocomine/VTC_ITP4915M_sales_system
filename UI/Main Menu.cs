@@ -14,12 +14,14 @@ using UI.Technical_Support_page;
 
 namespace ITP4915M {
     public partial class Main_Menu : Form {
-        private Account_Details acc;
-        private string SQLConnectionString;
+        private readonly Account_Details acc;
+        private readonly string SQLConnectionString;
+        private readonly MySqlConnection conn;
 
-        public Main_Menu(string sqlConnectionString, Account_Details acc) {
+        public Main_Menu(string sqlConnectionString, Account_Details acc, MySqlConnection mySqlConnection) {
             this.acc = acc;
             SQLConnectionString = sqlConnectionString;
+            conn = mySqlConnection;
             InitializeComponent();
         }
 
@@ -27,6 +29,7 @@ namespace ITP4915M {
             Program.addPage();
             lb_name.Text = $"Hello! {acc.Get_fullRealName()} ({acc.Get_acoountID()})";
 
+            //根據department 開放按鈕
             switch (acc.Get_departmentID()) {
                 case Department.Sales:
                     gp_sales.Enabled = true;
@@ -66,14 +69,6 @@ namespace ITP4915M {
             try {
                 conn = new MySqlConnection(SQLConnectionString);
                 conn.Open();
-                //MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //startup
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                new Login(conn).Show(); //show login page
-                Application.Run();
-
             } catch (MySqlException ex) {
                 MessageBox.Show(SQLConnectionString + "\n" + ex.Message, "SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -92,12 +87,12 @@ namespace ITP4915M {
             //Technical Support
             if (bt.Equals(bt_arrangeWorker)) Program.OpenFrom(new Arrange_installation(conn, acc));
             //Inventory Department
-            if (bt.Equals(bt_inventoryQty)) Program.OpenFrom(new Inventory_page(conn, acc, new Inventory_quantity()));
-            if (bt.Equals(bt_itemRequest)) Program.OpenFrom(new Inventory_page(conn, acc));
-            if (bt.Equals(bt_purchaseItem)) Program.OpenFrom(new Inventory_page(conn, acc));
+            if (bt.Equals(bt_inventoryQty)) Program.OpenFrom(new Inventory_page(conn, acc, new Inventory_quantity(conn)));
+            if (bt.Equals(bt_itemRequest)) Program.OpenFrom(new Inventory_page(conn, acc, new Item_requested(conn)));
+            if (bt.Equals(bt_purchaseItem)) Program.OpenFrom(new Inventory_page(conn, acc, new Purchase_item(conn)));
             //Accounting Department
-            if (bt.Equals(bt_orderReport)) Program.OpenFrom(new Accounting_page());
-            if (bt.Equals(bt_purchaseReport)) Program.OpenFrom(new Accounting_page());
+            if (bt.Equals(bt_orderReport)) Program.OpenFrom(new Accounting_page(conn, acc));
+            if (bt.Equals(bt_purchaseReport)) Program.OpenFrom(new Accounting_page(conn, acc));
             //IT / CEO
             if (bt.Equals(bt_account)) Program.OpenFrom(new Account_Management(conn, acc));
             if (bt.Equals(bt_deliveryGroup)) Program.OpenFrom(new Delivery_Team_Grouping(conn));

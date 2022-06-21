@@ -50,11 +50,11 @@ namespace UI
             if (pageNum <= 0) Application.Exit(); 
         }
 
-        /// <summary>After logging in, go to different pages according to the department</summary>
+        /// <summary>After logging in, go to menu page</summary>
         /// <param name="acc">ITP4915M.API.Account_Details</param>
         public static void JumpPage(Account_Details acc) {
             Console.WriteLine(acc);
-            new Main_Menu(SQLConnectionString, acc).Show();
+            new Main_Menu(SQLConnectionString, acc, conn).Show();
         }
 
         //open form

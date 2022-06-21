@@ -164,6 +164,7 @@
             this.bt_salesMange.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_salesMange.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_salesMange.UseVisualStyleBackColor = true;
+            this.bt_salesMange.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // label2
             // 
@@ -185,6 +186,7 @@
             this.bt_cancelOrder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_cancelOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_cancelOrder.UseVisualStyleBackColor = true;
+            this.bt_cancelOrder.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // bt_salesPage
             // 
@@ -197,6 +199,7 @@
             this.bt_salesPage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_salesPage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_salesPage.UseVisualStyleBackColor = true;
+            this.bt_salesPage.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // gp_inventory
             // 
@@ -223,6 +226,7 @@
             this.bt_purchaseItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_purchaseItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_purchaseItem.UseVisualStyleBackColor = true;
+            this.bt_purchaseItem.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // bt_itemRequest
             // 
@@ -235,6 +239,7 @@
             this.bt_itemRequest.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_itemRequest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_itemRequest.UseVisualStyleBackColor = true;
+            this.bt_itemRequest.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // bt_inventoryQty
             // 
@@ -247,6 +252,7 @@
             this.bt_inventoryQty.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_inventoryQty.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_inventoryQty.UseVisualStyleBackColor = true;
+            this.bt_inventoryQty.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // gp_technical
             // 
@@ -271,6 +277,7 @@
             this.bt_arrangeWorker.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_arrangeWorker.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_arrangeWorker.UseVisualStyleBackColor = true;
+            this.bt_arrangeWorker.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // gp_delivery
             // 
@@ -298,6 +305,7 @@
             this.bt_arrangeTeam.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_arrangeTeam.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_arrangeTeam.UseVisualStyleBackColor = true;
+            this.bt_arrangeTeam.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // label1
             // 
@@ -319,6 +327,7 @@
             this.bt_delivery.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_delivery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_delivery.UseVisualStyleBackColor = true;
+            this.bt_delivery.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // gp_install
             // 
@@ -343,6 +352,7 @@
             this.bt_install.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_install.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_install.UseVisualStyleBackColor = true;
+            this.bt_install.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // gp_admin
             // 
@@ -369,6 +379,7 @@
             this.bt_assignSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_assignSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_assignSales.UseVisualStyleBackColor = true;
+            this.bt_assignSales.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // bt_deliveryGroup
             // 
@@ -381,6 +392,7 @@
             this.bt_deliveryGroup.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_deliveryGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_deliveryGroup.UseVisualStyleBackColor = true;
+            this.bt_deliveryGroup.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // bt_account
             // 
@@ -393,6 +405,7 @@
             this.bt_account.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_account.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_account.UseVisualStyleBackColor = true;
+            this.bt_account.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // gp_accounting
             // 
@@ -418,6 +431,7 @@
             this.bt_purchaseReport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_purchaseReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_purchaseReport.UseVisualStyleBackColor = true;
+            this.bt_purchaseReport.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // bt_orderReport
             // 
@@ -430,6 +444,7 @@
             this.bt_orderReport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bt_orderReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.bt_orderReport.UseVisualStyleBackColor = true;
+            this.bt_orderReport.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
             // panel2
             // 
