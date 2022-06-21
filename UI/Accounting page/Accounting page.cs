@@ -26,5 +26,10 @@ namespace UI.Accounting_page
         {
 
         }
+
+        private void Accounting_page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
