@@ -52,7 +52,7 @@
             this.gp_accounting = new System.Windows.Forms.GroupBox();
             this.bt_purchaseReport = new System.Windows.Forms.Button();
             this.bt_orderReport = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.menu = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gp_sales.SuspendLayout();
@@ -62,7 +62,7 @@
             this.gp_install.SuspendLayout();
             this.gp_admin.SuspendLayout();
             this.gp_accounting.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lb_name
@@ -446,29 +446,29 @@
             this.bt_orderReport.UseVisualStyleBackColor = true;
             this.bt_orderReport.Click += new System.EventHandler(this.bt_Menu_Click);
             // 
-            // panel2
+            // menu
             // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.gp_admin);
-            this.panel2.Controls.Add(this.gp_accounting);
-            this.panel2.Controls.Add(this.gp_inventory);
-            this.panel2.Controls.Add(this.gp_technical);
-            this.panel2.Controls.Add(this.gp_install);
-            this.panel2.Controls.Add(this.gp_delivery);
-            this.panel2.Controls.Add(this.gp_sales);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.panel2.Size = new System.Drawing.Size(817, 413);
-            this.panel2.TabIndex = 9;
+            this.menu.AutoScroll = true;
+            this.menu.Controls.Add(this.gp_admin);
+            this.menu.Controls.Add(this.gp_accounting);
+            this.menu.Controls.Add(this.gp_inventory);
+            this.menu.Controls.Add(this.gp_technical);
+            this.menu.Controls.Add(this.gp_install);
+            this.menu.Controls.Add(this.gp_delivery);
+            this.menu.Controls.Add(this.gp_sales);
+            this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menu.Location = new System.Drawing.Point(0, 37);
+            this.menu.Name = "menu";
+            this.menu.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.menu.Size = new System.Drawing.Size(817, 413);
+            this.menu.TabIndex = 9;
             // 
             // Main_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 450);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.menu);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Main_Menu";
@@ -485,7 +485,7 @@
             this.gp_install.ResumeLayout(false);
             this.gp_admin.ResumeLayout(false);
             this.gp_accounting.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -521,6 +521,6 @@
         private System.Windows.Forms.GroupBox gp_accounting;
         private System.Windows.Forms.Button bt_orderReport;
         private System.Windows.Forms.Button bt_purchaseReport;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel menu;
     }
 }
