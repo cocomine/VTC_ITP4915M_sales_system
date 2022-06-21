@@ -50,8 +50,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deliveryTeamGroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ds_staff = new System.Data.DataSet();
@@ -73,7 +71,6 @@
             this.cb_Filter_Enable = new System.Windows.Forms.ToolStripComboBox();
             this.adapter = new MySql.Data.MySqlClient.MySqlDataAdapter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.salesStaffArrangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_staffList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -309,10 +306,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.myProfileToolStripMenuItem,
-            this.deliveryTeamGroupingToolStripMenuItem,
-            this.salesStaffArrangeToolStripMenuItem});
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -325,20 +319,6 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // myProfileToolStripMenuItem
-            // 
-            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
-            // 
-            // deliveryTeamGroupingToolStripMenuItem
-            // 
-            this.deliveryTeamGroupingToolStripMenuItem.Name = "deliveryTeamGroupingToolStripMenuItem";
-            this.deliveryTeamGroupingToolStripMenuItem.Size = new System.Drawing.Size(152, 20);
-            this.deliveryTeamGroupingToolStripMenuItem.Text = "Delivery team grouping";
-            this.deliveryTeamGroupingToolStripMenuItem.Click += new System.EventHandler(this.deliveryTeamGroupingToolStripMenuItem_Click);
             // 
             // bindingNavigator1
             // 
@@ -530,13 +510,6 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
             // 
-            // salesStaffArrangeToolStripMenuItem
-            // 
-            this.salesStaffArrangeToolStripMenuItem.Name = "salesStaffArrangeToolStripMenuItem";
-            this.salesStaffArrangeToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
-            this.salesStaffArrangeToolStripMenuItem.Text = "Sales Staff arrange";
-            this.salesStaffArrangeToolStripMenuItem.Click += new System.EventHandler(this.salesStaffArrangeToolStripMenuItem_Click);
-            // 
             // Account_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -588,7 +561,6 @@
         private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox cb_is_manager;
@@ -617,7 +589,5 @@
         private System.Windows.Forms.ToolStripComboBox cb_filter_department;
         private System.Windows.Forms.Button bt_reset_pass;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ToolStripMenuItem deliveryTeamGroupingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salesStaffArrangeToolStripMenuItem;
     }
 }

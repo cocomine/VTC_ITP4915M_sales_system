@@ -82,10 +82,6 @@ namespace UI.Sales_page {
             Program.removePage();
         }
 
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-            Program.OpenFrom(new My_Profile(conn, acc));
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
             Program.Logout();
         }
@@ -917,14 +913,6 @@ namespace UI.Sales_page {
 
             //save as pdf
             SavePdf.Save(html);
-
-        }
-
-        private void salesManagementToolStripMenuItem_Click(object sender, EventArgs e) {
-            Program.OpenFrom(new Sales_Management(conn, acc));
-        }
-
-        private void returnOrderToolStripMenuItem_Click(object sender, EventArgs e) {
 
         }
     }
