@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Printing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -82,11 +83,11 @@ namespace UI.Sales_page {
         }
 
         private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-            new My_Profile(conn, acc).Show();
+            Program.OpenFrom(new My_Profile(conn, acc));
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         //add by name
@@ -915,11 +916,16 @@ namespace UI.Sales_page {
             html = html.Replace("%total%", String.Format("{0:C}", totalPriceData["subtotal"] - totalPriceData["discount"]));
 
             //save as pdf
-            savePDF.Save(html);
+            SavePdf.Save(html);
+
         }
 
         private void salesManagementToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Sales_Management(conn, acc).Show();
+            Program.OpenFrom(new Sales_Management(conn, acc));
+        }
+
+        private void returnOrderToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
     }
 }

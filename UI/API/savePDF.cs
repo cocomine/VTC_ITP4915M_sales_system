@@ -4,6 +4,7 @@ using iText.Kernel.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ITP4915M.API {
-    public class savePDF {
-        public static void Save(string html) {
+    public class SavePdf {
+        public static string Save(string html) {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.DefaultExt = "pdf";
             saveFileDialog1.RestoreDirectory = true;
@@ -32,7 +33,11 @@ namespace ITP4915M.API {
 
                 MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Process.Start(filePath); //打開檔案
+
+                return filePath;
             }
+
+            return null;
         }
     }
 }

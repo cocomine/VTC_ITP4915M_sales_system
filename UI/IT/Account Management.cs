@@ -93,7 +93,7 @@ namespace UI.IT
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         private void Create_account_Click(object sender, EventArgs e) {
@@ -255,7 +255,7 @@ namespace UI.IT
         }
 
         private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Delivery_Team_Grouping(conn).Show();
+            Program.OpenFrom(new Delivery_Team_Grouping(conn));
         }
 
         private void Account_Management_FormClosing(object sender, FormClosingEventArgs e) {
@@ -268,7 +268,7 @@ namespace UI.IT
         }
 
         private void salesStaffArrangeToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Sales_Staff_arrange(acc, conn).Show();
+            Program.OpenFrom(new Sales_Staff_arrange(acc, conn));
         }
     }
 }

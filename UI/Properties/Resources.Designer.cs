@@ -61,6 +61,176 @@ namespace ITP4915M.Properties {
         }
         
         /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxIcons_SolidGroup_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("BoxIcons_SolidGroup_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxIcons_SolidPurchaseTagAlt_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("BoxIcons_SolidPurchaseTagAlt_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxIcons_SolidReport_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("BoxIcons_SolidReport_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxIcons_SolidStore_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("BoxIcons_SolidStore_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxIcons_SolidUserAccount_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("BoxIcons_SolidUserAccount_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxIcons_SolidWrench_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("BoxIcons_SolidWrench_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Entypo_LogOut_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Entypo_LogOut_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FontAwesome_AddressCardRegular_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("FontAwesome_AddressCardRegular_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FontAwesome_DollyFlatbedSolid_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("FontAwesome_DollyFlatbedSolid_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FontAwesome_TasksSolid_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("FontAwesome_TasksSolid_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FontAwesome_TruckLoadingSolid_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("FontAwesome_TruckLoadingSolid_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FontAwesome_TruckSolid_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("FontAwesome_TruckSolid_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FontAwesome_WarehouseSolid_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("FontAwesome_WarehouseSolid_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Material_AccountHardHat_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("Material_AccountHardHat_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Material_PrinterPos_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("Material_PrinterPos_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Material_TruckDelivery_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("Material_TruckDelivery_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap PicolIcons_DocumentSansCancel_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("PicolIcons_DocumentSansCancel_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 &lt;html&gt;
         ///&lt;head&gt;
         ///    &lt;meta charset=&quot;UTF-8&quot;&gt;

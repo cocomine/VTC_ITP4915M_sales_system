@@ -22,7 +22,7 @@ namespace ITP4915M.IT {
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         private void Delivery_Team_Grouping_FormClosed(object sender, FormClosedEventArgs e) {
