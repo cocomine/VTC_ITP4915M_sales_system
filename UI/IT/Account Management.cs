@@ -88,12 +88,8 @@ namespace UI.IT
             }
         }
 
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-            new My_Profile(conn, acc).Show();
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         private void Create_account_Click(object sender, EventArgs e) {
@@ -254,10 +250,6 @@ namespace UI.IT
             binding[tb.Name].WriteValue();
         }
 
-        private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Delivery_Team_Grouping(conn).Show();
-        }
-
         private void Account_Management_FormClosing(object sender, FormClosingEventArgs e) {
             if (ds_staff.HasChanges()) {
                DialogResult result =  MessageBox.Show("You have unsaved changes, are you sure you want to leave?", "Save change", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -267,8 +259,5 @@ namespace UI.IT
             }
         }
 
-        private void salesStaffArrangeToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Sales_Staff_arrange(acc, conn).Show();
-        }
     }
 }

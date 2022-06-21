@@ -62,7 +62,7 @@ namespace ITP4915M.IT {
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         private void Sales_Staff_arrange_FormClosed(object sender, FormClosedEventArgs e) {

@@ -81,9 +81,13 @@ namespace UI.Sales_page {
 
         private void Sales_Page_FormClosed(object sender, FormClosedEventArgs e) { Program.removePage(); }
 
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) { new My_Profile(conn, acc).Show(); }
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Program.Logout();
+        }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) { Application.Exit(); }
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
 
         //add by name
         private void bt_add_name_Click(object sender, EventArgs e) {
@@ -148,12 +152,12 @@ namespace UI.Sales_page {
                     shoppingCart_Item.Add(item);
                 }
 
-                //檢查庫存是否足夠
-                int Unavailable_qty = data.GetInt32("Qty") < 0 ? -item.Qty : data.GetInt32("Qty") - item.Qty;
-                if (Unavailable_qty < 0) {
-                    Unavailable_qty = Math.Abs(Unavailable_qty);
                     if (Unavailable_Item_Qty.ContainsKey(item)) {
                         Unavailable_Item_Qty[item] = Unavailable_qty;
+                    } else {
+                        Unavailable_Item_Qty.Add(item, Unavailable_qty);
+                    }
+                }
                     } else {
                         Unavailable_Item_Qty.Add(item, Unavailable_qty);
                     }
@@ -902,9 +906,10 @@ namespace UI.Sales_page {
             html = html.Replace("%total%", $"{totalPriceData["subtotal"] - totalPriceData["discount"]:C}");
 
             //save as pdf
-            savePDF.Save(html);
-        }
+            SavePdf.Save(html);
 
-        private void salesManagementToolStripMenuItem_Click(object sender, EventArgs e) { new Sales_Management(conn, acc).Show(); }
+        private void salesManagementToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Sales_Management(conn, acc).Show();
+        }
     }
 }

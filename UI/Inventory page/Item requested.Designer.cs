@@ -29,180 +29,224 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Item_requested));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.cb_Store = new System.Windows.Forms.ToolStripComboBox();
+            this.Search = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Last = new System.Windows.Forms.Button();
+            this.Next = new System.Windows.Forms.Button();
+            this.Previous = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.First = new System.Windows.Forms.Button();
+            this.ItemID = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 28);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 386);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 321);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellCick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // bindingNavigator1
+            // Search
             // 
-            this.bindingNavigator1.AddNewItem = null;
-            this.bindingNavigator1.BindingSource = this.bindingSource1;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorDeleteItem,
-            this.toolStripSeparator1,
-            this.toolStripLabel1,
-            this.cb_Store});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(800, 25);
-            this.bindingNavigator1.TabIndex = 3;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.Search.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Search.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Search.Location = new System.Drawing.Point(683, 1);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(83, 28);
+            this.Search.TabIndex = 26;
+            this.Search.Text = "Search";
+            this.Search.UseVisualStyleBackColor = false;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // bindingNavigatorCountItem
+            // btDelete
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 22);
-            this.bindingNavigatorCountItem.Text = "/{0}";
-            this.bindingNavigatorCountItem.ToolTipText = "項目總數";
+            this.btDelete.BackColor = System.Drawing.Color.SeaGreen;
+            this.btDelete.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btDelete.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btDelete.Location = new System.Drawing.Point(328, 1);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(110, 28);
+            this.btDelete.TabIndex = 25;
+            this.btDelete.Text = "Complete Order";
+            this.btDelete.UseVisualStyleBackColor = false;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
-            // bindingNavigatorDeleteItem
+            // comboBox1
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "刪除";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "3245",
+            "4650",
+            "5272",
+            "5275",
+            "6722",
+            "7520"});
+            this.comboBox1.Location = new System.Drawing.Point(532, 4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(145, 20);
+            this.comboBox1.TabIndex = 24;
             // 
-            // bindingNavigatorMoveFirstItem
+            // Last
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "移到最前面";
+            this.Last.Location = new System.Drawing.Point(243, 1);
+            this.Last.Name = "Last";
+            this.Last.Size = new System.Drawing.Size(69, 28);
+            this.Last.TabIndex = 23;
+            this.Last.Text = "Last";
+            this.Last.UseVisualStyleBackColor = true;
+            this.Last.Click += new System.EventHandler(this.Last_Click);
             // 
-            // bindingNavigatorMovePreviousItem
+            // Next
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "移到上一個";
+            this.Next.Location = new System.Drawing.Point(168, 1);
+            this.Next.Name = "Next";
+            this.Next.Size = new System.Drawing.Size(69, 28);
+            this.Next.TabIndex = 22;
+            this.Next.Text = "Next";
+            this.Next.UseVisualStyleBackColor = true;
+            this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
-            // bindingNavigatorSeparator
+            // Previous
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.Previous.Location = new System.Drawing.Point(93, 1);
+            this.Previous.Name = "Previous";
+            this.Previous.Size = new System.Drawing.Size(69, 28);
+            this.Previous.TabIndex = 21;
+            this.Previous.Text = "Previous";
+            this.Previous.UseVisualStyleBackColor = true;
+            this.Previous.Click += new System.EventHandler(this.Previous_Click);
             // 
-            // bindingNavigatorPositionItem
+            // label2
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "位置";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "目前的位置";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(444, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 12);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "FromWarehouse";
             // 
-            // bindingNavigatorSeparator1
+            // First
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.First.Location = new System.Drawing.Point(18, 1);
+            this.First.Name = "First";
+            this.First.Size = new System.Drawing.Size(69, 28);
+            this.First.TabIndex = 19;
+            this.First.Text = "First";
+            this.First.UseVisualStyleBackColor = true;
+            this.First.Click += new System.EventHandler(this.First_Click);
             // 
-            // bindingNavigatorMoveNextItem
+            // ItemID
             // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "移到下一個";
+            this.ItemID.AutoSize = true;
+            this.ItemID.Location = new System.Drawing.Point(216, 365);
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Size = new System.Drawing.Size(38, 12);
+            this.ItemID.TabIndex = 27;
+            this.ItemID.Text = "ItemID";
+            this.ItemID.Click += new System.EventHandler(this.ItemID_Click);
             // 
-            // bindingNavigatorMoveLastItem
+            // textBox1
             // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "移到最後面";
+            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Location = new System.Drawing.Point(260, 362);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(250, 22);
+            this.textBox1.TabIndex = 28;
             // 
-            // bindingNavigatorSeparator2
+            // button1
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.button1.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button1.Location = new System.Drawing.Point(730, 362);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 29);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Reload";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripSeparator1
+            // label1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 365);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 12);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "StoreWarehouseID";
             // 
-            // toolStripLabel1
+            // textBox2
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(93, 22);
-            this.toolStripLabel1.Text = "Choose a Store";
+            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox2.Location = new System.Drawing.Point(111, 362);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(90, 22);
+            this.textBox2.TabIndex = 31;
             // 
-            // cb_Store
+            // label3
             // 
-            this.cb_Store.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Store.Name = "cb_Store";
-            this.cb_Store.Size = new System.Drawing.Size(121, 25);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(530, 365);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(22, 12);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Qty";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox3.Location = new System.Drawing.Point(558, 362);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(166, 22);
+            this.textBox3.TabIndex = 33;
             // 
             // Item_requested
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 426);
-            this.Controls.Add(this.bindingNavigator1);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ItemID);
+            this.Controls.Add(this.Search);
+            this.Controls.Add(this.btDelete);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Last);
+            this.Controls.Add(this.Next);
+            this.Controls.Add(this.Previous);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.First);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Item_requested";
             this.Text = "Item requested";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Item_requested_Closing);
+            this.Load += new System.EventHandler(this.Item_requested_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,19 +256,20 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripComboBox cb_Store;
+        private System.Windows.Forms.Button Search;
+        private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button Last;
+        private System.Windows.Forms.Button Next;
+        private System.Windows.Forms.Button Previous;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button First;
+        private System.Windows.Forms.Label ItemID;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

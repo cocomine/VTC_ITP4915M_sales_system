@@ -30,9 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.returnOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bt_reset = new System.Windows.Forms.Button();
             this.bt_remove_item = new System.Windows.Forms.Button();
@@ -86,7 +83,6 @@
             this.bt_cash = new System.Windows.Forms.Button();
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -101,10 +97,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.myProfileToolStripMenuItem,
-            this.salesManagementToolStripMenuItem,
-            this.returnOrderToolStripMenuItem});
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -117,26 +110,6 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // myProfileToolStripMenuItem
-            // 
-            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
-            // 
-            // salesManagementToolStripMenuItem
-            // 
-            this.salesManagementToolStripMenuItem.Name = "salesManagementToolStripMenuItem";
-            this.salesManagementToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
-            this.salesManagementToolStripMenuItem.Text = "Sales Management";
-            this.salesManagementToolStripMenuItem.Click += new System.EventHandler(this.salesManagementToolStripMenuItem_Click);
-            // 
-            // returnOrderToolStripMenuItem
-            // 
-            this.returnOrderToolStripMenuItem.Name = "returnOrderToolStripMenuItem";
-            this.returnOrderToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
-            this.returnOrderToolStripMenuItem.Text = "Return Order";
             // 
             // panel1
             // 
@@ -733,11 +706,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Charge amount";
             // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.DefaultExt = "pdf";
-            this.saveFileDialog1.RestoreDirectory = true;
-            // 
             // Sales_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -776,8 +744,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salesManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -819,7 +785,6 @@
         private System.Windows.Forms.Label lb_paid;
         private System.Windows.Forms.TextBox tb_change;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
         private System.Windows.Forms.ListView lv_item_list;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -831,7 +796,6 @@
         private System.Windows.Forms.Button bt_remove_item;
         private System.Windows.Forms.Label lb_orderID;
         private System.Windows.Forms.Button bt_reset;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button bt_receipt;
     }
 }

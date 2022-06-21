@@ -26,7 +26,7 @@ namespace UI.Sales_page {
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         private void Form_Load(object sender, EventArgs e) {

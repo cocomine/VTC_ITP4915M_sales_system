@@ -153,5 +153,10 @@ namespace UI.Delivery_Page
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
