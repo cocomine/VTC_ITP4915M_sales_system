@@ -161,8 +161,6 @@ namespace UI.Delivery_Page
 
         }
 
-
-
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();

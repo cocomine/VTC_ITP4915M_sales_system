@@ -322,7 +322,7 @@
         private System.Windows.Forms.ListBox lb_delivery_item;
         private System.Windows.Forms.RichTextBox tb_customer_address;
         private System.Windows.Forms.Button btn_complete;
-        private System.Windows.Forms.TextBox tb_session;
+        private System.Windows.Forms.TextBox tb_customer_session;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tb_delivery_date;
         private System.Windows.Forms.Label label7;
