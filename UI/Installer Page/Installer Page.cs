@@ -85,7 +85,7 @@ namespace UI.Installer_Page
                 {
                     string cName = data_cus.GetString("Customer_name");
                     string cAddress = data_cus.GetString("Address");
-                    string cPhone = data_cus.GetInt32("Phone").ToString();
+                    string cPhone = data_cus.GetString("Phone");
                     string iName = data_cus.GetString("Name");
                     string iDate = data_cus.GetString("Install_date");
 
