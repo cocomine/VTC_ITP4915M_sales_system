@@ -21,7 +21,7 @@ namespace ITP4915M.API {
             saveFileDialog1.FileName = DateTime.Now.ToString("yyyy-MM-dd HHmmss") + " Receipt"; //預設檔案名稱
 
             
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return; //確認儲存
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return null; //確認儲存
 
             string filePath = saveFileDialog1.FileName; //取得用戶指定儲存路徑
             if (!filePath.EndsWith(".pdf")) filePath += ".pdf"; //確保檔案副檔名是 .pdf
@@ -32,13 +32,10 @@ namespace ITP4915M.API {
 
             HtmlConverter.ConvertToPdf(html, writer); //輸出儲存
 
-                MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start(filePath); //打開檔案
+            MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Process.Start(filePath); //打開檔案
 
-                return filePath;
-            }
-
-            return null;
+            return filePath;
         }
     }
 }
