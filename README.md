@@ -35,17 +35,16 @@ private void Account_Management_Load(object sender, EventArgs e) {
     Program.addPage(); // 添加在FormLoad事件內
 }
 ```
-#### 添加 `myProfile` 按鈕 `Click` 事件
-```c#
-private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-    new My_Profile(conn, acc).Show(); //添加在Click事件內
-}
-```
 #### 添加 `logout` 按鈕 `Click` 事件
 ```c#
 private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-    Application.Exit(); //添加在Click事件內
+    Program.Logout(); //添加在Click事件內
 }
+```
+### 開啟其他Form
+這樣才不會同時間, 開啟多於一個相同的Form
+```c#
+Program.OpenFrom(new Form_class_name()); //Form class
 ```
 如何使用 `MySqlConnection`
 ---
