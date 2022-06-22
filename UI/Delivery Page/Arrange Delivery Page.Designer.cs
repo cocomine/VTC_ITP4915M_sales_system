@@ -29,7 +29,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.lb_unscheduled_worker = new System.Windows.Forms.ListBox();
+            this.lb_unscheduled_team = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btn_schedule = new System.Windows.Forms.Button();
             this.btn_unschedule = new System.Windows.Forms.Button();
@@ -39,7 +39,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cb_session = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tb_session = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,7 +70,7 @@
             this.lb_order.FormattingEnabled = true;
             this.lb_order.ItemHeight = 15;
             this.lb_order.Location = new System.Drawing.Point(7, 30);
-            this.lb_order.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lb_order.Margin = new System.Windows.Forms.Padding(4);
             this.lb_order.Name = "lb_order";
             this.lb_order.Size = new System.Drawing.Size(337, 469);
             this.lb_order.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(747, 27);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(320, 533);
             this.panel1.TabIndex = 4;
@@ -105,7 +105,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -117,10 +117,10 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.lb_unscheduled_worker);
+            this.panel3.Controls.Add(this.lb_unscheduled_team);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(4, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(312, 233);
             this.panel3.TabIndex = 0;
@@ -136,19 +136,19 @@
             this.label2.Text = "Unscheduled delivery team";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // lb_unscheduled_worker
+            // lb_unscheduled_team
             // 
-            this.lb_unscheduled_worker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_unscheduled_team.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_unscheduled_worker.FormattingEnabled = true;
-            this.lb_unscheduled_worker.ItemHeight = 15;
-            this.lb_unscheduled_worker.Location = new System.Drawing.Point(7, 26);
-            this.lb_unscheduled_worker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lb_unscheduled_worker.Name = "lb_unscheduled_worker";
-            this.lb_unscheduled_worker.Size = new System.Drawing.Size(300, 199);
-            this.lb_unscheduled_worker.TabIndex = 6;
-            this.lb_unscheduled_worker.SelectedIndexChanged += new System.EventHandler(this.lb_unscheduled_worker_SelectedIndexChanged);
+            this.lb_unscheduled_team.FormattingEnabled = true;
+            this.lb_unscheduled_team.ItemHeight = 15;
+            this.lb_unscheduled_team.Location = new System.Drawing.Point(7, 26);
+            this.lb_unscheduled_team.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_unscheduled_team.Name = "lb_unscheduled_team";
+            this.lb_unscheduled_team.Size = new System.Drawing.Size(300, 199);
+            this.lb_unscheduled_team.TabIndex = 6;
+            this.lb_unscheduled_team.SelectedIndexChanged += new System.EventHandler(this.lb_unscheduled_team_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -156,7 +156,7 @@
             this.panel4.Controls.Add(this.btn_unschedule);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(4, 245);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(312, 42);
             this.panel4.TabIndex = 1;
@@ -164,7 +164,7 @@
             // btn_schedule
             // 
             this.btn_schedule.Location = new System.Drawing.Point(161, 8);
-            this.btn_schedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_schedule.Margin = new System.Windows.Forms.Padding(4);
             this.btn_schedule.Name = "btn_schedule";
             this.btn_schedule.Size = new System.Drawing.Size(139, 29);
             this.btn_schedule.TabIndex = 1;
@@ -175,7 +175,7 @@
             // btn_unschedule
             // 
             this.btn_unschedule.Location = new System.Drawing.Point(7, 8);
-            this.btn_unschedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_unschedule.Margin = new System.Windows.Forms.Padding(4);
             this.btn_unschedule.Name = "btn_unschedule";
             this.btn_unschedule.Size = new System.Drawing.Size(147, 29);
             this.btn_unschedule.TabIndex = 0;
@@ -189,7 +189,7 @@
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(4, 295);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(312, 234);
             this.panel5.TabIndex = 2;
@@ -202,7 +202,7 @@
             this.lb_scheduled_features.FormattingEnabled = true;
             this.lb_scheduled_features.ItemHeight = 15;
             this.lb_scheduled_features.Location = new System.Drawing.Point(7, 19);
-            this.lb_scheduled_features.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lb_scheduled_features.Margin = new System.Windows.Forms.Padding(4);
             this.lb_scheduled_features.Name = "lb_scheduled_features";
             this.lb_scheduled_features.Size = new System.Drawing.Size(300, 184);
             this.lb_scheduled_features.TabIndex = 1;
@@ -224,7 +224,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 27);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(363, 533);
             this.panel2.TabIndex = 5;
@@ -234,14 +234,14 @@
             this.panel6.Controls.Add(this.groupBox1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(363, 27);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(384, 533);
             this.panel6.TabIndex = 6;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cb_session);
+            this.groupBox1.Controls.Add(this.tb_session);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.tb_customer_address);
             this.groupBox1.Controls.Add(this.label7);
@@ -253,27 +253,13 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(384, 533);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail";
-            // 
-            // cb_session
-            // 
-            this.cb_session.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_session.FormattingEnabled = true;
-            this.cb_session.Items.AddRange(new object[] {
-            "9:00 - 12:00",
-            "13:00 - 17:00",
-            "18:00 - 22:00"});
-            this.cb_session.Location = new System.Drawing.Point(13, 286);
-            this.cb_session.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cb_session.Name = "cb_session";
-            this.cb_session.Size = new System.Drawing.Size(203, 23);
-            this.cb_session.TabIndex = 18;
             // 
             // label8
             // 
@@ -291,7 +277,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
             this.tb_customer_address.Location = new System.Drawing.Point(12, 166);
-            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_address.Name = "tb_customer_address";
             this.tb_customer_address.ReadOnly = true;
             this.tb_customer_address.Size = new System.Drawing.Size(357, 85);
@@ -315,7 +301,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_name.BackColor = System.Drawing.SystemColors.Info;
             this.tb_customer_name.Location = new System.Drawing.Point(12, 45);
-            this.tb_customer_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_customer_name.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_name.Name = "tb_customer_name";
             this.tb_customer_name.ReadOnly = true;
             this.tb_customer_name.Size = new System.Drawing.Size(357, 25);
@@ -340,7 +326,7 @@
             this.lb_installation_item.FormattingEnabled = true;
             this.lb_installation_item.ItemHeight = 15;
             this.lb_installation_item.Location = new System.Drawing.Point(12, 348);
-            this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4);
             this.lb_installation_item.Name = "lb_installation_item";
             this.lb_installation_item.Size = new System.Drawing.Size(357, 154);
             this.lb_installation_item.TabIndex = 11;
@@ -363,7 +349,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_phone.BackColor = System.Drawing.SystemColors.Info;
             this.tb_customer_phone.Location = new System.Drawing.Point(12, 101);
-            this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_phone.Name = "tb_customer_phone";
             this.tb_customer_phone.ReadOnly = true;
             this.tb_customer_phone.Size = new System.Drawing.Size(204, 25);
@@ -407,6 +393,15 @@
             this.myProfileToolStripMenuItem.Text = "My Profile";
             this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
             // 
+            // tb_session
+            // 
+            this.tb_session.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_session.Location = new System.Drawing.Point(14, 292);
+            this.tb_session.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_session.Name = "tb_session";
+            this.tb_session.Size = new System.Drawing.Size(261, 25);
+            this.tb_session.TabIndex = 17;
+            // 
             // Arrange_Delivery_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -416,7 +411,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1082, 597);
             this.Name = "Arrange_Delivery_Page";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
@@ -450,7 +445,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lb_unscheduled_worker;
+        private System.Windows.Forms.ListBox lb_unscheduled_team;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btn_schedule;
@@ -472,6 +467,6 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cb_session;
+        private System.Windows.Forms.TextBox tb_session;
     }
 }
