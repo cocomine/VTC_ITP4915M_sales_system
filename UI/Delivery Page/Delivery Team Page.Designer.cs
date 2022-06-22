@@ -325,6 +325,7 @@
         private System.Windows.Forms.TextBox tb_customer_session;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tb_delivery_date;
+        private System.Windows.Forms.TextBox tb_session;
         private System.Windows.Forms.Label label7;
     }
 }
