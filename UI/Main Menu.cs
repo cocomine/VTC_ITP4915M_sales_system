@@ -97,7 +97,7 @@ namespace ITP4915M {
             if (bt.Equals(bt_salesMange)) Program.OpenFrom(new Sales_Management(conn, acc));
             //Delivery Department
             if (bt.Equals(bt_delivery)) Program.OpenFrom(new Delivery_Team_Page(conn, acc));
-            if (bt.Equals(bt_arrangeTeam)) Program.OpenFrom(new Delivery_Page(conn, acc));
+            if (bt.Equals(bt_arrangeTeam)) Program.OpenFrom(new Arrange_Delivery_Page(conn, acc));
             //Installer Department
             if (bt.Equals(bt_install)) Program.OpenFrom(new Installer_Page(conn, acc));
             //Technical Support
