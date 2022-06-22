@@ -263,8 +263,8 @@ namespace UI.Delivery_Page {
         private void btn_unschedule_Click(object sender, EventArgs e)
         {
             //Use "Unschedule" Button to update the new Installation record
-            MySqlCommand cmd_get_Id = new MySqlCommand("SELECT dts.Delivery_TeamID FROM `delivery_team_staff` AS dts, `delivery` AS d WHERE d.OrderID = '"+ lb_scheduled_features.Text + "' AND " +
-                "dts.Delivery_TeamID = d.Delivery_TeamID", conn);
+            MySqlCommand cmd_get_Id = new MySqlCommand("SELECT dts.Delivery_TeamID FROM `delivery_team_staff` AS dts, `delivery` AS d WHERE d.OrderID = '" 
+                + lb_scheduled_features.Text + "' AND dts.Delivery_TeamID = d.Delivery_TeamID", conn);
             MySqlCommand cmd_to_delivery_staff = new MySqlCommand("UPDATE `delivery_team` AS dt, `delivery` AS d SET dt.Status = '0' WHERE dt.TeamID = d.Delivery_TeamID AND " +
                 "d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
             MySqlCommand cmd_to_delivery = new MySqlCommand("UPDATE `delivery` AS d SET d.Delivery_TeamID = NULL WHERE d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
@@ -282,7 +282,7 @@ namespace UI.Delivery_Page {
                 while (data_get_Id.Read())
                 {
                     cmd_get_Id.ExecuteNonQuery(); //Update the data into the database
-                    string tID = data_get_Id.GetString("TeamID");
+                    string tID = data_get_Id.GetString("Delivery_TeamID");
                     lb_unscheduled_team.Items.Add(tID);
                 }
             }
