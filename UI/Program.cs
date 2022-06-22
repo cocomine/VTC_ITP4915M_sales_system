@@ -3,8 +3,8 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M;
 
 namespace UI
 {
@@ -12,6 +12,7 @@ namespace UI
     {
         private static MySqlConnection conn; //sql Connection
         private static int pageNum = 0;
+        private static readonly string SQLConnectionString = "server=127.0.0.1;uid=root;database=itp4915m_sales_system"; //sql server ConnectionString
 
         /// <summary>
         /// The main entry point for the application.
@@ -19,15 +20,11 @@ namespace UI
         [STAThread]
         static void Main()
         {
-            //sql server ConnectionString
-            string myConnectionString = "server=127.0.0.1;uid=root;" +
-                "database=itp4915m_sales_system";
-
             //Connect sql
             try {
-                conn = new MySqlConnection(myConnectionString);
+                conn = new MySqlConnection(SQLConnectionString);
                 conn.Open();
-                MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(myConnectionString+"\nSQL Connect!", "SQL", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //startup
                 Application.EnableVisualStyles();
@@ -36,7 +33,7 @@ namespace UI
                 Application.Run();
 
             } catch (MySqlException ex) {
-                MessageBox.Show(myConnectionString+"\n"+ex.Message, "SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(SQLConnectionString+"\n"+ex.Message, "SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -53,42 +50,38 @@ namespace UI
             if (pageNum <= 0) Application.Exit(); 
         }
 
-        /// <summary>After logging in, go to different pages according to the department</summary>
+        /// <summary>After logging in, go to menu page</summary>
         /// <param name="acc">ITP4915M.API.Account_Details</param>
         public static void JumpPage(Account_Details acc) {
             Console.WriteLine(acc);
-            switch (acc.Get_departmentID()) {
-                case Department.Sales:
-                    new Sales_page.Sales_Page(conn, acc).Show();
-                    break;
-                case Department.Inventory:
-                    new Inventory_page.Inventory_page(conn, acc).Show();
-                    break;
-                case Department.Accounting:
-                    new Accounting_page.Accounting_page().Show();
-                    break;
-                case Department.Technical_Support:
-                    new Technical_Support_page.Arrange_installation(conn, acc).Show();
-                    break;
-                case Department.IT:
-                case Department.CEO:
-                    new IT.Account_Management(conn, acc).Show();
-                    break;
-                case Department.Delivery:
-                    if (acc.Get_isManager() == true) {
-                        new Delivery_Page.Delivery_Page(conn, acc).Show(); //部門主管
-                        break;
-                    }
-                    new Delivery_Page.Delivery_Team_Page(conn, acc).Show(); //普通員工
-                    break;
-                case Department.Installer:
-                    new Installer_Page.Installer_Page(conn, acc).Show();
-                    break;
-                default:
-                    MessageBox.Show("You are not in the right department.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Application.Exit();
-                    break;
+            new Main_Menu(SQLConnectionString, acc, conn).Show();
+        }
+
+        //open form
+        public static void OpenFrom(Form form) {
+            //get opened forms
+            FormCollection forms = Application.OpenForms;
+            Form oldForm = forms[form.Name];
+
+            //check have same form opened
+            if (oldForm == null) {
+                form.Show(); //not have same
+            } else {
+                oldForm.Focus(); //have same
+                form.Dispose();
             }
+        }
+
+        //logout, show login form
+        public static void Logout() {
+            //get opened forms
+            FormCollection forms = Application.OpenForms;
+            List<Form> form_list = forms.Cast<Form>().ToList();
+
+            addPage(); //防止結束程式
+            form_list.ForEach(form => form.Close()); //關閉所有視窗
+            new Login(conn).Show(); //跳出登入視窗
+            removePage(); //恢復正確計數
         }
     }
 }

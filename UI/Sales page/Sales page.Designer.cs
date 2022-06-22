@@ -30,10 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.returnOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bt_reset = new System.Windows.Forms.Button();
+            this.bt_remove_item = new System.Windows.Forms.Button();
             this.lv_item_list = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,11 +60,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lb_save = new System.Windows.Forms.Label();
             this.tb_total = new System.Windows.Forms.TextBox();
             this.tb_reveived = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lb_paid = new System.Windows.Forms.Label();
             this.tb_subtotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_discount = new System.Windows.Forms.TextBox();
@@ -73,6 +72,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_receipt = new System.Windows.Forms.Button();
+            this.lb_orderID = new System.Windows.Forms.Label();
             this.bt_save = new System.Windows.Forms.Button();
             this.tb_deposit = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -96,10 +97,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.myProfileToolStripMenuItem,
-            this.salesManagementToolStripMenuItem,
-            this.returnOrderToolStripMenuItem});
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -113,27 +111,10 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // myProfileToolStripMenuItem
-            // 
-            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
-            // 
-            // salesManagementToolStripMenuItem
-            // 
-            this.salesManagementToolStripMenuItem.Name = "salesManagementToolStripMenuItem";
-            this.salesManagementToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
-            this.salesManagementToolStripMenuItem.Text = "Sales Management";
-            // 
-            // returnOrderToolStripMenuItem
-            // 
-            this.returnOrderToolStripMenuItem.Name = "returnOrderToolStripMenuItem";
-            this.returnOrderToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
-            this.returnOrderToolStripMenuItem.Text = "Return Order";
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.bt_reset);
+            this.panel1.Controls.Add(this.bt_remove_item);
             this.panel1.Controls.Add(this.lv_item_list);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -141,6 +122,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(264, 426);
             this.panel1.TabIndex = 1;
+            // 
+            // bt_reset
+            // 
+            this.bt_reset.Location = new System.Drawing.Point(3, 400);
+            this.bt_reset.Name = "bt_reset";
+            this.bt_reset.Size = new System.Drawing.Size(124, 23);
+            this.bt_reset.TabIndex = 3;
+            this.bt_reset.Text = "Clear All";
+            this.bt_reset.UseVisualStyleBackColor = true;
+            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
+            // 
+            // bt_remove_item
+            // 
+            this.bt_remove_item.Location = new System.Drawing.Point(133, 400);
+            this.bt_remove_item.Name = "bt_remove_item";
+            this.bt_remove_item.Size = new System.Drawing.Size(131, 23);
+            this.bt_remove_item.TabIndex = 2;
+            this.bt_remove_item.Text = "Remove select item";
+            this.bt_remove_item.UseVisualStyleBackColor = true;
+            this.bt_remove_item.Click += new System.EventHandler(this.bt_remove_item_Click);
             // 
             // lv_item_list
             // 
@@ -156,11 +157,12 @@
             this.lv_item_list.Location = new System.Drawing.Point(3, 22);
             this.lv_item_list.Name = "lv_item_list";
             this.lv_item_list.ShowGroups = false;
-            this.lv_item_list.Size = new System.Drawing.Size(261, 398);
+            this.lv_item_list.Size = new System.Drawing.Size(261, 372);
             this.lv_item_list.TabIndex = 1;
             this.lv_item_list.UseCompatibleStateImageBehavior = false;
             this.lv_item_list.View = System.Windows.Forms.View.Details;
             this.lv_item_list.SelectedIndexChanged += new System.EventHandler(this.lv_item_list_SelectedIndexChanged);
+            this.lv_item_list.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lv_item_list_KeyUp);
             // 
             // columnHeader1
             // 
@@ -229,7 +231,7 @@
             this.tb_add_name.Location = new System.Drawing.Point(9, 107);
             this.tb_add_name.Name = "tb_add_name";
             this.tb_add_name.Size = new System.Drawing.Size(207, 22);
-            this.tb_add_name.TabIndex = 10;
+            this.tb_add_name.TabIndex = 6;
             this.tb_add_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_add_name_KeyUp);
             // 
             // tb_reshow_order
@@ -239,7 +241,7 @@
             this.tb_reshow_order.Location = new System.Drawing.Point(9, 173);
             this.tb_reshow_order.Name = "tb_reshow_order";
             this.tb_reshow_order.Size = new System.Drawing.Size(207, 22);
-            this.tb_reshow_order.TabIndex = 9;
+            this.tb_reshow_order.TabIndex = 8;
             this.tb_reshow_order.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_reshow_order_KeyUp);
             // 
             // bt_reshow_order
@@ -248,9 +250,10 @@
             this.bt_reshow_order.Location = new System.Drawing.Point(124, 200);
             this.bt_reshow_order.Name = "bt_reshow_order";
             this.bt_reshow_order.Size = new System.Drawing.Size(92, 23);
-            this.bt_reshow_order.TabIndex = 8;
+            this.bt_reshow_order.TabIndex = 9;
             this.bt_reshow_order.Text = "Re-show order";
             this.bt_reshow_order.UseVisualStyleBackColor = true;
+            this.bt_reshow_order.Click += new System.EventHandler(this.bt_reshow_order_Click);
             // 
             // label15
             // 
@@ -267,7 +270,7 @@
             this.bt_add_name.Location = new System.Drawing.Point(124, 133);
             this.bt_add_name.Name = "bt_add_name";
             this.bt_add_name.Size = new System.Drawing.Size(92, 23);
-            this.bt_add_name.TabIndex = 5;
+            this.bt_add_name.TabIndex = 7;
             this.bt_add_name.Text = "Add by Name";
             this.bt_add_name.UseVisualStyleBackColor = true;
             this.bt_add_name.Click += new System.EventHandler(this.bt_add_name_Click);
@@ -278,7 +281,7 @@
             this.bt_add_id.Location = new System.Drawing.Point(124, 66);
             this.bt_add_id.Name = "bt_add_id";
             this.bt_add_id.Size = new System.Drawing.Size(92, 23);
-            this.bt_add_id.TabIndex = 4;
+            this.bt_add_id.TabIndex = 5;
             this.bt_add_id.Text = "Add by Code";
             this.bt_add_id.UseVisualStyleBackColor = true;
             this.bt_add_id.Click += new System.EventHandler(this.bt_add_id_Click);
@@ -301,7 +304,7 @@
             this.tb_add_id.Location = new System.Drawing.Point(9, 38);
             this.tb_add_id.Name = "tb_add_id";
             this.tb_add_id.Size = new System.Drawing.Size(207, 22);
-            this.tb_add_id.TabIndex = 2;
+            this.tb_add_id.TabIndex = 4;
             this.tb_add_id.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_add_id_KeyUp);
             // 
             // label2
@@ -341,7 +344,7 @@
             this.tb_item_description.Name = "tb_item_description";
             this.tb_item_description.ReadOnly = true;
             this.tb_item_description.Size = new System.Drawing.Size(278, 103);
-            this.tb_item_description.TabIndex = 8;
+            this.tb_item_description.TabIndex = 111;
             this.tb_item_description.Text = "";
             // 
             // label6
@@ -371,7 +374,7 @@
             this.tb_item_price.Name = "tb_item_price";
             this.tb_item_price.ReadOnly = true;
             this.tb_item_price.Size = new System.Drawing.Size(214, 22);
-            this.tb_item_price.TabIndex = 4;
+            this.tb_item_price.TabIndex = 108;
             // 
             // chb_item_large
             // 
@@ -380,7 +383,7 @@
             this.chb_item_large.Location = new System.Drawing.Point(76, 77);
             this.chb_item_large.Name = "chb_item_large";
             this.chb_item_large.Size = new System.Drawing.Size(74, 16);
-            this.chb_item_large.TabIndex = 5;
+            this.chb_item_large.TabIndex = 109;
             this.chb_item_large.Text = "Large item";
             this.chb_item_large.UseVisualStyleBackColor = true;
             // 
@@ -393,7 +396,7 @@
             this.tb_item_name.Name = "tb_item_name";
             this.tb_item_name.ReadOnly = true;
             this.tb_item_name.Size = new System.Drawing.Size(214, 22);
-            this.tb_item_name.TabIndex = 1;
+            this.tb_item_name.TabIndex = 107;
             // 
             // chb_item_install
             // 
@@ -403,7 +406,7 @@
             this.chb_item_install.Location = new System.Drawing.Point(189, 77);
             this.chb_item_install.Name = "chb_item_install";
             this.chb_item_install.Size = new System.Drawing.Size(101, 16);
-            this.chb_item_install.TabIndex = 6;
+            this.chb_item_install.TabIndex = 110;
             this.chb_item_install.Text = "Need install item";
             this.chb_item_install.UseVisualStyleBackColor = true;
             // 
@@ -419,11 +422,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.lb_save);
             this.groupBox2.Controls.Add(this.tb_total);
             this.groupBox2.Controls.Add(this.tb_reveived);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.lb_paid);
             this.groupBox2.Controls.Add(this.tb_subtotal);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.tb_discount);
@@ -445,16 +448,17 @@
             this.label10.TabIndex = 10;
             this.label10.Text = "Total";
             // 
-            // label17
+            // lb_save
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label17.Location = new System.Drawing.Point(64, 143);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(94, 21);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Order Save";
+            this.lb_save.AutoSize = true;
+            this.lb_save.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lb_save.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lb_save.Location = new System.Drawing.Point(64, 143);
+            this.lb_save.Name = "lb_save";
+            this.lb_save.Size = new System.Drawing.Size(94, 21);
+            this.lb_save.TabIndex = 9;
+            this.lb_save.Text = "Order Save";
+            this.lb_save.Visible = false;
             // 
             // tb_total
             // 
@@ -465,7 +469,7 @@
             this.tb_total.Name = "tb_total";
             this.tb_total.ReadOnly = true;
             this.tb_total.Size = new System.Drawing.Size(97, 22);
-            this.tb_total.TabIndex = 9;
+            this.tb_total.TabIndex = 104;
             // 
             // tb_reveived
             // 
@@ -476,7 +480,7 @@
             this.tb_reveived.Name = "tb_reveived";
             this.tb_reveived.ReadOnly = true;
             this.tb_reveived.Size = new System.Drawing.Size(97, 22);
-            this.tb_reveived.TabIndex = 8;
+            this.tb_reveived.TabIndex = 103;
             // 
             // label14
             // 
@@ -487,16 +491,17 @@
             this.label14.TabIndex = 7;
             this.label14.Text = "Received";
             // 
-            // label13
+            // lb_paid
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label13.Location = new System.Drawing.Point(10, 144);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 21);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Paid";
+            this.lb_paid.AutoSize = true;
+            this.lb_paid.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lb_paid.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lb_paid.Location = new System.Drawing.Point(10, 144);
+            this.lb_paid.Name = "lb_paid";
+            this.lb_paid.Size = new System.Drawing.Size(43, 21);
+            this.lb_paid.TabIndex = 6;
+            this.lb_paid.Text = "Paid";
+            this.lb_paid.Visible = false;
             // 
             // tb_subtotal
             // 
@@ -507,7 +512,7 @@
             this.tb_subtotal.Name = "tb_subtotal";
             this.tb_subtotal.ReadOnly = true;
             this.tb_subtotal.Size = new System.Drawing.Size(97, 22);
-            this.tb_subtotal.TabIndex = 5;
+            this.tb_subtotal.TabIndex = 101;
             // 
             // label9
             // 
@@ -527,7 +532,7 @@
             this.tb_discount.Name = "tb_discount";
             this.tb_discount.ReadOnly = true;
             this.tb_discount.Size = new System.Drawing.Size(97, 22);
-            this.tb_discount.TabIndex = 3;
+            this.tb_discount.TabIndex = 102;
             // 
             // label8
             // 
@@ -570,6 +575,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bt_receipt);
+            this.groupBox1.Controls.Add(this.lb_orderID);
             this.groupBox1.Controls.Add(this.bt_save);
             this.groupBox1.Controls.Add(this.tb_deposit);
             this.groupBox1.Controls.Add(this.label16);
@@ -587,12 +594,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Collection";
             // 
+            // bt_receipt
+            // 
+            this.bt_receipt.Location = new System.Drawing.Point(255, 113);
+            this.bt_receipt.Name = "bt_receipt";
+            this.bt_receipt.Size = new System.Drawing.Size(93, 23);
+            this.bt_receipt.TabIndex = 107;
+            this.bt_receipt.Text = "Print Receipt";
+            this.bt_receipt.UseVisualStyleBackColor = true;
+            this.bt_receipt.Click += new System.EventHandler(this.bt_receipt_Click);
+            // 
+            // lb_orderID
+            // 
+            this.lb_orderID.AutoSize = true;
+            this.lb_orderID.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_orderID.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lb_orderID.Location = new System.Drawing.Point(12, 115);
+            this.lb_orderID.Name = "lb_orderID";
+            this.lb_orderID.Size = new System.Drawing.Size(67, 17);
+            this.lb_orderID.TabIndex = 11;
+            this.lb_orderID.Text = "Order ID: ";
+            this.lb_orderID.Visible = false;
+            // 
             // bt_save
             // 
             this.bt_save.Location = new System.Drawing.Point(12, 144);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(91, 23);
-            this.bt_save.TabIndex = 10;
+            this.bt_save.TabIndex = 11;
             this.bt_save.Text = "Save Order";
             this.bt_save.UseVisualStyleBackColor = true;
             this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
@@ -606,7 +635,7 @@
             this.tb_deposit.Name = "tb_deposit";
             this.tb_deposit.ReadOnly = true;
             this.tb_deposit.Size = new System.Drawing.Size(174, 22);
-            this.tb_deposit.TabIndex = 8;
+            this.tb_deposit.TabIndex = 105;
             // 
             // label16
             // 
@@ -626,7 +655,7 @@
             this.tb_change.Name = "tb_change";
             this.tb_change.ReadOnly = true;
             this.tb_change.Size = new System.Drawing.Size(174, 22);
-            this.tb_change.TabIndex = 5;
+            this.tb_change.TabIndex = 106;
             // 
             // label12
             // 
@@ -643,7 +672,7 @@
             this.bt_epay.Location = new System.Drawing.Point(255, 144);
             this.bt_epay.Name = "bt_epay";
             this.bt_epay.Size = new System.Drawing.Size(93, 23);
-            this.bt_epay.TabIndex = 3;
+            this.bt_epay.TabIndex = 13;
             this.bt_epay.Text = "Use e-payment";
             this.bt_epay.UseVisualStyleBackColor = true;
             this.bt_epay.Click += new System.EventHandler(this.bt_epay_Click);
@@ -654,9 +683,10 @@
             this.bt_cash.Location = new System.Drawing.Point(158, 144);
             this.bt_cash.Name = "bt_cash";
             this.bt_cash.Size = new System.Drawing.Size(91, 23);
-            this.bt_cash.TabIndex = 2;
+            this.bt_cash.TabIndex = 12;
             this.bt_cash.Text = "Use Cash";
             this.bt_cash.UseVisualStyleBackColor = true;
+            this.bt_cash.Click += new System.EventHandler(this.bt_cash_Click);
             // 
             // tb_charge
             // 
@@ -665,7 +695,7 @@
             this.tb_charge.Location = new System.Drawing.Point(150, 19);
             this.tb_charge.Name = "tb_charge";
             this.tb_charge.Size = new System.Drawing.Size(174, 22);
-            this.tb_charge.TabIndex = 1;
+            this.tb_charge.TabIndex = 10;
             // 
             // label11
             // 
@@ -714,8 +744,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salesManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -751,13 +779,12 @@
         private System.Windows.Forms.TextBox tb_reveived;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button bt_save;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lb_save;
         private System.Windows.Forms.TextBox tb_deposit;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lb_paid;
         private System.Windows.Forms.TextBox tb_change;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ToolStripMenuItem returnOrderToolStripMenuItem;
         private System.Windows.Forms.ListView lv_item_list;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -766,5 +793,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.TextBox tb_add_name;
+        private System.Windows.Forms.Button bt_remove_item;
+        private System.Windows.Forms.Label lb_orderID;
+        private System.Windows.Forms.Button bt_reset;
+        private System.Windows.Forms.Button bt_receipt;
     }
 }

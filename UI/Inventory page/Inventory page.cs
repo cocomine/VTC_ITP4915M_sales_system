@@ -26,24 +26,28 @@ namespace UI.Inventory_page
             InitializeComponent();
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+        public Inventory_page(MySqlConnection conn, Account_Details acc, Form childForm) {
+            this.conn = conn;
+            this.acc = acc;
+            InitializeComponent();
+
+            openChildForm(childForm); //直接打開子視窗
         }
 
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-            new My_Profile(conn, acc).Show();
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Program.Logout();
         }
 
         private void warehouseToolStripMenuItem_Click(object sender, EventArgs e) {
-            openChildForm(new Inventory_quantity());
+            openChildForm(new Inventory_quantity(conn));
         }
 
         private void itemRequestedToolStripMenuItem_Click(object sender, EventArgs e) {
-            openChildForm(new Item_requested());
+            openChildForm(new Item_requested(conn));
         }
 
         private void purchaseItemToolStripMenuItem_Click(object sender, EventArgs e) {
-            openChildForm(new Purchase_item());
+            openChildForm(new Purchase_item(conn));
         }
 
         private void Inventory_page_Load(object sender, EventArgs e) {

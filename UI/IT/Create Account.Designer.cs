@@ -156,10 +156,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tb_username);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(400, 211);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 211);
             this.Name = "Create_Account";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Account";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Create_Account_FormClosed);
             this.Load += new System.EventHandler(this.Create_Account_Load);

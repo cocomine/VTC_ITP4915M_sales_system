@@ -35,6 +35,7 @@
             this.btn_login = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +109,18 @@
             this.panel1.Size = new System.Drawing.Size(227, 177);
             this.panel1.TabIndex = 6;
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(303, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(179, 31);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Better Limited";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Login
             // 
             this.AcceptButton = this.btn_login;
@@ -115,6 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(816, 489);
@@ -138,6 +152,7 @@
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
     }
 }
 

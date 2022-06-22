@@ -219,9 +219,9 @@
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 15);
+            this.label3.Size = new System.Drawing.Size(83, 12);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Scheduled Features";
+            this.label3.Text = "Scheduled Order";
             // 
             // panel2
             // 

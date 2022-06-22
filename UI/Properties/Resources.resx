@@ -117,4 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BoxIcons_SolidGroup_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxIcons-SolidGroup-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxIcons_SolidPurchaseTagAlt_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxIcons-SolidPurchaseTagAlt-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxIcons_SolidReport_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxIcons-SolidReport-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxIcons_SolidStore_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxIcons-SolidStore-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxIcons_SolidUserAccount_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxIcons-SolidUserAccount-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxIcons_SolidWrench_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxIcons-SolidWrench-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Entypo_LogOut_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Entypo-LogOut-16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontAwesome_AddressCardRegular_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontAwesome-AddressCardRegular-24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontAwesome_DollyFlatbedSolid_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontAwesome-DollyFlatbedSolid-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontAwesome_TasksSolid_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontAwesome-TasksSolid-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontAwesome_TruckLoadingSolid_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontAwesome-TruckLoadingSolid-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontAwesome_TruckSolid_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontAwesome-TruckSolid-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FontAwesome_WarehouseSolid_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FontAwesome-WarehouseSolid-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Material_AccountHardHat_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Material-AccountHardHat-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Material_PrinterPos_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Material-PrinterPos-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Material_TruckDelivery_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Material-TruckDelivery-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PicolIcons_DocumentSansCancel_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PicolIcons-DocumentSansCancel-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Receipt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\receipt.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

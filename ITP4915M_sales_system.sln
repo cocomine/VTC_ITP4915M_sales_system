@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITP4915M_sales_system", "UI\ITP4915M_sales_system.csproj", "{7B5B235F-231B-476D-93BA-DDF917460299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITP4915M_sales_systemTests", "ITP4915M_sales_systemTests\ITP4915M_sales_systemTests.csproj", "{FABCA025-D510-43CC-A0A8-EBB349DF1027}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{7B5B235F-231B-476D-93BA-DDF917460299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B5B235F-231B-476D-93BA-DDF917460299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B5B235F-231B-476D-93BA-DDF917460299}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FABCA025-D510-43CC-A0A8-EBB349DF1027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FABCA025-D510-43CC-A0A8-EBB349DF1027}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FABCA025-D510-43CC-A0A8-EBB349DF1027}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FABCA025-D510-43CC-A0A8-EBB349DF1027}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

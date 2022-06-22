@@ -101,11 +101,18 @@
     <Compile Include="API\Delivery team.cs" />
     <Compile Include="API\Department.cs" />
     <Compile Include="API\Item.cs" />
-    <Compile Include="Delivery Page\Delivery Page.cs">
+    <Compile Include="API\savePDF.cs" />
+	<Compile Include="Delivery Page\Arrange Delivery Page.cs" >
+		<SubType>Form</SubType>
+	</Compile>
+    <Compile Include="Delivery Page\Arrange Delivery Page.Designer.cs">
+      <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery Page\Delivery Page_deprecated.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Delivery Page\Delivery Page.Designer.cs">
-      <DependentUpon>Delivery Page.cs</DependentUpon>
+    <Compile Include="Delivery Page\Delivery Page_deprecated.Designer.cs">
+      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
     </Compile>
     <Compile Include="Delivery Page\Delivery Team Page.cs">
       <SubType>Form</SubType>
@@ -167,6 +174,30 @@
     <Compile Include="IT\Delivery Team Grouping.Designer.cs">
       <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
     </Compile>
+    <Compile Include="IT\Sales Staff arrange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IT\Sales Staff arrange.Designer.cs">
+      <DependentUpon>Sales Staff arrange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Menu.Designer.cs">
+      <DependentUpon>Main Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales page\install_time_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\install_time_select.Designer.cs">
+      <DependentUpon>install_time_select.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales page\delivery_time_select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales page\delivery_time_select.Designer.cs">
+      <DependentUpon>delivery_time_select.cs</DependentUpon>
+    </Compile>
     <Compile Include="My Profile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,8 +251,11 @@
     <EmbeddedResource Include="Accounting page\Accounting page.resx">
       <DependentUpon>Accounting page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Delivery Page\Delivery Page.resx">
-      <DependentUpon>Delivery Page.cs</DependentUpon>
+    <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.resx">
+      <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Delivery Page_deprecated.resx">
+      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>
@@ -252,6 +286,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Delivery Team Grouping.resx">
       <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT\Sales Staff arrange.resx">
+      <DependentUpon>Sales Staff arrange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Menu.resx">
+      <DependentUpon>Main Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\install_time_select.resx">
+      <DependentUpon>install_time_select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\delivery_time_select.resx">
+      <DependentUpon>delivery_time_select.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -316,12 +362,36 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GSF.Core">
-      <Version>2.4.28</Version>
+    <PackageReference Include="itext7.pdfhtml">
+      <Version>4.0.2</Version>
     </PackageReference>
     <PackageReference Include="MySql.Data">
       <Version>8.0.29</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Entypo-LogOut-24x24.png" />
+    <None Include="Resources\Entypo-LogOut-16x16.png" />
+    <None Include="Resources\FontAwesome-AddressCardRegular-24x24.png" />
+    <None Include="Resources\Material-PrinterPos-64x64.png" />
+    <None Include="Resources\PicolIcons-DocumentSansCancel-64x64.png" />
+    <None Include="Resources\FontAwesome-TasksSolid-64x64.png" />
+    <None Include="Resources\FontAwesome-WarehouseSolid-64x64.png" />
+    <None Include="Resources\FontAwesome-DollyFlatbedSolid-64x64.png" />
+    <None Include="Resources\FontAwesome-TruckLoadingSolid-64x64.png" />
+    <None Include="Resources\Material-AccountHardHat-64x64.png" />
+    <None Include="Resources\Material-TruckDelivery-64x64.png" />
+    <None Include="Resources\FontAwesome-TruckSolid-64x64.png" />
+    <None Include="Resources\BoxIcons-SolidWrench-64x64.png" />
+    <None Include="Resources\BoxIcons-SolidUserAccount-64x64.png" />
+    <None Include="Resources\BoxIcons-SolidGroup-64x64.png" />
+    <None Include="Resources\BoxIcons-SolidStore-64x64.png" />
+    <None Include="Resources\BoxIcons-SolidReport-64x64.png" />
+    <None Include="Resources\BoxIcons-SolidPurchaseTagAlt-64x64.png" />
+    <Content Include="Resources\Receipt.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sales page\Return Item\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -88,18 +88,14 @@ namespace UI.IT
             }
         }
 
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-            new My_Profile(conn, acc).Show();
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
+            Program.Logout();
         }
 
         private void Create_account_Click(object sender, EventArgs e) {
             //create account
             DialogResult dialogResult = new Create_Account(conn).ShowDialog();
-            Console.WriteLine(dialogResult);
+            //Console.WriteLine(dialogResult);
             if (dialogResult == DialogResult.OK) {
                 //Console.WriteLine("ok");
                 ds_staff.Clear();
@@ -115,12 +111,18 @@ namespace UI.IT
             }
         }
 
+        
         private void bt_del_account_Click(object sender, EventArgs e) {
             //delete account
             DialogResult result = MessageBox.Show("Are you sure delete seleect user?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm del                                                                                                                  //if confirm
             if (result == DialogResult.Yes) { //confirm
-                bindingSource1.RemoveCurrent();
-                adapter.Update(ds_staff, "Staff_List");
+                foreach (DataGridViewCell oneCell in dataGrid_staffList.SelectedCells) {
+                    if (oneCell.Selected)
+                        dataGrid_staffList.Rows.RemoveAt(oneCell.RowIndex);
+                }
+                foreach (DataGridViewRow row in dataGrid_staffList.SelectedRows) {
+                    dataGrid_staffList.Rows.Remove(row);
+                }
             }
         }
 
@@ -248,10 +250,6 @@ namespace UI.IT
             binding[tb.Name].WriteValue();
         }
 
-        private void deliveryTeamGroupingToolStripMenuItem_Click(object sender, EventArgs e) {
-            new Delivery_Team_Grouping(conn).Show();
-        }
-
         private void Account_Management_FormClosing(object sender, FormClosingEventArgs e) {
             if (ds_staff.HasChanges()) {
                DialogResult result =  MessageBox.Show("You have unsaved changes, are you sure you want to leave?", "Save change", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -260,5 +258,6 @@ namespace UI.IT
                 }
             }
         }
+
     }
 }

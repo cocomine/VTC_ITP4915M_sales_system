@@ -1,14 +1,8 @@
 ﻿using ITP4915M.API;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -32,12 +26,12 @@ namespace UI
 
                 //check account is exist
                 if (!accountData.HasRows) {
-                    MessageBox.Show("User does not exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Login information error. (404)", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
                     while (accountData.Read()) {
                         //check account Enable
                         if (!accountData.GetBoolean("Enable")) {
-                            MessageBox.Show("User does not enable.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Login information error. (403)", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             accountData.Close();
                             return;
                         }
@@ -60,7 +54,7 @@ namespace UI
                             this.Close(); //close this Form
                         } else {
                             //password faild
-                            MessageBox.Show("Incorrect password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Login information error. (403)", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
