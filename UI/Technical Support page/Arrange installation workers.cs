@@ -140,7 +140,7 @@ namespace UI.Technical_Support_page
                 {
                     string cName = data_cus.GetString("Customer_name");
                     string cAddress = data_cus.GetString("Address");
-                    string cPhone = data_cus.GetInt32("Phone").ToString();
+                    string cPhone = data_cus.GetString("Phone");
                     string iName = data_cus.GetString("Name");
                     customerID = data_cus.GetString("CustomerID"); //Store data of customer ID
                     string iDate = data_cus.GetString("Install_date");
@@ -217,7 +217,7 @@ namespace UI.Technical_Support_page
                 {
                     string cName = data_schedule.GetString("Customer_name");
                     string cAddress = data_schedule.GetString("Address");
-                    string cPhone = data_schedule.GetInt32("Phone").ToString();
+                    string cPhone = data_schedule.GetString("Phone");
                     string iName = data_schedule.GetString("Name");
                     string iDate = data_schedule.GetString("Install_date");
 
@@ -289,7 +289,7 @@ namespace UI.Technical_Support_page
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please select the installer worker to perform '" + lb_order.Text + "' order.");
             }
             conn.Close();
 
