@@ -14,11 +14,11 @@ namespace UI.Delivery_Page
 {
 
 
-    public partial class Delivery_Page : Form
+    public partial class Delivery_Page_deprecated : Form
     {
         private MySqlConnection conn;
         private Account_Details acc; //comment
-        public Delivery_Page(MySqlConnection conn, Account_Details acc)
+        public Delivery_Page_deprecated(MySqlConnection conn, Account_Details acc)
         {
             this.conn = conn;
             this.acc = acc;
