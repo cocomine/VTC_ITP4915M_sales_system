@@ -232,9 +232,8 @@ namespace ITP4915M.Sales_page {
         //取消安排送貨和安裝
         private void delete_worker() {
             try {
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM install_staff WHERE OrderID = @id;"
-                                                    + "DELETE FROM installation WHERE OrderID = @id;"
-                                                    + "DELETE FROM delivery WHERE OrderID = @id", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE delivery SET Status = 2 WHERE OrderID = @id;"
+                                                    + "UPDATE installation SET Status = 1 = @id;", conn);
                 cmd.Parameters.AddWithValue("@id", orderID);
                 cmd.ExecuteNonQuery();
             } catch (MySqlException ex) {
