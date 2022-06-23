@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
 using ITP4915M.IT;
+using ITP4915M.Sales_page;
 using UI;
 using UI.Accounting_page;
 using UI.Delivery_Page;
@@ -96,7 +97,7 @@ namespace ITP4915M {
             //檢查點擊哪一個按鈕
             //Sales Department
             if (bt.Equals(bt_salesPage)) Program.OpenFrom(new Sales_Page(conn, acc));
-            if (bt.Equals(bt_cancelOrder)) return;
+            if (bt.Equals(bt_cancelOrder)) Program.OpenFrom(new Cancel_Order(conn, acc)); ;
             if (bt.Equals(bt_salesMange)) Program.OpenFrom(new Sales_Management(conn, acc));
             //Delivery Department
             if (bt.Equals(bt_delivery)) Program.OpenFrom(new Delivery_Team_Page(conn, acc));

@@ -299,6 +299,9 @@
     <EmbeddedResource Include="Main Menu.resx">
       <DependentUpon>Main Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Cancel Order.resx">
+      <DependentUpon>Cancel Order.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sales page\install_time_select.resx">
       <DependentUpon>install_time_select.cs</DependentUpon>
     </EmbeddedResource>

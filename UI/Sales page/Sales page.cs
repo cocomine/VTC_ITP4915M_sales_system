@@ -147,11 +147,13 @@ namespace UI.Sales_page {
                 }
 
                 //檢查庫存是否足夠
-                int Unavailable_qty = data.GetInt32("Qty") - item.Qty;
+                int Unavailable_qty = data.GetInt32("Qty") < 0 ? -item.Qty : data.GetInt32("Qty") - item.Qty; //如果庫存係0直接入負數, 否則的話計算尚欠多少件
                 if (Unavailable_qty < 0) {
                     Unavailable_qty = Math.Abs(Unavailable_qty);
                     if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
                     else Unavailable_Item_Qty.Add(item, Unavailable_qty);
+
+                    MessageBox.Show("Please note that the item is out of stock!", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
                 }
 
                 //展示物品詳細
@@ -533,7 +535,7 @@ namespace UI.Sales_page {
                         shoppingCart_Item.Add(item); //add to shopping cart
 
                         //check stocks
-                        int Unavailable_qty = reader.GetInt32("Stocks") - item.Qty;
+                        int Unavailable_qty = reader.GetInt32("Stocks") < 0 ? -item.Qty : reader.GetInt32("Stocks") - item.Qty; //如果庫存係0直接入負數, 否則的話計算尚欠多少件
                         if (Unavailable_qty < 0) {
                             Unavailable_qty = Math.Abs(Unavailable_qty);
                             if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
@@ -594,7 +596,7 @@ namespace UI.Sales_page {
             lb_orderID.Visible = true;
             this.orderID = orderID;
 
-            //set Contains Disable
+            //set controls Disable
             if (received >= totalPriceData["subtotal"] - totalPriceData["discount"]) {
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
@@ -604,6 +606,9 @@ namespace UI.Sales_page {
                 tb_change.Enabled = false;
                 tb_add_id.Enabled = false;
                 tb_add_name.Enabled = false;
+            }else
+            if (Unavailable_Item_Qty.Count > 0) {
+                MessageBox.Show("Please note that the item is out of stock!", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
             }
         }
 
