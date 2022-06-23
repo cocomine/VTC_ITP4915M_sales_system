@@ -111,11 +111,14 @@
             this.list_items.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.list_items.FullRowSelect = true;
             this.list_items.HideSelection = false;
             this.list_items.Location = new System.Drawing.Point(12, 39);
+            this.list_items.MultiSelect = false;
             this.list_items.Name = "list_items";
             this.list_items.ShowGroups = false;
             this.list_items.Size = new System.Drawing.Size(271, 399);
+            this.list_items.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.list_items.TabIndex = 2;
             this.list_items.UseCompatibleStateImageBehavior = false;
             this.list_items.View = System.Windows.Forms.View.Details;

@@ -222,6 +222,8 @@
             this.dgv_item_list.Name = "dgv_item_list";
             this.dgv_item_list.ReadOnly = true;
             this.dgv_item_list.RowTemplate.Height = 24;
+            this.dgv_item_list.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_item_list.ShowEditingIcon = false;
             this.dgv_item_list.Size = new System.Drawing.Size(776, 338);
             this.dgv_item_list.TabIndex = 2;
             // 

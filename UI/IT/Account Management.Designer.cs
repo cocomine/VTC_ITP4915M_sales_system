@@ -97,6 +97,8 @@
             this.dataGrid_staffList.Name = "dataGrid_staffList";
             this.dataGrid_staffList.ReadOnly = true;
             this.dataGrid_staffList.RowTemplate.Height = 24;
+            this.dataGrid_staffList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid_staffList.ShowEditingIcon = false;
             this.dataGrid_staffList.Size = new System.Drawing.Size(776, 266);
             this.dataGrid_staffList.TabIndex = 2;
             this.dataGrid_staffList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGrid_staffList_DataError);

@@ -734,6 +734,7 @@ namespace UI.Sales_page {
                 }
             }
 
+            Dictionary<string, double> totalPriceData = CountPrice();
             double change = charge - total; //找錢
             if (change >= 0) {
                 //全額付款
@@ -754,11 +755,12 @@ namespace UI.Sales_page {
 
             //更新訂單紀錄
             try {
-                MySqlCommand cmd = new MySqlCommand("UPDATE `order` SET Status = @Status, Charge = @Charge, Payment_Method = @Payment_Method, DateTime = @datetime WHERE OrderID = @OrderID", conn);
+                MySqlCommand cmd = new MySqlCommand("UPDATE `order` SET Status = @Status, Charge = @Charge, finalTotal = @finalTotal, Payment_Method = @Payment_Method, DateTime = @datetime WHERE OrderID = @OrderID", conn);
                 cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("@Status", change >= 0 ? 2 : 7); //2:completed 7:款項未完全交付
                 cmd.Parameters.AddWithValue("@OrderID", orderID);
                 cmd.Parameters.AddWithValue("@Charge", charge + received);
+                cmd.Parameters.AddWithValue("@finalTotal", totalPriceData["subtotal"] - totalPriceData["discount"]);
                 cmd.Parameters.AddWithValue("@Payment_Method", payment_Method);
                 cmd.ExecuteNonQuery();
             } catch (MySqlException ex) {
