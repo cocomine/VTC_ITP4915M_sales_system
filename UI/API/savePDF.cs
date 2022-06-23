@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace ITP4915M.API {
     public class SavePdf {
-        public static string Save(string html) {
+        public static string Save(string html, string filename = null) {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.DefaultExt = "pdf";
             saveFileDialog1.RestoreDirectory = true;
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory); //預設路徑為桌面
-            saveFileDialog1.FileName = DateTime.Now.ToString("yyyy-MM-dd HHmmss") + " Receipt"; //預設檔案名稱
+            saveFileDialog1.FileName = filename ?? DateTime.Now.ToString("yyyy-MM-dd HHmmss"); //預設檔案名稱
 
             
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return null; //確認儲存

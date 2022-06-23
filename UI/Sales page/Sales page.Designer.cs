@@ -83,6 +83,7 @@
             this.bt_cash = new System.Windows.Forms.Button();
             this.tb_charge = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.lb_cancel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -575,6 +576,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lb_cancel);
             this.groupBox1.Controls.Add(this.bt_receipt);
             this.groupBox1.Controls.Add(this.lb_orderID);
             this.groupBox1.Controls.Add(this.bt_save);
@@ -606,14 +608,13 @@
             // 
             // lb_orderID
             // 
-            this.lb_orderID.AutoSize = true;
             this.lb_orderID.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_orderID.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lb_orderID.Location = new System.Drawing.Point(12, 115);
             this.lb_orderID.Name = "lb_orderID";
-            this.lb_orderID.Size = new System.Drawing.Size(67, 17);
+            this.lb_orderID.Size = new System.Drawing.Size(170, 17);
             this.lb_orderID.TabIndex = 11;
-            this.lb_orderID.Text = "Order ID: ";
+            this.lb_orderID.Text = "Order ID: 000000000";
             this.lb_orderID.Visible = false;
             // 
             // bt_save
@@ -706,6 +707,18 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Charge amount";
             // 
+            // lb_cancel
+            // 
+            this.lb_cancel.AutoSize = true;
+            this.lb_cancel.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lb_cancel.ForeColor = System.Drawing.Color.IndianRed;
+            this.lb_cancel.Location = new System.Drawing.Point(188, 112);
+            this.lb_cancel.Name = "lb_cancel";
+            this.lb_cancel.Size = new System.Drawing.Size(61, 21);
+            this.lb_cancel.TabIndex = 105;
+            this.lb_cancel.Text = "Cancel";
+            this.lb_cancel.Visible = false;
+            // 
             // Sales_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -797,5 +810,6 @@
         private System.Windows.Forms.Label lb_orderID;
         private System.Windows.Forms.Button bt_reset;
         private System.Windows.Forms.Button bt_receipt;
+        private System.Windows.Forms.Label lb_cancel;
     }
 }

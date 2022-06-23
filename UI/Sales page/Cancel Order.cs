@@ -198,6 +198,8 @@ namespace ITP4915M.Sales_page {
                 cmd.Parameters.AddWithValue("@id", orderID);
                 cmd.ExecuteNonQuery();
 
+                delete_worker();
+
                 lb_cancel.Visible = true;
                 bt_cancel.Enabled = false;
             } catch (MySqlException ex) {
@@ -213,6 +215,8 @@ namespace ITP4915M.Sales_page {
                 cmd.Parameters.AddWithValue("@id", orderID);
                 cmd.ExecuteNonQuery();
 
+                delete_worker();
+
                 lb_cancel.Visible = true;
                 lb_refund.Visible = true;
                 bt_cancel.Enabled = false;
@@ -220,6 +224,19 @@ namespace ITP4915M.Sales_page {
 
                 double refund = (received < total) ? received : total; //如果未完全付款則退還已繳交款項, 否則的話退還全部款項
                 tb_refund.Text = $"{refund:C}";
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
+            }
+        }
+
+        //取消安排送貨和安裝
+        private void delete_worker() {
+            try {
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM install_staff WHERE OrderID = @id;"
+                                                    + "DELETE FROM installation WHERE OrderID = @id;"
+                                                    + "DELETE FROM delivery WHERE OrderID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", orderID);
+                cmd.ExecuteNonQuery();
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }

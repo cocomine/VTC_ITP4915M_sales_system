@@ -25,6 +25,7 @@ namespace UI.Sales_page {
         private string orderID = null; //訂單id
         private bool need_delivery = false; //是否需要送貨
         private bool need_install = false; //是否需要安裝
+        private bool isCancel = false;
 
         public Sales_Page(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
@@ -328,11 +329,11 @@ namespace UI.Sales_page {
             }
 
             total = subtotal - discount - received; //實付總額
-            Console.WriteLine(deposit);
+            //Console.WriteLine(deposit);
             deposit = subtotal - Unavailable + deposit; //20%訂金總額
-            Console.WriteLine(deposit);
-            Console.WriteLine(subtotal);
-            Console.WriteLine(Unavailable);
+            //Console.WriteLine(deposit);
+            //Console.WriteLine(subtotal);
+            //Console.WriteLine(Unavailable);
             deposit = deposit >= total ? total : deposit;
 
             tb_subtotal.Text = $"{subtotal:C}";
@@ -489,7 +490,8 @@ namespace UI.Sales_page {
 
         //reshow order
         private void bt_reshow_order_Click(object sender, EventArgs e) {
-            int Status, Payment_Method = 0;
+            int Status = 0;
+            int Payment_Method = 0;
             string orderID = tb_reshow_order.Text;
             reset_All(); //reaet all
 
@@ -596,8 +598,9 @@ namespace UI.Sales_page {
             lb_orderID.Visible = true;
             this.orderID = orderID;
 
-            //set controls Disable
+            //set controls
             if (received >= totalPriceData["subtotal"] - totalPriceData["discount"]) {
+                //is paid
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
                 bt_add_id.Enabled = false;
@@ -606,9 +609,28 @@ namespace UI.Sales_page {
                 tb_change.Enabled = false;
                 tb_add_id.Enabled = false;
                 tb_add_name.Enabled = false;
+                bt_save.Enabled = false;
+                bt_remove_item.Enabled = false;
             }else
-            if (Unavailable_Item_Qty.Count > 0) {
-                MessageBox.Show("Please note that the item is out of stock!", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
+            if (Unavailable_Item_Qty.Count > 0 && !(Status == 5 || Status == 6)) {
+                //have item out of stock
+                MessageBox.Show("Please note that have items is out of stock!", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
+            }
+
+            //if is cancel
+            Console.WriteLine(Status);
+            if (Status == 5 || Status == 6) {
+                bt_cash.Enabled = false;
+                bt_epay.Enabled = false;
+                bt_add_id.Enabled = false;
+                bt_add_name.Enabled = false;
+                lb_cancel.Visible = true;
+                tb_change.Enabled = false;
+                tb_add_id.Enabled = false;
+                tb_add_name.Enabled = false;
+                isCancel = true;
+                bt_save.Enabled = false;
+                bt_remove_item.Enabled = false;
             }
         }
 
@@ -724,6 +746,7 @@ namespace UI.Sales_page {
                 tb_change.Enabled = false;
                 tb_add_id.Enabled = false;
                 tb_add_name.Enabled = false;
+                bt_remove_item.Enabled = false;
             } else {
                 //非全額付款
                 tb_change.Text = $"{0:C}";
@@ -794,6 +817,7 @@ namespace UI.Sales_page {
             lb_orderID.Visible = false;
             lb_paid.Visible = false;
             lb_save.Visible = false;
+            lb_cancel.Visible = false;
             bt_cash.Enabled = true;
             bt_epay.Enabled = true;
             bt_add_id.Enabled = true;
@@ -801,6 +825,7 @@ namespace UI.Sales_page {
             tb_change.Enabled = true;
             tb_add_id.Enabled = true;
             tb_add_name.Enabled = true;
+            bt_remove_item.Enabled = true;
 
             //clear all textbox
             List<TextBox> AllTextBox = new List<TextBox>();
@@ -829,7 +854,7 @@ namespace UI.Sales_page {
         //打印收據pdf
         private void bt_receipt_Click(object sender, EventArgs e) {
             //save order first
-            string orderID = saveOrder(this.orderID);
+            //string orderID = saveOrder(this.orderID);
             if (orderID == null) return; //儲存失敗
 
             Dictionary<string, double> totalPriceData = CountPrice();
@@ -899,8 +924,13 @@ namespace UI.Sales_page {
             html = html.Replace("%discount%", $"-{totalPriceData["discount"]:C}");
             html = html.Replace("%total%", $"{totalPriceData["subtotal"] - totalPriceData["discount"]:C}");
 
+            //cancel status
+            if (isCancel) {
+                html = html.Replace("%cancel%", "<div id=\"cancel\">CANCEL</div>");
+            }
+
             //save as pdf
-            SavePdf.Save(html);
+            SavePdf.Save(html, DateTime.Now.ToString("yyyy-MM-dd")+"_"+orderID);
         }
     }
 }
