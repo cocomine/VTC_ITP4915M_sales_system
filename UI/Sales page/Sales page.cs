@@ -518,7 +518,8 @@ namespace UI.Sales_page {
 
             //get order item
             try {
-                MySqlCommand cmd = new MySqlCommand("SELECT o.ItemID, o.Qty, o.Purchase_price, i.Name, i.Price, i.Type, i.Description, t.Qty AS `Stocks` FROM order_item o, item i, inventory t " + "WHERE o.ItemID = i.ItemID AND i.ItemID = t.ItemID AND o.OrderID = @id AND t.StoreWarehouseID = @StoreID;", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT o.ItemID, o.Qty, o.Purchase_price, i.Name, i.Price, i.Type, i.Description, t.Qty AS `Stocks` FROM order_item o, item i, inventory t "
+                                                    + "WHERE o.ItemID = i.ItemID AND i.ItemID = t.ItemID AND o.OrderID = @id AND t.StoreWarehouseID = @StoreID;", conn);
                 cmd.Parameters.AddWithValue("@id", orderID);
                 cmd.Parameters.AddWithValue("@StoreID", StoreID);
                 MySqlDataReader reader = cmd.ExecuteReader();

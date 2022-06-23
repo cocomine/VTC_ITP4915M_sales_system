@@ -29,48 +29,51 @@ namespace ITP4915M {
             Program.addPage();
             lb_name.Text = $"Hello! {acc.Get_fullRealName()} ({acc.Get_acoountID()})";
             menu.VerticalScroll.Value = 100;
+            foreach (Control menuControl in menu.Controls) {
+                if (menuControl is GroupBox gp) {
+                    gp.Visible = false;
+                }
+            }
 
             //根據department 開放按鈕
             switch (acc.Get_departmentID()) {
                 case Department.Sales:
                     gp_sales.Enabled = true;
+                    gp_sales.Visible = true;
                     if (acc.Get_isManager()) bt_salesMange.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_sales.Top + gp_sales.Height - 20;
                     break;
                 case Department.Inventory:
                     gp_inventory.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_inventory.Top + gp_inventory.Height - 20;
+                    gp_inventory.Visible = true;
                     break;
                 case Department.Accounting:
                     gp_accounting.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_accounting.Top + gp_accounting.Height - 20;
+                    gp_accounting.Visible = true;
                     break;
                 case Department.Technical_Support:
                     gp_technical.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_technical.Top + gp_technical.Height - 20;
+                    gp_technical.Visible = true;
                     break;
                 case Department.IT:
                 case Department.CEO:
                     gp_admin.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_admin.Top + gp_admin.Height - 20;
+                    //Visible all GroupBox
+                    foreach (Control menuControl in menu.Controls) {
+                        if (menuControl is GroupBox gp) {
+                            gp.Visible = true;
+                        }
+                    }
                     break;
                 case Department.Delivery:
                     gp_delivery.Enabled = true;
+                    gp_delivery.Visible = true;
                     if (acc.Get_isManager()) {
                         bt_arrangeTeam.Enabled = true;
                     }
-
-                    menu.VerticalScroll.Value = gp_delivery.Top + gp_delivery.Height - 20;
                     break;
                 case Department.Installer:
                     gp_install.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_install.Top + gp_install.Height - 20;
+                    gp_install.Visible = true;
                     break;
             }
         }
