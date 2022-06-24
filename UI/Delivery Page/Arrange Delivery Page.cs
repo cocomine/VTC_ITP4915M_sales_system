@@ -372,7 +372,10 @@ namespace UI.Delivery_Page {
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                if (sOrder =="")
+                {
+                    MessageBox.Show("Please select the that needs to be delivery for " +  + ".")
+                }
             }
             conn.Close();
 
