@@ -47,6 +47,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbQty = new System.Windows.Forms.NumericUpDown();
+            this.btView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -56,6 +57,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btView);
             this.groupBox1.Controls.Add(this.tbQty);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btPurchase);
@@ -264,6 +266,17 @@
             this.tbQty.Size = new System.Drawing.Size(45, 22);
             this.tbQty.TabIndex = 5;
             // 
+            // btView
+            // 
+            this.btView.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btView.Location = new System.Drawing.Point(311, 64);
+            this.btView.Name = "btView";
+            this.btView.Size = new System.Drawing.Size(153, 24);
+            this.btView.TabIndex = 6;
+            this.btView.Text = "View Inward Received Goods";
+            this.btView.UseVisualStyleBackColor = false;
+            this.btView.Click += new System.EventHandler(this.btView_Click);
+            // 
             // Purchase_item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -310,5 +323,6 @@
         private System.Windows.Forms.TextBox tbID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown tbQty;
+        private System.Windows.Forms.Button btView;
     }
 }

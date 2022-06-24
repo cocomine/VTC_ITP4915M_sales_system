@@ -112,5 +112,10 @@ namespace UI.Inventory_page {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btView_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

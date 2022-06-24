@@ -37,30 +37,57 @@ namespace UI.Inventory_page {
 
         private void Next_Click(object sender, EventArgs e) {
             // buuton:Next
-            tblNameBs.MoveNext();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
-        }
+            try
+            {
+                tblNameBs.MoveNext();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+    }
 
         private void Previous_Click(object sender, EventArgs e) {
             // buuton:Previous
-            tblNameBs.MovePrevious();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            try
+            {
+                tblNameBs.MovePrevious();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void First_Click(object sender, EventArgs e) {
             // buuton:First
-            tblNameBs.MoveFirst();
+            try
+            {
+                tblNameBs.MoveFirst();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Last_Click(object sender, EventArgs e) {
             // buuton:Last
-            tblNameBs.MoveLast();
+            try
+            {
+                tblNameBs.MoveLast();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+                            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Search_Click(object sender, EventArgs e) {
