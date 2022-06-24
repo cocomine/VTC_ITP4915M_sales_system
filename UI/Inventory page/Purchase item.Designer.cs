@@ -45,6 +45,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -145,6 +147,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.tbID);
+            this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.tbDescription);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label4);
@@ -167,17 +171,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDescription.BackColor = System.Drawing.SystemColors.Info;
-            this.tbDescription.Location = new System.Drawing.Point(12, 114);
+            this.tbDescription.Location = new System.Drawing.Point(12, 137);
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.ReadOnly = true;
-            this.tbDescription.Size = new System.Drawing.Size(555, 206);
+            this.tbDescription.Size = new System.Drawing.Size(555, 183);
             this.tbDescription.TabIndex = 8;
             this.tbDescription.Text = "";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 99);
+            this.label6.Location = new System.Drawing.Point(10, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 12);
             this.label6.TabIndex = 7;
@@ -187,7 +191,7 @@
             // 
             this.checkBox1.AutoCheck = false;
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(76, 77);
+            this.checkBox1.Location = new System.Drawing.Point(69, 100);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(74, 16);
             this.checkBox1.TabIndex = 5;
@@ -199,7 +203,7 @@
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox2.AutoCheck = false;
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(466, 77);
+            this.checkBox2.Location = new System.Drawing.Point(460, 100);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(101, 16);
             this.checkBox2.TabIndex = 6;
@@ -233,6 +237,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(573, 326);
             this.panel2.TabIndex = 11;
+            // 
+            // tbID
+            // 
+            this.tbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbID.BackColor = System.Drawing.SystemColors.Info;
+            this.tbID.Location = new System.Drawing.Point(76, 72);
+            this.tbID.Name = "tbID";
+            this.tbID.ReadOnly = true;
+            this.tbID.Size = new System.Drawing.Size(491, 22);
+            this.tbID.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "ItemID";
             // 
             // Purchase_item
             // 
@@ -278,5 +302,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox tbID;
+        private System.Windows.Forms.Label label3;
     }
 }

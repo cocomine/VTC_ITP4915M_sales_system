@@ -74,11 +74,13 @@ namespace UI.Inventory_page
                     { 
                         sDescription = myReader.GetString("Description"); 
                     }
-                        
+                    string sID = myReader.GetString("ItemID");
+
 
                     tbName.Text = sName;
                     tbPirce.Text = sPrice;
                     tbDescription.Text = sDescription;
+                    tbID.Text=sID;
 
                     
                 }
@@ -93,8 +95,13 @@ namespace UI.Inventory_page
 
         private void btPurchase_Click(object sender, EventArgs e)
         {
-            
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES (10, '2022-06-24 09:11:40.000000', '3b483e8e-e26c-11ec-bf17-2cf05d0481f9', 1);", conn);
+            Random rnd = new Random();
+            int PurchaseID = rnd.Next(1000000, 10000000);
+            int Qty = Int32.Parse(tbQty.Text);
+            DateTime now = DateTime.Now;
+            string ItemID = tbID.Text;
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES ("+ PurchaseID + ", '"+now+"', '"+ ItemID + "', " +Qty+");", conn);
             MySqlDataReader myReader;
             
             try
