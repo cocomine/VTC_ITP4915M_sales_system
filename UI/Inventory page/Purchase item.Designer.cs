@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbQty = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btPurchase = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -38,6 +37,8 @@
             this.tbPirce = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -45,12 +46,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tbID = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tbQty = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbQty)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -65,13 +66,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase";
-            // 
-            // tbQty
-            // 
-            this.tbQty.Location = new System.Drawing.Point(69, 26);
-            this.tbQty.Name = "tbQty";
-            this.tbQty.Size = new System.Drawing.Size(100, 22);
-            this.tbQty.TabIndex = 4;
             // 
             // label2
             // 
@@ -165,6 +159,26 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Item Info";
             // 
+            // tbID
+            // 
+            this.tbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbID.BackColor = System.Drawing.SystemColors.Info;
+            this.tbID.Location = new System.Drawing.Point(76, 72);
+            this.tbID.Name = "tbID";
+            this.tbID.ReadOnly = true;
+            this.tbID.Size = new System.Drawing.Size(491, 22);
+            this.tbID.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "ItemID";
+            // 
             // tbDescription
             // 
             this.tbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -238,25 +252,17 @@
             this.panel2.Size = new System.Drawing.Size(573, 326);
             this.panel2.TabIndex = 11;
             // 
-            // tbID
+            // tbQty
             // 
-            this.tbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbID.BackColor = System.Drawing.SystemColors.Info;
-            this.tbID.Location = new System.Drawing.Point(76, 72);
-            this.tbID.Name = "tbID";
-            this.tbID.ReadOnly = true;
-            this.tbID.Size = new System.Drawing.Size(491, 22);
-            this.tbID.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "ItemID";
+            this.tbQty.Location = new System.Drawing.Point(61, 27);
+            this.tbQty.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.tbQty.Name = "tbQty";
+            this.tbQty.Size = new System.Drawing.Size(45, 22);
+            this.tbQty.TabIndex = 5;
             // 
             // Purchase_item
             // 
@@ -278,6 +284,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbQty)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,7 +292,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tbQty;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btPurchase;
         private System.Windows.Forms.ListBox listBox1;
@@ -303,5 +309,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tbID;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown tbQty;
     }
 }

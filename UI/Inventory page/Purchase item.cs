@@ -92,15 +92,20 @@ namespace UI.Inventory_page {
         }
 
         private void btPurchase_Click(object sender, EventArgs e) {
-            //set values
-            Random rnd = new Random();
-            int Qty = int.Parse(tbQty.Text);
-            DateTime now = DateTime.Now;
-            string ItemID = tbID.Text;
+
+            try
+            {
+                //set values
+                Random rnd = new Random();
+                int Qty = 0;
+                Qty = int.Parse(tbQty.Text);
+                DateTime now = DateTime.Now;
+                string ItemID = tbID.Text;
+
 
             //add item
             MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES (null, '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + ItemID + "', " + Qty + ");", conn);
-            try {
+
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Purchased");
             } catch (Exception ex) {
