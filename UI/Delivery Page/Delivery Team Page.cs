@@ -16,7 +16,7 @@ namespace UI.Delivery_Page
     {
         private MySqlConnection conn;
         private Account_Details acc;
-        public String dTeamID;
+        public string dTeamID;
 
         public Delivery_Team_Page(MySqlConnection conn, Account_Details acc)
         {
@@ -35,8 +35,8 @@ namespace UI.Delivery_Page
             Program.addPage();
 
             //Get the data needed by the Delivery Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `delivery` AS d, `customer` AS c, `delivery_team_staff` AS dts" +
-                "WHERE dts.StaffAccountID = '" + acc.Get_acoountID() + "' AND c.CustomerID = d.CustomerID AND d.Status = '1';", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `delivery` AS d, `customer` AS c, `delivery_team_staff` AS dts " +
+                "WHERE dts.StaffAccountID = '" + acc.Get_acoountID() + "' AND c.CustomerID = d.CustomerID AND d.Status = '1' AND dts.Delivery_TeamID = d.Delivery_TeamID;", conn);
             MySqlDataReader data_order;
 
             try
@@ -111,14 +111,13 @@ namespace UI.Delivery_Page
         private void btn_complete_Click(object sender, EventArgs e)
         {
             //Use "Order Complete" Button to update the new Delivery state
+            string sOrder = lb_order.Text;
             MySqlCommand cmd_comp = new MySqlCommand("UPDATE `delivery` AS d SET d.Status = '2' " +
                 "WHERE d.OrderID = '" + lb_order.Text + "';", conn);
-            MySqlDataReader comp_data;
-            string sOrder = lb_order.Text;
-
-            MySqlCommand update_dTeamStatus = new MySqlCommand("UPDATE `delivery_team` AS ds SET ds.Status = '0' " +
-                "WHERE d.TeamID = '" + dTeamID + "';", conn);
+            MySqlCommand update_dTeamStatus = new MySqlCommand("UPDATE `delivery_team` AS ds, `delivery` AS d SET ds.Status = '0' " +
+                "WHERE d.OrderID = '" + lb_order.Text + "' AND ds.TeamID = d.Delivery_TeamID;", conn);
             MySqlDataReader data_teamStatus;
+            MySqlDataReader comp_data;
 
             try
             {
@@ -134,6 +133,7 @@ namespace UI.Delivery_Page
             {
                 MessageBox.Show(ex.Message);
             }
+            conn.Close();
 
             try
             {
@@ -147,7 +147,7 @@ namespace UI.Delivery_Page
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please select an order that has already been shipped.");
             }
             conn.Close();
 
@@ -157,20 +157,18 @@ namespace UI.Delivery_Page
             tb_customer_address.Clear();
             tb_session.Clear();
             tb_delivery_date.Clear();
-
-
         }
 
 
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Program.Logout();
         }
 
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tb_session_TextChanged(object sender, EventArgs e)
         {
-            new My_Profile(conn, acc).Show();
+
         }
     }
 }

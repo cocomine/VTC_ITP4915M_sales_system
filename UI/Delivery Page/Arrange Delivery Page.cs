@@ -142,7 +142,7 @@ namespace UI.Delivery_Page {
                     string cPhone = data_cus.GetString("Phone");
                     string iName = data_cus.GetString("Name");
                     string dSession = data_cus.GetString("Session");
-                    DateTime dDate = data_cus.GetString("Delivery_date");
+                    DateTime dDate = Convert.ToDateTime(data_cus.GetString("Delivery_date"));
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
@@ -151,15 +151,15 @@ namespace UI.Delivery_Page {
                     lb_delivery_item.Items.Add(iName);
                     if (dSession == "0")
                     {
-                        tb_session.Text = dDate + ": 09:00 - 12:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 09:00 - 12:00";
                     }
                     else if (dSession == "1")
                     {
-                        tb_session.Text = dDate + ": 13:00 - 17:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 13:00 - 17:00";
                     }
                     else if (dSession == "2")
                     {
-                        tb_session.Text = dDate + ": 18:00 - 22:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 18:00 - 22:00";
                     }
                 }
                 conn.Close();
@@ -213,7 +213,7 @@ namespace UI.Delivery_Page {
         private void lb_scheduled_features_SelectedIndexChanged(object sender, EventArgs e)
         {
             //According to the selection in the list box, get the corresponding record
-            MySqlCommand cmd_schedule = new MySqlCommand("SELECT d.OrderID, d.Session, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name" +
+            MySqlCommand cmd_schedule = new MySqlCommand("SELECT d.OrderID, d.Session, d.Delivery_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name" +
                 " FROM `delivery` AS d, `customer` AS c, `order_item` AS oi, `item` AS i " +
                 "WHERE d.CustomerID = c.CustomerID AND d.OrderID = '" + lb_scheduled_features.Text + "' AND oi.OrderID = '" + lb_scheduled_features.Text +
                 "' AND oi.ItemID = i.ItemID;", conn);
@@ -231,6 +231,7 @@ namespace UI.Delivery_Page {
                     string cPhone = data_schedule.GetString("Phone");
                     string iName = data_schedule.GetString("Name");
                     string dSession = data_schedule.GetString("Session");
+                    DateTime dDate = Convert.ToDateTime(data_schedule.GetString("Delivery_date"));
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
@@ -239,15 +240,15 @@ namespace UI.Delivery_Page {
                     lb_delivery_item.Items.Add(iName);
                     if (dSession == "0")
                     {
-                        tb_session.Text = "09:00 - 12:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 09:00 - 12:00";
                     }
                     else if (dSession == "1")
                     {
-                        tb_session.Text = "13:00 - 17:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 13:00 - 17:00";
                     }
                     else if (dSession == "2")
                     {
-                        tb_session.Text = "18:00 - 22:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 18:00 - 22:00";
                     }
                 }
             }
@@ -264,7 +265,7 @@ namespace UI.Delivery_Page {
             //Use "Unschedule" Button to update the new Installation record
             MySqlCommand cmd_to_delivery_staff = new MySqlCommand("UPDATE `delivery_team` AS dt, `delivery` AS d SET dt.Status = '0' WHERE dt.TeamID = d.Delivery_TeamID AND " +
                 "d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
-            MySqlCommand cmd_to_delivery = new MySqlCommand("UPDATE `delivery` AS d SET d.Delivery_TeamID = NULL WHERE d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
+            MySqlCommand cmd_to_delivery = new MySqlCommand("UPDATE `delivery` AS d SET d.Delivery_TeamID = NULL, d.Status = '0' WHERE d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
             MySqlCommand cmd_recall_teamID = new MySqlCommand("SELECT dt.TeamID FROM `delivery_team` AS dt WHERE dt.Status = '0';", conn);
             MySqlDataReader data_to_delivery_staff;
             MySqlDataReader data_to_delivery;
@@ -348,6 +349,7 @@ namespace UI.Delivery_Page {
             MySqlDataReader data_to_delivery_staff;
             string sOrder = lb_order.Text;
             string tID = lb_unscheduled_team.Text;
+            string sfOrder = lb_scheduled_features.Text;
 
             try
             {
@@ -368,7 +370,7 @@ namespace UI.Delivery_Page {
 
                 if (tID == "")
                 {
-                    MessageBox.Show("Please select the delivery team to perform '" + sOrder + "' order");
+                    MessageBox.Show("Please select the delivery team to perform '" + sOrder + "' order.");
                 }
             }
             conn.Close();
@@ -411,6 +413,11 @@ namespace UI.Delivery_Page {
             {
                 lb_unscheduled_team.Items.Add(tID);
                 lb_scheduled_features.Items.Remove(sOrder);
+            }
+            if (sfOrder == "" && tID =="")
+            {
+                lb_order.Items.Remove(sfOrder);
+                lb_unscheduled_team.Items.Remove(tID);
             }
         }
 
