@@ -116,8 +116,8 @@ namespace UI.Inventory_page {
 
         private void btView_Click(object sender, EventArgs e)
         {
-            Record_of_Inward_Received_Goods r = new Record_of_Inward_Received_Goods(conn);
-            r.Show();
+           /* Record_of_Inward_Received_Goods r = new Record_of_Inward_Received_Goods(conn);
+            r.Show();*/
 
         }
     }
