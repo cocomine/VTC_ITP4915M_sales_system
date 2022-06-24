@@ -58,7 +58,7 @@ namespace UI.Inventory_page
         public void reload()
         {
             //Class for reload pages
-            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` ORDER BY `RequestID` ASC ", conn);
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT `request_item`.`RequestID`, `request_item`.`ItemID`, `request_item`.`Qty`, `inventory`.`Qty`FROM `request_item`, `inventory` WHERE `request_item`.ItemID=`inventory`.ItemID ORDER BY `RequestID` ASC ", conn);
             DataTable dtbl = new DataTable();
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
@@ -111,7 +111,8 @@ namespace UI.Inventory_page
         {
 
             String ItemID = textBox1.Text;
-            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("UPDATE `inventory` SET `Qty` = '" + textBox3.Text + "' WHERE `inventory`.`ItemID` = '"+ItemID+"';", conn);
+            int addQty = Int32.Parse(textBox3.Text)+ Int32.Parse(textBox2.Text);
+            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("UPDATE `inventory` SET `Qty` = '" + addQty + "' WHERE `inventory`.`ItemID` = '"+ItemID+"';", conn);
             DataTable dtbl1 = new DataTable();
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
