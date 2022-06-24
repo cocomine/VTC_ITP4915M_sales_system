@@ -282,9 +282,6 @@
     <EmbeddedResource Include="Inventory page\Item requested.resx">
       <DependentUpon>Item requested.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\item.resx">
-      <DependentUpon>item.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>
     </EmbeddedResource>
