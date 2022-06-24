@@ -18,11 +18,13 @@ namespace ITP4915M.Sales_page {
         private string orderID;
         private double total;
         private double received;
+        private Lang lang;
 
         public Cancel_Order(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Cancel_Order));
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) { Program.Logout(); }
@@ -45,7 +47,7 @@ namespace ITP4915M.Sales_page {
 
             //檢查是否輸入
             if (string.IsNullOrEmpty(orderID)) {
-                errorProvider1.SetError(tb_orderID, "Order id is required!");
+                errorProvider1.SetError(tb_orderID, lang.GetString("Order_id_is_required_"));
                 return;
             }
 
@@ -63,7 +65,7 @@ namespace ITP4915M.Sales_page {
                     }
                 } else {
                     //沒有符合訂單
-                    MessageBox.Show("There are no matching order.", "No match order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(lang.GetString("There_are_no_matching_order_"), lang.GetString("No_match_order"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     reader.Close();
                     return;
                 }
@@ -171,9 +173,9 @@ namespace ITP4915M.Sales_page {
             }
 
             //amount text box
-            tb_received.Text = $"{received:C}";
-            tb_total.Text = $"{total:C}";
-            tb_subtotal.Text = $"{subtotal:C}";
+            tb_received.Text = $@"{received:C}";
+            tb_total.Text = $@"{total:C}";
+            tb_subtotal.Text = $@"{subtotal:C}";
 
             //set controls status
             if (payment_Method == 2) {
@@ -223,7 +225,7 @@ namespace ITP4915M.Sales_page {
                 bt_refund.Enabled = false;
 
                 double refund = (received < total) ? received : total; //如果未完全付款則退還已繳交款項, 否則的話退還全部款項
-                tb_refund.Text = $"{refund:C}";
+                tb_refund.Text = $@"{refund:C}";
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }

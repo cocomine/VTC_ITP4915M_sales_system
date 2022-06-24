@@ -397,10 +397,19 @@
     <EmbeddedResource Include="Sales page\Cancel Order.zh-hans.resx">
       <DependentUpon>Cancel Order.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Cancel Order.zh-hant.resx">
+      <DependentUpon>Cancel Order.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sales page\Customer info.zh-hans.resx">
       <DependentUpon>Customer info.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Customer info.zh-hant.resx">
+      <DependentUpon>Customer info.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sales page\delivery_time_select.zh-hans.resx">
+      <DependentUpon>delivery_time_select.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\delivery_time_select.zh-hant.resx">
       <DependentUpon>delivery_time_select.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales page\install_time_select.resx">
@@ -421,10 +430,16 @@
     <EmbeddedResource Include="Sales page\install_time_select.zh-hans.resx">
       <DependentUpon>install_time_select.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\install_time_select.zh-hant.resx">
+      <DependentUpon>install_time_select.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sales page\Sales Management.resx">
       <DependentUpon>Sales Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales page\Sales Management.zh-hans.resx">
+      <DependentUpon>Sales Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Sales Management.zh-hant.resx">
       <DependentUpon>Sales Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales page\Sales page.resx">
@@ -434,6 +449,9 @@
       <DependentUpon>Account Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sales page\Sales page.zh-hans.resx">
+      <DependentUpon>Sales page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales page\Sales page.zh-hant.resx">
       <DependentUpon>Sales page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Technical Support page\Arrange installation workers.resx">

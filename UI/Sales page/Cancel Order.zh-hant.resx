@@ -12,46 +12,46 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>取消订单</value>
+		<value>取消訂單</value>
 	</data>
 	<data name="bt_cancel.Text" xml:space="preserve">
-		<value>取消订单</value>
+		<value>取消訂單</value>
 	</data>
 	<data name="bt_refund.Text" xml:space="preserve">
-		<value>取消和退款订单</value>
+		<value>取消和退款訂單</value>
 	</data>
 	<data name="bt_show.Text" xml:space="preserve">
-		<value>显示订单</value>
+		<value>顯示訂單</value>
 	</data>
 	<data name="columnHeader1.Text" xml:space="preserve">
-		<value>物品名称</value>
+		<value>物品名稱</value>
 	</data>
 	<data name="columnHeader2.Text" xml:space="preserve">
-		<value>数量</value>
+		<value>數量</value>
 	</data>
 	<data name="groupBox1.Text" xml:space="preserve">
-		<value>订单详情</value>
+		<value>訂單詳情</value>
 	</data>
 	<data name="groupBox2.Text" xml:space="preserve">
-		<value>行动</value>
+		<value>行動</value>
 	</data>
 	<data name="groupBox3.Text" xml:space="preserve">
-		<value>检查订单</value>
+		<value>檢查訂單</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>物品清单</value>
+		<value>物品清單</value>
 	</data>
 	<data name="label4.Text" xml:space="preserve">
-		<value>小计</value>
+		<value>小計</value>
 	</data>
 	<data name="label5.Text" xml:space="preserve">
-		<value>总计</value>
+		<value>總計</value>
 	</data>
 	<data name="label6.Text" xml:space="preserve">
 		<value>已收到</value>
 	</data>
 	<data name="label7.Text" xml:space="preserve">
-		<value>退款金额</value>
+		<value>退款金額</value>
 	</data>
 	<data name="lb_cancel.Text" xml:space="preserve">
 		<value>取消</value>
@@ -63,15 +63,17 @@
 		<value>未付</value>
 	</data>
 	<data name="logoutToolStripMenuItem.Text" xml:space="preserve">
-		<value>注销</value>
+		<value>登出</value>
 	</data>
 	<data name="No_match_order" xml:space="preserve">
-		<value>没有匹配订单</value>
+		<value>沒有匹配訂單
+</value>
 	</data>
 	<data name="Order_id_is_required_" xml:space="preserve">
-		<value>订单号是必填项！</value>
+		<value>訂單號是必填項！</value>
 	</data>
 	<data name="There_are_no_matching_order_" xml:space="preserve">
-		<value>没有匹配订单</value>
+		<value>沒有匹配訂單
+</value>
 	</data>
 </root>

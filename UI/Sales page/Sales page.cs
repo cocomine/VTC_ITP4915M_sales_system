@@ -26,11 +26,13 @@ namespace UI.Sales_page {
         private bool need_delivery = false; //是否需要送貨
         private bool need_install = false; //是否需要安裝
         private bool isCancel = false;
+        private Lang lang;
 
         public Sales_Page(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Sales_Page));
         }
 
         private void Sales_Page_Load(object sender, EventArgs e) {
@@ -65,10 +67,10 @@ namespace UI.Sales_page {
                 if (data.HasRows) {
                     while (data.Read()) {
                         StoreID = data.GetString("StoreID");
-                        Text += " (Store: " + StoreID + ")";
+                        Text += lang.GetString("__Store__") + StoreID + ")";
                     }
                 } else {
-                    MessageBox.Show("The employee is not assigned to any store", "Not assigned", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(lang.GetString("The_employee_is_not_assigned_to_any_store"), lang.GetString("Not_assigned"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                 }
 
@@ -131,7 +133,7 @@ namespace UI.Sales_page {
             if (!data.HasRows) {
                 //檢查是否存在
                 //不存在
-                MessageBox.Show("The item does not exist", "Not exist", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(lang.GetString("The_item_does_not_exist"), lang.GetString("Not_exist"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -154,12 +156,12 @@ namespace UI.Sales_page {
                     if (Unavailable_Item_Qty.ContainsKey(item)) Unavailable_Item_Qty[item] = Unavailable_qty;
                     else Unavailable_Item_Qty.Add(item, Unavailable_qty);
 
-                    MessageBox.Show("Please note that the item is out of stock!", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
+                    MessageBox.Show(lang.GetString("Please_note_that_the_item_is_out_of_stock_"), lang.GetString("Out_of_stock"), MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
                 }
 
                 //展示物品詳細
                 tb_item_name.Text = item.Name;
-                tb_item_price.Text = $"{item.Price:C}";
+                tb_item_price.Text = $@"{item.Price:C}";
                 tb_item_description.Text = item.Description;
                 chb_item_install.Checked = item.Type == ItemType.Install || item.Type == ItemType.Large_and_install;
                 chb_item_large.Checked = item.Type == ItemType.Large || item.Type == ItemType.Large_and_install;
@@ -290,7 +292,7 @@ namespace UI.Sales_page {
                 ListViewItem listViewItem = new ListViewItem(new string[] {
                     "", combo.GetQty().ToString(), //combo qty
                     $"-{combo.DiscountPrice():0.00}" //combo price
-                }) { Tag = combo, Text = combo.Name + $" @ {combo.GetFinalPrice():C}", Name = combo.Id };
+                }) { Tag = combo, Text = combo.Name + $@" @ {combo.GetFinalPrice():C}", Name = combo.Id };
 
                 lv_item_list.Items.Add(listViewItem);
             }
@@ -336,11 +338,11 @@ namespace UI.Sales_page {
             //Console.WriteLine(Unavailable);
             deposit = deposit >= total ? total : deposit;
 
-            tb_subtotal.Text = $"{subtotal:C}";
-            tb_discount.Text = $"-{discount:C}";
-            tb_total.Text = $"{total:C}";
-            tb_deposit.Text = $"{deposit:C}";
-            tb_reveived.Text = $"-{received:C}";
+            tb_subtotal.Text = $@"{subtotal:C}";
+            tb_discount.Text = $@"-{discount:C}";
+            tb_total.Text = $@"{total:C}";
+            tb_deposit.Text = $@"{deposit:C}";
+            tb_reveived.Text = $@"-{received:C}";
 
             return new Dictionary<string, double>() { { "subtotal", subtotal }, { "discount", discount }, { "deposit", deposit } }; //return same data
         }
@@ -368,7 +370,7 @@ namespace UI.Sales_page {
                 Item item = lv_item_list.SelectedItems[0].Tag as Item;
                 if (item != null) {
                     tb_item_name.Text = item.Name;
-                    tb_item_price.Text = $"{item.Price:C}";
+                    tb_item_price.Text = $@"{item.Price:C}";
                     tb_item_description.Text = item.Description;
                     chb_item_install.Checked = item.Type == ItemType.Install || item.Type == ItemType.Large_and_install;
                     chb_item_large.Checked = item.Type == ItemType.Large || item.Type == ItemType.Large_and_install;
@@ -381,7 +383,7 @@ namespace UI.Sales_page {
             string orderID = saveOrder(this.orderID);
             if (orderID != null) {
                 this.orderID = orderID;
-                lb_orderID.Text = "Order ID: " + orderID;
+                lb_orderID.Text = lang.GetString("Order_ID__") + orderID;
                 lb_orderID.Visible = true;
             }
         }
@@ -390,7 +392,7 @@ namespace UI.Sales_page {
         private string saveOrder(string orderID = null) {
             //檢查有沒有物品
             if (shoppingCart_Item.Count <= 0) {
-                MessageBox.Show("There are no items in the shopping cart.", "No item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(lang.GetString("There_are_no_items_in_the_shopping_cart_"), lang.GetString("No_item"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
 
@@ -468,7 +470,7 @@ namespace UI.Sales_page {
             }
 
             //return order id
-            MessageBox.Show("Order saved!\nOrder ID: " + orderID, "Order saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(lang.GetString("Order_saved_") + orderID, lang.GetString("Order_saved"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             lb_save.Visible = true;
             return orderID;
         }
@@ -480,7 +482,7 @@ namespace UI.Sales_page {
             try {
                 charge = double.Parse(tb_charge.Text);
             } catch (Exception) {
-                MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(lang.GetString("Only_numbers_are_accepted_"), lang.GetString("Wrong_format"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -510,7 +512,7 @@ namespace UI.Sales_page {
                     }
                 } else {
                     //沒有符合訂單
-                    MessageBox.Show("There are no matching order.", "No match order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(lang.GetString("There_are_no_matching_order_"), lang.GetString("No_match_order"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     reader.Close();
                     return;
                 }
@@ -594,7 +596,7 @@ namespace UI.Sales_page {
             //UI update
             ShowList();
             Dictionary<string, double> totalPriceData = CountPrice();
-            lb_orderID.Text = "Order ID: " + orderID;
+            lb_orderID.Text = lang.GetString("Order_ID__") + orderID;
             lb_orderID.Visible = true;
             this.orderID = orderID;
 
@@ -614,7 +616,7 @@ namespace UI.Sales_page {
             }else
             if (Unavailable_Item_Qty.Count > 0 && !(Status == 5 || Status == 6)) {
                 //have item out of stock
-                MessageBox.Show("Please note that have items is out of stock!", "Out of stock", MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
+                MessageBox.Show(lang.GetString("Please_note_that_have_items_is_out_of_stock_"), lang.GetString("Out_of_stock"), MessageBoxButtons.OK, MessageBoxIcon.Warning); //物品庫存不足
             }
 
             //if is cancel
@@ -641,7 +643,7 @@ namespace UI.Sales_page {
             try {
                 charge = double.Parse(tb_charge.Text);
             } catch (Exception) {
-                MessageBox.Show("Only numbers are accepted.", "Wrong format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(lang.GetString("Only_numbers_are_accepted_"), lang.GetString("Wrong_format"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -652,7 +654,7 @@ namespace UI.Sales_page {
         private void checkout(double charge, int payment_Method) {
             //金額必須大於零
             if (charge <= 0) {
-                MessageBox.Show("Please enter the amount", "CheckOut", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(lang.GetString("Please_enter_the_amount"), lang.GetString("CheckOut"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -661,7 +663,7 @@ namespace UI.Sales_page {
             if (orderID == null) return; //儲存失敗
             this.orderID = orderID;
             //show orderid
-            lb_orderID.Text = "Order ID: " + orderID;
+            lb_orderID.Text = lang.GetString("Order_ID__") + orderID;
             lb_orderID.Visible = true;
 
             //檢查是否輸入個客戶資訊
@@ -738,7 +740,7 @@ namespace UI.Sales_page {
             double change = charge - total; //找錢
             if (change >= 0) {
                 //全額付款
-                tb_change.Text = $"{change:C}";
+                tb_change.Text = $@"{change:C}";
                 bt_cash.Enabled = false;
                 bt_epay.Enabled = false;
                 bt_add_id.Enabled = false;
@@ -750,7 +752,7 @@ namespace UI.Sales_page {
                 bt_remove_item.Enabled = false;
             } else {
                 //非全額付款
-                tb_change.Text = $"{0:C}";
+                tb_change.Text = $@"{0:C}";
             }
 
             //更新訂單紀錄
@@ -879,8 +881,8 @@ namespace UI.Sales_page {
 
                     //取得資料 paid info
                     double change = reader.GetDouble("Charge") - (totalPriceData["subtotal"] - totalPriceData["discount"]);
-                    html = html.Replace("%change%", change <= 0 ? $"{0:C}" : $"{change:C}");
-                    html = html.Replace("%arrears%", change <= 0 ? $"{Math.Abs(change):C}" : $"{0:C}");
+                    html = html.Replace("%change%", change <= 0 ? $@"{0:C}" : $"{change:C}");
+                    html = html.Replace("%arrears%", change <= 0 ? $"{Math.Abs(change):C}" : $@"{0:C}");
                     html = html.Replace("%paid%", $"{reader.GetDouble("Charge"):C}");
                 }
 

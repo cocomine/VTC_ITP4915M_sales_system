@@ -9,16 +9,20 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M.API;
 
 namespace UI.Sales_page {
     public partial class Customer_info : Form {
         private MySqlConnection conn;
+        private Lang lang;
+
         public string CustomerID { get; set; }
 
         public Customer_info(MySqlConnection conn) {
             this.conn = conn;
             CustomerID = null;
             InitializeComponent();
+            lang = new Lang(typeof(Customer_info));
         }
 
         private void Customer_info_Load(object sender, EventArgs e) {
@@ -47,8 +51,9 @@ namespace UI.Sales_page {
                 //有相同的客戶
                 if (reader.HasRows) {
                     while (reader.Read()) {
-                        DialogResult result = MessageBox.Show(String.Format("Find existing matching customer: \n Name: {0} \n Phone: {1} \n Address: {2} \n Do you want to use this information directly?",
-                            reader.GetString("Customer_name"), reader.GetString("Phone"), reader.GetString("Address")), "Match customer", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult result = MessageBox.Show(String.Format(lang.GetString("Find_existing_matching_customer"),
+                            reader.GetString("Customer_name"), reader.GetString("Phone"), reader.GetString("Address")),
+                            lang.GetString("Match_customer"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (result == DialogResult.Yes) {
                             //確認使用
                             CustomerID = reader.GetString("CustomerID");
@@ -96,7 +101,7 @@ namespace UI.Sales_page {
             //if Empty
             if (String.IsNullOrEmpty(tb.Text)) {
                 e.Cancel = true;
-                errorProvider1.SetError(tb, "Please fill information");
+                errorProvider1.SetError(tb, lang.GetString("Please_fill_information"));
                 tb.BackColor = Color.LightCoral;
             }
 
@@ -106,7 +111,7 @@ namespace UI.Sales_page {
                 Regex rex = new Regex("^[0-9]{4}-[0-9]{4}$");
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
-                    errorProvider1.SetError(tb, "Incorrect phone format");
+                    errorProvider1.SetError(tb, lang.GetString("Incorrect_phone_format"));
                     tb.BackColor = Color.LightCoral;
                 }
             }
