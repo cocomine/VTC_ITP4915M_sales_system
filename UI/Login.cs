@@ -1,6 +1,7 @@
 ﻿using ITP4915M.API;
 using MySql.Data.MySqlClient;
 using System;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -10,10 +11,12 @@ namespace UI
     public partial class Login : Form
     {
         private MySqlConnection conn;
+        private Lang lang;
 
         public Login(MySqlConnection conn)
         {
             this.conn = conn;
+            lang = new Lang(typeof(Login));
             InitializeComponent();
         }
 
@@ -26,12 +29,12 @@ namespace UI
 
                 //check account is exist
                 if (!accountData.HasRows) {
-                    MessageBox.Show("Login information error. (404)", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(lang.GetString("Login_404"), lang.GetString("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
                     while (accountData.Read()) {
                         //check account Enable
                         if (!accountData.GetBoolean("Enable")) {
-                            MessageBox.Show("Login information error. (403)", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show(lang.GetString("Login_403"), lang.GetString("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             accountData.Close();
                             return;
                         }
@@ -47,14 +50,14 @@ namespace UI
                         //check password
                         if (password.Equals(pws[1])) {
                             //password pass
-                            MessageBox.Show("Welcome back "+ accountData.GetString("FullRealName") + ".", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(string.Format(lang.GetString("Welcome_back__0__"), accountData.GetString("FullRealName")), lang.GetString("Welcome"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Account_Details acc = new Account_Details(accountData.GetString("AcoountID"), accountData.GetString("Username"), accountData.GetString("FullRealName"), accountData.GetInt32("DepartmentID"), accountData.GetBoolean("isManager"));
                             accountData.Close(); //need close Reader fist
                             Program.JumpPage(acc); //go to other pages
                             this.Close(); //close this Form
                         } else {
                             //password faild
-                            MessageBox.Show("Login information error. (403)", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show(lang.GetString("Login_403"), lang.GetString("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }

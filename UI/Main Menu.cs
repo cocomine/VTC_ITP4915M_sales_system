@@ -18,17 +18,19 @@ namespace ITP4915M {
         private readonly Account_Details acc;
         private readonly string SQLConnectionString;
         private readonly MySqlConnection conn;
+        private Lang lang;
 
         public Main_Menu(string sqlConnectionString, Account_Details acc, MySqlConnection mySqlConnection) {
             this.acc = acc;
             SQLConnectionString = sqlConnectionString;
             conn = mySqlConnection;
             InitializeComponent();
+            lang = new Lang(typeof(Main_Menu));
         }
 
         private void Main_Menu_Load(object sender, EventArgs e) {
             Program.addPage();
-            lb_name.Text = $"Hello! {acc.Get_fullRealName()} ({acc.Get_acoountID()})";
+            lb_name.Text = string.Format(lang.GetString("lb_name.Text"), acc.Get_fullRealName(), acc.Get_acoountID());
             menu.VerticalScroll.Value = 100;
             foreach (Control menuControl in menu.Controls) {
                 if (menuControl is GroupBox gp) {
