@@ -19,5 +19,15 @@ namespace UI.Inventory_page
             this.conn = conn;
             InitializeComponent();
         }
+
+        private void Purchase_item_Load(object sender, EventArgs e)
+        {
+            Program.addPage();
+        }
+
+        private void Purchase_item_Cloing(object sender, FormClosingEventArgs e)
+        {
+            Program.removePage();
+        }
     }
 }

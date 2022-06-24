@@ -235,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 387);
+            this.ClientSize = new System.Drawing.Size(800, 426);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
@@ -243,6 +243,8 @@
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Purchase_item";
             this.Text = "Purchase item";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Purchase_item_Cloing);
+            this.Load += new System.EventHandler(this.Purchase_item_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
