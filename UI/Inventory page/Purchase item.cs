@@ -38,11 +38,8 @@ namespace UI.Inventory_page {
         }
 
         private void Purchase_item_Load(object sender, EventArgs e) {
-            Program.addPage();
             fill_listbow();
         }
-
-        private void Purchase_item_Cloing(object sender, FormClosingEventArgs e) { Program.removePage(); }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
             string SQL = "SELECT * FROM `item` where `item`.Name = '" + listBox1.Text + "';";

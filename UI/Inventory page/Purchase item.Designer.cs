@@ -270,7 +270,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Purchase_item";
             this.Text = "Purchase item";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Purchase_item_Cloing);
             this.Load += new System.EventHandler(this.Purchase_item_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

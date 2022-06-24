@@ -26,7 +26,6 @@ namespace UI.Inventory_page {
 
         private void Inventory_quantity_Load(object sender, EventArgs e) {
             //connect database to dataGridView
-            Program.addPage();
 
             da.SelectCommand = new MySqlCommand("SELECT * FROM `inventory`", conn);
             da.Fill(ds);
@@ -34,8 +33,6 @@ namespace UI.Inventory_page {
             tblNameBs.DataSource = ds.Tables[0];
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
         }
-
-        private void Inventory_quantity_Closing(object sender, FormClosingEventArgs e) { Program.removePage(); }
 
 
         private void Next_Click(object sender, EventArgs e) {

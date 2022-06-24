@@ -201,7 +201,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Item_requested";
             this.Text = "Item requested";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Item_requested_Closing);
             this.Load += new System.EventHandler(this.Item_requested_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

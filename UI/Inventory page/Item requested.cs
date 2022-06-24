@@ -21,10 +21,7 @@ namespace UI.Inventory_page {
             InitializeComponent();
         }
 
-        private void Item_requested_Closing(object sender, FormClosingEventArgs e) { Program.removePage(); }
-
         private void Item_requested_Load(object sender, EventArgs e) {
-            Program.addPage();
 
             da.SelectCommand = new MySqlCommand("SELECT `request_item`.`RequestID`, `request_item`.`ItemID`, `request_item`.`Qty`, `inventory`.`Qty`FROM `request_item`, `inventory` WHERE `request_item`.ItemID=`inventory`.ItemID ORDER BY `RequestID` ASC", conn);
             da.Fill(ds);

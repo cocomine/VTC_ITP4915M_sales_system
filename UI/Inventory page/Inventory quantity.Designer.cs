@@ -202,7 +202,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "Inventory_quantity";
             this.Text = "Inventory quantity";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_quantity_Closing);
             this.Load += new System.EventHandler(this.Inventory_quantity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
