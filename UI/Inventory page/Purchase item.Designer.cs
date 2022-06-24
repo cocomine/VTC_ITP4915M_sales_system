@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btView = new System.Windows.Forms.Button();
+            this.tbQty = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.btPurchase = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -46,13 +48,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tbQty = new System.Windows.Forms.NumericUpDown();
-            this.btView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbQty)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbQty)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -68,6 +68,29 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase";
+            // 
+            // btView
+            // 
+            this.btView.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btView.Location = new System.Drawing.Point(311, 65);
+            this.btView.Name = "btView";
+            this.btView.Size = new System.Drawing.Size(153, 24);
+            this.btView.TabIndex = 6;
+            this.btView.Text = "View Inward Received Goods";
+            this.btView.UseVisualStyleBackColor = false;
+            this.btView.Click += new System.EventHandler(this.btView_Click);
+            // 
+            // tbQty
+            // 
+            this.tbQty.Location = new System.Drawing.Point(61, 27);
+            this.tbQty.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.tbQty.Name = "tbQty";
+            this.tbQty.Size = new System.Drawing.Size(45, 22);
+            this.tbQty.TabIndex = 5;
             // 
             // label2
             // 
@@ -254,29 +277,6 @@
             this.panel2.Size = new System.Drawing.Size(573, 326);
             this.panel2.TabIndex = 11;
             // 
-            // tbQty
-            // 
-            this.tbQty.Location = new System.Drawing.Point(61, 27);
-            this.tbQty.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.tbQty.Name = "tbQty";
-            this.tbQty.Size = new System.Drawing.Size(45, 22);
-            this.tbQty.TabIndex = 5;
-            // 
-            // btView
-            // 
-            this.btView.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btView.Location = new System.Drawing.Point(311, 64);
-            this.btView.Name = "btView";
-            this.btView.Size = new System.Drawing.Size(153, 24);
-            this.btView.TabIndex = 6;
-            this.btView.Text = "View Inward Received Goods";
-            this.btView.UseVisualStyleBackColor = false;
-            this.btView.Click += new System.EventHandler(this.btView_Click);
-            // 
             // Purchase_item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -292,12 +292,12 @@
             this.Load += new System.EventHandler(this.Purchase_item_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbQty)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbQty)).EndInit();
             this.ResumeLayout(false);
 
         }
