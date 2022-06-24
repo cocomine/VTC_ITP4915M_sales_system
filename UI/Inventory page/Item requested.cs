@@ -17,6 +17,10 @@ namespace UI.Inventory_page
         MySqlDataAdapter da = new MySqlDataAdapter();
         DataSet ds = new DataSet();
         BindingSource tblNameBs = new BindingSource();
+
+        MySqlDataAdapter da1 = new MySqlDataAdapter();
+        DataSet ds1 = new DataSet();
+        BindingSource tblNameBs1 = new BindingSource();
         public Item_requested(MySqlConnection conn)
         {
             this.conn = conn;
