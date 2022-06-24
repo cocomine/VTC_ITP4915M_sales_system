@@ -25,11 +25,12 @@
         private void InitializeComponent() {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.lb_order = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_delivery_date = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tb_session = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tb_customer_address = new System.Windows.Forms.RichTextBox();
@@ -41,8 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_complete = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tb_delivery_date = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -52,28 +51,20 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem,
-            this.myProfileToolStripMenuItem});
+            this.loginToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.loginToolStripMenuItem.Text = "Logout";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
-            // 
-            // myProfileToolStripMenuItem
-            // 
-            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(94, 23);
-            this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
             // 
             // label5
             // 
@@ -86,12 +77,12 @@
             // 
             // lb_order
             // 
-            this.lb_order.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_order.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lb_order.FormattingEnabled = true;
             this.lb_order.ItemHeight = 15;
             this.lb_order.Location = new System.Drawing.Point(16, 64);
-            this.lb_order.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lb_order.Margin = new System.Windows.Forms.Padding(4);
             this.lb_order.Name = "lb_order";
             this.lb_order.Size = new System.Drawing.Size(425, 484);
             this.lb_order.TabIndex = 3;
@@ -101,9 +92,9 @@
             // 
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(463, 51);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(571, 439);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -111,8 +102,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.tb_delivery_date);
             this.panel1.Controls.Add(this.label7);
@@ -127,22 +118,44 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(8, 26);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(555, 405);
             this.panel1.TabIndex = 0;
             // 
+            // tb_delivery_date
+            // 
+            this.tb_delivery_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_delivery_date.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_delivery_date.Location = new System.Drawing.Point(161, 362);
+            this.tb_delivery_date.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_delivery_date.Name = "tb_delivery_date";
+            this.tb_delivery_date.Size = new System.Drawing.Size(160, 25);
+            this.tb_delivery_date.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 365);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 15);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Delivery Date";
+            // 
             // tb_session
             // 
-            this.tb_session.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_session.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_session.BackColor = System.Drawing.SystemColors.Info;
             this.tb_session.Location = new System.Drawing.Point(161, 321);
-            this.tb_session.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_session.Margin = new System.Windows.Forms.Padding(4);
             this.tb_session.Name = "tb_session";
             this.tb_session.ReadOnly = true;
             this.tb_session.Size = new System.Drawing.Size(160, 25);
             this.tb_session.TabIndex = 9;
+            this.tb_session.TextChanged += new System.EventHandler(this.tb_session_TextChanged);
             // 
             // label6
             // 
@@ -156,11 +169,11 @@
             // 
             // tb_customer_address
             // 
-            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
             this.tb_customer_address.Location = new System.Drawing.Point(161, 69);
-            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_address.Name = "tb_customer_address";
             this.tb_customer_address.ReadOnly = true;
             this.tb_customer_address.Size = new System.Drawing.Size(372, 85);
@@ -169,24 +182,24 @@
             // 
             // lb_delivery_item
             // 
-            this.lb_delivery_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lb_delivery_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_delivery_item.FormattingEnabled = true;
             this.lb_delivery_item.ItemHeight = 15;
             this.lb_delivery_item.Location = new System.Drawing.Point(161, 215);
-            this.lb_delivery_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lb_delivery_item.Margin = new System.Windows.Forms.Padding(4);
             this.lb_delivery_item.Name = "lb_delivery_item";
             this.lb_delivery_item.Size = new System.Drawing.Size(372, 94);
             this.lb_delivery_item.TabIndex = 7;
             // 
             // tb_customer_phone
             // 
-            this.tb_customer_phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_customer_phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_phone.BackColor = System.Drawing.SystemColors.Info;
             this.tb_customer_phone.Location = new System.Drawing.Point(161, 169);
-            this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_phone.Name = "tb_customer_phone";
             this.tb_customer_phone.ReadOnly = true;
             this.tb_customer_phone.Size = new System.Drawing.Size(160, 25);
@@ -194,11 +207,11 @@
             // 
             // tb_customer_name
             // 
-            this.tb_customer_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_customer_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_name.BackColor = System.Drawing.SystemColors.Info;
             this.tb_customer_name.Location = new System.Drawing.Point(161, 24);
-            this.tb_customer_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_customer_name.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_name.Name = "tb_customer_name";
             this.tb_customer_name.ReadOnly = true;
             this.tb_customer_name.Size = new System.Drawing.Size(372, 25);
@@ -248,34 +261,13 @@
             // 
             this.btn_complete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_complete.Location = new System.Drawing.Point(856, 498);
-            this.btn_complete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_complete.Margin = new System.Windows.Forms.Padding(4);
             this.btn_complete.Name = "btn_complete";
             this.btn_complete.Size = new System.Drawing.Size(177, 29);
             this.btn_complete.TabIndex = 3;
             this.btn_complete.Text = "Order Complete";
             this.btn_complete.UseVisualStyleBackColor = true;
             this.btn_complete.Click += new System.EventHandler(this.btn_complete_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 365);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 15);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Delivery Date";
-            // 
-            // tb_delivery_date
-            // 
-            this.tb_delivery_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_delivery_date.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_delivery_date.Location = new System.Drawing.Point(161, 362);
-            this.tb_delivery_date.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_delivery_date.Name = "tb_delivery_date";
-            this.tb_delivery_date.Size = new System.Drawing.Size(160, 25);
-            this.tb_delivery_date.TabIndex = 11;
             // 
             // Delivery_Team_Page
             // 
@@ -308,7 +300,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox lb_order;
         private System.Windows.Forms.GroupBox groupBox1;
