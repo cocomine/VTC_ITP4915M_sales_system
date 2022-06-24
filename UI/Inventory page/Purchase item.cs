@@ -27,6 +27,7 @@ namespace UI.Inventory_page
 
             try
             {
+                //fill listbox
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -67,6 +68,7 @@ namespace UI.Inventory_page
 
                 while (myReader.Read())
                 {
+                    //listBox connect textbox
                     string sName = myReader.GetString("Name");
                     string sPrice = myReader.GetString("Price");
                     string sDescription = "";
@@ -95,12 +97,14 @@ namespace UI.Inventory_page
 
         private void btPurchase_Click(object sender, EventArgs e)
         {
+            //set values
             Random rnd = new Random();
             int PurchaseID = rnd.Next(1000000, 10000000);
             int Qty = Int32.Parse(tbQty.Text);
             DateTime now = DateTime.Now;
             string ItemID = tbID.Text;
 
+            //add item
             MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES ("+ PurchaseID + ", '"+now+"', '"+ ItemID + "', " +Qty+");", conn);
             MySqlDataReader myReader;
             
