@@ -137,9 +137,9 @@
             this.button1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.button1.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button1.Location = new System.Drawing.Point(519, 0);
+            this.button1.Location = new System.Drawing.Point(491, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 29);
+            this.button1.Size = new System.Drawing.Size(139, 29);
             this.button1.TabIndex = 29;
             this.button1.Text = "Reload";
             this.button1.UseVisualStyleBackColor = false;
