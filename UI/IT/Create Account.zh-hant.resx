@@ -12,64 +12,64 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>创建账户</value>
+		<value>創建賬戶</value>
 	</data>
 	<data name="Account_Create" xml:space="preserve">
-		<value>帐户创建</value>
+		<value>帳戶創建</value>
 	</data>
 	<data name="Already_exists_" xml:space="preserve">
-		<value>已经存在</value>
+		<value>已經存在</value>
 	</data>
 	<data name="bt_create.Text" xml:space="preserve">
-		<value>创建</value>
+		<value>創建</value>
 	</data>
 	<data name="cb_department.Items" xml:space="preserve">
-		<value>销售部</value>
+		<value>銷售部</value>
 	</data>
 	<data name="cb_department.Items1" xml:space="preserve">
-		<value>库存部</value>
+		<value>庫存部</value>
 	</data>
 	<data name="cb_department.Items2" xml:space="preserve">
-		<value>会计部</value>
+		<value>會計部</value>
 	</data>
 	<data name="cb_department.Items3" xml:space="preserve">
-		<value>技术支援</value>
+		<value>技術支援</value>
 	</data>
 	<data name="cb_department.Items6" xml:space="preserve">
-		<value>快递部</value>
+		<value>送遞部</value>
 	</data>
 	<data name="cb_department.Items7" xml:space="preserve">
-		<value>安装部</value>
+		<value>安裝部</value>
 	</data>
 	<data name="cb_enable.Text" xml:space="preserve">
-		<value>启用</value>
+		<value>啟用</value>
 	</data>
 	<data name="cb_isManager.Text" xml:space="preserve">
-		<value>是部门主管</value>
+		<value>是部門主管</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
 		<value>全名</value>
 	</data>
 	<data name="label2.Text" xml:space="preserve">
-		<value>部门</value>
+		<value>部門</value>
 	</data>
 	<data name="label3.Text" xml:space="preserve">
-		<value>用户名</value>
+		<value>用戶名</value>
 	</data>
 	<data name="Only_letters_are_accepted" xml:space="preserve">
 		<value>只接受英文字母</value>
 	</data>
 	<data name="Only_letters_or_number_are_accepted" xml:space="preserve">
-		<value>只接受英文字母或数字</value>
+		<value>只接受英文字母或數字</value>
 	</data>
 	<data name="Please_fill_information" xml:space="preserve">
-		<value>请填写信息</value>
+		<value>請填寫信息</value>
 	</data>
 	<data name="Username_already_exists__please_choose_another_name" xml:space="preserve">
-		<value>用户名已存在，请选择其他名称</value>
+		<value>用戶名已存在，請選擇其他名稱</value>
 	</data>
 	<data name="create_successfully" xml:space="preserve">
-		<value>用户 ({0}) 创建成功！
-密码为：AccountID+Username</value>
+		<value>用戶 ({0}) 創建成功！
+密碼為：AccountID+Username</value>
 	</data>
 </root>

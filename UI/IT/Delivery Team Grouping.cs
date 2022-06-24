@@ -15,10 +15,12 @@ namespace ITP4915M.IT {
     public partial class Delivery_Team_Grouping : Form {
 
         private MySqlConnection conn;
+        private Lang lang;
 
         public Delivery_Team_Grouping(MySqlConnection conn) {
             this.conn = conn;
             InitializeComponent();
+            lang = new Lang(typeof(Delivery_Team_Grouping));
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -90,7 +92,7 @@ namespace ITP4915M.IT {
                 MySqlDataReader teamData = cmd.ExecuteReader();
 
                 if (!teamData.HasRows) {
-                    MessageBox.Show("No team exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(lang.GetString("No_team_exist_"), lang.GetString("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else {
                     tree_Teams.Nodes.Clear(); //clear all node
                     while (teamData.Read()) {
@@ -108,7 +110,7 @@ namespace ITP4915M.IT {
                 teamData.Close();
                 ShowDeliveryTeamStaff(); //show in team staff
             } catch (MySqlException ex) {
-                MessageBox.Show("Unable to disband the team.\nMaybe the team still has orders that have not been completed.", "Disband team", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(lang.GetString("Unable_to_disband_the_team"), lang.GetString("Disband_team"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
         }
@@ -151,7 +153,7 @@ namespace ITP4915M.IT {
         //delete team
         private void bt_deleteTeam_Click(object sender, EventArgs e) {
             if(tree_Teams.SelectedNode == null) return; //check is select?
-            DialogResult result = MessageBox.Show("Are you sure you want to disband the selected team?", "Disband team", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show(lang.GetString("Are_you_sure_you_want_to_disband_the_selected_team_"), lang.GetString("Disband_team"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes) {
 
                 try {
@@ -211,7 +213,7 @@ namespace ITP4915M.IT {
                 cmd.ExecuteNonQuery();
 
                 tree_Teams.SelectedNode.Tag = checkedButton.Tag.ToString();
-                MessageBox.Show("Update Status successfully!", "Update Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(lang.GetString("Update_Status_successfully_"), lang.GetString("Update_Status"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
@@ -293,14 +295,17 @@ namespace ITP4915M.IT {
                     cmd.Parameters.AddWithValue("@id", draggedNode.Name);
                     cmd.Parameters.AddWithValue("@TeamID", targetTeamID);
                     cmd.ExecuteNonQuery();
-                 } catch (MySqlException ex) {
+
+                } catch (MySqlException ex) {
                     Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
                     ShowDeliveryTeam();
                 }
             }else 
             
-            //add staff
+            
             if(draggedItem != null) {
+                //add staff
+
                 String targetTeamID = null;
                 if (targetNode.Parent == null) { 
                     //not have Parent node (Team node)

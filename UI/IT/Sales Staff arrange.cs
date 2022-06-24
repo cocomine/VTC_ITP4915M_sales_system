@@ -15,11 +15,13 @@ namespace ITP4915M.IT {
     public partial class Sales_Staff_arrange : Form {
         private Account_Details acc;
         private MySqlConnection conn;
+        private Lang lang;
 
         public Sales_Staff_arrange(Account_Details acc, MySqlConnection conn) {
             this.acc = acc;
             this.conn = conn;
             InitializeComponent();
+            lang = new Lang(typeof(Sales_Staff_arrange));
         }
 
         private void Sales_Staff_arrange_Load(object sender, EventArgs e) {

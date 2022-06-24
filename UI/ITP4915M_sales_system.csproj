@@ -327,10 +327,16 @@
     <EmbeddedResource Include="IT\Account Management.zh-hans.resx">
       <DependentUpon>Account Management.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IT\Account Management.zh-hant.resx">
+      <DependentUpon>Account Management.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IT\Create Account.resx">
       <DependentUpon>Create Account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Create Account.zh-hans.resx">
+      <DependentUpon>Create Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT\Create Account.zh-hant.resx">
       <DependentUpon>Create Account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Delivery Team Grouping.resx">
@@ -339,10 +345,16 @@
     <EmbeddedResource Include="IT\Delivery Team Grouping.zh-hans.resx">
       <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IT\Delivery Team Grouping.zh-hant.resx">
+      <DependentUpon>Delivery Team Grouping.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IT\Sales Staff arrange.resx">
       <DependentUpon>Sales Staff arrange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Sales Staff arrange.zh-hans.resx">
+      <DependentUpon>Sales Staff arrange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IT\Sales Staff arrange.zh-hant.resx">
       <DependentUpon>Sales Staff arrange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
