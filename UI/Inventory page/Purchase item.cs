@@ -118,6 +118,7 @@ namespace UI.Inventory_page {
         {
             Record_of_Inward_Received_Goods r = new Record_of_Inward_Received_Goods();
             r.Show();
+
         }
     }
 }
