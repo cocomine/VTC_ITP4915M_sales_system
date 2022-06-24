@@ -35,8 +35,8 @@ namespace UI.Delivery_Page
             Program.addPage();
 
             //Get the data needed by the Delivery Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `delivery` AS d, `customer` AS c " +
-                "WHERE c.CustomerID = d.CustomerID AND d.Status = '1';", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `delivery` AS d, `customer` AS c, `delivery_team_staff` AS dts" +
+                "WHERE dts.StaffAccountID = '" + acc.Get_acoountID() + "' AND c.CustomerID = d.CustomerID AND d.Status = '1';", conn);
             MySqlDataReader data_order;
 
             try

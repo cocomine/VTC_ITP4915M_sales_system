@@ -16,7 +16,6 @@ namespace UI.Delivery_Page {
     {
         private MySqlConnection conn;
         private Account_Details acc;
-        private string customerID; //Defind variable of customer ID
         private string staffID; //Defind variable of staff ID
 
 
@@ -37,11 +36,11 @@ namespace UI.Delivery_Page {
             MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `order` AS o, `customer` AS c, `delivery` AS d " +
                 "WHERE c.CustomerID = d.CustomerID AND o.OrderID = d.OrderID AND d.Status = '0';", conn);
             MySqlCommand cmd_staff = new MySqlCommand("SELECT dt.TeamID FROM `delivery_team` AS dt WHERE dt.Status = '0';", conn);
-            MySqlCommand cmd_delivery_staff = new MySqlCommand("SELECT d.OrderID FROM `delivery` AS d WHERE d.Status = '1';", conn);
+            MySqlCommand cmd_delivery_order = new MySqlCommand("SELECT d.OrderID FROM `delivery` AS d WHERE d.Status = '1';", conn);
             
             MySqlDataReader data_order;
             MySqlDataReader data_staff;
-            MySqlDataReader data_delivery_staff;
+            MySqlDataReader data_delivery_order;
             
             //Show orders that need to be installed in the list box
             try
@@ -86,12 +85,12 @@ namespace UI.Delivery_Page {
             try
             {
                 conn.Open();
-                data_delivery_staff = cmd_delivery_staff.ExecuteReader();
+                data_delivery_order = cmd_delivery_order.ExecuteReader();
                 lb_scheduled_features.Items.Clear();
 
-                while (data_delivery_staff.Read())
+                while (data_delivery_order.Read())
                 {
-                    string order = data_delivery_staff.GetString("OrderID");
+                    string order = data_delivery_order.GetString("OrderID");
 
                     lb_scheduled_features.Items.Add(order);
                 }
@@ -122,7 +121,7 @@ namespace UI.Delivery_Page {
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Select Command
-            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, d.Session, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " +
+            MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, d.Session, d.Delivery_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " +
                 "FROM `delivery` AS d, `customer` AS c, `order_item` AS oi, `item` AS i " +
                 "WHERE d.CustomerID = c.CustomerID AND d.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text +
                 "' AND oi.ItemID = i.ItemID;", conn);
@@ -143,7 +142,7 @@ namespace UI.Delivery_Page {
                     string cPhone = data_cus.GetString("Phone");
                     string iName = data_cus.GetString("Name");
                     string dSession = data_cus.GetString("Session");
-                    customerID = data_cus.GetString("CustomerID"); //Store data of customer ID
+                    string dDate = data_cus.GetString("Delivery_date");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
@@ -152,15 +151,15 @@ namespace UI.Delivery_Page {
                     lb_installation_item.Items.Add(iName);
                     if (dSession == "0")
                     {
-                        tb_session.Text = "09:00 - 12:00";
+                        tb_session.Text = dDate + ": 09:00 - 12:00";
                     }
                     else if (dSession == "1")
                     {
-                        tb_session.Text = "13:00 - 17:00";
+                        tb_session.Text = dDate + ": 13:00 - 17:00";
                     }
                     else if (dSession == "2")
                     {
-                        tb_session.Text = "18:00 - 22:00";
+                        tb_session.Text = dDate + ": 18:00 - 22:00";
                     }
                 }
                 conn.Close();
