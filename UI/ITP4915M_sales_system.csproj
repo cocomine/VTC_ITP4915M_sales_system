@@ -109,12 +109,6 @@
     <Compile Include="Delivery Page\Arrange Delivery Page.Designer.cs">
       <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
     </Compile>
-    <Compile Include="Delivery Page\Delivery Page_deprecated.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Delivery Page\Delivery Page_deprecated.Designer.cs">
-      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
-    </Compile>
     <Compile Include="Delivery Page\Delivery Team Page.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,12 +245,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.zh-hans.resx">
       <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Delivery Page\Delivery Page_deprecated.resx">
-      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Delivery Page\Delivery Page_deprecated.zh-hans.resx">
-      <DependentUpon>Delivery Page_deprecated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>
