@@ -61,8 +61,13 @@ namespace UI.Inventory_page {
                     {
                         checkBox1.Checked = true;
                     }
-                    if (sType == 2)
+                    else if (sType == 2)
                     {
+                        checkBox2.Checked = true;
+                    }
+                    else if (sType == 3)
+                    {
+                        checkBox1.Checked = true;
                         checkBox2.Checked = true;
                     }
                     else
