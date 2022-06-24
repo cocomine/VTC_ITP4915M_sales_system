@@ -292,7 +292,7 @@ namespace UI.Technical_Support_page
                 " ('" + lb_order.Text + "', '" + staffID + "');", conn);
             MySqlDataReader data_to_install_staff;
             MySqlCommand cmd_count_30 = new MySqlCommand("SELECT * FROM `installation` AS i, `install_staff` AS ins, `staff` AS s WHERE " +
-                "s.FullRealName = '" + lb_unscheduled_worker.Text + "' AND ins.OrderID = i.OrderID AND s.AccountID = ins.StaffAccountID", conn);
+                "s.FullRealName = '" + lb_unscheduled_worker.Text + "' AND ins.OrderID = i.OrderID AND s.AccountID = ins.StaffAccountID;", conn);
             MySqlDataReader data_count_30;
             string sOrder = lb_order.Text;
             string sStaff = lb_unscheduled_worker.Text;
@@ -313,7 +313,7 @@ namespace UI.Technical_Support_page
 
                     if (DateTime.Compare(new_date, old_date) == 0) //if new older and old order are same time
                     {
-                        DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes", "Warning", MessageBoxButtons.OK);
+                        DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes.", "Warning", MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
                             rs  = false;
@@ -323,7 +323,7 @@ namespace UI.Technical_Support_page
                     { //if old order installation date is later than new older
                         if (old_date.AddMinutes(30) >= new_date)
                         {
-                            DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes", "Warning", MessageBoxButtons.OK);
+                            DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes.", "Warning", MessageBoxButtons.OK);
                             if (result == DialogResult.OK)
                             {
                                 rs = false;
@@ -334,7 +334,7 @@ namespace UI.Technical_Support_page
                     {
                         if (new_date.AddMinutes(30) >= old_date)
                         {
-                            DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes", "Warning", MessageBoxButtons.OK);
+                            DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes.", "Warning", MessageBoxButtons.OK);
                             if (result == DialogResult.OK)
                             {
                                 rs = false;
@@ -370,7 +370,7 @@ namespace UI.Technical_Support_page
 
                     if (sStaff == "")
                     {
-                        MessageBox.Show("Please select the installer worker to perform '" + sOrder + " 'order.");
+                        MessageBox.Show("Please select the installer worker to perform '" + sOrder + " ' order.");
                     }
                 }
                 conn.Close();
