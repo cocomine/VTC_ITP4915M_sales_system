@@ -92,20 +92,7 @@ namespace UI.Inventory_page
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
         }
 
-        private void Search_Click(object sender, EventArgs e)
-        {
-            if (comboBox1.Text != null && comboBox1.Text != "")
-            {
-                // Search StoreWarehouseID
 
-                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT `request_item`.`RequestID`, `request_item`.`ItemID`, `request_item`.`Qty`, `inventory`.`Qty`FROM `request_item`, `inventory` WHERE `request_item`.ItemID=`inventory`.ItemID And fromWarehouseID  = " + comboBox1.Text, conn);
-                DataTable dtbl = new DataTable();
-                dtbl.Clear();
-                sqlda.Fill(dtbl);
-                dataGridView1.DataSource = dtbl;
-
-            }
-        }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
