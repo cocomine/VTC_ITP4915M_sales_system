@@ -571,7 +571,7 @@
     <value>111</value>
   </data>
   <data name="tb_item_description.Text" xml:space="preserve">
-    <value />
+	  <value>Description</value>
   </data>
   <data name="&gt;&gt;tb_item_description.Name" xml:space="preserve">
     <value>tb_item_description</value>
@@ -1580,5 +1580,63 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CheckOut" xml:space="preserve">
+	  <value>CheckOut</value>
+  </data>
+  <data name="Not_assigned" xml:space="preserve">
+	  <value>Not assigned</value>
+  </data>
+  <data name="Not_exist" xml:space="preserve">
+	  <value>Not exist</value>
+  </data>
+  <data name="No_item" xml:space="preserve">
+	  <value>No item</value>
+  </data>
+  <data name="No_match_order" xml:space="preserve">
+	  <value>No match order</value>
+  </data>
+  <data name="Only_numbers_are_accepted_" xml:space="preserve">
+	  <value>Only numbers are accepted.</value>
+  </data>
+  <data name="Order_ID__" xml:space="preserve">
+	  <value>Order ID: </value>
+  </data>
+  <data name="Order_saved" xml:space="preserve">
+	  <value>Order saved</value>
+  </data>
+  <data name="Order_saved_" xml:space="preserve">
+	  <value>The order has been saved!
+Order number: </value>
+  </data>
+  <data name="Out_of_stock" xml:space="preserve">
+	  <value>Out of stock</value>
+  </data>
+  <data name="Please_enter_the_amount" xml:space="preserve">
+	  <value>Please enter the amount</value>
+  </data>
+  <data name="Please_note_that_have_items_is_out_of_stock_" xml:space="preserve">
+	  <value>Please note that have items is out of stock!</value>
+  </data>
+  <data name="Please_note_that_the_item_is_out_of_stock_" xml:space="preserve">
+	  <value>Please note that the item is out of stock!</value>
+  </data>
+  <data name="There_are_no_items_in_the_shopping_cart_" xml:space="preserve">
+	  <value>There are no items in the shopping cart</value>
+  </data>
+  <data name="There_are_no_matching_order_" xml:space="preserve">
+	  <value>There are no matching order</value>
+  </data>
+  <data name="The_employee_is_not_assigned_to_any_store" xml:space="preserve">
+	  <value>The employee is not assigned to any store</value>
+  </data>
+  <data name="The_item_does_not_exist" xml:space="preserve">
+	  <value>The item does not exist</value>
+  </data>
+  <data name="Wrong_format" xml:space="preserve">
+	  <value>Wrong format</value>
+  </data>
+  <data name="__Store__" xml:space="preserve">
+	  <value>(Store: </value>
   </data>
 </root>

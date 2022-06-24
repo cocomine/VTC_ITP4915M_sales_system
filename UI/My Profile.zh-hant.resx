@@ -44,4 +44,7 @@
 	<data name="Please_fill_information" xml:space="preserve">
 		<value>請填寫信息</value>
 	</data>
+	<data name="Change_save_" xml:space="preserve">
+		<value>更改保存！</value>
+	</data>
 </root>

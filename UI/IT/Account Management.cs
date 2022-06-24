@@ -153,7 +153,7 @@ namespace UI.IT
 
         private void bt_save_Click(object sender, EventArgs e) {
             //save change
-            DialogResult result = MessageBox.Show("Are you sure save all change?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm update
+            DialogResult result = MessageBox.Show(lang.GetString("Are_you_sure_save_all_change_"), lang.GetString("Save_Change"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm update
             if (result == DialogResult.Yes) { //confirm
                 adapter.Update(ds_staff, "Staff_List");
             }

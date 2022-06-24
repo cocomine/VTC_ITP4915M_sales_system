@@ -156,7 +156,7 @@
     <value>9</value>
   </data>
   <data name="tb_address.Text" xml:space="preserve">
-    <value />
+	  <value>Customer address</value>
   </data>
   <data name="&gt;&gt;tb_address.Name" xml:space="preserve">
     <value>tb_address</value>

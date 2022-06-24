@@ -183,4 +183,7 @@
 	<data name="__Store__" xml:space="preserve">
 		<value>(店鋪：</value>
 	</data>
+	<data name="tb_item_description.Text" xml:space="preserve">
+		<value>簡介</value>
+	</data>
 </root>

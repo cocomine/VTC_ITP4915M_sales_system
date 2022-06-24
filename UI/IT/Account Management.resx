@@ -1100,4 +1100,7 @@ New password is: AcoountID+Username</value>
   <data name="Save_change" xml:space="preserve">
 	  <value>Save change</value>
   </data>
+  <data name="Are_you_sure_save_all_change_" xml:space="preserve">
+	  <value>Are you sure save all change?</value>
+  </data>
 </root>

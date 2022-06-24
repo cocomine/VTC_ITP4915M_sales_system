@@ -212,7 +212,7 @@ namespace ITP4915M.IT {
                 cmd.Parameters.AddWithValue("@TeamID", Int32.Parse(tree_Teams.SelectedNode.Name));
                 cmd.ExecuteNonQuery();
 
-                tree_Teams.SelectedNode.Tag = checkedButton.Tag.ToString();
+                tree_Teams.SelectedNode.Tag = Int32.Parse(checkedButton.Tag.ToString());
                 MessageBox.Show(lang.GetString("Update_Status_successfully_"), lang.GetString("Update_Status"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch (MySqlException ex) {
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
@@ -225,7 +225,7 @@ namespace ITP4915M.IT {
             if(tree_Teams.SelectedNode.Tag != null) return; //check is not select team node
 
             TreeNode node = tree_Teams.SelectedNode;
-            String accountID = node.Name.ToString();
+            String accountID = node.Name;
 
             //update databass
             try {

@@ -159,4 +159,7 @@
 	<data name="Are_you_sure_reset_this_user_password_" xml:space="preserve">
 		<value>您確定重置此用戶密碼嗎？</value>
 	</data>
+	<data name="Are_you_sure_save_all_change_" xml:space="preserve">
+		<value>您確定保存所有更改嗎？</value>
+	</data>
 </root>
