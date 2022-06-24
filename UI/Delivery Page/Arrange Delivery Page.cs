@@ -69,10 +69,10 @@ namespace UI.Delivery_Page {
 
                 while (data_staff.Read())
                 {
-                    string installationworker = data_staff.GetString("TeamID");
+                    string teams = data_staff.GetString("TeamID");
 
                     //Display specific content in the owning text box
-                    lb_unscheduled_team.Items.Add(installationworker);
+                    lb_unscheduled_team.Items.Add(teams);
                 }
             }
             catch (MySqlException ex)
@@ -133,7 +133,7 @@ namespace UI.Delivery_Page {
                 //address and telephone number of the customer of an order displayed
                 conn.Open();
                 data_cus = cmd_cus.ExecuteReader();
-                lb_installation_item.Items.Clear();
+                lb_delivery_item.Items.Clear();
 
                 while (data_cus.Read())
                 {
@@ -142,13 +142,13 @@ namespace UI.Delivery_Page {
                     string cPhone = data_cus.GetString("Phone");
                     string iName = data_cus.GetString("Name");
                     string dSession = data_cus.GetString("Session");
-                    string dDate = data_cus.GetString("Delivery_date");
+                    DateTime dDate = data_cus.GetString("Delivery_date");
 
                     //Display specific content in the owning text box
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
-                    lb_installation_item.Items.Add(iName);
+                    lb_delivery_item.Items.Add(iName);
                     if (dSession == "0")
                     {
                         tb_session.Text = dDate + ": 09:00 - 12:00";
@@ -236,7 +236,7 @@ namespace UI.Delivery_Page {
                     tb_customer_name.Text = cName;
                     tb_customer_address.Text = cAddress;
                     tb_customer_phone.Text = cPhone;
-                    lb_installation_item.Items.Add(iName);
+                    lb_delivery_item.Items.Add(iName);
                     if (dSession == "0")
                     {
                         tb_session.Text = "09:00 - 12:00";
@@ -262,34 +262,15 @@ namespace UI.Delivery_Page {
         private void btn_unschedule_Click(object sender, EventArgs e)
         {
             //Use "Unschedule" Button to update the new Installation record
-            MySqlCommand cmd_get_Id = new MySqlCommand("SELECT dts.Delivery_TeamID FROM `delivery_team_staff` AS dts, `delivery` AS d WHERE d.OrderID = '" 
-                + lb_scheduled_features.Text + "' AND dts.Delivery_TeamID = d.Delivery_TeamID", conn);
             MySqlCommand cmd_to_delivery_staff = new MySqlCommand("UPDATE `delivery_team` AS dt, `delivery` AS d SET dt.Status = '0' WHERE dt.TeamID = d.Delivery_TeamID AND " +
                 "d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
             MySqlCommand cmd_to_delivery = new MySqlCommand("UPDATE `delivery` AS d SET d.Delivery_TeamID = NULL WHERE d.OrderID = '" + lb_scheduled_features.Text + "';", conn);
-            MySqlDataReader data_get_Id;
+            MySqlCommand cmd_recall_teamID = new MySqlCommand("SELECT dt.TeamID FROM `delivery_team` AS dt WHERE dt.Status = '0';", conn);
             MySqlDataReader data_to_delivery_staff;
             MySqlDataReader data_to_delivery;
+            MySqlDataReader data_recall_teamID;
 
             string sOrder = lb_scheduled_features.Text;
-
-            try
-            {
-                conn.Open();
-                data_get_Id = cmd_get_Id.ExecuteReader();
-
-                while (data_get_Id.Read())
-                {
-                    cmd_get_Id.ExecuteNonQuery(); //Update the data into the database
-                    string tID = data_get_Id.GetString("Delivery_TeamID");
-                    lb_unscheduled_team.Items.Add(tID);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            conn.Close();
 
 
             try
@@ -325,18 +306,42 @@ namespace UI.Delivery_Page {
             conn.Close();
 
             lb_order.Items.Add(sOrder);
-            //lb_unscheduled_team.Items.Add(tID);
             lb_scheduled_features.Items.Remove(sOrder);
-            lb_installation_item.Items.Clear();
+            lb_delivery_item.Items.Clear();
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            lb_unscheduled_team.Items.Clear();
+
+            if (sOrder == "")
+            {
+                lb_order.Items.Remove(sOrder);
+            }
+
+            try
+            {
+                conn.Open();
+                data_recall_teamID = cmd_recall_teamID.ExecuteReader();
+
+                while (data_recall_teamID.Read())
+                {
+                    string teams = data_recall_teamID.GetString("TeamID");
+                    lb_unscheduled_team.Items.Add(teams);
+
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
         }
 
         private void btn_schedule_Click(object sender, EventArgs e)
         {
             //Use "Schedule" Button to update the new Installation record
-            MySqlCommand cmd_to_delivery = new MySqlCommand("UPDATE `delivery` AS d SET d.Delivery_TeamID = '" + lb_unscheduled_team.Text + "' WHERE " +
+            MySqlCommand cmd_to_delivery = new MySqlCommand("UPDATE `delivery` AS d SET d.Status = '1', d.Delivery_TeamID = '" + lb_unscheduled_team.Text + "' WHERE " +
                 "d.OrderID = '" + lb_order.Text + "';", conn);
             MySqlCommand cmd_to_delivery_staff = new MySqlCommand("UPDATE `delivery_team` AS dt SET dt.Status = '2' WHERE dt.TeamID = '" + lb_unscheduled_team.Text + "';", conn);
             MySqlDataReader data_to_delivery;
@@ -356,26 +361,38 @@ namespace UI.Delivery_Page {
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                if (sOrder == "")
+                {
+                    MessageBox.Show("Please select the that needs to be delivery for Team " + tID + " to perform the work.");
+                }
+
+                if (tID == "")
+                {
+                    MessageBox.Show("Please select the delivery team to perform '" + sOrder + "' order");
+                }
             }
             conn.Close();
 
             try
             {
-                conn.Open();
-                data_to_delivery_staff = cmd_to_delivery_staff.ExecuteReader();
-
-                while (data_to_delivery_staff.Read())
+                if (sOrder != "")
                 {
-                    cmd_to_delivery_staff.ExecuteNonQuery(); //Update the data into the database
+                    conn.Open();
+                    data_to_delivery_staff = cmd_to_delivery_staff.ExecuteReader();
+
+                    while (data_to_delivery_staff.Read())
+                    {
+                        cmd_to_delivery_staff.ExecuteNonQuery(); //Update the data into the database
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select the that needs to be delivery for Team " + tID + " to perform the work.");
                 }
             }
             catch (MySqlException ex)
             {
-                if (sOrder =="")
-                {
-                    MessageBox.Show("Please select the that needs to be delivery for " +  + ".")
-                }
+                MessageBox.Show(ex.Message);
             }
             conn.Close();
 
@@ -385,14 +402,20 @@ namespace UI.Delivery_Page {
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            if (tID == "")
+            {
+                lb_scheduled_features.Items.Remove(sOrder);
+                lb_order.Items.Add(sOrder);
+            }
+            if (sOrder == "")
+            {
+                lb_unscheduled_team.Items.Add(tID);
+                lb_scheduled_features.Items.Remove(sOrder);
+            }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
-        }
-
-        private void myProfileToolStripMenuItem_Click(object sender, EventArgs e) {
-            new My_Profile(conn, acc).Show();
+           Program.Logout();
         }
     }
 }

@@ -39,19 +39,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_session = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_customer_name = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.lb_installation_item = new System.Windows.Forms.ListBox();
+            this.lb_delivery_item = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_customer_phone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tb_session = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,7 +71,7 @@
             this.lb_order.Location = new System.Drawing.Point(7, 30);
             this.lb_order.Margin = new System.Windows.Forms.Padding(4);
             this.lb_order.Name = "lb_order";
-            this.lb_order.Size = new System.Drawing.Size(337, 469);
+            this.lb_order.Size = new System.Drawing.Size(337, 454);
             this.lb_order.TabIndex = 0;
             this.lb_order.SelectedIndexChanged += new System.EventHandler(this.lb_order_SelectedIndexChanged);
             // 
@@ -204,7 +203,7 @@
             this.lb_scheduled_features.Location = new System.Drawing.Point(7, 19);
             this.lb_scheduled_features.Margin = new System.Windows.Forms.Padding(4);
             this.lb_scheduled_features.Name = "lb_scheduled_features";
-            this.lb_scheduled_features.Size = new System.Drawing.Size(300, 184);
+            this.lb_scheduled_features.Size = new System.Drawing.Size(300, 169);
             this.lb_scheduled_features.TabIndex = 1;
             this.lb_scheduled_features.SelectedIndexChanged += new System.EventHandler(this.lb_scheduled_features_SelectedIndexChanged);
             // 
@@ -247,7 +246,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.tb_customer_name);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.lb_installation_item);
+            this.groupBox1.Controls.Add(this.lb_delivery_item);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tb_customer_phone);
             this.groupBox1.Controls.Add(this.label5);
@@ -260,6 +259,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail";
+            // 
+            // tb_session
+            // 
+            this.tb_session.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_session.Location = new System.Drawing.Point(14, 292);
+            this.tb_session.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_session.Name = "tb_session";
+            this.tb_session.Size = new System.Drawing.Size(261, 25);
+            this.tb_session.TabIndex = 17;
             // 
             // label8
             // 
@@ -318,19 +326,19 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Customer Name";
             // 
-            // lb_installation_item
+            // lb_delivery_item
             // 
-            this.lb_installation_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lb_delivery_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_installation_item.FormattingEnabled = true;
-            this.lb_installation_item.ItemHeight = 15;
-            this.lb_installation_item.Location = new System.Drawing.Point(12, 348);
-            this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4);
-            this.lb_installation_item.Name = "lb_installation_item";
-            this.lb_installation_item.Size = new System.Drawing.Size(357, 154);
-            this.lb_installation_item.TabIndex = 11;
-            this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+            this.lb_delivery_item.FormattingEnabled = true;
+            this.lb_delivery_item.ItemHeight = 15;
+            this.lb_delivery_item.Location = new System.Drawing.Point(12, 348);
+            this.lb_delivery_item.Margin = new System.Windows.Forms.Padding(4);
+            this.lb_delivery_item.Name = "lb_delivery_item";
+            this.lb_delivery_item.Size = new System.Drawing.Size(357, 139);
+            this.lb_delivery_item.TabIndex = 11;
+            this.lb_delivery_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -338,9 +346,9 @@
             this.label4.Location = new System.Drawing.Point(11, 329);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 15);
+            this.label4.Size = new System.Drawing.Size(86, 15);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Installation Item";
+            this.label4.Text = "Delivery Item";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // tb_customer_phone
@@ -370,8 +378,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.myProfileToolStripMenuItem});
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -385,22 +392,6 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // myProfileToolStripMenuItem
-            // 
-            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(94, 23);
-            this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
-            // 
-            // tb_session
-            // 
-            this.tb_session.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_session.Location = new System.Drawing.Point(14, 292);
-            this.tb_session.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_session.Name = "tb_session";
-            this.tb_session.Size = new System.Drawing.Size(261, 25);
-            this.tb_session.TabIndex = 17;
             // 
             // Arrange_Delivery_Page
             // 
@@ -455,7 +446,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox lb_installation_item;
+        private System.Windows.Forms.ListBox lb_delivery_item;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_customer_phone;
         private System.Windows.Forms.Label label5;
@@ -465,7 +456,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_session;
     }
