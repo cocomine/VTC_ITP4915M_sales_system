@@ -172,6 +172,17 @@ namespace UI.Inventory_page
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
         }
+
+        private void btDelete_Click_1(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sqlda = new MySqlDataAdapter("DELETE FROM `inventory` WHERE `inventory`.`ItemID` = '" + textBox1.Text + "';", conn);
+            DataTable dtbl = new DataTable();
+            dtbl.Clear();
+            sqlda.Fill(dtbl);
+            dataGridView1.DataSource = dtbl;
+
+            reload();
+        }
     }
     }
 
