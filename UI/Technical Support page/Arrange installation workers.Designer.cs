@@ -44,6 +44,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_installation_date = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_customer_name = new System.Windows.Forms.TextBox();
@@ -54,9 +56,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tb_installation_date = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -77,7 +76,7 @@
             this.lb_order.Location = new System.Drawing.Point(7, 30);
             this.lb_order.Margin = new System.Windows.Forms.Padding(4);
             this.lb_order.Name = "lb_order";
-            this.lb_order.Size = new System.Drawing.Size(337, 529);
+            this.lb_order.Size = new System.Drawing.Size(337, 514);
             this.lb_order.TabIndex = 0;
             this.lb_order.SelectedIndexChanged += new System.EventHandler(this.lb_order_SelectedIndexChanged);
             // 
@@ -209,7 +208,7 @@
             this.lb_scheduled_features.Location = new System.Drawing.Point(7, 19);
             this.lb_scheduled_features.Margin = new System.Windows.Forms.Padding(4);
             this.lb_scheduled_features.Name = "lb_scheduled_features";
-            this.lb_scheduled_features.Size = new System.Drawing.Size(300, 214);
+            this.lb_scheduled_features.Size = new System.Drawing.Size(300, 199);
             this.lb_scheduled_features.TabIndex = 1;
             this.lb_scheduled_features.SelectedIndexChanged += new System.EventHandler(this.lb_scheduled_features_SelectedIndexChanged);
             // 
@@ -219,7 +218,7 @@
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 12);
+            this.label3.Size = new System.Drawing.Size(102, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Scheduled Order";
             // 
@@ -266,6 +265,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // tb_installation_date
+            // 
+            this.tb_installation_date.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_installation_date.Location = new System.Drawing.Point(12, 463);
+            this.tb_installation_date.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_installation_date.Name = "tb_installation_date";
+            this.tb_installation_date.Size = new System.Drawing.Size(219, 25);
+            this.tb_installation_date.TabIndex = 17;
+            this.tb_installation_date.TextChanged += new System.EventHandler(this.tb_installation_date_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(11, 444);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 15);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Installation Date";
             // 
             // tb_customer_address
             // 
@@ -324,7 +343,7 @@
             this.lb_installation_item.Location = new System.Drawing.Point(12, 288);
             this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4);
             this.lb_installation_item.Name = "lb_installation_item";
-            this.lb_installation_item.Size = new System.Drawing.Size(354, 34);
+            this.lb_installation_item.Size = new System.Drawing.Size(354, 19);
             this.lb_installation_item.TabIndex = 11;
             this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
@@ -366,8 +385,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.myProfileToolStripMenuItem});
+            this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -381,33 +399,6 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // myProfileToolStripMenuItem
-            // 
-            this.myProfileToolStripMenuItem.Name = "myProfileToolStripMenuItem";
-            this.myProfileToolStripMenuItem.Size = new System.Drawing.Size(94, 23);
-            this.myProfileToolStripMenuItem.Text = "My Profile";
-            this.myProfileToolStripMenuItem.Click += new System.EventHandler(this.myProfileToolStripMenuItem_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 444);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 15);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Installation Date";
-            // 
-            // tb_installation_date
-            // 
-            this.tb_installation_date.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_installation_date.Location = new System.Drawing.Point(12, 463);
-            this.tb_installation_date.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_installation_date.Name = "tb_installation_date";
-            this.tb_installation_date.Size = new System.Drawing.Size(219, 25);
-            this.tb_installation_date.TabIndex = 17;
-            this.tb_installation_date.TextChanged += new System.EventHandler(this.tb_installation_date_TextChanged);
             // 
             // Arrange_installation
             // 
@@ -472,7 +463,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem myProfileToolStripMenuItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_installation_date;
     }

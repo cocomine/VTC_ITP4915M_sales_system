@@ -31,9 +31,10 @@
             this.lb_order = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_installation_date = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.lb_installation_item = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_customer_phone = new System.Windows.Forms.TextBox();
@@ -44,8 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_complete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tb_installation_date = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,11 +67,10 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem,
-            this.myProfiToolStripMenuItem});
+            this.loginToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -80,16 +78,9 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.loginToolStripMenuItem.Text = "Logout";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
-            // 
-            // myProfiToolStripMenuItem
-            // 
-            this.myProfiToolStripMenuItem.Name = "myProfiToolStripMenuItem";
-            this.myProfiToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
-            this.myProfiToolStripMenuItem.Text = "My Profile";
-            this.myProfiToolStripMenuItem.Click += new System.EventHandler(this.myProfiToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -127,6 +118,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(555, 406);
             this.panel1.TabIndex = 0;
+            // 
+            // tb_installation_date
+            // 
+            this.tb_installation_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_installation_date.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_installation_date.Location = new System.Drawing.Point(161, 361);
+            this.tb_installation_date.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_installation_date.Name = "tb_installation_date";
+            this.tb_installation_date.Size = new System.Drawing.Size(214, 25);
+            this.tb_installation_date.TabIndex = 9;
+            this.tb_installation_date.TextChanged += new System.EventHandler(this.tb_installation_date_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 365);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 15);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Installation Date";
             // 
             // lb_installation_item
             // 
@@ -244,27 +256,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Schedule your order";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 365);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Installation Date";
-            // 
-            // tb_installation_date
-            // 
-            this.tb_installation_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_installation_date.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_installation_date.Location = new System.Drawing.Point(161, 361);
-            this.tb_installation_date.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_installation_date.Name = "tb_installation_date";
-            this.tb_installation_date.Size = new System.Drawing.Size(214, 25);
-            this.tb_installation_date.TabIndex = 9;
-            this.tb_installation_date.TextChanged += new System.EventHandler(this.tb_installation_date_TextChanged);
-            // 
             // Installer_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -308,7 +299,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_complete;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ToolStripMenuItem myProfiToolStripMenuItem;
         private System.Windows.Forms.RichTextBox tb_customer_address;
         private System.Windows.Forms.TextBox tb_installation_date;
         private System.Windows.Forms.Label label6;

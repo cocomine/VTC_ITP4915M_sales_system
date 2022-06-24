@@ -32,8 +32,8 @@ namespace UI.Installer_Page
             Program.addPage();
 
             //Get the data needed by the Installer Page
-            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `installation` AS ins, `customer` AS c " +
-                " WHERE c.CustomerID = ins.CustomerID AND ins.Status = '0';", conn);
+            MySqlCommand cmd_order = new MySqlCommand("SELECT * FROM `installation` AS i, `install_staff` AS ins " +
+                " WHERE i.OrderID = ins.OrderID AND i.Status = '0' AND ins.StaffAccountID = '" + acc.Get_acoountID() + "';", conn);
              MySqlDataReader data_order;
 
             try
@@ -54,11 +54,7 @@ namespace UI.Installer_Page
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e) {
-            Application.Exit();
-        }
-
-        private void myProfiToolStripMenuItem_Click(object sender, EventArgs e) {
-            new My_Profile(conn, acc).Show();
+            Program.Logout();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -144,7 +140,7 @@ namespace UI.Installer_Page
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please select a completed installation order.");
             }
             conn.Close();
 
