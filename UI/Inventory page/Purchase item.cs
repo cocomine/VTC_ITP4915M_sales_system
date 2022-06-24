@@ -53,5 +53,47 @@ namespace UI.Inventory_page
         {
             Program.removePage();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            string SQL = "SELECT * FROM `item` where `item`.Name = '"+listBox1.Text+"';";
+            MySqlCommand cmd = new MySqlCommand(SQL, conn);
+            MySqlDataReader myReader;
+
+            try
+            {
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    string sName = myReader.GetString("Name");
+                    string sPrice = myReader.GetString("Price");
+                    string sDescription = "";
+                    if (myReader["Description"] != DBNull.Value)
+                    { 
+                        sDescription = myReader.GetString("Description"); 
+                    }
+                        
+
+                    tbName.Text = sName;
+                    tbPirce.Text = sPrice;
+                    tbDescription.Text = sDescription;
+
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
+
+        }
+
+        private void btPurchase_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
