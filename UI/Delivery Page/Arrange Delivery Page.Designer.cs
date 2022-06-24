@@ -70,7 +70,7 @@
             this.lb_order.ItemHeight = 12;
             this.lb_order.Location = new System.Drawing.Point(5, 24);
             this.lb_order.Name = "lb_order";
-            this.lb_order.Size = new System.Drawing.Size(254, 352);
+            this.lb_order.Size = new System.Drawing.Size(254, 388);
             this.lb_order.TabIndex = 0;
             this.lb_order.SelectedIndexChanged += new System.EventHandler(this.lb_order_SelectedIndexChanged);
             // 
@@ -191,7 +191,7 @@
             this.lb_scheduled_features.ItemHeight = 12;
             this.lb_scheduled_features.Location = new System.Drawing.Point(5, 15);
             this.lb_scheduled_features.Name = "lb_scheduled_features";
-            this.lb_scheduled_features.Size = new System.Drawing.Size(226, 124);
+            this.lb_scheduled_features.Size = new System.Drawing.Size(226, 160);
             this.lb_scheduled_features.TabIndex = 1;
             this.lb_scheduled_features.SelectedIndexChanged += new System.EventHandler(this.lb_scheduled_features_SelectedIndexChanged);
             // 
@@ -312,7 +312,7 @@
             this.lb_delivery_item.ItemHeight = 12;
             this.lb_delivery_item.Location = new System.Drawing.Point(9, 278);
             this.lb_delivery_item.Name = "lb_delivery_item";
-            this.lb_delivery_item.Size = new System.Drawing.Size(269, 100);
+            this.lb_delivery_item.Size = new System.Drawing.Size(269, 136);
             this.lb_delivery_item.TabIndex = 11;
             this.lb_delivery_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
