@@ -12,18 +12,18 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>会计页面</value>
+		<value>會計頁面</value>
 	</data>
 	<data name="bt_output.Text" xml:space="preserve">
-		<value>生成 Excel 报告</value>
+		<value>生成 Excel 報告</value>
 	</data>
 	<data name="logoutToolStripMenuItem.Text" xml:space="preserve">
-		<value>注销</value>
+		<value>登出</value>
 	</data>
 	<data name="orderReportToolStripMenuItem.Text" xml:space="preserve">
-		<value>订单报告</value>
+		<value>訂單報告</value>
 	</data>
 	<data name="purchaseOrderToolStripMenuItem.Text" xml:space="preserve">
-		<value>采购订单报告</value>
+		<value>採購訂單報告</value>
 	</data>
 </root>

@@ -261,6 +261,9 @@
     <EmbeddedResource Include="Accounting page\Accounting page.zh-hans.resx">
       <DependentUpon>Accounting page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounting page\Accounting page.zh-hant.resx">
+      <DependentUpon>Accounting page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.resx">
       <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
     </EmbeddedResource>

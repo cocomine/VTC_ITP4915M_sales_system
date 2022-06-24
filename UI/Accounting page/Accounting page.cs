@@ -20,6 +20,7 @@ namespace UI.Accounting_page {
         private MySqlDataAdapter order_adapter = new MySqlDataAdapter();
         private MySqlDataAdapter purchase_adapter = new MySqlDataAdapter();
         private DataSet dataSet = new DataSet();
+        private Lang lang;
 
         public Accounting_page(MySqlConnection conn, Account_Details acc, string report = null) {
             this.conn = conn;
@@ -29,6 +30,8 @@ namespace UI.Accounting_page {
                 dgv_report.DataMember = report;
                 bt_output.Enabled = true;
             }
+
+            lang = new Lang(typeof(Accounting_page));
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) { Program.Logout(); }
