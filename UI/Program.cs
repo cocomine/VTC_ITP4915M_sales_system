@@ -79,7 +79,10 @@ namespace UI
             List<Form> form_list = forms.Cast<Form>().ToList();
 
             addPage(); //防止結束程式
-            form_list.ForEach(form => form.Close()); //關閉所有視窗
+            form_list.ForEach(form => {
+                form.Close();
+                form.Dispose();
+            });  //關閉所有視窗
             new Login(conn).Show(); //跳出登入視窗
             removePage(); //恢復正確計數
         }

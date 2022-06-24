@@ -79,8 +79,9 @@
             this.bt_output.Name = "bt_output";
             this.bt_output.Size = new System.Drawing.Size(139, 23);
             this.bt_output.TabIndex = 1;
-            this.bt_output.Text = "Generate reports to xlex";
+            this.bt_output.Text = "Generate reports to Excel";
             this.bt_output.UseVisualStyleBackColor = true;
+            this.bt_output.Click += new System.EventHandler(this.bt_output_Click);
             // 
             // dgv_report
             // 

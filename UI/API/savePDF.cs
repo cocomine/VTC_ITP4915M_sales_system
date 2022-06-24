@@ -35,6 +35,7 @@ namespace ITP4915M.API {
             MessageBox.Show("Receipt saved!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Process.Start(filePath); //打開檔案
 
+            writer.Close();
             return filePath;
         }
     }

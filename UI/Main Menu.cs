@@ -111,8 +111,8 @@ namespace ITP4915M {
             if (bt.Equals(bt_itemRequest)) Program.OpenFrom(new Inventory_page(conn, acc, new Item_requested(conn)));
             if (bt.Equals(bt_purchaseItem)) Program.OpenFrom(new Inventory_page(conn, acc, new Purchase_item(conn)));
             //Accounting Department
-            if (bt.Equals(bt_orderReport)) Program.OpenFrom(new Accounting_page(conn, acc));
-            if (bt.Equals(bt_purchaseReport)) Program.OpenFrom(new Accounting_page(conn, acc));
+            if (bt.Equals(bt_orderReport)) Program.OpenFrom(new Accounting_page(conn, acc, "Order_report"));
+            if (bt.Equals(bt_purchaseReport)) Program.OpenFrom(new Accounting_page(conn, acc, "Purchase_report"));
             //IT / CEO
             if (bt.Equals(bt_account)) Program.OpenFrom(new Account_Management(conn, acc));
             if (bt.Equals(bt_deliveryGroup)) Program.OpenFrom(new Delivery_Team_Grouping(conn));
