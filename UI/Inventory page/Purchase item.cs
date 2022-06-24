@@ -93,7 +93,25 @@ namespace UI.Inventory_page
 
         private void btPurchase_Click(object sender, EventArgs e)
         {
+            
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES (10, '2022-06-24 09:11:40.000000', '3b483e8e-e26c-11ec-bf17-2cf05d0481f9', 1);", conn);
+            MySqlDataReader myReader;
+            
+            try
+            {
+                conn.Open();
+                myReader = cmd.ExecuteReader();
+                MessageBox.Show("Purchased");
+                while (myReader.Read())
+                {
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
         }
     }
 }
