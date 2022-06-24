@@ -41,12 +41,12 @@ namespace UI.Inventory_page
         private void Item_requested_Load(object sender, EventArgs e)
         {
             Program.addPage();
-            da.SelectCommand = new MySqlCommand("SELECT * FROM `request_item` ORDER BY `RequestID` ASC", conn);
+            da.SelectCommand = new MySqlCommand("SELECT `request_item`.`RequestID`, `request_item`.`ItemID`, `request_item`.`Qty`, `inventory`.`Qty`FROM `request_item`, `inventory` WHERE `request_item`.ItemID=`inventory`.ItemID ORDER BY `RequestID` ASC", conn);
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
             tblNameBs.DataSource = ds.Tables[0];
-            textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "fromWarehouseID "));
-            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
+            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
+            textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
             textBox3.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
 
         }
@@ -94,7 +94,7 @@ namespace UI.Inventory_page
             {
                 // Search StoreWarehouseID
 
-                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `request_item` where fromWarehouseID  = " + comboBox1.Text, conn);
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT `request_item`.`RequestID`, `request_item`.`ItemID`, `request_item`.`Qty`, `inventory`.`Qty`FROM `request_item`, `inventory` WHERE `request_item`.ItemID=`inventory`.ItemID And fromWarehouseID  = " + comboBox1.Text, conn);
                 DataTable dtbl = new DataTable();
                 dtbl.Clear();
                 sqlda.Fill(dtbl);
@@ -105,8 +105,16 @@ namespace UI.Inventory_page
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("UPDATE `inventory` SET `Qty` = '1' WHERE `inventory`.`ItemID` = '3b48102c-e26c-11ec-bf17-2cf05d0481f9' AND `inventory`.`StoreWarehouseID` = 6722;", conn);
+
+            String ItemID = textBox1.Text;
+            MySqlDataAdapter sqlda1 = new MySqlDataAdapter("UPDATE `inventory` SET `Qty` = '" + textBox3.Text + "' WHERE `inventory`.`ItemID` = '"+ItemID+"';", conn);
             DataTable dtbl1 = new DataTable();
+            dtbl1.Clear();
+            sqlda1.Fill(dtbl1);
+            dataGridView1.DataSource = dtbl1;
+
+            sqlda1 = new MySqlDataAdapter("DELETE FROM `request_item` WHERE `request_item`.`ItemID` = '"+ ItemID + "';", conn);
+            dtbl1 = new DataTable();
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
@@ -119,8 +127,13 @@ namespace UI.Inventory_page
             if (e.RowIndex >= 0)
             {
                 //show Id in ItemID textbox & request textBox
+                //ItemID
                 textBox1.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                textBox2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                //currentQty
+                textBox2.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                //Qty
+                textBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+
             }
         }
 
