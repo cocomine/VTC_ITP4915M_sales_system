@@ -56,6 +56,20 @@ namespace UI.Inventory_page {
                     //listBox connect textbox
                     string sName = myReader.GetString("Name");
                     string sPrice = myReader.GetString("Price");
+                    int sType = myReader.GetInt32("Type");
+                    if (sType==1)
+                    {
+                        checkBox1.Checked = true;
+                    }
+                    if (sType == 2)
+                    {
+                        checkBox2.Checked = true;
+                    }
+                    else
+                    {
+                        checkBox1.Checked = false;
+                        checkBox2.Checked = false;
+                    }
                     string sDescription = "";
                     if (myReader["Description"] != DBNull.Value) {
                         sDescription = myReader.GetString("Description");

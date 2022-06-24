@@ -106,6 +106,7 @@ namespace UI.Inventory_page {
             dtbl.Clear();
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
+            MessageBox.Show("Deleted");
 
             reload();
         }

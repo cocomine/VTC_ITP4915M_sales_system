@@ -30,7 +30,7 @@ namespace UI.Inventory_page {
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
             tblNameBs.DataSource = ds.Tables[0];
-            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
+            textBox2.Text = "0";
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
             textBox3.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
         }
@@ -86,6 +86,7 @@ namespace UI.Inventory_page {
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
+            MessageBox.Show("Updated");
 
             reload();
         }
