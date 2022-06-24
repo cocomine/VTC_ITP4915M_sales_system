@@ -102,9 +102,9 @@
     <Compile Include="API\Department.cs" />
     <Compile Include="API\Item.cs" />
     <Compile Include="API\savePDF.cs" />
-	<Compile Include="Delivery Page\Arrange Delivery Page.cs" >
-		<SubType>Form</SubType>
-	</Compile>
+    <Compile Include="Delivery Page\Arrange Delivery Page.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Delivery Page\Arrange Delivery Page.Designer.cs">
       <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
     </Compile>
@@ -137,24 +137,6 @@
     </Compile>
     <Compile Include="Inventory page\Item requested.Designer.cs">
       <DependentUpon>Item requested.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory page\item.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory page\item.Designer.cs">
-      <DependentUpon>item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory page\Item requested_deprecated.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory page\Item requested_deprecated.Designer.cs">
-      <DependentUpon>Item requested_deprecated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory page\Inventory page_deprecated.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory page\Inventory page_deprecated.Designer.cs">
-      <DependentUpon>Inventory page_deprecated.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory page\Purchase item.cs">
       <SubType>Form</SubType>
@@ -263,20 +245,11 @@
     <EmbeddedResource Include="Inventory page\Inventory page.resx">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\Inventory page_deprecated.resx">
-      <DependentUpon>Inventory page_deprecated.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory quantity.resx">
       <DependentUpon>Inventory quantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Item requested.resx">
       <DependentUpon>Item requested.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\Item requested_deprecated.resx">
-      <DependentUpon>Item requested_deprecated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory page\item.resx">
-      <DependentUpon>item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>

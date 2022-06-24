@@ -57,7 +57,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(776, 321);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellCick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btDelete
@@ -121,7 +120,6 @@
             this.ItemID.Size = new System.Drawing.Size(38, 12);
             this.ItemID.TabIndex = 27;
             this.ItemID.Text = "ItemID";
-            this.ItemID.Click += new System.EventHandler(this.ItemID_Click);
             // 
             // textBox1
             // 
