@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
 using ITP4915M.IT;
+using ITP4915M.Sales_page;
 using UI;
 using UI.Accounting_page;
 using UI.Delivery_Page;
@@ -17,60 +18,65 @@ namespace ITP4915M {
         private readonly Account_Details acc;
         private readonly string SQLConnectionString;
         private readonly MySqlConnection conn;
+        private Lang lang;
 
         public Main_Menu(string sqlConnectionString, Account_Details acc, MySqlConnection mySqlConnection) {
             this.acc = acc;
             SQLConnectionString = sqlConnectionString;
             conn = mySqlConnection;
             InitializeComponent();
+            lang = new Lang(typeof(Main_Menu));
         }
 
         private void Main_Menu_Load(object sender, EventArgs e) {
             Program.addPage();
-            lb_name.Text = $"Hello! {acc.Get_fullRealName()} ({acc.Get_acoountID()})";
+            lb_name.Text = string.Format(lang.GetString("lb_name.Text"), acc.Get_fullRealName(), acc.Get_acoountID());
             menu.VerticalScroll.Value = 100;
+            foreach (Control menuControl in menu.Controls) {
+                if (menuControl is GroupBox gp) {
+                    gp.Visible = false;
+                }
+            }
 
             //根據department 開放按鈕
             switch (acc.Get_departmentID()) {
                 case Department.Sales:
                     gp_sales.Enabled = true;
+                    gp_sales.Visible = true;
                     if (acc.Get_isManager()) bt_salesMange.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_sales.Top + gp_sales.Height - 20;
                     break;
                 case Department.Inventory:
                     gp_inventory.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_inventory.Top + gp_inventory.Height - 20;
+                    gp_inventory.Visible = true;
                     break;
                 case Department.Accounting:
                     gp_accounting.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_accounting.Top + gp_accounting.Height - 20;
+                    gp_accounting.Visible = true;
                     break;
                 case Department.Technical_Support:
                     gp_technical.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_technical.Top + gp_technical.Height - 20;
+                    gp_technical.Visible = true;
                     break;
                 case Department.IT:
                 case Department.CEO:
                     gp_admin.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_admin.Top + gp_admin.Height - 20;
+                    //Visible all GroupBox
+                    foreach (Control menuControl in menu.Controls) {
+                        if (menuControl is GroupBox gp) {
+                            gp.Visible = true;
+                        }
+                    }
                     break;
                 case Department.Delivery:
                     gp_delivery.Enabled = true;
+                    gp_delivery.Visible = true;
                     if (acc.Get_isManager()) {
                         bt_arrangeTeam.Enabled = true;
                     }
-
-                    menu.VerticalScroll.Value = gp_delivery.Top + gp_delivery.Height - 20;
                     break;
                 case Department.Installer:
                     gp_install.Enabled = true;
-
-                    menu.VerticalScroll.Value = gp_install.Top + gp_install.Height - 20;
+                    gp_install.Visible = true;
                     break;
             }
         }
@@ -93,7 +99,7 @@ namespace ITP4915M {
             //檢查點擊哪一個按鈕
             //Sales Department
             if (bt.Equals(bt_salesPage)) Program.OpenFrom(new Sales_Page(conn, acc));
-            if (bt.Equals(bt_cancelOrder)) return;
+            if (bt.Equals(bt_cancelOrder)) Program.OpenFrom(new Cancel_Order(conn, acc)); ;
             if (bt.Equals(bt_salesMange)) Program.OpenFrom(new Sales_Management(conn, acc));
             //Delivery Department
             if (bt.Equals(bt_delivery)) Program.OpenFrom(new Delivery_Team_Page(conn, acc));
@@ -107,8 +113,8 @@ namespace ITP4915M {
             if (bt.Equals(bt_itemRequest)) Program.OpenFrom(new Inventory_page(conn, acc, new Item_requested(conn)));
             if (bt.Equals(bt_purchaseItem)) Program.OpenFrom(new Inventory_page(conn, acc, new Purchase_item(conn)));
             //Accounting Department
-            if (bt.Equals(bt_orderReport)) Program.OpenFrom(new Accounting_page(conn, acc));
-            if (bt.Equals(bt_purchaseReport)) Program.OpenFrom(new Accounting_page(conn, acc));
+            if (bt.Equals(bt_orderReport)) Program.OpenFrom(new Accounting_page(conn, acc, "Order_report"));
+            if (bt.Equals(bt_purchaseReport)) Program.OpenFrom(new Accounting_page(conn, acc, "Purchase_report"));
             //IT / CEO
             if (bt.Equals(bt_account)) Program.OpenFrom(new Account_Management(conn, acc));
             if (bt.Equals(bt_deliveryGroup)) Program.OpenFrom(new Delivery_Team_Grouping(conn));

@@ -18,10 +18,12 @@ namespace UI
     {
         private MySqlConnection conn;
         private Account_Details acc;
+        private Lang lang;
         public My_Profile(MySqlConnection conn, Account_Details acc)
         {
             this.conn = conn;
             this.acc = acc;
+            lang = new Lang(typeof(My_Profile));
             InitializeComponent();
         }
 
@@ -91,7 +93,7 @@ namespace UI
                     Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
                 }
             }
-            if(isChange) MessageBox.Show("Change save!", "My Profile", MessageBoxButtons.OK, MessageBoxIcon.Information); //show Message is change
+            if(isChange) MessageBox.Show(lang.GetString("Change_save_"), lang.GetString("$this.Text"), MessageBoxButtons.OK, MessageBoxIcon.Information); //show Message is change
             this.Close();
         }
 
@@ -106,8 +108,7 @@ namespace UI
             //if Empty
             if (String.IsNullOrEmpty(tb.Text)) {
                 e.Cancel = true;
-                tb.Focus();
-                errorProvider1.SetError(tb, "Please fill information");
+                errorProvider1.SetError(tb, lang.GetString("Please_fill_information"));
                 tb.BackColor = Color.LightCoral;
             }
 
@@ -115,8 +116,7 @@ namespace UI
             Regex rex = new Regex("^[A-za-z0-9]+$");
             if (!rex.IsMatch(tb.Text)) {
                 e.Cancel = true;
-                tb.Focus();
-                errorProvider1.SetError(tb, "Only letters or number are accepted");
+                errorProvider1.SetError(tb, lang.GetString("Only_letters_or_number_are_accepted"));
                 tb.BackColor = Color.LightCoral;
             }
         }
@@ -127,8 +127,7 @@ namespace UI
                 Regex rex = new Regex("(?=.*?[A-Z])(?=.*?[a-z])");
                 if (!rex.IsMatch(tb.Text) || !(tb.Text.Trim().Length >= 8)) {
                     e.Cancel = true;
-                    tb.Focus();
-                    errorProvider1.SetError(tb, "Must be more than eight characters and include upper and lower case");
+                    errorProvider1.SetError(tb, lang.GetString("Must_be_more_than_eight_characters_and_include_upper_and_lower_case"));
                     tb.BackColor = Color.LightCoral;
                 }
             }

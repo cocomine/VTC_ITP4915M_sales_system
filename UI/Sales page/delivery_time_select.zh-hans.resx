@@ -1,0 +1,32 @@
+﻿<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>送货时间选择</value>
+	</data>
+	<data name="bt_save.Text" xml:space="preserve">
+		<value>保存</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>请选择您的送货时间</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>送货日期</value>
+	</data>
+	<data name="label3.Text" xml:space="preserve">
+		<value>送货时间</value>
+	</data>
+	<data name="Please_select_a_time_period" xml:space="preserve">
+		<value>请选择时间段</value>
+	</data>
+</root>

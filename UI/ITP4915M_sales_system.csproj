@@ -163,7 +163,9 @@
     <Compile Include="Main Menu.Designer.cs">
       <DependentUpon>Main Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sales page\Cancel Order.cs" />
+    <Compile Include="Sales page\Cancel Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Sales page\Cancel Order.Designer.cs">
       <DependentUpon>Cancel Order.cs</DependentUpon>
     </Compile>

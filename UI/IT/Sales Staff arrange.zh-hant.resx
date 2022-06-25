@@ -1,0 +1,47 @@
+﻿<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>銷售人員安排</value>
+	</data>
+	<data name="colummHeader6.Text" xml:space="preserve">
+		<value>商店名稱</value>
+	</data>
+	<data name="columnHeader1.Text" xml:space="preserve">
+		<value>帳戶ID</value>
+	</data>
+	<data name="columnHeader2.Text" xml:space="preserve">
+		<value>全名</value>
+	</data>
+	<data name="columnHeader3.Text" xml:space="preserve">
+		<value>帳戶ID</value>
+	</data>
+	<data name="columnHeader4.Text" xml:space="preserve">
+		<value>全名</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>選擇店鋪以顯示已安排的人員</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>您可以拖動員工添加到商店或從商店中刪除</value>
+	</data>
+	<data name="label3.Text" xml:space="preserve">
+		<value>已安排在店內</value>
+	</data>
+	<data name="label4.Text" xml:space="preserve">
+		<value>未安排在任何商店</value>
+	</data>
+	<data name="logoutToolStripMenuItem.Text" xml:space="preserve">
+		<value>登出</value>
+	</data>
+</root>

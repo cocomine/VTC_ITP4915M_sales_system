@@ -1,0 +1,87 @@
+﻿<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>送遞團隊分組</value>
+	</data>
+	<data name="Are_you_sure_you_want_to_disband_the_selected_team_" xml:space="preserve">
+		<value>您確定要解散選定的團隊嗎？</value>
+	</data>
+	<data name="bt_addToTeam.Text" xml:space="preserve">
+		<value>添加到選擇團隊</value>
+	</data>
+	<data name="bt_createTeam.Text" xml:space="preserve">
+		<value>創建新團隊</value>
+	</data>
+	<data name="bt_deleteTeam.Text" xml:space="preserve">
+		<value>解散選擇團隊</value>
+	</data>
+	<data name="bt_removeFromTeam.Text" xml:space="preserve">
+		<value>刪除選定的員工</value>
+	</data>
+	<data name="bt_status_save.Text" xml:space="preserve">
+		<value>保存狀態</value>
+	</data>
+	<data name="columnHeader1.Text" xml:space="preserve">
+		<value>帳戶ID</value>
+	</data>
+	<data name="columnHeader2.Text" xml:space="preserve">
+		<value>全名</value>
+	</data>
+	<data name="Disband_team" xml:space="preserve">
+		<value>解散團隊</value>
+	</data>
+	<data name="gb_team_status.Text" xml:space="preserve">
+		<value>團隊狀態</value>
+	</data>
+	<data name="groupBox1.Text" xml:space="preserve">
+		<value>未安排任何團隊的員工</value>
+	</data>
+	<data name="groupBox2.Text" xml:space="preserve">
+		<value>團隊</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>分配團隊</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>您可以拖動團隊成員移動到其他團隊或添加或刪除成員。</value>
+	</data>
+	<data name="logoutToolStripMenuItem.Text" xml:space="preserve">
+		<value>登出</value>
+	</data>
+	<data name="No_team_exist_" xml:space="preserve">
+		<value>不存在團隊</value>
+	</data>
+	<data name="rb_status_0.Text" xml:space="preserve">
+		<value>預備</value>
+	</data>
+	<data name="rb_status_1.Text" xml:space="preserve">
+		<value>無法使用</value>
+	</data>
+	<data name="rb_status_2.Text" xml:space="preserve">
+		<value>送遞中</value>
+	</data>
+	<data name="Unable_to_disband_the_team" xml:space="preserve">
+		<value>無法解散團隊。
+可能團隊還有訂單沒有完成。</value>
+	</data>
+	<data name="Update_Status" xml:space="preserve">
+		<value>更新狀態</value>
+	</data>
+	<data name="Update_Status_successfully_" xml:space="preserve">
+		<value>更新狀態成功！</value>
+	</data>
+	<data name="Warning" xml:space="preserve">
+		<value>警告</value>
+	</data>
+</root>

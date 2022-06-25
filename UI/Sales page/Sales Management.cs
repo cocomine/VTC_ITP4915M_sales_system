@@ -18,11 +18,13 @@ namespace UI.Sales_page {
         private MySqlDataAdapter adapter = new MySqlDataAdapter();
         private DataSet dataSet = new DataSet();
         private BindingSource bindingSource = new BindingSource();
+        private Lang lang;
 
         public Sales_Management(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Sales_Management));
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -34,7 +36,7 @@ namespace UI.Sales_page {
 
             //check is sales Manager
             if ((!acc.Get_isManager()) && (acc.Get_departmentID() == Department.Sales)) {
-                MessageBox.Show("Sorry, you are not a Sales Manager. Unable to enter this page", "Access denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(lang.GetString("Sorry__you_are_not_a_Sales_Manager__Unable_to_enter_this_page"), lang.GetString("Access_denied"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
 
@@ -46,10 +48,10 @@ namespace UI.Sales_page {
                 if (data.HasRows) {
                     while (data.Read()) {
                         StoreID = data.GetString("StoreID");
-                        lb_storeID.Text = "Store: " + StoreID;
+                        lb_storeID.Text = lang.GetString("Store__") + StoreID;
                     }
                 } else {
-                    MessageBox.Show("The employee is not assigned to any store", "Not assigned", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(lang.GetString("The_employee_is_not_assigned_to_any_store"), lang.GetString("Not_assigned"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }
                 data.Close(); //close up

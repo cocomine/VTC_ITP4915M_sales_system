@@ -1,0 +1,44 @@
+﻿<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>登入</value>
+	</data>
+	<data name="btn_login.Text" xml:space="preserve">
+		<value>登入</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>用户名</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>密码</value>
+	</data>
+	<data name="label3.Text" xml:space="preserve">
+		<value>请登录您的帐户以继续使用</value>
+	</data>
+	<data name="Login_403" xml:space="preserve">
+		<value>登录信息错误。 (403)</value>
+	</data>
+	<data name="Login_404" xml:space="preserve">
+		<value>登录信息错误。 (404)</value>
+	</data>
+	<data name="Welcome_back__0__" xml:space="preserve">
+		<value>欢迎回来{0}。</value>
+	</data>
+	<data name="Welcome" xml:space="preserve">
+		<value>欢迎</value>
+	</data>
+	<data name="Warning" xml:space="preserve">
+		<value>警告</value>
+	</data>
+</root>

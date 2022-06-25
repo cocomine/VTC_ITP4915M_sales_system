@@ -10,14 +10,17 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M.API;
 using UI;
 
 namespace ITP4915M.IT {
     public partial class Create_Account : Form {
         private MySqlConnection conn;
+        private Lang lang;
         public Create_Account(MySqlConnection conn) {
             this.conn = conn;
             InitializeComponent();
+            lang = new Lang(typeof(Create_Account));
         }
 
         private void bt_create_Click(object sender, EventArgs e) {
@@ -57,11 +60,11 @@ namespace ITP4915M.IT {
                 cmd.Parameters.AddWithValue("@isManager", cb_isManager.Checked);
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("User (" + id + ") create successfully!\nPassword is: AcoountID+Username", "Reset password", MessageBoxButtons.OK, MessageBoxIcon.Information); //ok msg
+                MessageBox.Show(string.Format(lang.GetString("create_successfully"), id), lang.GetString("Account_Create"), MessageBoxButtons.OK, MessageBoxIcon.Information); //ok msg
                 DialogResult = DialogResult.OK;
                 this.Close();
             } catch (MySqlException ex) {
-                MessageBox.Show("Username already exists, please choose another name", "Already exists.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(lang.GetString("Username_already_exists__please_choose_another_name"), lang.GetString("Already_exists_"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
             }
         }
@@ -88,7 +91,7 @@ namespace ITP4915M.IT {
             //if Empty
             if (String.IsNullOrEmpty(tb.Text)) {
                 e.Cancel = true;
-                errorProvider1.SetError(tb, "Please fill information");
+                errorProvider1.SetError(tb, lang.GetString("Please_fill_information"));
                 tb.BackColor = Color.LightCoral;
             }
 
@@ -97,7 +100,7 @@ namespace ITP4915M.IT {
                 Regex rex = new Regex("^[A-za-z0-9]+$");
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
-                    errorProvider1.SetError(tb, "Only letters or number are accepted");
+                    errorProvider1.SetError(tb, lang.GetString("Only_letters_or_number_are_accepted"));
                     tb.BackColor = Color.LightCoral;
                 }
             }
@@ -105,7 +108,7 @@ namespace ITP4915M.IT {
                 Regex rex = new Regex("^[A-za-z\\s]+$");
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
-                    errorProvider1.SetError(tb, "Only letters are accepted");
+                    errorProvider1.SetError(tb, lang.GetString("Only_letters_are_accepted"));
                     tb.BackColor = Color.LightCoral;
                 }
              }

@@ -31,19 +31,20 @@
             this.lb_order = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.myProfiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_installation_date = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.lb_installation_item = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_customer_phone = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_customer_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_complete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.tb_customer_address = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,11 +67,10 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem,
-            this.myProfiToolStripMenuItem});
+            this.loginToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -78,16 +78,9 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.loginToolStripMenuItem.Text = "Logout";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
-            // 
-            // myProfiToolStripMenuItem
-            // 
-            this.myProfiToolStripMenuItem.Name = "myProfiToolStripMenuItem";
-            this.myProfiToolStripMenuItem.Size = new System.Drawing.Size(94, 23);
-            this.myProfiToolStripMenuItem.Text = "My Profile";
-            this.myProfiToolStripMenuItem.Click += new System.EventHandler(this.myProfiToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -99,7 +92,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(571, 411);
+            this.groupBox1.Size = new System.Drawing.Size(571, 439);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order detail";
@@ -110,6 +103,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.tb_installation_date);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.lb_installation_item);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.tb_customer_phone);
@@ -121,8 +116,29 @@
             this.panel1.Location = new System.Drawing.Point(8, 26);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(555, 378);
+            this.panel1.Size = new System.Drawing.Size(555, 406);
             this.panel1.TabIndex = 0;
+            // 
+            // tb_installation_date
+            // 
+            this.tb_installation_date.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_installation_date.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_installation_date.Location = new System.Drawing.Point(161, 361);
+            this.tb_installation_date.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_installation_date.Name = "tb_installation_date";
+            this.tb_installation_date.Size = new System.Drawing.Size(214, 25);
+            this.tb_installation_date.TabIndex = 9;
+            this.tb_installation_date.TextChanged += new System.EventHandler(this.tb_installation_date_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 365);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 15);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Installation Date";
             // 
             // lb_installation_item
             // 
@@ -131,17 +147,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_installation_item.FormattingEnabled = true;
             this.lb_installation_item.ItemHeight = 15;
-            this.lb_installation_item.Location = new System.Drawing.Point(161, 248);
+            this.lb_installation_item.Location = new System.Drawing.Point(161, 215);
             this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4);
             this.lb_installation_item.Name = "lb_installation_item";
-            this.lb_installation_item.Size = new System.Drawing.Size(372, 109);
+            this.lb_installation_item.Size = new System.Drawing.Size(372, 124);
             this.lb_installation_item.TabIndex = 7;
             this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.lb_installation_item_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 248);
+            this.label4.Location = new System.Drawing.Point(20, 216);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 15);
@@ -153,7 +169,7 @@
             this.tb_customer_phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_customer_phone.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_customer_phone.Location = new System.Drawing.Point(161, 186);
+            this.tb_customer_phone.Location = new System.Drawing.Point(161, 169);
             this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4);
             this.tb_customer_phone.Name = "tb_customer_phone";
             this.tb_customer_phone.ReadOnly = true;
@@ -164,17 +180,31 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 190);
+            this.label3.Location = new System.Drawing.Point(20, 174);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Customer Phone";
             // 
+            // tb_customer_address
+            // 
+            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
+            this.tb_customer_address.Location = new System.Drawing.Point(161, 69);
+            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_customer_address.Name = "tb_customer_address";
+            this.tb_customer_address.ReadOnly = true;
+            this.tb_customer_address.Size = new System.Drawing.Size(372, 85);
+            this.tb_customer_address.TabIndex = 3;
+            this.tb_customer_address.Text = "";
+            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 79);
+            this.label2.Location = new System.Drawing.Point(20, 72);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 15);
@@ -226,20 +256,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Schedule your order";
             // 
-            // tb_customer_address
-            // 
-            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_customer_address.Location = new System.Drawing.Point(161, 79);
-            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_customer_address.Name = "tb_customer_address";
-            this.tb_customer_address.ReadOnly = true;
-            this.tb_customer_address.Size = new System.Drawing.Size(372, 85);
-            this.tb_customer_address.TabIndex = 3;
-            this.tb_customer_address.Text = "";
-            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
-            // 
             // Installer_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -283,7 +299,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_complete;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ToolStripMenuItem myProfiToolStripMenuItem;
         private System.Windows.Forms.RichTextBox tb_customer_address;
+        private System.Windows.Forms.TextBox tb_installation_date;
+        private System.Windows.Forms.Label label6;
     }
 }

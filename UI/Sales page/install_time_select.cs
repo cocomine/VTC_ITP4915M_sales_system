@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M.API;
 
 namespace ITP4915M.Sales_page {
     public partial class Install_time_select : Form {
 
         public DateTime DateTime { get; set; }
+        private Lang lang;
 
         public Install_time_select(DateTime delivery_DateTime) {
             this.DateTime = delivery_DateTime;
             InitializeComponent();
+            lang = new Lang(typeof(Install_time_select));
         }
 
         private void delivery_time_select_Load(object sender, EventArgs e) {

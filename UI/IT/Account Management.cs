@@ -21,12 +21,14 @@ namespace UI.IT
         private MySqlConnection conn;
         private Account_Details acc;
         private Dictionary<string, Binding> binding = new Dictionary<string, Binding>();
+        private Lang lang;
 
         public Account_Management(MySqlConnection conn, Account_Details acc)
         {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Account_Management));
         }
 
         private void Account_Management_FormClosed(object sender, FormClosedEventArgs e) {
@@ -114,7 +116,7 @@ namespace UI.IT
         
         private void bt_del_account_Click(object sender, EventArgs e) {
             //delete account
-            DialogResult result = MessageBox.Show("Are you sure delete seleect user?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm del                                                                                                                  //if confirm
+            DialogResult result = MessageBox.Show(lang.GetString("Are_you_sure_delete_select_user_"), lang.GetString("Delete_account"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm del                                                                                                                  //if confirm
             if (result == DialogResult.Yes) { //confirm
                 foreach (DataGridViewCell oneCell in dataGrid_staffList.SelectedCells) {
                     if (oneCell.Selected)
@@ -151,7 +153,7 @@ namespace UI.IT
 
         private void bt_save_Click(object sender, EventArgs e) {
             //save change
-            DialogResult result = MessageBox.Show("Are you sure save all change?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm update
+            DialogResult result = MessageBox.Show(lang.GetString("Are_you_sure_save_all_change_"), lang.GetString("Save_Change"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm update
             if (result == DialogResult.Yes) { //confirm
                 adapter.Update(ds_staff, "Staff_List");
             }
@@ -165,7 +167,7 @@ namespace UI.IT
 
         private void bt_reset_pass_Click(object sender, EventArgs e) {
             //reset password
-            DialogResult result = MessageBox.Show("Are you sure reset this user password?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm reset
+            DialogResult result = MessageBox.Show(lang.GetString("Are_you_sure_reset_this_user_password_"), lang.GetString("Reset_Password"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm reset
             if (result == DialogResult.Yes) { //confirm
                 String newPass = tb_id.Text + tb_username.Text;
 
@@ -189,7 +191,7 @@ namespace UI.IT
                     cmd.Parameters.AddWithValue("@acoountID", tb_id.Text);
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("User ("+ tb_id.Text + ") Reset successfully!\nNew password is: AcoountID+Username", "Reset password", MessageBoxButtons.OK, MessageBoxIcon.Information); //ok msg
+                    MessageBox.Show(string.Format(lang.GetString("Reset_successfully"), tb_id.Text), lang.GetString("Reset_Password"), MessageBoxButtons.OK, MessageBoxIcon.Information); //ok msg
                 } catch (MySqlException ex) {
                     Console.WriteLine("Error " + ex.Number + " : " + ex.Message);
                 }
@@ -198,7 +200,7 @@ namespace UI.IT
 
         private void dataGrid_staffList_DataError(object sender, DataGridViewDataErrorEventArgs e) {
             //Handler DataError
-            MessageBox.Show(e.Exception.Message, "發生錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(e.Exception.Message, lang.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Change_back_normal(object sender, EventArgs e) {
@@ -216,9 +218,9 @@ namespace UI.IT
             if (String.IsNullOrEmpty(tb.Text)) {
                 e.Cancel = true;
                 tb.Focus();
-                errorProvider1.SetError(tb, "Please fill information");
+                errorProvider1.SetError(tb, lang.GetString("Please_fill_information"));
                 tb.BackColor = Color.LightCoral;
-                MessageBox.Show("Please fill information", "Inaccurate format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(lang.GetString("Please_fill_information"), lang.GetString("Inaccurate_format"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //if format does not match
@@ -227,9 +229,9 @@ namespace UI.IT
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
                     tb.Focus();
-                    errorProvider1.SetError(tb, "Only letters or number are accepted");
+                    errorProvider1.SetError(tb, lang.GetString("Only_letters_or_number_are_accepted"));
                     tb.BackColor = Color.LightCoral;
-                    MessageBox.Show("Only letters or number are accepted", "Inaccurate format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(lang.GetString("Only_letters_or_number_are_accepted"), lang.GetString("Inaccurate_format"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             if (tb.Equals(tb_full_name)) {
@@ -237,9 +239,9 @@ namespace UI.IT
                 if (!rex.IsMatch(tb.Text)) {
                     e.Cancel = true;
                     tb.Focus();
-                    errorProvider1.SetError(tb, "Only letters are accepted");
+                    errorProvider1.SetError(tb, lang.GetString("Only_letters_are_accepted"));
                     tb.BackColor = Color.LightCoral;
-                    MessageBox.Show("Only letters are accepted", "Inaccurate format", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(lang.GetString("Only_letters_are_accepted"), lang.GetString("Inaccurate_format"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -252,7 +254,7 @@ namespace UI.IT
 
         private void Account_Management_FormClosing(object sender, FormClosingEventArgs e) {
             if (ds_staff.HasChanges()) {
-               DialogResult result =  MessageBox.Show("You have unsaved changes, are you sure you want to leave?", "Save change", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+               DialogResult result =  MessageBox.Show(lang.GetString("You_have_unsaved_changes__are_you_sure_you_want_to_leave_"), lang.GetString("Save_change"), MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.Cancel) {
                     e.Cancel = true;
                 }

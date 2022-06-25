@@ -1,0 +1,51 @@
+﻿<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>顾客信息</value>
+	</data>
+	<data name="bt_save.Text" xml:space="preserve">
+		<value>保存</value>
+	</data>
+	<data name="Incorrect_phone_format" xml:space="preserve">
+		<value>电话格式不正确</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>客户姓名</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>客户地址</value>
+	</data>
+	<data name="label3.Text" xml:space="preserve">
+		<value>客户电话</value>
+	</data>
+	<data name="label4.Text" xml:space="preserve">
+		<value>请输入客户信息安排送货或安装</value>
+	</data>
+	<data name="Please_fill_information" xml:space="preserve">
+		<value>请填写信息</value>
+	</data>
+	<data name="Match_customer" xml:space="preserve">
+		<value>匹配客户</value>
+	</data>
+	<data name="Find_existing_matching_customer" xml:space="preserve">
+		<value>找到现有匹配客户：
+    名称：{0}
+    电话：{1}
+    地址：{2}
+你想直接使用这些信息吗？</value>
+	</data>
+	<data name="tb_address.Text" xml:space="preserve">
+		<value>顾客地址</value>
+	</data>
+</root>

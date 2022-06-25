@@ -1,209 +1,213 @@
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Receipt_PDF_Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            font-size: 12px;
-        }
+	<meta charset="UTF-8">
+	<title>Receipt_PDF_Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			font-size: 12px;
+		}
 
-        h1 {
-            font-size: 5em;
-        }
+		h1 { font-size: 5em; }
 
-        h2 {
-            font-size: 1.5em;
-        }
+		h2 { font-size: 1.5em; }
 
-        div {
-            margin-top: 2rem
-        }
+		div { margin-top: 2rem }
 
-        table, tr, td, th {
-            border-collapse: collapse;
-        }
+		table, tr, td, th { border-collapse: collapse; }
 
-        table {
-            border: solid darkgrey 1px;
-            width: 100%
-        }
+		table {
+			border: solid darkgrey 1px;
+			width: 100%
+		}
 
-        td, th {
-            border-left: solid darkgrey 1px;
-        }
+		td, th { border-left: solid darkgrey 1px; }
 
-            td:nth-child(1n+2) {
-                text-align: center;
-            }
+		td:nth-child(1n + 2) { text-align: center; }
 
-        th {
-            border-bottom: solid darkgrey 1px;
-        }
+		th { border-bottom: solid darkgrey 1px; }
 
-        tfoot {
-            font-weight: bold;
-        }
+		tfoot { font-weight: bold; }
 
-            tfoot td:first-child {
-                text-align: right;
-                padding-right:.5rem;
-            }
+		tfoot td:first-child {
+			text-align: right;
+			padding-right: .5rem;
+		}
 
-            tfoot tr, thead tr {
-                background-color: lightgray;
-            }
+		tfoot tr, thead tr { background-color: lightgray; }
 
-                tfoot tr:first-child td, tfoot tr:last-child td {
-                    border-top: solid darkgrey 1px;
-                }
+		tfoot tr:first-child td, tfoot tr:last-child td { border-top: solid darkgrey 1px; }
 
-        #info, #info * {
-            border: none;
-            text-align:initial;
-        }
+		#info, #info * {
+			border: none;
+			text-align: initial;
+		}
 
-        #paid {
-            width: 35%;
-            margin-right: 0px;
-            margin-left: auto;
-        }
+		#paid {
+			width: 35%;
+			margin-right: 0px;
+			margin-left: auto;
+		}
 
-            #paid, #paid * {
-                border: none;
-            }
+		#paid, #paid * { border: none; }
 
-                #paid td:last-child {
-                    text-align: right;
-                }
+		#paid td:last-child { text-align: right; }
 
-                #paid tr:nth-child(3) td {
-                    border-top: solid darkgrey 1px;
-                }
+		#paid tr:nth-child(3) td { border-top: solid darkgrey 1px; }
 
-                #paid tr:nth-child(2) {
-                    font-weight: bold;
-                }
+		#paid tr:nth-child(2) { font-weight: bold; }
 
-        .tag {
-            position: absolute;
-            right: 0;
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
-            width: 500px;
-            text-align: center;
-            padding: .5rem;
-            transform: translateX(40%) translateY(-50px) rotate(35deg);
-        }
+		.tag {
+			position: absolute;
+			right: 0;
+			font-size: 3rem;
+			font-weight: bold;
+			color: white;
+			width: 500px;
+			text-align: center;
+			padding: .5rem;
+			transform: translateX(40%) translateY(-50px) rotate(35deg);
+		}
 
-            .tag#paid {
-                background-color: yellowgreen;
-                border: solid forestgreen 3px;
-                width: 500px;
-            }
+		.tag#paid {
+			background-color: yellowgreen;
+			border: solid forestgreen 3px;
+			width: 500px;
+		}
 
-            .tag#unpaid {
-                background-color: indianred;
-                border: solid darkred 3px;
-            }
-    </style>
+		.tag#unpaid {
+			background-color: indianred;
+			border: solid darkred 3px;
+		}
+
+		#cancel-part { position: relative; }
+
+		#cancel {
+			position: absolute;
+			left: 0;
+			font-size: 3rem;
+			font-weight: bold;
+			text-align: center;
+			color: red;
+			border-bottom: solid red 3px;
+			border-top: solid red 3px;
+			transform: translateX(100%) translateY(-200px) rotate(-20deg);
+			width: 200px;
+		}
+	</style>
 </head>
 <body>
-    <!--<div id="unpaid" class="tag">
-        UNPAID
-    </div>
-    <div id="paid" class="tag">
-        PAID
-    </div>-->
-    %paid_status%
-    <h1>Better Limited</h1>
-    <div style="background-color: lightgray; padding: .5rem">
-        <table id="info">
-            <tbody>
-                <tr>
-                    <td>
-                        <h2>Receipt #%drder_id%</h2>
-                        <p>
-                            Receipt Date: %receipt_date%<br />
-                            Payment Date: %payment_date%<br />
-                            Paid via: %payment_method%
-                        </p>
-                    </td>
-                    <td>
-                        <h2>Receipt To</h2>
-                        <p>
-                            %customer_name%<br />
-                            %customer_address%<br />
-                            %customer_phone%
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<!--Paid Status-->
+<!--<div id="unpaid" class="tag">
+	UNPAID
+</div>
+<div id="paid" class="tag">
+	PAID
+</div>-->
+%paid_status%
 
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--<tr>
-                    <td>abc</td>
-                    <td>1</td>
-                    <td>HK$12</td>
-                </tr>-->
-                %items%
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="2">Sub-total</td>
-                    <td>%subtotal%</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Discount</td>
-                    <td>%discount%</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Total</td>
-                    <td>%total%</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <div>
-        <table id="paid">
-            <tbody>
-                <tr id="paid">
-                    <td>Total</td>
-                    <td>%total%</td>
-                </tr>
-                <tr>
-                    <td>Paid</td>
-                    <td>%paid%</td>
-                </tr>
-                <tr>
-                    <td>Change</td>
-                    <td>%change%</td>
-                </tr>
-                <tr>
-                    <td>Arrears</td>
-                    <td>%arrears%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div style="text-align: center;">
-        - End -
-    </div>
+<!--head-->
+<h1>Better Limited</h1>
+
+<!--Order info-->
+<div style="background-color: lightgray; padding: .5rem">
+	<table id="info">
+		<tbody>
+		<tr>
+			<td>
+				<h2>Receipt #%drder_id%</h2>
+				<p>
+					Receipt Date: %receipt_date%<br/>
+					Payment Date: %payment_date%<br/>
+					Paid via: %payment_method%
+				</p>
+			</td>
+			<td>
+				<h2>Receipt To</h2>
+				<p>
+					%customer_name%<br/>
+					%customer_address%<br/>
+					%customer_phone%
+				</p>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<!--Order Item-->
+<div>
+	<table>
+		<thead>
+		<tr>
+			<th>Item Name</th>
+			<th>Qty</th>
+			<th>Total</th>
+		</tr>
+		</thead>
+		<tbody>
+		<!--<tr>
+			<td>abc</td>
+			<td>1</td>
+			<td>HK$12</td>
+		</tr>-->
+		%items%
+		</tbody>
+		<tfoot>
+		<tr>
+			<td colspan="2">Sub-total</td>
+			<td>%subtotal%</td>
+		</tr>
+		<tr>
+			<td colspan="2">Discount</td>
+			<td>%discount%</td>
+		</tr>
+		<tr>
+			<td colspan="2">Total</td>
+			<td>%total%</td>
+		</tr>
+		</tfoot>
+	</table>
+</div>
+
+<!--Order amount-->
+<div>
+	<table id="paid">
+		<tbody>
+		<tr id="paid">
+			<td>Total</td>
+			<td>%total%</td>
+		</tr>
+		<tr>
+			<td>Paid</td>
+			<td>%paid%</td>
+		</tr>
+		<tr>
+			<td>Change</td>
+			<td>%change%</td>
+		</tr>
+		<tr>
+			<td>Arrears</td>
+			<td>%arrears%</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<!--footer-->
+<div style="text-align: center;">
+	- End -
+</div>
+
+<!--cancel status-->
+<div id="cancel-part">
+	<!--<div id="cancel">CANCEL</div>-->
+	%cancel%
+</div>
+
 </body>
 </html>
