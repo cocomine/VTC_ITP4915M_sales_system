@@ -79,13 +79,11 @@ namespace UI.Inventory_page {
 
         private void Last_Click(object sender, EventArgs e) {
             // buuton:Last
-            try
-            {
+            try {
                 tblNameBs.MoveLast();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
-                            catch (Exception ex)
-            {
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
         }
