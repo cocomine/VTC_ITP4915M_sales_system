@@ -1,4 +1,4 @@
-﻿using ITP4915M.Inventory_page;
+﻿//using ITP4915M.Inventory_page;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -116,8 +116,10 @@ namespace UI.Inventory_page {
 
         private void btView_Click(object sender, EventArgs e)
         {
+
            /* Record_of_Inward_Received_Goods r = new Record_of_Inward_Received_Goods(conn);
             r.Show();*/
+
 
         }
     }

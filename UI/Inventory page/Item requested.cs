@@ -41,9 +41,14 @@ namespace UI.Inventory_page {
         }
 
         private void Next_Click(object sender, EventArgs e) {
+            try { 
             tblNameBs.MoveNext();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message);
+                 }
         }
 
         private void Previous_Click(object sender, EventArgs e) {
