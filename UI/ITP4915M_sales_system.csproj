@@ -255,6 +255,9 @@
     <EmbeddedResource Include="Installer Page\Installer Page.zh-hans.resx">
       <DependentUpon>Installer Page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Installer Page\Installer Page.zh-hant.resx">
+      <DependentUpon>Installer Page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory page.resx">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </EmbeddedResource>
