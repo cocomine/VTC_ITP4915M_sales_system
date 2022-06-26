@@ -90,16 +90,19 @@ namespace UI.Inventory_page {
 
         private void Search_Click(object sender, EventArgs e) {
             try {
-                if (comboBox1.Text != null && comboBox1.Text != "") {
+                
                     // Search StoreWarehouseID
-                    string ID = comboBox1.Text;
-                    ID = "";
+                    string ID = "";
+                if (comboBox1.Text != null && comboBox1.Text != "")
+                {
+                    ID = comboBox1.Text;
+                }
                     MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + ID, conn);
                     DataTable dtbl = new DataTable();
                     dtbl.Clear();
                     sqlda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;
-                }
+                
             } catch (Exception ea) {
                 //error message
                 MessageBox.Show("Please select one StoreWarehouseID", "顯示");
