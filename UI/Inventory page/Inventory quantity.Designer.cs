@@ -188,7 +188,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(612, 385);
+            this.numericUpDown1.Location = new System.Drawing.Point(612, 381);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(48, 22);
             this.numericUpDown1.TabIndex = 27;
@@ -196,7 +196,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(532, 388);
+            this.label1.Location = new System.Drawing.Point(532, 386);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 12);
             this.label1.TabIndex = 28;

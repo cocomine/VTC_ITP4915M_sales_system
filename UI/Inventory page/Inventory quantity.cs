@@ -140,7 +140,20 @@ namespace UI.Inventory_page {
 
         private void btSet_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                int Qty = int.Parse(numericUpDown1.Text);
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where Qty = " + Qty + ";", conn);
+                DataTable dtbl = new DataTable();
+                dtbl.Clear();
+                sqlda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+                MessageBox.Show("Deleted");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
