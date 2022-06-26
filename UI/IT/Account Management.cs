@@ -46,7 +46,7 @@ namespace UI.IT
                 //SelectCommand
                 adapter.SelectCommand = new MySqlCommand("SELECT s.AccountID, s.FullRealName, a.Username, s.DepartmentID, s.isManager, a.Enable From staff AS s, account AS a WHERE s.AccountID = a.AcoountID", conn);
                 //DeleteCommand
-                MySqlCommand cmd = new MySqlCommand("SET FOREIGN_KEY_CHECKS = 0; DELETE FROM account WHERE AcoountID = @id; SET FOREIGN_KEY_CHECKS = 1;", conn);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM account WHERE AcoountID = @id;", conn);
                 MySqlParameter parameter = cmd.Parameters.Add("@id", MySqlDbType.VarChar, 10, "AccountID");
                 parameter.SourceVersion = DataRowVersion.Original;
                 adapter.DeleteCommand = cmd;
