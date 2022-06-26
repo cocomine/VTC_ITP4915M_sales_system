@@ -92,8 +92,9 @@ namespace UI.Inventory_page {
             try {
                 if (comboBox1.Text != null && comboBox1.Text != "") {
                     // Search StoreWarehouseID
-
-                    MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + comboBox1.Text, conn);
+                    string ID = comboBox1.Text;
+                    ID = "";
+                    MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + ID, conn);
                     DataTable dtbl = new DataTable();
                     dtbl.Clear();
                     sqlda.Fill(dtbl);
@@ -103,6 +104,7 @@ namespace UI.Inventory_page {
                 //error message
                 MessageBox.Show("Please select one StoreWarehouseID", "顯示");
             }
+
         }
 
         private void dataGridView1_CellCick(object sender, DataGridViewCellEventArgs e) {
