@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btView = new System.Windows.Forms.Button();
             this.tbQty = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.btPurchase = new System.Windows.Forms.Button();
@@ -57,7 +56,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btView);
             this.groupBox1.Controls.Add(this.tbQty);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btPurchase);
@@ -68,17 +66,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Purchase";
-            // 
-            // btView
-            // 
-            this.btView.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btView.Location = new System.Drawing.Point(311, 65);
-            this.btView.Name = "btView";
-            this.btView.Size = new System.Drawing.Size(153, 24);
-            this.btView.TabIndex = 6;
-            this.btView.Text = "View Inward Received Goods";
-            this.btView.UseVisualStyleBackColor = false;
-            this.btView.Click += new System.EventHandler(this.btView_Click);
             // 
             // tbQty
             // 
@@ -323,6 +310,5 @@
         private System.Windows.Forms.TextBox tbID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown tbQty;
-        private System.Windows.Forms.Button btView;
     }
 }
