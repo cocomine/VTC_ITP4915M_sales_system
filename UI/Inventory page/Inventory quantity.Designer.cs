@@ -42,8 +42,12 @@
             this.Search = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btSet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -182,11 +186,41 @@
             this.btDelete.UseVisualStyleBackColor = false;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click_1);
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(612, 385);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 22);
+            this.numericUpDown1.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(532, 388);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 12);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Set Alert Level";
+            // 
+            // btSet
+            // 
+            this.btSet.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btSet.Location = new System.Drawing.Point(666, 378);
+            this.btSet.Name = "btSet";
+            this.btSet.Size = new System.Drawing.Size(58, 29);
+            this.btSet.TabIndex = 29;
+            this.btSet.Text = "Set";
+            this.btSet.UseVisualStyleBackColor = true;
+            this.btSet.Click += new System.EventHandler(this.btSet_Click);
+            // 
             // Inventory_quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 426);
+            this.Controls.Add(this.btSet);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Search);
@@ -206,6 +240,7 @@
             this.Load += new System.EventHandler(this.Inventory_quantity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,5 +260,8 @@
         private System.Windows.Forms.Button Search;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btSet;
     }
 }

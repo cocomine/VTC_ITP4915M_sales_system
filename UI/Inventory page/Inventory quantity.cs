@@ -137,5 +137,10 @@ namespace UI.Inventory_page {
         {
 
         }
+
+        private void btSet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
