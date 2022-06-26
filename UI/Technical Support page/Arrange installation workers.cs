@@ -169,6 +169,7 @@ namespace UI.Technical_Support_page {
             MySqlDataReader data_schedule;
 
             try {
+                lb_installation_item.Items.Clear();
                 conn.Open();
                 data_schedule = cmd_schedule.ExecuteReader();
 
@@ -242,10 +243,8 @@ namespace UI.Technical_Support_page {
 
                 while (data_count_30.Read()) {
                     //Defind variable of only one order can be taken every 30 minutes
-                    string new_order_date = tb_installation_date.Text;
-                    string old_order_date = data_count_30.GetString("install_date");
-                    DateTime new_date = Convert.ToDateTime(new_order_date);
-                    DateTime old_date = Convert.ToDateTime(old_order_date);
+                    DateTime new_date = Convert.ToDateTime(tb_installation_date.Text);
+                    DateTime old_date = Convert.ToDateTime(data_count_30.GetString("install_date"));
 
                     if (DateTime.Compare(new_date, old_date) == 0) //if new older and old order are same time
                     {
@@ -272,8 +271,14 @@ namespace UI.Technical_Support_page {
                         }
                     }
                 }
-            } catch (MySqlException ex) {
+            } catch (MySqlException ex) 
+            {
                 MessageBox.Show("Please select the order to cancel the schedule of installation.");
+
+            } catch (FormatException ex)
+            {
+                MessageBox.Show("Please select the order that needs to be installed for " + sStaff + " to perform the work.");
+                rs = false;
             }
 
             conn.Close();
@@ -313,6 +318,11 @@ namespace UI.Technical_Support_page {
             if (!rs) {
                 lb_scheduled_features.Items.Remove(sOrder);
                 lb_order.Items.Add(sOrder);
+            }
+
+            if(sOrder == "")
+            {
+                lb_order.Items.Remove(sOrder);
             }
         }
 
