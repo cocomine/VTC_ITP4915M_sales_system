@@ -11,40 +11,40 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="loginToolStripMenuItem.Text" xml:space="preserve">
-		<value>注销</value>
-	</data>
 	<data name="$this.Text" xml:space="preserve">
-		<value>送货列表</value>
+		<value>送貨列表</value>
 	</data>
 	<data name="btn_complete.Text" xml:space="preserve">
-		<value>完成订单</value>
+		<value>完成訂單</value>
 	</data>
 	<data name="groupBox1.Text" xml:space="preserve">
-		<value>订单详情</value>
+		<value>訂單詳情</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>客户姓名</value>
+		<value>客戶姓名</value>
 	</data>
 	<data name="label2.Text" xml:space="preserve">
-		<value>客户地址</value>
+		<value>客戶地址</value>
 	</data>
 	<data name="label3.Text" xml:space="preserve">
-		<value>客户电话</value>
+		<value>客戶電話</value>
 	</data>
 	<data name="label4.Text" xml:space="preserve">
-		<value>交货物品</value>
+		<value>交貨物品</value>
 	</data>
 	<data name="label5.Text" xml:space="preserve">
-		<value>安排给你的订单</value>
+		<value>安排給你的訂單</value>
 	</data>
 	<data name="label6.Text" xml:space="preserve">
-		<value>送货时段</value>
+		<value>送貨時段</value>
 	</data>
 	<data name="label7.Text" xml:space="preserve">
-		<value>送货日期</value>
+		<value>送貨日期</value>
+	</data>
+	<data name="loginToolStripMenuItem.Text" xml:space="preserve">
+		<value>登出</value>
 	</data>
 	<data name="Please_select_an_order_that_has_already_been_shipped_" xml:space="preserve">
-		<value>请先选择订单</value>
+		<value>請先選擇訂單</value>
 	</data>
 </root>

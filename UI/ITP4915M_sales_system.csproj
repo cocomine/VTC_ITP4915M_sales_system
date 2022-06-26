@@ -246,10 +246,16 @@
     <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.zh-hans.resx">
       <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.zh-hant.resx">
+      <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.zh-hans.resx">
+      <DependentUpon>Delivery Team Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Delivery Team Page.zh-hant.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Installer Page\Installer Page.zh-hans.resx">

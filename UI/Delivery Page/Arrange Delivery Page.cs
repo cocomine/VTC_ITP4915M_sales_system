@@ -16,12 +16,14 @@ namespace UI.Delivery_Page {
         private MySqlConnection conn;
         private Account_Details acc;
         private string staffID; //Defind variable of staff ID
+        private Lang lang;
 
 
         public Arrange_Delivery_Page(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Arrange_Delivery_Page));
         }
 
         private void Arrange_installation_FormClosed(object sender, FormClosedEventArgs e) { Program.removePage(); }
@@ -89,13 +91,6 @@ namespace UI.Delivery_Page {
             conn.Close();
         }
 
-
-        private void label2_Click(object sender, EventArgs e) { }
-
-        private void label4_Click(object sender, EventArgs e) { }
-
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e) { }
-
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e) {
             //Select Command
             MySqlCommand cmd_cus = new MySqlCommand("SELECT d.OrderID, d.Session, d.Delivery_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " + "FROM `delivery` AS d, `customer` AS c, `order_item` AS oi, `item` AS i " + "WHERE d.CustomerID = c.CustomerID AND d.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
@@ -135,12 +130,6 @@ namespace UI.Delivery_Page {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void tb_customer_name_TextChanged(object sender, EventArgs e) { }
-
-        private void tb_customer_phone_TextChanged(object sender, EventArgs e) { }
-
-        private void tb_customer_address_TextChanged(object sender, EventArgs e) { }
 
         private void lb_unscheduled_team_SelectedIndexChanged(object sender, EventArgs e) {
             //According to the selection in the list box, get the corresponding record
@@ -185,11 +174,11 @@ namespace UI.Delivery_Page {
                     tb_customer_phone.Text = cPhone;
                     lb_delivery_item.Items.Add(iName);
                     if (dSession == "0") {
-                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 09:00 - 12:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " 09:00 - 12:00";
                     } else if (dSession == "1") {
-                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 13:00 - 17:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " 13:00 - 17:00";
                     } else if (dSession == "2") {
-                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " Session: 18:00 - 22:00";
+                        tb_session.Text = dDate.Day + "/" + dDate.Month + "/" + dDate.Year + " 18:00 - 22:00";
                     }
                 }
             } catch (MySqlException ex) {
@@ -283,11 +272,11 @@ namespace UI.Delivery_Page {
                 }
             } catch (MySqlException ex) {
                 if (sOrder == "") {
-                    MessageBox.Show("Please select the that needs to be delivery for Team " + tID + " to perform the work.");
+                    MessageBox.Show(string.Format(lang.GetString("Please select the that needs to be delivery for Team {0} to perform the work."), tID));
                 }
 
                 if (tID == "") {
-                    MessageBox.Show("Please select the delivery team to perform '" + sOrder + "' order.");
+                    MessageBox.Show(string.Format(lang.GetString("Please_select_the_delivery_team_to_perform___0___order_"), sOrder));
                 }
             }
 
@@ -302,7 +291,7 @@ namespace UI.Delivery_Page {
                         cmd_to_delivery_staff.ExecuteNonQuery(); //Update the data into the database
                     }
                 } else {
-                    MessageBox.Show("Please select the that needs to be delivery for Team " + tID + " to perform the work.");
+                    MessageBox.Show(string.Format(lang.GetString("Please select the that needs to be delivery for Team {0} to perform the work."), tID));
                 }
             } catch (MySqlException ex) {
                 MessageBox.Show(ex.Message);

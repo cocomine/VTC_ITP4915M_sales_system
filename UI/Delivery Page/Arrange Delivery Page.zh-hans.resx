@@ -11,4 +11,49 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>安排送货</value>
+	</data>
+	<data name="btn_schedule.Text" xml:space="preserve">
+		<value>安排订单</value>
+	</data>
+	<data name="btn_unschedule.Text" xml:space="preserve">
+		<value>取消计划</value>
+	</data>
+	<data name="groupBox1.Text" xml:space="preserve">
+		<value>订单详情</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>需要安排交付团队的订单</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>可安排的团队</value>
+	</data>
+	<data name="label3.Text" xml:space="preserve">
+		<value>已安排订单</value>
+	</data>
+	<data name="label4.Text" xml:space="preserve">
+		<value>交货物品</value>
+	</data>
+	<data name="label5.Text" xml:space="preserve">
+		<value>客户电话</value>
+	</data>
+	<data name="label6.Text" xml:space="preserve">
+		<value>客户姓名</value>
+	</data>
+	<data name="label7.Text" xml:space="preserve">
+		<value>客户地址</value>
+	</data>
+	<data name="label8.Text" xml:space="preserve">
+		<value>送货时段</value>
+	</data>
+	<data name="logoutToolStripMenuItem.Text" xml:space="preserve">
+		<value>注销</value>
+	</data>
+	<data name="Please_select_the_delivery_team_to_perform___0___order_" xml:space="preserve">
+		<value>请选择送货团队以安排订单({0})。</value>
+	</data>
+	<data name="Please_select_the_that_needs_to_be_delivery_for_Team__0__to_perform_the_work_" xml:space="preserve">
+		<value>请选择订单以安排送货团队({0})</value>
+	</data>
 </root>
