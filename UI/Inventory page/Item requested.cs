@@ -70,9 +70,10 @@ namespace UI.Inventory_page {
         private void Last_Click(object sender, EventArgs e) {
             try
             {
-            tblNameBs.MoveLast();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+                tblNameBs.MoveLast();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
             catch (Exception ex)
             { MessageBox.Show(ex.Message);}
         }
@@ -83,6 +84,7 @@ namespace UI.Inventory_page {
                 tblNameBs.MoveFirst();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
         }
