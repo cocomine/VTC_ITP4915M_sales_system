@@ -167,6 +167,7 @@ namespace UI.Delivery_Page {
             MySqlDataReader data_schedule;
 
             try {
+                lb_delivery_item.Items.Clear();
                 conn.Open();
                 data_schedule = cmd_schedule.ExecuteReader();
 
