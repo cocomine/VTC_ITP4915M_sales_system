@@ -419,6 +419,9 @@
     <EmbeddedResource Include="Technical Support page\Arrange installation workers.zh-hans.resx">
       <DependentUpon>Arrange installation workers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Technical Support page\Arrange installation workers.zh-hant.resx">
+      <DependentUpon>Arrange installation workers.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

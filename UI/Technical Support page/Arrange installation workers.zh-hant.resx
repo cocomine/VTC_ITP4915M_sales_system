@@ -12,7 +12,7 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>安排安装工人</value>
+		<value>安排安裝工人</value>
 	</data>
 	<data name="btn_schedule.Text" xml:space="preserve">
 		<value>安排</value>
@@ -21,45 +21,45 @@
 		<value>取消安排</value>
 	</data>
 	<data name="groupBox1.Text" xml:space="preserve">
-		<value>订单详情</value>
+		<value>訂單詳情</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>需要为工人安排的订单</value>
+		<value>需要為工人安排的訂單</value>
 	</data>
 	<data name="label2.Text" xml:space="preserve">
-		<value>计划外工人</value>
+		<value>計劃外工人</value>
 	</data>
 	<data name="label3.Text" xml:space="preserve">
-		<value>已安排订单</value>
+		<value>已安排訂單</value>
 	</data>
 	<data name="label4.Text" xml:space="preserve">
-		<value>安装项目</value>
+		<value>安裝項目</value>
 	</data>
 	<data name="label5.Text" xml:space="preserve">
-		<value>客户电话</value>
+		<value>客戶電話</value>
 	</data>
 	<data name="label6.Text" xml:space="preserve">
-		<value>客户姓名</value>
+		<value>客戶姓名</value>
 	</data>
 	<data name="label7.Text" xml:space="preserve">
-		<value>客户地址</value>
+		<value>客戶地址</value>
 	</data>
 	<data name="label8.Text" xml:space="preserve">
-		<value>安装日期</value>
+		<value>安裝日期</value>
 	</data>
 	<data name="logoutToolStripMenuItem.Text" xml:space="preserve">
-		<value>注销</value>
+		<value>登出</value>
 	</data>
 	<data name="Please_select_the_installer_worker_to_perform___0___order_" xml:space="preserve">
-		<value>请选择安装人员以安排订单({0})。</value>
+		<value>請選擇安裝人員以安排訂單({0})。</value>
 	</data>
 	<data name="Please_select_the_order_that_needs_to_be_installed_for__0__to_perform_the_work_" xml:space="preserve">
-		<value>请选择订单以安排({0})安装工人。</value>
+		<value>請選擇訂單以安排({0})安裝工人。</value>
 	</data>
 	<data name="Please_select_the_order_to_cancel_the_schedule_of_installation_" xml:space="preserve">
-		<value>请选择需要取消安排的订单。</value>
+		<value>請選擇需要取消安排的訂單。</value>
 	</data>
 	<data name="Installation_orders_for_each_employee_can_only_be_separated_by_thirty_minutes_" xml:space="preserve">
-		<value>安装工人每张订单之间需要相隔30分钟</value>
+		<value>安裝工人每張訂單之間需要相隔30分鐘</value>
 	</data>
 </root>

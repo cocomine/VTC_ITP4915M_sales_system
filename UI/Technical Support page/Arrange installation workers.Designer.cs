@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Arrange_installation));
             this.lb_order = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,121 +70,67 @@
             // 
             // lb_order
             // 
-            this.lb_order.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.lb_order, "lb_order");
             this.lb_order.FormattingEnabled = true;
-            this.lb_order.ItemHeight = 15;
-            this.lb_order.Location = new System.Drawing.Point(7, 30);
-            this.lb_order.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lb_order.Name = "lb_order";
-            this.lb_order.Size = new System.Drawing.Size(337, 484);
-            this.lb_order.TabIndex = 0;
             this.lb_order.SelectedIndexChanged += new System.EventHandler(this.lb_order_SelectedIndexChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Orders that need to be scheduled for workers";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(747, 27);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(320, 531);
-            this.panel1.TabIndex = 4;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 531);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lb_unscheduled_worker);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(4, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(312, 232);
-            this.panel3.TabIndex = 0;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 8);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Unscheduled worker";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lb_unscheduled_worker
             // 
-            this.lb_unscheduled_worker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lb_unscheduled_worker, "lb_unscheduled_worker");
             this.lb_unscheduled_worker.FormattingEnabled = true;
-            this.lb_unscheduled_worker.ItemHeight = 15;
-            this.lb_unscheduled_worker.Location = new System.Drawing.Point(7, 26);
-            this.lb_unscheduled_worker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lb_unscheduled_worker.Name = "lb_unscheduled_worker";
-            this.lb_unscheduled_worker.Size = new System.Drawing.Size(300, 184);
-            this.lb_unscheduled_worker.TabIndex = 6;
             this.lb_unscheduled_worker.SelectedIndexChanged += new System.EventHandler(this.lb_unscheduled_worker_SelectedIndexChanged);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btn_schedule);
             this.panel4.Controls.Add(this.btn_unschedule);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(4, 244);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(312, 42);
-            this.panel4.TabIndex = 1;
             // 
             // btn_schedule
             // 
-            this.btn_schedule.Location = new System.Drawing.Point(161, 8);
-            this.btn_schedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.btn_schedule, "btn_schedule");
             this.btn_schedule.Name = "btn_schedule";
-            this.btn_schedule.Size = new System.Drawing.Size(139, 29);
-            this.btn_schedule.TabIndex = 1;
-            this.btn_schedule.Text = "Schedule";
             this.btn_schedule.UseVisualStyleBackColor = true;
             this.btn_schedule.Click += new System.EventHandler(this.btn_schedule_Click);
             // 
             // btn_unschedule
             // 
-            this.btn_unschedule.Location = new System.Drawing.Point(7, 8);
-            this.btn_unschedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.btn_unschedule, "btn_unschedule");
             this.btn_unschedule.Name = "btn_unschedule";
-            this.btn_unschedule.Size = new System.Drawing.Size(147, 29);
-            this.btn_unschedule.TabIndex = 0;
-            this.btn_unschedule.Text = "Unschedule";
             this.btn_unschedule.UseVisualStyleBackColor = true;
             this.btn_unschedule.Click += new System.EventHandler(this.btn_unschedule_Click);
             // 
@@ -191,57 +138,33 @@
             // 
             this.panel5.Controls.Add(this.lb_scheduled_features);
             this.panel5.Controls.Add(this.label3);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(4, 294);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(312, 233);
-            this.panel5.TabIndex = 2;
             // 
             // lb_scheduled_features
             // 
-            this.lb_scheduled_features.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lb_scheduled_features, "lb_scheduled_features");
             this.lb_scheduled_features.FormattingEnabled = true;
-            this.lb_scheduled_features.ItemHeight = 15;
-            this.lb_scheduled_features.Location = new System.Drawing.Point(7, 19);
-            this.lb_scheduled_features.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lb_scheduled_features.Name = "lb_scheduled_features";
-            this.lb_scheduled_features.Size = new System.Drawing.Size(300, 199);
-            this.lb_scheduled_features.TabIndex = 1;
             this.lb_scheduled_features.SelectedIndexChanged += new System.EventHandler(this.lb_scheduled_features_SelectedIndexChanged);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Scheduled Order";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lb_order);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 27);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(363, 531);
-            this.panel2.TabIndex = 5;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.groupBox1);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(363, 27);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(384, 531);
-            this.panel6.TabIndex = 6;
             // 
             // groupBox1
             // 
@@ -255,165 +178,91 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tb_customer_phone);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(384, 531);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Order Detail";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // tb_installation_date
             // 
             this.tb_installation_date.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_installation_date.Location = new System.Drawing.Point(12, 486);
-            this.tb_installation_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            resources.ApplyResources(this.tb_installation_date, "tb_installation_date");
             this.tb_installation_date.Name = "tb_installation_date";
-            this.tb_installation_date.Size = new System.Drawing.Size(219, 25);
-            this.tb_installation_date.TabIndex = 17;
-            this.tb_installation_date.TextChanged += new System.EventHandler(this.tb_installation_date_TextChanged);
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 468);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 15);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Installation Date";
             // 
             // tb_customer_address
             // 
-            this.tb_customer_address.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tb_customer_address, "tb_customer_address");
             this.tb_customer_address.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_customer_address.Location = new System.Drawing.Point(12, 166);
-            this.tb_customer_address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_customer_address.Name = "tb_customer_address";
             this.tb_customer_address.ReadOnly = true;
-            this.tb_customer_address.Size = new System.Drawing.Size(356, 85);
-            this.tb_customer_address.TabIndex = 15;
-            this.tb_customer_address.Text = "";
-            this.tb_customer_address.TextChanged += new System.EventHandler(this.tb_customer_address_TextChanged);
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 142);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Customer Address";
             // 
             // tb_customer_name
             // 
-            this.tb_customer_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tb_customer_name, "tb_customer_name");
             this.tb_customer_name.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_customer_name.Location = new System.Drawing.Point(12, 45);
-            this.tb_customer_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_customer_name.Name = "tb_customer_name";
             this.tb_customer_name.ReadOnly = true;
-            this.tb_customer_name.Size = new System.Drawing.Size(356, 25);
-            this.tb_customer_name.TabIndex = 13;
-            this.tb_customer_name.TextChanged += new System.EventHandler(this.tb_customer_name_TextChanged);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 26);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 15);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Customer Name";
             // 
             // lb_installation_item
             // 
-            this.lb_installation_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.lb_installation_item, "lb_installation_item");
             this.lb_installation_item.FormattingEnabled = true;
-            this.lb_installation_item.ItemHeight = 15;
-            this.lb_installation_item.Location = new System.Drawing.Point(12, 288);
-            this.lb_installation_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lb_installation_item.Name = "lb_installation_item";
-            this.lb_installation_item.Size = new System.Drawing.Size(356, 49);
-            this.lb_installation_item.TabIndex = 11;
-            this.lb_installation_item.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 269);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 15);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Installation Item";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // tb_customer_phone
             // 
-            this.tb_customer_phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tb_customer_phone, "tb_customer_phone");
             this.tb_customer_phone.BackColor = System.Drawing.SystemColors.Info;
-            this.tb_customer_phone.Location = new System.Drawing.Point(12, 101);
-            this.tb_customer_phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_customer_phone.Name = "tb_customer_phone";
             this.tb_customer_phone.ReadOnly = true;
-            this.tb_customer_phone.Size = new System.Drawing.Size(204, 25);
-            this.tb_customer_phone.TabIndex = 9;
-            this.tb_customer_phone.TextChanged += new System.EventHandler(this.tb_customer_phone_TextChanged);
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 82);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 15);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Customer Phone";
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 27);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
-            this.logoutToolStripMenuItem.Text = "Logout";
+            resources.ApplyResources(this.logoutToolStripMenuItem, "logoutToolStripMenuItem");
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // Arrange_installation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 558);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1082, 595);
             this.Name = "Arrange_installation";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "Arrange installation workers";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Arrange_installation_FormClosed);
             this.Load += new System.EventHandler(this.Arrange_installation_Load);
             this.panel1.ResumeLayout(false);

@@ -15,6 +15,7 @@ namespace UI.Technical_Support_page {
     public partial class Arrange_installation : Form {
         private MySqlConnection conn;
         private Account_Details acc;
+        private Lang lang;
 
         private string staffID; //Defind variable of staff ID
         // private string old_order_date;
@@ -23,6 +24,7 @@ namespace UI.Technical_Support_page {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Arrange_installation));
         }
 
         private void Arrange_installation_FormClosed(object sender, FormClosedEventArgs e) { Program.removePage(); }
@@ -98,13 +100,6 @@ namespace UI.Technical_Support_page {
             conn.Close();
         }
 
-
-        private void label2_Click(object sender, EventArgs e) { }
-
-        private void label4_Click(object sender, EventArgs e) { }
-
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e) { }
-
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e) {
             //Select Command
             MySqlCommand cmd_cus = new MySqlCommand("SELECT ins.OrderID, ins.Install_date, c.CustomerID, c.Customer_name, c.Phone, c.Address, oi.OrderID, i.ItemID, i.Name " + "FROM `installation` AS ins, `customer` AS c, `order_item` AS oi, `item` AS i " + "WHERE ins.CustomerID = c.customerID AND ins.OrderID = '" + lb_order.Text + "' AND oi.OrderID = '" + lb_order.Text + "' AND oi.ItemID = i.ItemID;", conn);
@@ -137,12 +132,6 @@ namespace UI.Technical_Support_page {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void tb_customer_name_TextChanged(object sender, EventArgs e) { }
-
-        private void tb_customer_phone_TextChanged(object sender, EventArgs e) { }
-
-        private void tb_customer_address_TextChanged(object sender, EventArgs e) { }
 
         private void lb_unscheduled_worker_SelectedIndexChanged(object sender, EventArgs e) {
             //According to the selection in the list box, get the corresponding record
@@ -208,7 +197,7 @@ namespace UI.Technical_Support_page {
                     cmd_to_install_staff.ExecuteNonQuery(); //Update the data into the database
                 }
             } catch (MySqlException ex) {
-                MessageBox.Show("Please select the order to cancel the schedule of installation.");
+                MessageBox.Show(lang.GetString("Please_select_the_order_to_cancel_the_schedule_of_installation_"));
             }
 
             conn.Close();
@@ -248,7 +237,7 @@ namespace UI.Technical_Support_page {
 
                     if (DateTime.Compare(new_date, old_date) == 0) //if new older and old order are same time
                     {
-                        DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes.", "Warning", MessageBoxButtons.OK);
+                        DialogResult result = MessageBox.Show(lang.GetString("Installation_orders_for_each_employee_can_only_be_separated_by_thirty_minutes_"), "Warning", MessageBoxButtons.OK);
                         if (result == DialogResult.OK) {
                             rs = false;
                         }
@@ -256,7 +245,7 @@ namespace UI.Technical_Support_page {
                     {
                         //if old order installation date is later than new older
                         if (old_date.AddMinutes(30) >= new_date) {
-                            DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes.", "Warning", MessageBoxButtons.OK);
+                            DialogResult result = MessageBox.Show(lang.GetString("Installation_orders_for_each_employee_can_only_be_separated_by_thirty_minutes_"), "Warning", MessageBoxButtons.OK);
                             if (result == DialogResult.OK) {
                                 rs = false;
                             }
@@ -264,7 +253,7 @@ namespace UI.Technical_Support_page {
                     } else //if old order installation date is later than new older
                     {
                         if (new_date.AddMinutes(30) >= old_date) {
-                            DialogResult result = MessageBox.Show("Installation orders for each employee can only be separated by thirty minutes.", "Warning", MessageBoxButtons.OK);
+                            DialogResult result = MessageBox.Show(lang.GetString("Installation_orders_for_each_employee_can_only_be_separated_by_thirty_minutes_"), "Warning", MessageBoxButtons.OK);
                             if (result == DialogResult.OK) {
                                 rs = false;
                             }
@@ -273,11 +262,11 @@ namespace UI.Technical_Support_page {
                 }
             } catch (MySqlException ex) 
             {
-                MessageBox.Show("Please select the order to cancel the schedule of installation.");
+                MessageBox.Show(lang.GetString("Please_select_the_order_to_cancel_the_schedule_of_installation_"));
 
             } catch (FormatException ex)
             {
-                MessageBox.Show("Please select the order that needs to be installed for " + sStaff + " to perform the work.");
+                MessageBox.Show(string.Format(lang.GetString("Please_select_the_order_that_needs_to_be_installed_for__0__to_perform_the_work_"), sStaff));
                 rs = false;
             }
 
@@ -293,11 +282,11 @@ namespace UI.Technical_Support_page {
                     }
                 } catch (MySqlException ex) {
                     if (sOrder == "") {
-                        MessageBox.Show("Please select the order that needs to be installed for " + sStaff + " to perform the work.");
+                        MessageBox.Show(string.Format(lang.GetString("Please_select_the_order_that_needs_to_be_installed_for__0__to_perform_the_work_"), sStaff));
                     }
 
                     if (sStaff == "") {
-                        MessageBox.Show("Please select the installer worker to perform '" + sOrder + " ' order.");
+                        MessageBox.Show(string.Format(lang.GetString("Please_select_the_installer_worker_to_perform___0___order_"), sOrder));
                     }
                 }
 
@@ -327,9 +316,5 @@ namespace UI.Technical_Support_page {
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) { Program.Logout(); }
-
-        private void groupBox1_Enter(object sender, EventArgs e) { }
-
-        private void tb_installation_date_TextChanged(object sender, EventArgs e) { }
     }
 }
