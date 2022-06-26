@@ -30,6 +30,7 @@ namespace UI.Inventory_page {
             textBox2.Text = "0";
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
             textBox3.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
+            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "Qty1"));
         }
 
         public void reload() {
