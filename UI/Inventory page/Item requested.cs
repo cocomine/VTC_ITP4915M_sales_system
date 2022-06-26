@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,27 +41,50 @@ namespace UI.Inventory_page {
         }
 
         private void Next_Click(object sender, EventArgs e) {
-            tblNameBs.MoveNext();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            try
+            {
+                tblNameBs.MoveNext();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Previous_Click(object sender, EventArgs e) {
-            tblNameBs.MovePrevious();
+            try
+            {
+                tblNameBs.MovePrevious();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Last_Click(object sender, EventArgs e) {
+            try
+            {
             tblNameBs.MoveLast();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message);}
         }
 
         private void First_Click(object sender, EventArgs e) {
-            tblNameBs.MoveFirst();
+            try
+            {
+                tblNameBs.MoveFirst();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
 
