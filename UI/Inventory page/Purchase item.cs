@@ -19,7 +19,7 @@ namespace UI.Inventory_page {
         }
 
         private void fill_listbow() {
-            MySqlCommand cmd = new MySqlCommand("SELECT Distinct Name FROM `item`,`purchase_order`;", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT Distinct Name FROM `item`;", conn);
             MySqlDataReader myReader;
 
             try {
