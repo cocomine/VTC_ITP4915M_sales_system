@@ -11,22 +11,22 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="logoutToolStripMenuItem1.Text" xml:space="preserve">
-		<value>注销</value>
-	</data>
 	<data name="$this.Text" xml:space="preserve">
-		<value>库存页面</value>
+		<value>庫存頁面</value>
 	</data>
 	<data name="inventoryQuantityToolStripMenuItem.Text" xml:space="preserve">
-		<value>库存数量</value>
+		<value>庫存數量</value>
 	</data>
 	<data name="itemRequestToolStripMenuItem.Text" xml:space="preserve">
-		<value>物品请求</value>
+		<value>物品請求</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>请在上方选择一项功能</value>
+		<value>請在上方選擇一項功能</value>
+	</data>
+	<data name="logoutToolStripMenuItem1.Text" xml:space="preserve">
+		<value>登出</value>
 	</data>
 	<data name="purchaseItemToolStripMenuItem1.Text" xml:space="preserve">
-		<value>采购物品</value>
+		<value>採購物品</value>
 	</data>
 </root>

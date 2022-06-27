@@ -270,19 +270,31 @@
     <EmbeddedResource Include="Inventory page\Inventory page.zh-hans.resx">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory page.zh-hant.resx">
+      <DependentUpon>Inventory page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory quantity.resx">
       <DependentUpon>Inventory quantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory quantity.zh-hans.resx">
       <DependentUpon>Inventory quantity.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory quantity.zh-hant.resx">
+      <DependentUpon>Inventory quantity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Item requested.resx">
+      <DependentUpon>Item requested.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Item requested.zh-hant.resx">
       <DependentUpon>Item requested.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.zh-hans.resx">
+      <DependentUpon>Purchase item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Purchase item.zh-hant.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Account Management.zh-hans.resx">

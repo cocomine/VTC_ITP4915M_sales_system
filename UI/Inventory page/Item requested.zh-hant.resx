@@ -12,45 +12,36 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>库存数量</value>
+		<value>請求的項目</value>
 	</data>
 	<data name="btDelete.Text" xml:space="preserve">
-		<value>删除</value>
-	</data>
-	<data name="btSet.Text" xml:space="preserve">
-		<value>放</value>
+		<value>完成訂單</value>
 	</data>
 	<data name="button1.Text" xml:space="preserve">
-		<value>重新加载</value>
+		<value>重新加載</value>
 	</data>
 	<data name="First.Text" xml:space="preserve">
-		<value>最前一个</value>
+		<value>最前一個</value>
 	</data>
 	<data name="ItemID.Text" xml:space="preserve">
-		<value>物品编号</value>
+		<value>物品編號</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>设置警报级别</value>
+		<value>當前數量</value>
 	</data>
-	<data name="label2.Text" xml:space="preserve">
-		<value>货仓编号</value>
+	<data name="label3.Text" xml:space="preserve">
+		<value>數量</value>
 	</data>
 	<data name="Last.Text" xml:space="preserve">
-		<value>最后一个</value>
+		<value>最後一個</value>
 	</data>
 	<data name="Next.Text" xml:space="preserve">
-		<value>下一个</value>
+		<value>下一個</value>
 	</data>
 	<data name="Previous.Text" xml:space="preserve">
-		<value>上一个</value>
+		<value>上一個</value>
 	</data>
-	<data name="Search.Text" xml:space="preserve">
-		<value>搜索</value>
-	</data>
-	<data name="Please_select_one_StoreWarehouseID" xml:space="preserve">
-		<value>请选择一个仓库</value>
-	</data>
-	<data name="Deleted" xml:space="preserve">
-		<value>已删除</value>
+	<data name="Updated" xml:space="preserve">
+		<value>已更新</value>
 	</data>
 </root>

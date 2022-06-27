@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M.API;
 
 namespace UI.Inventory_page {
     public partial class Inventory_quantity : Form {
@@ -18,10 +19,12 @@ namespace UI.Inventory_page {
         private MySqlDataAdapter da = new MySqlDataAdapter();
         private DataSet ds = new DataSet();
         private BindingSource tblNameBs = new BindingSource();
+        private Lang lang;
 
         public Inventory_quantity(MySqlConnection conn) {
             this.conn = conn;
             InitializeComponent();
+            lang = new Lang(typeof(Inventory_quantity));
         }
 
         private void Inventory_quantity_Load(object sender, EventArgs e) {
@@ -106,7 +109,7 @@ namespace UI.Inventory_page {
                 
             } catch (Exception ea) {
                 //error message
-                MessageBox.Show("Please select one StoreWarehouseID", "顯示");
+                MessageBox.Show(lang.GetString("Please_select_one_StoreWarehouseID"));
             }
 
         }
@@ -134,14 +137,9 @@ namespace UI.Inventory_page {
             dtbl.Clear();
             sqlda.Fill(dtbl);
             dataGridView1.DataSource = dtbl;
-            MessageBox.Show("Deleted");
+            MessageBox.Show(lang.GetString("Deleted"));
 
             reload();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btSet_Click(object sender, EventArgs e)
