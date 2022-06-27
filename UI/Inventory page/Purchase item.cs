@@ -105,12 +105,17 @@ namespace UI.Inventory_page {
                 DateTime now = DateTime.Now;
                 string ItemID = tbID.Text;
 
+                if (Qty > 0)
+                {
 
-            //add item
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES (null, '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + ItemID + "', " + Qty + ");", conn);
+                    //add item
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES (null, '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + ItemID + "', " + Qty + ");", conn);
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show(lang.GetString("Purchased"));
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show(lang.GetString("Purchased"));
+                }
+
+                else { MessageBox.Show("Must be >0"); }
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
