@@ -67,6 +67,9 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>VTCicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
@@ -483,6 +486,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="VTCicon.ico" />
     <None Include="Resources\Entypo-LogOut-24x24.png" />
     <None Include="Resources\Entypo-LogOut-16x16.png" />
     <None Include="Resources\FontAwesome-AddressCardRegular-24x24.png" />
