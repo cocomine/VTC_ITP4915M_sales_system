@@ -158,7 +158,9 @@ namespace UI.Inventory_page {
         }
 
         private void btDelete_Click_1(object sender, EventArgs e) {
-            MySqlDataAdapter sqlda = new MySqlDataAdapter("DELETE FROM `inventory` WHERE `inventory`.`ItemID` = '" + textBox1.Text + "';", conn);
+            try
+            {
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("DELETE FROM `inventory` WHERE `inventory`.`ItemID` = '" + textBox1.Text + "';", conn);
             DataTable dtbl = new DataTable();
             dtbl.Clear();
             sqlda.Fill(dtbl);
@@ -166,7 +168,11 @@ namespace UI.Inventory_page {
             MessageBox.Show(lang.GetString("Deleted"));
 
             reload();
-        }
+        } catch (Exception ea) {
+                //error message
+                MessageBox.Show(lang.GetString("Please_select_one_StoreWarehouseID"));
+            }
+}
 
         private void btSet_Click(object sender, EventArgs e)
         {

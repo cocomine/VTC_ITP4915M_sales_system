@@ -95,6 +95,7 @@ namespace UI.Inventory_page {
 
         private void btDelete_Click(object sender, EventArgs e) {
             string ItemID = textBox1.Text;
+            try { 
             //int addQty = int.Parse(textBox3.Text) + int.Parse(textBox2.Text);
             int addQty = int.Parse(textBox3.Text);
             MySqlDataAdapter sqlda1 = new MySqlDataAdapter("UPDATE `inventory` SET `Qty` = Qty + @Qty WHERE `inventory`.`ItemID` = @itemId;", conn);
@@ -111,9 +112,12 @@ namespace UI.Inventory_page {
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
-            MessageBox.Show(lang.GetString("Updated"));
+            MessageBox.Show("Updated");
 
             reload();
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
