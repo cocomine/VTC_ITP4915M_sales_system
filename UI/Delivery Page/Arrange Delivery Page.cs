@@ -233,6 +233,7 @@ namespace UI.Delivery_Page {
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
             lb_unscheduled_team.Items.Clear();
+            tb_session.Clear();
 
             if (sOrder == "") {
                 lb_order.Items.Remove(sOrder);
@@ -305,6 +306,7 @@ namespace UI.Delivery_Page {
             tb_customer_name.Clear();
             tb_customer_phone.Clear();
             tb_customer_address.Clear();
+            tb_session.Clear();
             if (tID == "") {
                 lb_scheduled_features.Items.Remove(sOrder);
                 lb_order.Items.Add(sOrder);
