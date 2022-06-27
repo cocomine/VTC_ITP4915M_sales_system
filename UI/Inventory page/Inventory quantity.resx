@@ -318,24 +318,6 @@
   <data name="&gt;&gt;Last.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="comboBox1.Items" xml:space="preserve">
-    <value>3245</value>
-  </data>
-  <data name="comboBox1.Items1" xml:space="preserve">
-    <value>4650</value>
-  </data>
-  <data name="comboBox1.Items2" xml:space="preserve">
-    <value>5272</value>
-  </data>
-  <data name="comboBox1.Items3" xml:space="preserve">
-    <value>5275</value>
-  </data>
-  <data name="comboBox1.Items4" xml:space="preserve">
-    <value>6722</value>
-  </data>
-  <data name="comboBox1.Items5" xml:space="preserve">
-    <value>7520</value>
-  </data>
   <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>517, 12</value>
   </data>
@@ -539,11 +521,5 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Please_select_one_StoreWarehouseID" xml:space="preserve">
-	  <value>Please select one Warehouse</value>
-  </data>
-  <data name="Deleted" xml:space="preserve">
-	  <value>Deleted</value>
   </data>
 </root>
