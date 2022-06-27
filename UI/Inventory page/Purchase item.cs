@@ -8,18 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M.API;
 
 namespace UI.Inventory_page {
     public partial class Purchase_item : Form {
         private MySqlConnection conn;
+        private Lang lang;
 
         public Purchase_item(MySqlConnection conn) {
             this.conn = conn;
             InitializeComponent();
+            lang = new Lang(typeof(Purchase_item));
         }
 
         private void fill_listbow() {
-            MySqlCommand cmd = new MySqlCommand("SELECT Distinct Name FROM `item`,`purchase_order`;", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT Distinct Name FROM `item`;", conn);
             MySqlDataReader myReader;
 
             try {
@@ -107,7 +110,7 @@ namespace UI.Inventory_page {
             MySqlCommand cmd = new MySqlCommand("INSERT INTO `purchase_order` VALUES (null, '" + now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + ItemID + "', " + Qty + ");", conn);
 
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Purchased");
+                MessageBox.Show(lang.GetString("Purchased"));
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }

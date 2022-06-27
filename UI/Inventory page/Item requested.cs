@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITP4915M.API;
 
 namespace UI.Inventory_page {
     public partial class Item_requested : Form {
@@ -15,6 +16,7 @@ namespace UI.Inventory_page {
         private MySqlDataAdapter da = new MySqlDataAdapter();
         private DataSet ds = new DataSet();
         private BindingSource tblNameBs = new BindingSource();
+        private Lang lang;
 
         public Item_requested(MySqlConnection conn) {
             this.conn = conn;
@@ -109,7 +111,7 @@ namespace UI.Inventory_page {
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
-            MessageBox.Show("Updated");
+            MessageBox.Show(lang.GetString("Updated"));
 
             reload();
         }

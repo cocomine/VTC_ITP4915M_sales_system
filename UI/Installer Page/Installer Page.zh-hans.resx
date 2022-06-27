@@ -11,4 +11,37 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+	<data name="$this.Text" xml:space="preserve">
+		<value>安装订单</value>
+	</data>
+	<data name="btn_complete.Text" xml:space="preserve">
+		<value>完成订单</value>
+	</data>
+	<data name="groupBox1.Text" xml:space="preserve">
+		<value>订单详情</value>
+	</data>
+	<data name="label1.Text" xml:space="preserve">
+		<value>客户姓名</value>
+	</data>
+	<data name="label2.Text" xml:space="preserve">
+		<value>客户地址</value>
+	</data>
+	<data name="label3.Text" xml:space="preserve">
+		<value>客户电话</value>
+	</data>
+	<data name="label4.Text" xml:space="preserve">
+		<value>安装项目</value>
+	</data>
+	<data name="label5.Text" xml:space="preserve">
+		<value>安排您的订单</value>
+	</data>
+	<data name="label6.Text" xml:space="preserve">
+		<value>安装日期</value>
+	</data>
+	<data name="loginToolStripMenuItem.Text" xml:space="preserve">
+		<value>注销</value>
+	</data>
+	<data name="Please_select_a_completed_installation_order_" xml:space="preserve">
+		<value>请先选择订单</value>
+	</data>
 </root>

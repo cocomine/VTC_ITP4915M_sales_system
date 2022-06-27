@@ -14,11 +14,13 @@ namespace UI.Installer_Page {
     public partial class Installer_Page : Form {
         private MySqlConnection conn;
         private Account_Details acc;
+        private Lang lang;
 
         public Installer_Page(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Installer_Page));
         }
 
         private void Installer_Page_FormClosed(object sender, FormClosedEventArgs e) { Program.removePage(); }
@@ -46,8 +48,6 @@ namespace UI.Installer_Page {
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e) { Program.Logout(); }
-
-        private void groupBox1_Enter(object sender, EventArgs e) { }
 
         private void lb_order_SelectedIndexChanged(object sender, EventArgs e) {
             //Select Command
@@ -82,14 +82,6 @@ namespace UI.Installer_Page {
             conn.Close();
         }
 
-        private void tb_customer_name_TextChanged(object sender, EventArgs e) { }
-
-        private void tb_customer_address_TextChanged(object sender, EventArgs e) { }
-
-        private void tb_customer_phone_TextChanged(object sender, EventArgs e) { }
-
-        private void lb_installation_item_SelectedIndexChanged(object sender, EventArgs e) { }
-
         private void btn_complete_Click(object sender, EventArgs e) {
             //Use "Order Complete" Button to update the new Installation state
             MySqlCommand cmd_comp = new MySqlCommand("UPDATE `installation` AS ins SET ins.Status = '1' " + "WHERE ins.OrderID = '" + lb_order.Text + "';", conn);
@@ -104,7 +96,7 @@ namespace UI.Installer_Page {
                     cmd_comp.ExecuteNonQuery(); //Update the data into the database
                 }
             } catch (MySqlException ex) {
-                MessageBox.Show("Please select a completed installation order.");
+                MessageBox.Show(lang.GetString("Please_select_a_completed_installation_order_"));
             }
 
             conn.Close();
@@ -115,9 +107,5 @@ namespace UI.Installer_Page {
             tb_customer_address.Clear();
             tb_installation_date.Clear();
         }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) { }
-
-        private void tb_installation_date_TextChanged(object sender, EventArgs e) { }
     }
 }

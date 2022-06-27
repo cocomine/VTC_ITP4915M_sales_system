@@ -46,7 +46,7 @@ namespace UI.IT
                 //SelectCommand
                 adapter.SelectCommand = new MySqlCommand("SELECT s.AccountID, s.FullRealName, a.Username, s.DepartmentID, s.isManager, a.Enable From staff AS s, account AS a WHERE s.AccountID = a.AcoountID", conn);
                 //DeleteCommand
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM account WHERE AcoountID = @id", conn);
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM account WHERE AcoountID = @id;", conn);
                 MySqlParameter parameter = cmd.Parameters.Add("@id", MySqlDbType.VarChar, 10, "AccountID");
                 parameter.SourceVersion = DataRowVersion.Original;
                 adapter.DeleteCommand = cmd;
@@ -70,6 +70,8 @@ namespace UI.IT
                 }
                 ds_staff.Tables[0].Columns["DepartmentID"].ColumnMapping = MappingType.Hidden; //hide DepartmentID Column
                 ds_staff.Tables[0].Columns["Username"].Unique = true; //set Unique
+                ds_staff.Tables[0].PrimaryKey = new DataColumn[1] { ds_staff.Tables[0].Columns["AccountID"] }; //set PrimaryKey
+                ds_staff.AcceptChanges();
 
                 //binding data Source
                 bindingSource1.DataSource = ds_staff;
@@ -110,10 +112,11 @@ namespace UI.IT
                 }
                 ds_staff.Tables[0].Columns["DepartmentID"].ColumnMapping = MappingType.Hidden; //hide DepartmentID Column
                 ds_staff.Tables[0].Columns["Username"].Unique = true; //set Unique
+                ds_staff.Tables[0].PrimaryKey = new DataColumn[1] { ds_staff.Tables[0].Columns["AccountID"] }; //set PrimaryKey
+                ds_staff.AcceptChanges();
             }
         }
 
-        
         private void bt_del_account_Click(object sender, EventArgs e) {
             //delete account
             DialogResult result = MessageBox.Show(lang.GetString("Are_you_sure_delete_select_user_"), lang.GetString("Delete_account"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning); //confirm del                                                                                                                  //if confirm

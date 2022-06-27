@@ -12,42 +12,42 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>采购物品</value>
+		<value>採購物品</value>
 	</data>
 	<data name="btPurchase.Text" xml:space="preserve">
-		<value>采购</value>
+		<value>採購</value>
 	</data>
 	<data name="checkBox1.Text" xml:space="preserve">
 		<value>大件</value>
 	</data>
 	<data name="checkBox2.Text" xml:space="preserve">
-		<value>需要安装</value>
+		<value>需要安裝</value>
 	</data>
 	<data name="groupBox1.Text" xml:space="preserve">
-		<value>采购</value>
+		<value>採購</value>
 	</data>
 	<data name="groupBox4.Text" xml:space="preserve">
 		<value>物品信息</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>选择物品</value>
+		<value>選擇物品</value>
 	</data>
 	<data name="label2.Text" xml:space="preserve">
-		<value>数量</value>
+		<value>數量</value>
 	</data>
 	<data name="label3.Text" xml:space="preserve">
-		<value>物品编号</value>
+		<value>物品編號</value>
 	</data>
 	<data name="label4.Text" xml:space="preserve">
 		<value>物品名</value>
 	</data>
 	<data name="label5.Text" xml:space="preserve">
-		<value>物品价格</value>
+		<value>物品價格</value>
 	</data>
 	<data name="label6.Text" xml:space="preserve">
 		<value>描述</value>
 	</data>
 	<data name="Purchased" xml:space="preserve">
-		<value>已采购</value>
+		<value>已採購</value>
 	</data>
 </root>

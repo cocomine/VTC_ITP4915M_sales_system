@@ -45,7 +45,4 @@
     地址：{2}
 你想直接使用这些信息吗？</value>
 	</data>
-	<data name="tb_address.Text" xml:space="preserve">
-		<value>顾客地址</value>
-	</data>
 </root>

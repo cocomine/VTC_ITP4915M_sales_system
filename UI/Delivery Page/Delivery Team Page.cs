@@ -15,11 +15,13 @@ namespace UI.Delivery_Page {
         private MySqlConnection conn;
         private Account_Details acc;
         public string dTeamID;
+        private Lang lang;
 
         public Delivery_Team_Page(MySqlConnection conn, Account_Details acc) {
             this.conn = conn;
             this.acc = acc;
             InitializeComponent();
+            lang = new Lang(typeof(Delivery_Team_Page));
         }
 
         private void Delivery_Page_FormClosed(object sender, FormClosedEventArgs e) { Program.removePage(); }
@@ -118,7 +120,7 @@ namespace UI.Delivery_Page {
                     update_dTeamStatus.ExecuteNonQuery(); //Update the data into the database
                 }
             } catch (MySqlException ex) {
-                MessageBox.Show("Please select an order that has already been shipped.");
+                MessageBox.Show(lang.GetString("Please_select_an_order_that_has_already_been_shipped_"));
             }
 
             conn.Close();
@@ -133,7 +135,5 @@ namespace UI.Delivery_Page {
 
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e) { Program.Logout(); }
-
-        private void tb_session_TextChanged(object sender, EventArgs e) { }
     }
 }

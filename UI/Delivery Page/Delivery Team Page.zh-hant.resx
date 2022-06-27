@@ -12,42 +12,39 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="$this.Text" xml:space="preserve">
-		<value>采购物品</value>
+		<value>送貨列表</value>
 	</data>
-	<data name="btPurchase.Text" xml:space="preserve">
-		<value>采购</value>
-	</data>
-	<data name="checkBox1.Text" xml:space="preserve">
-		<value>大件</value>
-	</data>
-	<data name="checkBox2.Text" xml:space="preserve">
-		<value>需要安装</value>
+	<data name="btn_complete.Text" xml:space="preserve">
+		<value>完成訂單</value>
 	</data>
 	<data name="groupBox1.Text" xml:space="preserve">
-		<value>采购</value>
-	</data>
-	<data name="groupBox4.Text" xml:space="preserve">
-		<value>物品信息</value>
+		<value>訂單詳情</value>
 	</data>
 	<data name="label1.Text" xml:space="preserve">
-		<value>选择物品</value>
+		<value>客戶姓名</value>
 	</data>
 	<data name="label2.Text" xml:space="preserve">
-		<value>数量</value>
+		<value>客戶地址</value>
 	</data>
 	<data name="label3.Text" xml:space="preserve">
-		<value>物品编号</value>
+		<value>客戶電話</value>
 	</data>
 	<data name="label4.Text" xml:space="preserve">
-		<value>物品名</value>
+		<value>交貨物品</value>
 	</data>
 	<data name="label5.Text" xml:space="preserve">
-		<value>物品价格</value>
+		<value>安排給你的訂單</value>
 	</data>
 	<data name="label6.Text" xml:space="preserve">
-		<value>描述</value>
+		<value>送貨時段</value>
 	</data>
-	<data name="Purchased" xml:space="preserve">
-		<value>已采购</value>
+	<data name="label7.Text" xml:space="preserve">
+		<value>送貨日期</value>
+	</data>
+	<data name="loginToolStripMenuItem.Text" xml:space="preserve">
+		<value>登出</value>
+	</data>
+	<data name="Please_select_an_order_that_has_already_been_shipped_" xml:space="preserve">
+		<value>請先選擇訂單</value>
 	</data>
 </root>

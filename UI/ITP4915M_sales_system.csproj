@@ -246,13 +246,22 @@
     <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.zh-hans.resx">
       <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Arrange Delivery Page.zh-hant.resx">
+      <DependentUpon>Arrange Delivery Page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Delivery Page\Delivery Team Page.zh-hans.resx">
       <DependentUpon>Delivery Team Page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Page\Delivery Team Page.zh-hant.resx">
+      <DependentUpon>Delivery Team Page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Installer Page\Installer Page.zh-hans.resx">
+      <DependentUpon>Installer Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Installer Page\Installer Page.zh-hant.resx">
       <DependentUpon>Installer Page.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory page.resx">
@@ -261,19 +270,31 @@
     <EmbeddedResource Include="Inventory page\Inventory page.zh-hans.resx">
       <DependentUpon>Inventory page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory page.zh-hant.resx">
+      <DependentUpon>Inventory page.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory quantity.resx">
       <DependentUpon>Inventory quantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Inventory quantity.zh-hans.resx">
       <DependentUpon>Inventory quantity.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Inventory quantity.zh-hant.resx">
+      <DependentUpon>Inventory quantity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Item requested.resx">
+      <DependentUpon>Item requested.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Item requested.zh-hant.resx">
       <DependentUpon>Item requested.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory page\Purchase item.zh-hans.resx">
+      <DependentUpon>Purchase item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory page\Purchase item.zh-hant.resx">
       <DependentUpon>Purchase item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IT\Account Management.zh-hans.resx">
@@ -417,6 +438,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Technical Support page\Arrange installation workers.zh-hans.resx">
+      <DependentUpon>Arrange installation workers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Technical Support page\Arrange installation workers.zh-hant.resx">
       <DependentUpon>Arrange installation workers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
