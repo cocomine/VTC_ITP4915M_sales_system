@@ -50,4 +50,7 @@
 	<data name="Purchased" xml:space="preserve">
 		<value>已采购</value>
 	</data>
+	<data name="Must_be__0" xml:space="preserve">
+		<value>必须大于0</value>
+	</data>
 </root>

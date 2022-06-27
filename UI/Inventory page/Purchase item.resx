@@ -639,4 +639,7 @@
   <data name="Purchased" xml:space="preserve">
 	  <value>Purchased</value>
   </data>
+  <data name="Must_be__0" xml:space="preserve">
+	  <value>Must be greater than 0</value>
+  </data>
 </root>

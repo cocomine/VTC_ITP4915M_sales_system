@@ -112,7 +112,7 @@ namespace UI.Inventory_page {
             dtbl1.Clear();
             sqlda1.Fill(dtbl1);
             dataGridView1.DataSource = dtbl1;
-            MessageBox.Show("Updated");
+            MessageBox.Show(lang.GetString("Updated"));
 
             reload();
             }
