@@ -115,7 +115,7 @@ namespace UI.Inventory_page {
                     MessageBox.Show(lang.GetString("Purchased"));
                 }
 
-                else { MessageBox.Show("Must be >0"); }
+                else { MessageBox.Show(lang.GetString("Must_be__0")); }
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
