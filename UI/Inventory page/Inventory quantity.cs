@@ -32,6 +32,32 @@ namespace UI.Inventory_page {
             dataGridView1.DataSource = ds.Tables[0];
             tblNameBs.DataSource = ds.Tables[0];
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
+
+            fill_comboBox();
+        }
+
+        private void fill_comboBox()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT ID FROM `storewarehouse`;", conn);
+            MySqlDataReader myReader;
+
+            try
+            {
+                //fill listbox
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    string sID = myReader.GetString("ID");
+                    comboBox1.Items.Add(sID);
+                }
+                myReader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
 
