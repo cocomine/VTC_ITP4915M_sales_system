@@ -37,47 +37,78 @@ namespace UI.Inventory_page {
 
         private void Next_Click(object sender, EventArgs e) {
             // buuton:Next
-            tblNameBs.MoveNext();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
-        }
+            try
+            {
+                tblNameBs.MoveNext();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+    }
 
         private void Previous_Click(object sender, EventArgs e) {
             // buuton:Previous
-            tblNameBs.MovePrevious();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            try
+            {
+                tblNameBs.MovePrevious();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void First_Click(object sender, EventArgs e) {
             // buuton:First
-            tblNameBs.MoveFirst();
+            try
+            {
+                tblNameBs.MoveFirst();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Last_Click(object sender, EventArgs e) {
             // buuton:Last
-            tblNameBs.MoveLast();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            try {
+                tblNameBs.MoveLast();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Search_Click(object sender, EventArgs e) {
             try {
-                if (comboBox1.Text != null && comboBox1.Text != "") {
+                if (comboBox1.Text != null && comboBox1.Text != "")
+                {
                     // Search StoreWarehouseID
+                    string ID = "";
 
-                    MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + comboBox1.Text, conn);
+                    ID = comboBox1.Text;
+
+                    MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where 	StoreWarehouseID  = " + ID, conn);
                     DataTable dtbl = new DataTable();
                     dtbl.Clear();
                     sqlda.Fill(dtbl);
                     dataGridView1.DataSource = dtbl;
                 }
+                
             } catch (Exception ea) {
                 //error message
                 MessageBox.Show("Please select one StoreWarehouseID", "顯示");
             }
+
         }
 
         private void dataGridView1_CellCick(object sender, DataGridViewCellEventArgs e) {
@@ -106,6 +137,29 @@ namespace UI.Inventory_page {
             MessageBox.Show("Deleted");
 
             reload();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btSet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int Qty = int.Parse(numericUpDown1.Text);
+                MySqlDataAdapter sqlda = new MySqlDataAdapter("SELECT * FROM `inventory` where Qty <= " + Qty + " order by Qty ASC;", conn);
+                DataTable dtbl = new DataTable();
+                dtbl.Clear();
+                sqlda.Fill(dtbl);
+                dataGridView1.DataSource = dtbl;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

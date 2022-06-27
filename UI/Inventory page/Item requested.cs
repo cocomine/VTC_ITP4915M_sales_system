@@ -30,6 +30,7 @@ namespace UI.Inventory_page {
             textBox2.Text = "0";
             textBox1.DataBindings.Add(new Binding("Text", tblNameBs, "ItemID"));
             textBox3.DataBindings.Add(new Binding("Text", tblNameBs, "Qty"));
+            textBox2.DataBindings.Add(new Binding("Text", tblNameBs, "Qty1"));
         }
 
         public void reload() {
@@ -41,27 +42,52 @@ namespace UI.Inventory_page {
         }
 
         private void Next_Click(object sender, EventArgs e) {
-            tblNameBs.MoveNext();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            try
+            {
+                tblNameBs.MoveNext();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Previous_Click(object sender, EventArgs e) {
-            tblNameBs.MovePrevious();
+            try
+            {
+                tblNameBs.MovePrevious();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Last_Click(object sender, EventArgs e) {
-            tblNameBs.MoveLast();
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            try
+            {
+                tblNameBs.MoveLast();
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message);}
         }
 
         private void First_Click(object sender, EventArgs e) {
-            tblNameBs.MoveFirst();
+            try
+            {
+                tblNameBs.MoveFirst();
             dataGridView1.ClearSelection();
             dataGridView1.Rows[tblNameBs.Position].Selected = true;
+            }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
 
 
