@@ -940,13 +940,13 @@
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Please_select_the_installer_worker_to_perform___0___order_" xml:space="preserve">
-	  <value>請選擇安裝人員以安排訂單({0})。</value>
+	  <value>Please select an installer to schedule an order ({0}).</value>
   </data>
   <data name="Please_select_the_order_that_needs_to_be_installed_for__0__to_perform_the_work_" xml:space="preserve">
-	  <value>請選擇訂單以安排({0})安裝工人。</value>
+	  <value>Please select an order to schedule ({0}) installation workers.</value>
   </data>
   <data name="Please_select_the_order_to_cancel_the_schedule_of_installation_" xml:space="preserve">
-	  <value>請選擇需要取消安排的訂單。</value>
+	  <value>Please select the order that needs to be cancelled.</value>
   </data>
   <data name="Installation_orders_for_each_employee_can_only_be_separated_by_thirty_minutes_" xml:space="preserve">
 	  <value>Installers need to wait 30 minutes between each order</value>
