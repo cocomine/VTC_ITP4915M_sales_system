@@ -72,8 +72,8 @@
 		<value>送递中</value>
 	</data>
 	<data name="Unable_to_disband_the_team" xml:space="preserve">
-		<value>“无法解散团队。
-可能团队还有订单没有完成。”</value>
+		<value>无法解散团队。
+可能团队还有订单没有完成。</value>
 	</data>
 	<data name="Update_Status" xml:space="preserve">
 		<value>更新状态</value>

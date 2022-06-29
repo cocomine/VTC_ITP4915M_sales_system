@@ -939,4 +939,10 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Please_select_the_delivery_team_to_perform___0___order_" xml:space="preserve">
+	  <value>請選擇送貨團隊以安排訂單({0})。</value>
+  </data>
+  <data name="Please_select_the_that_needs_to_be_delivery_for_Team__0__to_perform_the_work_" xml:space="preserve">
+	  <value>請選擇訂單以安排送貨團隊({0})</value>
+  </data>
 </root>

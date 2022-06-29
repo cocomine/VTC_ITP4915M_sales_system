@@ -360,4 +360,19 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Warning" xml:space="preserve">
+	  <value>Warning</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+	  <value>Welcome</value>
+  </data>
+  <data name="Welcome_back__0__" xml:space="preserve">
+	  <value>Welcome_back {0}</value>
+  </data>
+  <data name="Login_403" xml:space="preserve">
+	  <value>Incorrect login information. (403)</value>
+  </data>
+  <data name="Login_404" xml:space="preserve">
+	  <value>Incorrect login information. (404)</value>
+  </data>
 </root>
