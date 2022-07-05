@@ -2,7 +2,19 @@ ITP4915M_sales_system
 ===
 管理員登入
 ---
-Username: `root` Password: `root`
+使用前必須先匯入sql檔
+
+|department        | Usermane|
+|---|---|
+IT/CEO/Admin      | root
+Sales             | sales
+Inventory         | inventory
+Technical support | technical
+Accounting        | accounting
+Delivery          | delivery
+Installation      | install
+
+> 全部帳號密碼都是 `root`
 
 How to use git
 ---
