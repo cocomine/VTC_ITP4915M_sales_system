@@ -2,7 +2,7 @@ ITP4915M_sales_system
 ===
 管理員登入
 ---
-使用前必須先匯入sql檔
+使用前必須先匯入sql檔 `Prototype 2_SE1C_Group24.sql`
 
 |department        | Usermane|
 |---|---|
